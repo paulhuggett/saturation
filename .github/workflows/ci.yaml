@@ -68,7 +68,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-         submodules: 'True'
+          submodules: 'True'
 
       - name: Install Dependencies (Linux)
         if: matrix.os == 'ubuntu-latest' && matrix.apt_install != ''
@@ -80,12 +80,12 @@ jobs:
       - name: Configure CMake
         shell: bash
         run: |
-            cmake -S "$GITHUB_WORKSPACE"                       \
-                  -B "${{ runner.workspace }}/build"           \
-                  -G "${{ matrix.generator }}"                 \
-                  -D CMAKE_BUILD_TYPE=${{ matrix.build_type }} \
-                  ${{ matrix.cxx_compiler }}                   \
-                  ${{ matrix.options }}
+          cmake -S "$GITHUB_WORKSPACE"                       \
+                -B "${{ runner.workspace }}/build"           \
+                -G "${{ matrix.generator }}"                 \
+                -D CMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+                ${{ matrix.cxx_compiler }}                   \
+                ${{ matrix.options }}
 
       - name: Build
         shell: bash
