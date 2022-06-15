@@ -1,4 +1,3 @@
-
 #ifndef SAT_HPP
 #define SAT_HPP
 
@@ -66,8 +65,9 @@ constexpr int32_t subs32 (int32_t const x, int32_t const y) {
 // only case where it happens is when you divide INT_MIN by -1 since the correct
 // answer would be INT_MAX + 1.
 constexpr int32_t divs32 (int32_t x, int32_t y) {
-  x += !((y + 1) |
-         (static_cast<uint32_t> (x) + std::numeric_limits<int32_t>::min ()));
+  x += !(static_cast<uint32_t> (y + 1) |
+         (static_cast<uint32_t> (x) +
+          static_cast<uint32_t> (std::numeric_limits<int32_t>::min ())));
   return x / y;
 }
 
