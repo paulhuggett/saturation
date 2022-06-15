@@ -142,9 +142,10 @@ endfunction (add_klee_target)
     
 add_custom_target (klee-all)
 add_klee_target (NAME klee_adds32 SOURCES klee_adds32.cpp klee_common.hpp sat.hpp)
-add_klee_target (NAME klee_subs32 SOURCES klee_subs32.cpp klee_common.hpp sat.hpp)
 add_klee_target (NAME klee_divs32 SOURCES klee_divs32.cpp klee_common.hpp sat.hpp)
 add_klee_target (NAME klee_muls32 SOURCES klee_muls32.cpp klee_common.hpp sat.hpp)
+add_klee_target (NAME klee_subs32 SOURCES klee_subs32.cpp klee_common.hpp sat.hpp)
 
 add_klee_target (NAME klee_addu32 SOURCES klee_addu32.cpp klee_common.hpp sat.hpp)
 add_klee_target (NAME klee_subu32 SOURCES klee_subu32.cpp klee_common.hpp sat.hpp)
+add_klee_target (NAME klee_mulu32 SOURCES klee_mulu32.cpp klee_common.hpp sat.hpp)
