@@ -147,3 +147,4 @@ add_klee_target (NAME klee_divs32 SOURCES klee_divs32.cpp klee_common.hpp sat.hp
 add_klee_target (NAME klee_muls32 SOURCES klee_muls32.cpp klee_common.hpp sat.hpp)
 
 add_klee_target (NAME klee_addu32 SOURCES klee_addu32.cpp klee_common.hpp sat.hpp)
+add_klee_target (NAME klee_subu32 SOURCES klee_subu32.cpp klee_common.hpp sat.hpp)
