@@ -11,7 +11,7 @@ jobs:
       - name: Upgrade packages (esp. git)
         run: |
           sudo apt-get update
-          sudo apt-get upgrade
+          sudo apt-get upgrade -y
 
       - name: Checkout repository
         uses: actions/checkout@v3
