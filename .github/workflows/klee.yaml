@@ -1,0 +1,26 @@
+name: KLEE Test
+on:
+  workflow_dispatch:
+jobs:
+  klee:
+    runs-on: ubuntu-latest
+    container:
+      image: klee/klee:2.3
+      options: -u 0 --ulimit="stack=-1:-1"
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create Build Environment
+        run: cmake -E make_directory "${{ runner.workspace }}/build"
+
+      - name: Configure
+        run: |
+         cmake -B "${{ runner.workspace }}/build \
+               -S "$GITHUB_WORKSPACE"            \
+               -D CMAKE_CXX_COMPILER=clang++-11  \
+               -D CMAKE_C_COMPILER=clang-11      \
+               -D WERROR=Yes
+
+      - name: Build and Test
+        run: |
+          cmake --build "${{ runner.workspace }}/build --target klee-all
