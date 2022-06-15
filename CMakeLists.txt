@@ -150,3 +150,11 @@ add_klee_target (NAME klee_addu32 SOURCES klee_addu32.cpp klee_common.hpp sat.hp
 add_klee_target (NAME klee_divu32 SOURCES klee_divu32.cpp klee_common.hpp sat.hpp)
 add_klee_target (NAME klee_subu32 SOURCES klee_subu32.cpp klee_common.hpp sat.hpp)
 add_klee_target (NAME klee_mulu32 SOURCES klee_mulu32.cpp klee_common.hpp sat.hpp)
+
+add_subdirectory (googletest)
+add_executable (unittests test_sat.cpp)
+target_link_libraries (unittests PRIVATE gmock_main)
+add_custom_command(TARGET unittests
+                   POST_BUILD
+                   COMMAND unittests
+                   COMMENT Running unit tests)
