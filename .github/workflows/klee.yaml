@@ -15,12 +15,12 @@ jobs:
 
       - name: Configure
         run: |
-         cmake -B "${{ runner.workspace }}/build \
-               -S "$GITHUB_WORKSPACE"            \
-               -D CMAKE_CXX_COMPILER=clang++-11  \
-               -D CMAKE_C_COMPILER=clang-11      \
+         cmake -B "${{ runner.workspace }}/build" \
+               -S "$GITHUB_WORKSPACE"             \
+               -D CMAKE_CXX_COMPILER=clang++-11   \
+               -D CMAKE_C_COMPILER=clang-11       \
                -D WERROR=Yes
 
       - name: Build and Test
         run: |
-          cmake --build "${{ runner.workspace }}/build --target klee-all
+          cmake --build "${{ runner.workspace }}/build" --target klee-all
