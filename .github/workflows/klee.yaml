@@ -8,6 +8,11 @@ jobs:
       image: klee/klee:2.3
       options: -u 0 --ulimit="stack=-1:-1"
     steps:
+      - name: Upgrade packages (esp. git)
+        run: |
+          sudo apt-get update
+          sudo apt-get upgrade
+
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
