@@ -41,10 +41,6 @@ function (setup_target target)
 endfunction (setup_target)
 
 
-add_executable (saturation main.cpp sat.hpp)
-setup_target (saturation)
-
-
 add_subdirectory (klee)
 
 # Tell gtest to link against the "Multi-threaded Debug DLL runtime library" on Windows.
@@ -57,7 +53,11 @@ add_subdirectory (googletest)
 
 add_executable (unittests test_sat.cpp)
 target_link_libraries (unittests PRIVATE gmock_main)
-add_custom_command(TARGET unittests
-                   POST_BUILD
-                   COMMAND unittests
-                   COMMENT Running unit tests)
+
+
+add_executable (saturation main.cpp sat.hpp)
+setup_target (saturation)
+add_custom_command (TARGET saturation
+                    PRE_LINK
+                    COMMAND unittests
+                    COMMENT Running unit tests)
