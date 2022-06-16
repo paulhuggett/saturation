@@ -51,7 +51,7 @@ set (INSTALL_GMOCK Off CACHE BOOL "disable gmock install")
 add_subdirectory (googletest)
 
 
-add_executable (unittests test_sat.cpp)
+add_executable (unittests test_sat.cpp sat.hpp)
 target_link_libraries (unittests PRIVATE gmock_main)
 
 
