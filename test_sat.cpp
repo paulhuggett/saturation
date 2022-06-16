@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "sat.hpp"
+#include "saturation.hpp"
 
 class Saturation : public testing::Test {
 protected:

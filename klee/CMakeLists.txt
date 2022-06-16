@@ -97,20 +97,20 @@ endfunction (add_klee_target)
     
 add_custom_target (klee-all)
 add_klee_target (TARGET klee_adds32
-  SOURCES adds32.cpp common.hpp ../sat.hpp)
+  SOURCES adds32.cpp common.hpp ../saturation.hpp)
 add_klee_target (TARGET klee_divs32
-  SOURCES divs32.cpp common.hpp ../sat.hpp)
+  SOURCES divs32.cpp common.hpp ../saturation.hpp)
 add_klee_target (TARGET klee_muls32
-  SOURCES muls32.cpp common.hpp ../sat.hpp)
+  SOURCES muls32.cpp common.hpp ../saturation.hpp)
 add_klee_target (TARGET klee_subs32
-  SOURCES subs32.cpp common.hpp ../sat.hpp)
+  SOURCES subs32.cpp common.hpp ../saturation.hpp)
 
 
 add_klee_target (TARGET klee_addu32
-  SOURCES addu32.cpp common.hpp ../sat.hpp)
+  SOURCES addu32.cpp common.hpp ../saturation.hpp)
 add_klee_target (TARGET klee_divu32
-  SOURCES divu32.cpp common.hpp ../sat.hpp)
+  SOURCES divu32.cpp common.hpp ../saturation.hpp)
 add_klee_target (TARGET klee_subu32
-  SOURCES subu32.cpp common.hpp ../sat.hpp)
+  SOURCES subu32.cpp common.hpp ../saturation.hpp)
 add_klee_target (TARGET klee_mulu32
-  SOURCES mulu32.cpp common.hpp ../sat.hpp)
+  SOURCES mulu32.cpp common.hpp ../saturation.hpp)

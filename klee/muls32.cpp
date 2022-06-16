@@ -5,7 +5,7 @@
 #include <cstdlib>
 
 #include "common.hpp"
-#include "sat.hpp"
+#include "saturation.hpp"
 
 static int32_t sat_muls32_branchy (int32_t const x, int32_t const y) {
   return clamp32 (static_cast<int64_t> (x) * static_cast<int64_t> (y));

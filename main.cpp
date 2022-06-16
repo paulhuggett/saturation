@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "sat.hpp"
+#include "saturation.hpp"
 
 int main (int argc, char const* argv[]) {
   auto const a = std::numeric_limits<int32_t>::max () - 1;

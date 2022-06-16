@@ -1,5 +1,5 @@
-#ifndef SAT_HPP
-#define SAT_HPP
+#ifndef SATURATION_HPP
+#define SATURATION_HPP
 
 #include <cstdint>
 #include <limits>
@@ -82,4 +82,4 @@ constexpr int32_t muls32 (int32_t const x, int32_t const y) {
 
 }  // end namespace sat
 
-#endif  // SAT_HPP
+#endif  // SATURATION_HPP
