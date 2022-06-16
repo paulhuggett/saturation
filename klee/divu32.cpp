@@ -4,11 +4,11 @@
 #include <cstdio>
 #include <cstdlib>
 
-#include "klee_common.hpp"
+#include "common.hpp"
 #include "sat.hpp"
 
-static uint32_t sat_addu32_branchy (uint32_t const x, uint32_t const y) {
-  return clampu32 (static_cast<int64_t> (x) + static_cast<int64_t> (y));
+static uint32_t sat_divu32_branchy (uint32_t const x, uint32_t const y) {
+  return clampu32 (static_cast<uint64_t> (x) / static_cast<uint64_t> (y));
 }
 
 int main () {
@@ -16,9 +16,10 @@ int main () {
   auto b = uint32_t{0};
   klee_make_symbolic (&a, sizeof (a), "a");
   klee_make_symbolic (&b, sizeof (b), "b");
+  klee_assume (b != 0);
 
-  uint32_t const c = sat::addu32 (a, b);
-  uint32_t const expected = sat_addu32_branchy (a, b);
+  uint32_t const c = sat::divu32 (a, b);
+  uint32_t const expected = sat_divu32_branchy (a, b);
 #if KLEE_RUN
   std::printf ("a=%" PRIu32 " b=%" PRIu32 " expected=%" PRIu32
                " actual=%" PRIu32 "\n",

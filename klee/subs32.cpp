@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-#include "klee_common.hpp"
+#include "common.hpp"
 #include "sat.hpp"
 
 static int32_t sat_subs32_branchy (int32_t const x, int32_t const y) {

@@ -97,20 +97,20 @@ endfunction (add_klee_target)
     
 add_custom_target (klee-all)
 add_klee_target (TARGET klee_adds32
-  SOURCES klee_adds32.cpp klee_common.hpp ../sat.hpp)
+  SOURCES adds32.cpp common.hpp ../sat.hpp)
 add_klee_target (TARGET klee_divs32
-  SOURCES klee_divs32.cpp klee_common.hpp ../sat.hpp)
+  SOURCES divs32.cpp common.hpp ../sat.hpp)
 add_klee_target (TARGET klee_muls32
-  SOURCES klee_muls32.cpp klee_common.hpp ../sat.hpp)
+  SOURCES muls32.cpp common.hpp ../sat.hpp)
 add_klee_target (TARGET klee_subs32
-  SOURCES klee_subs32.cpp klee_common.hpp ../sat.hpp)
+  SOURCES subs32.cpp common.hpp ../sat.hpp)
 
 
 add_klee_target (TARGET klee_addu32
-  SOURCES klee_addu32.cpp klee_common.hpp ../sat.hpp)
+  SOURCES addu32.cpp common.hpp ../sat.hpp)
 add_klee_target (TARGET klee_divu32
-  SOURCES klee_divu32.cpp klee_common.hpp ../sat.hpp)
+  SOURCES divu32.cpp common.hpp ../sat.hpp)
 add_klee_target (TARGET klee_subu32
-  SOURCES klee_subu32.cpp klee_common.hpp ../sat.hpp)
+  SOURCES subu32.cpp common.hpp ../sat.hpp)
 add_klee_target (TARGET klee_mulu32
-  SOURCES klee_mulu32.cpp klee_common.hpp ../sat.hpp)
+  SOURCES mulu32.cpp common.hpp ../sat.hpp)
