@@ -51,8 +51,8 @@ constexpr int32_t adds32 (int32_t const x, int32_t const y) {
 }
 
 constexpr int32_t subs32 (int32_t const x, int32_t const y) {
-  uint32_t ux = static_cast<uint32_t> (x);
-  uint32_t const uy = static_cast<uint32_t> (y);
+  auto ux = static_cast<uint32_t> (x);
+  auto const uy = static_cast<uint32_t> (y);
   uint32_t const res = ux - uy;
   ux = (ux >> 31) + std::numeric_limits<int32_t>::max ();
   if (static_cast<int32_t> ((ux ^ uy) & (ux ^ res)) < 0) {
