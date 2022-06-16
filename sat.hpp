@@ -72,14 +72,10 @@ constexpr int32_t divs32 (int32_t x, int32_t y) {
 }
 
 constexpr int32_t muls32 (int32_t const x, int32_t const y) {
-  int64_t res = static_cast<int64_t> (x) * static_cast<int64_t> (y);
-  uint32_t res2 = (static_cast<uint32_t> (x ^ y) >> 31) +
-                  std::numeric_limits<int32_t>::max ();
-
-  int32_t hi = (res >> 32);
-  auto const lo = static_cast<int32_t> (res);
-  if (hi != (lo >> 31)) {
-    res = res2;
+  auto const res = static_cast<int64_t> (x) * static_cast<int64_t> (y);
+  if (static_cast<int32_t> (res >> 32) != (static_cast<int32_t> (res) >> 31)) {
+    return (static_cast<uint32_t> (x ^ y) >> 31) +
+           std::numeric_limits<int32_t>::max ();
   }
   return static_cast<int32_t> (res);
 }
