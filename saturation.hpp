@@ -6,31 +6,98 @@
 
 namespace sat {
 
+/// Yields the smallest unsigned integer type with at least \p Bits bits.
+template <size_t Bits>
+struct uinteger {
+  using type = typename uinteger<Bits + 1>::type;
+};
+template <size_t Bits>
+using uinteger_t = typename uinteger<Bits>::type;
+template <>
+struct uinteger<8> {
+  using type = uint8_t;
+};
+template <>
+struct uinteger<16> {
+  using type = uint16_t;
+};
+template <>
+struct uinteger<32> {
+  using type = uint32_t;
+};
+template <>
+struct uinteger<64> {
+  using type = uint64_t;
+};
+// Equivalent to (T{1}<<N)-T{1}, where T is an unsigned integer type, but
+// without the risk of overflow if N is equal to the number of bits in T.
+// Returns 0 if n is 0.
+template <unsigned N>
+struct mask {
+  static constexpr uinteger_t<N> value =
+      mask<N - 1U>::value << 1U | uinteger_t<N>{1};
+};
+template <>
+struct mask<0U> {
+  static constexpr uinteger_t<1U> value = 0U;
+};
+template <unsigned N>
+inline constexpr auto mask_v = mask<N>::value;
+
 // *******************
 // unsigned arithmetic
 // *******************
 
-constexpr uint32_t addu32 (uint32_t x, uint32_t y) {
-  uint32_t res = x + y;
-  res |= -(res < x);
-  return res;
+template <unsigned N>
+constexpr uinteger_t<N> addu (uinteger_t<N> const x, uinteger_t<N> const y) {
+  constexpr auto maxu = mask_v<N>;
+  uinteger_t<N> res = x + y;
+  res |= -((res < x) | (res > maxu));
+  return res & maxu;
+}
+constexpr uint32_t addu32 (uint32_t const x, uint32_t const y) {
+  return addu<32> (x, y);
+}
+constexpr uint16_t addu16 (uint16_t const x, uint16_t const y) {
+  return addu<16> (x, y);
 }
 
-constexpr uint32_t subu32 (uint32_t x, uint32_t y) {
-  uint32_t res = x - y;
+template <unsigned N>
+constexpr uinteger_t<N> subu (uinteger_t<N> const x, uinteger_t<N> const y) {
+  constexpr auto maxu = mask_v<N>;
+  uinteger_t<N> res = x - y;
   res &= -(res <= x);
+  res &= maxu;
   return res;
 }
+constexpr uint32_t subu32 (uint32_t const x, uint32_t const y) {
+  return subu<32> (x, y);
+}
+constexpr uint16_t subu16 (uint16_t const x, uint16_t const y) {
+  return subu<16> (x, y);
+}
 
-constexpr uint32_t divu32 (uint32_t x, uint32_t y) {
+template <unsigned N>
+constexpr uinteger_t<N> divu (uinteger_t<N> const x, uinteger_t<N> const y) {
   return x / y;
 }
+constexpr uint32_t divu32 (uint32_t const x, uint32_t const y) {
+  return divu<32> (x, y);
+}
+constexpr uint16_t divu16 (uint16_t const x, uint16_t const y) {
+  return divu<16> (x, y);
+}
 
+template <unsigned N>
+constexpr uinteger_t<N> mulu (uinteger_t<N> const x, uinteger_t<N> const y) {
+  auto res =
+      static_cast<uinteger_t<N * 2U>> (x) * static_cast<uinteger_t<N * 2U>> (y);
+  auto const hi = res >> N;
+  auto const lo = static_cast<uinteger_t<N>> (res);
+  return (lo | -!!hi) & mask_v<N>;
+}
 constexpr uint32_t mulu32 (uint32_t x, uint32_t y) {
-  uint64_t res = static_cast<uint64_t> (x) * static_cast<uint64_t> (y);
-  uint32_t const hi = res >> 32;
-  auto const lo = static_cast<uint32_t> (res);
-  return lo | -!!hi;
+  return mulu<32> (x, y);
 }
 
 // *****************
