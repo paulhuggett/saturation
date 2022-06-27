@@ -2,6 +2,24 @@
 
 #include "saturation.hpp"
 
+static_assert (sat::mask<0>::value == 0);
+static_assert (sat::mask<1>::value == 0b1);
+static_assert (sat::mask<2>::value == 0b11);
+static_assert (sat::mask<3>::value == 0b111);
+static_assert (sat::mask<4>::value == 0xf);
+static_assert (sat::mask<7>::value == 0x7f);
+static_assert (sat::mask<8>::value == 0xff);
+static_assert (sat::mask<9>::value == 0x1ff);
+static_assert (sat::mask<15>::value == 0x7fff);
+static_assert (sat::mask<16>::value == 0xffff);
+static_assert (sat::mask<17>::value == 0x1ffff);
+static_assert (sat::mask<31>::value == 0x7fffffff);
+static_assert (sat::mask<32>::value == 0xffffffff);
+static_assert (sat::mask<33>::value == 0x1ffffffff);
+static_assert (sat::mask<63>::value == 0x7fffffffffffffff);
+static_assert (sat::mask<64>::value == std::numeric_limits<uint64_t>::max());
+
+
 class Saturation32 : public testing::Test {
 protected:
   static constexpr auto min = std::numeric_limits<int32_t>::min ();
@@ -88,32 +106,35 @@ TYPED_TEST_P (Saturation, Subu) {
   EXPECT_EQ (sat::subu<n> (maxu, maxu), uint_type{0});
 }
 TYPED_TEST_P (Saturation, Divu) {
-  constexpr auto n = TypeParam::value;
-  using uint_type = sat::uinteger_t<n>;
-  constexpr auto maxu = sat::mask_v<n>;
-  EXPECT_EQ (sat::divu<n> (uint_type{0}, uint_type{3}), uint_type{0});
-  EXPECT_EQ (sat::divu<n> (uint_type{10}, uint_type{2}), uint_type{5});
-  EXPECT_EQ (sat::divu<n> (maxu, uint_type{1}), maxu);
+  constexpr auto bits = TypeParam::value;
+  using uint_type = sat::uinteger_t<bits>;
+  constexpr auto maxu = sat::mask_v<bits>;
+  EXPECT_EQ (sat::divu<bits> (uint_type{0}, uint_type{3}), uint_type{0});
+  EXPECT_EQ (sat::divu<bits> (uint_type{10}, uint_type{2}), uint_type{5});
+  EXPECT_EQ (sat::divu<bits> (maxu, uint_type{1}), maxu);
 }
 TYPED_TEST_P (Saturation, Mulu) {
-  constexpr auto n = TypeParam::value;
-  using uint_type = sat::uinteger_t<n>;
-  EXPECT_EQ (sat::mulu<n> (uint_type{0}, uint_type{0}), uint_type{0});
-  EXPECT_EQ (sat::mulu<n> (uint_type{3}, uint_type{5}), uint_type{15});
-  EXPECT_EQ (sat::mulu<n> (sat::mask_v<n>, uint_type{1}), sat::mask_v<n>);
-  EXPECT_EQ (sat::mulu<n> (sat::mask_v<n> >> 1U, uint_type{2}),
-             uint_type{sat::mask_v<n> - 1U});
-  if constexpr (n > 16U) {
-    EXPECT_EQ (sat::mulu<n> (uint_type{13862387}, uint_type{1076719596}),
-               uint_type{4294967295} & sat::mask_v<n>);
+  constexpr auto bits = TypeParam::value;
+  using uint_type = sat::uinteger_t<bits>;
+  constexpr auto maxu = sat::mask_v<bits>;
+  EXPECT_EQ (sat::mulu<bits> (uint_type{0}, uint_type{0}), uint_type{0});
+  EXPECT_EQ (sat::mulu<bits> (uint_type{3}, uint_type{5}), uint_type{15});
+  EXPECT_EQ (sat::mulu<bits> (maxu, uint_type{1}), maxu);
+  EXPECT_EQ (sat::mulu<bits> (maxu >> 1U, uint_type{2}), uint_type{maxu - 1U});
+  EXPECT_EQ (sat::mulu<bits> (maxu, uint_type{2}), maxu);
+  if constexpr (bits > 16U) {
+    EXPECT_EQ (sat::mulu<bits> (uint_type{13862387}, uint_type{1076719596}),
+               uint_type{4294967295U & maxu});
   }
 }
 REGISTER_TYPED_TEST_SUITE_P (Saturation, Addu, Subu, Divu, Mulu);
-using width_types = testing::Types<std::integral_constant<unsigned, 9U>,
-                                   std::integral_constant<unsigned, 15U>,
-                                   std::integral_constant<unsigned, 16U>,
-                                   std::integral_constant<unsigned, 17U>,
-                                   std::integral_constant<unsigned, 24U>,
-                                   std::integral_constant<unsigned, 31U>,
-                                   std::integral_constant<unsigned, 32U>>;
+template <unsigned Value>
+using unsigned_constant = std::integral_constant<unsigned, Value>;
+using width_types = testing::Types<unsigned_constant<9U>,
+                                   unsigned_constant<15U>,
+                                   unsigned_constant<16U>,
+                                   unsigned_constant<17U>,
+                                   unsigned_constant<24U>,
+                                   unsigned_constant<31U>,
+                                   unsigned_constant<32U>>;
 INSTANTIATE_TYPED_TEST_SUITE_P (ExplicitWidths, Saturation, width_types, );
