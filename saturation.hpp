@@ -90,14 +90,17 @@ constexpr uint16_t divu16 (uint16_t const x, uint16_t const y) {
 
 template <unsigned Bits>
 constexpr uinteger_t<Bits> mulu (uinteger_t<Bits> const x, uinteger_t<Bits> const y) {
-  auto res =
-      static_cast<uinteger_t<Bits * 2U>> (x) * static_cast<uinteger_t<Bits * 2U>> (y);
+  auto const res = static_cast<uinteger_t<Bits * 2U>> (x) *
+                   static_cast<uinteger_t<Bits * 2U>> (y);
   auto const hi = res >> Bits;
   auto const lo = static_cast<uinteger_t<Bits>> (res);
   return (lo | -!!hi) & mask_v<Bits>;
 }
-constexpr uint32_t mulu32 (uint32_t x, uint32_t y) {
+constexpr uint32_t mulu32 (uint32_t const x, uint32_t const y) {
   return mulu<32> (x, y);
+}
+constexpr uint16_t mulu16 (uint16_t const x, uint16_t const y) {
+  return mulu<16> (x, y);
 }
 
 // *****************
