@@ -149,21 +149,6 @@ struct ulimits {
   static constexpr type min () { return 0U; }
 };
 
-constexpr int32_t adds32 (int32_t const x, int32_t const y) {
-  auto const ux = static_cast<uint32_t> (x);
-  auto const uy = static_cast<uint32_t> (y);
-  uint32_t const res = ux + uy;
-
-  // Calculate overflowed result but don't change the sign bit of ux.
-  auto const vres = (ux >> 31) + std::numeric_limits<int32_t>::max ();
-  assert (vres == static_cast<uint32_t> (limits<32>::max ()) ||
-          vres == static_cast<uint32_t> (limits<32>::min ()));
-  if (static_cast<int32_t> ((vres ^ uy) | ~(uy ^ res)) >= 0) {
-    return static_cast<int32_t> (vres);
-  }
-  return static_cast<int32_t> (res);
-}
-
 namespace details {
 
 template <unsigned N, bool IsUnsigned>
@@ -172,8 +157,8 @@ public:
   using type = std::conditional_t<IsUnsigned, uinteger_t<N>, sinteger_t<N>>;
 
   constexpr nbit_scalar () : x_{0} {}
-  explicit constexpr nbit_scalar (type const a) : x_{a} {}
-  constexpr nbit_scalar (nbit_scalar const& rhs) = default;
+  explicit constexpr nbit_scalar (type const x) : x_{x} {}
+  constexpr nbit_scalar (nbit_scalar const&) = default;
   nbit_scalar& operator= (type const x) {
     x_ = x;
     return *this;
@@ -201,15 +186,19 @@ constexpr sinteger_t<Bits> adds (sinteger_t<Bits> const x,
   // Get the answer (with potential overflow).
   auto const res = ubits{static_cast<uint> (ux + uy)};
 
-  // Calculate the overflowed result but preserve the sign of ux.
-  auto const vress = sbits{static_cast<sint> (
-      ubits{static_cast<uint> ((ux >> (Bits - 1U)) + limits<Bits>::max ())})};
-  assert (vress == limits<Bits>::max () || vress == limits<Bits>::min ());
-  if (sbits{static_cast<sint> (ubits{static_cast<uint> (ux ^ uy)} |
-                               ubits{static_cast<uint> (~(uy ^ res))})} >= 0) {
-    return vress;
+  if (sbits{static_cast<sint> ((ux ^ uy) | ~(uy ^ res))} >= 0) {
+    // Calculate the overflowed result but preserve the sign of ux.
+    auto const v = sbits{static_cast<sint> (
+        ubits{static_cast<uint> ((ux >> (Bits - 1U)) + limits<Bits>::max ())})};
+    assert (v == limits<Bits>::max () || v == limits<Bits>::min ());
+    return v;
   }
+  // There was no overflow: return the proper result.
   return static_cast<sinteger_t<Bits>> (res);
+}
+
+constexpr int32_t adds32 (int32_t const x, int32_t const y) {
+  return adds<32> (x, y);
 }
 
 constexpr int32_t subs32 (int32_t const x, int32_t const y) {
