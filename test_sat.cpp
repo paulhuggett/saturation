@@ -176,7 +176,6 @@ TYPED_TEST_P (Saturation, UnsignedAdd) {
 
 TYPED_TEST_P (Saturation, SignedAdd) {
   constexpr auto bits = TypeParam::value;
-  using uint_type = sat::uinteger_t<bits>;
   using sint_type = sat::sinteger_t<bits>;
   constexpr auto max = sat::limits<bits>::max ();
   constexpr auto min = sat::limits<bits>::min ();
