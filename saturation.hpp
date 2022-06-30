@@ -1,8 +1,10 @@
 #ifndef SATURATION_HPP
 #define SATURATION_HPP
 
+#include <cassert>
 #include <cstdint>
 #include <limits>
+#include <type_traits>
 
 namespace sat {
 
@@ -154,7 +156,8 @@ constexpr int32_t adds32 (int32_t const x, int32_t const y) {
 
   // Calculate overflowed result but don't change the sign bit of ux.
   auto const vres = (ux >> 31) + std::numeric_limits<int32_t>::max ();
-  assert (vres == limits<32>::max () || vres == limits<32>::min ());
+  assert (vres == static_cast<uint32_t> (limits<32>::max ()) ||
+          vres == static_cast<uint32_t> (limits<32>::min ()));
   if (static_cast<int32_t> ((vres ^ uy) | ~(uy ^ res)) >= 0) {
     return static_cast<int32_t> (vres);
   }
