@@ -7,7 +7,7 @@
 #include <limits>
 #include <type_traits>
 
-namespace sat {
+namespace saturation {
 
 /// Yields the smallest signed integer type with at least \p Bits bits.
 template <size_t Bits>
@@ -140,16 +140,16 @@ constexpr uint16_t mulu16 (uint16_t const x, uint16_t const y) {
 
 template <size_t Bits>
 struct limits {
-  using type = sat::sinteger_t<Bits>;
+  using type = sinteger_t<Bits>;
   static constexpr type max () {
-    return static_cast<type> ((sat::uinteger_t<Bits>{1} << (Bits - 1U)) - 1);
+    return static_cast<type> ((uinteger_t<Bits>{1} << (Bits - 1U)) - 1);
   }
   static constexpr type min () { return static_cast<type> (-max () - 1); }
 };
 
 template <size_t Bits>
 struct ulimits {
-  using type = sat::uinteger_t<Bits>;
+  using type = uinteger_t<Bits>;
   static constexpr type max () { return mask_v<Bits>; }
   static constexpr type min () { return 0U; }
 };
@@ -239,6 +239,6 @@ constexpr int32_t muls32 (int32_t const x, int32_t const y) {
   return static_cast<int32_t> (res);
 }
 
-}  // end namespace sat
+}  // end namespace saturation
 
 #endif  // SATURATION_HPP

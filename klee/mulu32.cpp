@@ -17,7 +17,7 @@ int main () {
   klee_make_symbolic (&a, sizeof (a), "a");
   klee_make_symbolic (&b, sizeof (b), "b");
 
-  uint32_t const c = sat::mulu32 (a, b);
+  uint32_t const c = saturation::mulu32 (a, b);
   uint32_t const expected = sat_mulu32_branchy (a, b);
 #if KLEE_RUN
   std::printf ("a=%" PRIu32 " b=%" PRIu32 " expected=%" PRIu32

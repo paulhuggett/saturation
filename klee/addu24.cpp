@@ -19,7 +19,7 @@ int main () {
   klee_assume (a <= (1 << 23));
   klee_assume (b <= (1 << 23));
 
-  uint32_t const c = sat::addu<24> (a, b);
+  uint32_t const c = saturation::addu<24> (a, b);
   uint32_t const expected = sat_addu24_branchy (a, b);
 #if KLEE_RUN
   std::printf ("a=%" PRIu32 " b=%" PRIu32 " expected=%" PRIu32

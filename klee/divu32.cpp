@@ -18,7 +18,7 @@ int main () {
   klee_make_symbolic (&b, sizeof (b), "b");
   klee_assume (b != 0);
 
-  uint32_t const c = sat::divu32 (a, b);
+  uint32_t const c = saturation::divu32 (a, b);
   uint32_t const expected = sat_divu32_branchy (a, b);
 #if KLEE_RUN
   std::printf ("a=%" PRIu32 " b=%" PRIu32 " expected=%" PRIu32

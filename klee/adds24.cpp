@@ -17,12 +17,12 @@ int main () {
   klee_make_symbolic (&a, sizeof (a), "a");
   klee_make_symbolic (&b, sizeof (b), "b");
 
-  klee_assume (a <= sat::limits<24>::max ());
-  klee_assume (a >= sat::limits<24>::min ());
-  klee_assume (b <= sat::limits<24>::max ());
-  klee_assume (b >= sat::limits<24>::min ());
+  klee_assume (a <= saturation::limits<24>::max ());
+  klee_assume (a >= saturation::limits<24>::min ());
+  klee_assume (b <= saturation::limits<24>::max ());
+  klee_assume (b >= saturation::limits<24>::min ());
 
-  int32_t const c = sat::adds<24> (a, b);
+  int32_t const c = saturation::adds<24> (a, b);
   int32_t const expected = sat_adds24_branchy (a, b);
 #if KLEE_RUN
   std::printf ("a=%" PRId32 " b=%" PRId32 " expected=%" PRId32
