@@ -200,6 +200,9 @@ constexpr sinteger_t<Bits> adds (sinteger_t<Bits> const x,
 constexpr int32_t adds32 (int32_t const x, int32_t const y) {
   return adds<32> (x, y);
 }
+constexpr int16_t adds16 (int16_t const x, int16_t const y) {
+  return adds<16> (x, y);
+}
 
 constexpr int32_t subs32 (int32_t const x, int32_t const y) {
   auto ux = static_cast<uint32_t> (x);

@@ -106,14 +106,14 @@ protected:
   static constexpr auto maxu = std::numeric_limits<uint16_t>::max ();
 };
 
-#if 0  // TODO: Not Yet Implemented
 TEST_F (Saturation16, SignedAdd) {
   EXPECT_EQ (sat::adds16 (int16_t{0}, int16_t{0}), int16_t{0});
   EXPECT_EQ (sat::adds16 (int16_t{3}, int16_t{5}), int16_t{8});
   EXPECT_EQ (sat::adds16 (min, min), min);
   EXPECT_EQ (sat::adds16 (max, max), max);
-  EXPECT_EQ (sat::adds16 (int16_t{16777216}, int16_t{2130706432}), max);
+  EXPECT_EQ (sat::adds16 (int16_t{16772}, int16_t{21332}), max);
 }
+#if 0  // TODO: Not Yet Implemented
 TEST_F (Saturation16, SignedSubtract) {
   EXPECT_EQ (sat::subs16 (int16_t{0}, int16_t{0}), int16_t{0});
   EXPECT_EQ (sat::subs16 (int16_t{0}, int16_t{1}), int16_t{-1});
