@@ -127,4 +127,5 @@ if (klee_available)
   add_klee_target (TARGET klee_subu32 SOURCES subu32.cpp common.hpp ../saturation.hpp)
 
   add_klee_target (TARGET klee_addu24 SOURCES addu24.cpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_adds24 SOURCES adds24.cpp common.hpp ../saturation.hpp)
 endif ()
