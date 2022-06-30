@@ -27,4 +27,9 @@ inline uint32_t clampu32 (uint64_t const x) {
       static_cast<uint64_t> (std::numeric_limits<uint32_t>::max ())));
 }
 
+inline uint32_t clampu24 (int64_t const x) {
+  return static_cast<uint32_t> (
+      std::clamp (x, int64_t{0}, static_cast<int64_t> ((1U << 24) - 1U)));
+}
+
 #endif  // KLEE_COMMON_HPP

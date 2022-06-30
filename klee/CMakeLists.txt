@@ -1,4 +1,4 @@
-# Checks that the 'klee' tool is available and that the compiler is clang.
+# Checks that the 'klee' tool is on the path and that the C++ compiler is clang.
 function (klee_is_available result)
   find_program (KLEE_PATH klee)
   if ((CMAKE_CXX_COMPILER_ID MATCHES "Clang$") AND (NOT "${KLEE_PATH}" STREQUAL "KLEE_PATH-NOTFOUND"))
@@ -8,16 +8,33 @@ function (klee_is_available result)
   endif()
 endfunction (klee_is_available)
 
-klee_is_available (klee_available)
-message (STATUS "KLEE available? ${klee_available}")
 
 
 function (setup_klee_target target)
   setup_target (${target})
   target_include_directories (${target} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/..)
-  target_compile_options (${target} PRIVATE -g -fno-threadsafe-statics -target x86_64-pc-linux-gnu)
+  target_compile_options (${target} PRIVATE
+    -g
+    -fno-threadsafe-statics
+    -target x86_64-pc-linux-gnu
+  )
 endfunction (setup_klee_target)
 
+
+# The KLEE targets are a bit complicated. There are three of them:
+#
+# 1. The bitcode target.
+#    This is used for the KLEE run. The tool will symbolically execute the
+#    bitcode and generate a series of test cases that execute the various
+#    control paths through the code.
+#
+# 2. The executable target
+#    This is an executable program that is used to exercise the test cases on
+#    the target. We compile it with santizers enabled to try and shake out any
+#    latent bugs.
+#
+# 3. The run target
+#    Coordinates the running of the above processes.
 
 function (add_klee_target)
   cmake_parse_arguments (
@@ -95,22 +112,19 @@ function (add_klee_target)
   add_dependencies(klee-all ${run_target})
 endfunction (add_klee_target)
     
-add_custom_target (klee-all)
-add_klee_target (TARGET klee_adds32
-  SOURCES adds32.cpp common.hpp ../saturation.hpp)
-add_klee_target (TARGET klee_divs32
-  SOURCES divs32.cpp common.hpp ../saturation.hpp)
-add_klee_target (TARGET klee_muls32
-  SOURCES muls32.cpp common.hpp ../saturation.hpp)
-add_klee_target (TARGET klee_subs32
-  SOURCES subs32.cpp common.hpp ../saturation.hpp)
 
+klee_is_available (klee_available)
+message (STATUS "KLEE available? ${klee_available}")
+if (klee_available)
+  add_custom_target (klee-all)
+  add_klee_target (TARGET klee_adds32 SOURCES adds32.cpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_addu32 SOURCES addu32.cpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_divs32 SOURCES divs32.cpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_divu32 SOURCES divu32.cpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_muls32 SOURCES muls32.cpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_mulu32 SOURCES mulu32.cpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_subs32 SOURCES subs32.cpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_subu32 SOURCES subu32.cpp common.hpp ../saturation.hpp)
 
-add_klee_target (TARGET klee_addu32
-  SOURCES addu32.cpp common.hpp ../saturation.hpp)
-add_klee_target (TARGET klee_divu32
-  SOURCES divu32.cpp common.hpp ../saturation.hpp)
-add_klee_target (TARGET klee_subu32
-  SOURCES subu32.cpp common.hpp ../saturation.hpp)
-add_klee_target (TARGET klee_mulu32
-  SOURCES mulu32.cpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_addu24 SOURCES addu24.cpp common.hpp ../saturation.hpp)
+endif ()
