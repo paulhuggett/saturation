@@ -19,6 +19,23 @@ static_assert (sat::mask<33>::value == 0x1ffffffff);
 static_assert (sat::mask<63>::value == 0x7fffffffffffffff);
 static_assert (sat::mask<64>::value == std::numeric_limits<uint64_t>::max());
 
+static_assert (sat::limits<8>::min () == std::numeric_limits<int8_t>::min ());
+static_assert (sat::limits<8>::max () == std::numeric_limits<int8_t>::max ());
+static_assert (sat::limits<16>::min () == std::numeric_limits<int16_t>::min ());
+static_assert (sat::limits<16>::max () == std::numeric_limits<int16_t>::max ());
+static_assert (sat::limits<32>::min () == std::numeric_limits<int32_t>::min ());
+static_assert (sat::limits<32>::max () == std::numeric_limits<int32_t>::max ());
+
+static_assert (sat::ulimits<8>::min () == std::numeric_limits<uint8_t>::min ());
+static_assert (sat::ulimits<8>::max () == std::numeric_limits<uint8_t>::max ());
+static_assert (sat::ulimits<16>::min () ==
+               std::numeric_limits<uint16_t>::min ());
+static_assert (sat::ulimits<16>::max () ==
+               std::numeric_limits<uint16_t>::max ());
+static_assert (sat::ulimits<32>::min () ==
+               std::numeric_limits<uint32_t>::min ());
+static_assert (sat::ulimits<32>::max () ==
+               std::numeric_limits<uint32_t>::max ());
 
 class Saturation32 : public testing::Test {
 protected:
@@ -148,29 +165,42 @@ template <typename T>
 class Saturation : public testing::Test {};
 TYPED_TEST_SUITE_P (Saturation);
 
-TYPED_TEST_P (Saturation, Addu) {
+TYPED_TEST_P (Saturation, UnsignedAdd) {
   constexpr auto n = TypeParam::value;
   using uint_type = sat::uinteger_t<n>;
-  constexpr auto maxu = sat::mask_v<n>;
+  constexpr auto maxu = sat::ulimits<n>::max ();
   EXPECT_EQ (sat::addu<n> (uint_type{0}, uint_type{0}), uint_type{0});
   EXPECT_EQ (sat::addu<n> (uint_type{2}, uint_type{3}), uint_type{5});
   EXPECT_EQ (sat::addu<n> (maxu, uint_type{1}), maxu);
 }
-TYPED_TEST_P (Saturation, Subu) {
-  constexpr auto n = TypeParam::value;
-  using uint_type = sat::uinteger_t<n>;
-  constexpr auto maxu = sat::mask_v<n>;
-  EXPECT_EQ (sat::subu<n> (uint_type{0}, uint_type{0}), uint_type{0});
-  EXPECT_EQ (sat::subu<n> (uint_type{1}, uint_type{0}), uint_type{1});
-  EXPECT_EQ (sat::subu<n> (uint_type{5}, uint_type{3}), uint_type{2});
-  EXPECT_EQ (sat::subu<n> (uint_type{0}, uint_type{1}), uint_type{0});
-  EXPECT_EQ (sat::subu<n> (maxu, uint_type{0}), maxu);
-  EXPECT_EQ (sat::subu<n> (maxu, maxu), uint_type{0});
+
+TYPED_TEST_P (Saturation, SignedAdd) {
+  constexpr auto bits = TypeParam::value;
+  using uint_type = sat::uinteger_t<bits>;
+  using sint_type = sat::sinteger_t<bits>;
+  constexpr auto max = sat::limits<bits>::max ();
+  constexpr auto min = sat::limits<bits>::min ();
+  EXPECT_EQ (sat::adds<bits> (sint_type{0}, sint_type{0}), sint_type{0});
+  EXPECT_EQ (sat::adds<bits> (sint_type{3}, sint_type{5}), sint_type{8});
+  EXPECT_EQ (sat::adds<bits> (min, min), min);
+  EXPECT_EQ (sat::adds<bits> (max, max), max);
+}
+
+TYPED_TEST_P (Saturation, UnsignedSubtract) {
+  constexpr auto bits = TypeParam::value;
+  using uint_type = sat::uinteger_t<bits>;
+  constexpr auto maxu = sat::ulimits<bits>::max ();
+  EXPECT_EQ (sat::subu<bits> (uint_type{0}, uint_type{0}), uint_type{0});
+  EXPECT_EQ (sat::subu<bits> (uint_type{1}, uint_type{0}), uint_type{1});
+  EXPECT_EQ (sat::subu<bits> (uint_type{5}, uint_type{3}), uint_type{2});
+  EXPECT_EQ (sat::subu<bits> (uint_type{0}, uint_type{1}), uint_type{0});
+  EXPECT_EQ (sat::subu<bits> (maxu, uint_type{0}), maxu);
+  EXPECT_EQ (sat::subu<bits> (maxu, maxu), uint_type{0});
 }
 TYPED_TEST_P (Saturation, Divu) {
   constexpr auto bits = TypeParam::value;
   using uint_type = sat::uinteger_t<bits>;
-  constexpr auto maxu = sat::mask_v<bits>;
+  constexpr auto maxu = sat::ulimits<bits>::max ();
   EXPECT_EQ (sat::divu<bits> (uint_type{0}, uint_type{3}), uint_type{0});
   EXPECT_EQ (sat::divu<bits> (uint_type{10}, uint_type{2}), uint_type{5});
   EXPECT_EQ (sat::divu<bits> (maxu, uint_type{1}), maxu);
@@ -189,14 +219,13 @@ TYPED_TEST_P (Saturation, Mulu) {
                uint_type{4294967295U & maxu});
   }
 }
-REGISTER_TYPED_TEST_SUITE_P (Saturation, Addu, Subu, Divu, Mulu);
+REGISTER_TYPED_TEST_SUITE_P (Saturation, UnsignedAdd, SignedAdd,
+                             UnsignedSubtract, Divu, Mulu);
 template <unsigned Value>
 using unsigned_constant = std::integral_constant<unsigned, Value>;
-using width_types = testing::Types<unsigned_constant<9U>,
-                                   unsigned_constant<15U>,
-                                   unsigned_constant<16U>,
-                                   unsigned_constant<17U>,
-                                   unsigned_constant<24U>,
-                                   unsigned_constant<31U>,
-                                   unsigned_constant<32U>>;
+using width_types =
+    testing::Types<unsigned_constant<8U>, unsigned_constant<9U>,
+                   unsigned_constant<15U>, unsigned_constant<16U>,
+                   unsigned_constant<17U>, unsigned_constant<24U>,
+                   unsigned_constant<31U>, unsigned_constant<32U>>;
 INSTANTIATE_TYPED_TEST_SUITE_P (ExplicitWidths, Saturation, width_types, );

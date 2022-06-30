@@ -6,6 +6,30 @@
 
 namespace sat {
 
+/// Yields the smallest signed integer type with at least \p Bits bits.
+template <size_t Bits>
+struct sinteger {
+  using type = typename sinteger<Bits + 1>::type;
+};
+template <size_t Bits>
+using sinteger_t = typename sinteger<Bits>::type;
+template <>
+struct sinteger<8> {
+  using type = int8_t;
+};
+template <>
+struct sinteger<16> {
+  using type = int16_t;
+};
+template <>
+struct sinteger<32> {
+  using type = int32_t;
+};
+template <>
+struct sinteger<64> {
+  using type = int64_t;
+};
+
 /// Yields the smallest unsigned integer type with at least \p Bits bits.
 template <size_t Bits>
 struct uinteger {
@@ -107,17 +131,82 @@ constexpr uint16_t mulu16 (uint16_t const x, uint16_t const y) {
 // signed arithmetic
 // *****************
 
+template <size_t Bits>
+struct limits {
+  using type = sat::sinteger_t<Bits>;
+  static constexpr type max () {
+    return static_cast<type> ((sat::uinteger_t<Bits>{1} << (Bits - 1U)) - 1);
+  }
+  static constexpr type min () { return static_cast<type> (-max () - 1); }
+};
+
+template <size_t Bits>
+struct ulimits {
+  using type = sat::uinteger_t<Bits>;
+  static constexpr type max () { return mask_v<Bits>; }
+  static constexpr type min () { return 0U; }
+};
+
 constexpr int32_t adds32 (int32_t const x, int32_t const y) {
-  auto ux = static_cast<uint32_t> (x);
+  auto const ux = static_cast<uint32_t> (x);
   auto const uy = static_cast<uint32_t> (y);
   uint32_t const res = ux + uy;
 
   // Calculate overflowed result but don't change the sign bit of ux.
-  ux = (ux >> 31) + std::numeric_limits<int32_t>::max ();
-  if (static_cast<int32_t> ((ux ^ uy) | ~(uy ^ res)) >= 0) {
-    return static_cast<int32_t> (ux);
+  auto const vres = (ux >> 31) + std::numeric_limits<int32_t>::max ();
+  assert (vres == limits<32>::max () || vres == limits<32>::min ());
+  if (static_cast<int32_t> ((vres ^ uy) | ~(uy ^ res)) >= 0) {
+    return static_cast<int32_t> (vres);
   }
   return static_cast<int32_t> (res);
+}
+
+namespace details {
+
+template <unsigned N, bool IsUnsigned>
+class nbit_scalar {
+public:
+  using type = std::conditional_t<IsUnsigned, uinteger_t<N>, sinteger_t<N>>;
+
+  constexpr nbit_scalar () : x_{0} {}
+  explicit constexpr nbit_scalar (type const a) : x_{a} {}
+  constexpr nbit_scalar (nbit_scalar const& rhs) = default;
+  nbit_scalar& operator= (type const x) {
+    x_ = x;
+    return *this;
+  }
+  nbit_scalar& operator= (nbit_scalar const&) = default;
+
+  constexpr operator type () const { return x_; }
+
+private:
+  type x_ : N;
+};
+
+}  // end namespace details
+
+template <unsigned Bits>
+constexpr sinteger_t<Bits> adds (sinteger_t<Bits> const x,
+                                 sinteger_t<Bits> const y) {
+  using uint = uinteger_t<Bits>;
+  using sint = sinteger_t<Bits>;
+  using ubits = details::nbit_scalar<Bits, true>;
+  using sbits = details::nbit_scalar<Bits, false>;
+  // unsigned versions of x and y.
+  auto const ux = ubits{static_cast<uint> (x)};
+  auto const uy = ubits{static_cast<uint> (y)};
+  // Get the answer (with potential overflow).
+  auto const res = ubits{static_cast<uint> (ux + uy)};
+
+  // Calculate the overflowed result but preserve the sign of ux.
+  auto const vress = sbits{static_cast<sint> (
+      ubits{static_cast<uint> ((ux >> (Bits - 1U)) + limits<Bits>::max ())})};
+  assert (vress == limits<Bits>::max () || vress == limits<Bits>::min ());
+  if (sbits{static_cast<sint> (ubits{static_cast<uint> (ux ^ uy)} |
+                               ubits{static_cast<uint> (~(uy ^ res))})} >= 0) {
+    return vress;
+  }
+  return static_cast<sinteger_t<Bits>> (res);
 }
 
 constexpr int32_t subs32 (int32_t const x, int32_t const y) {
