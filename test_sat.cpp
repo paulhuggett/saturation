@@ -223,9 +223,8 @@ REGISTER_TYPED_TEST_SUITE_P (Saturation, UnsignedAdd, SignedAdd,
                              UnsignedSubtract, Divu, Mulu);
 template <unsigned Value>
 using unsigned_constant = std::integral_constant<unsigned, Value>;
-using width_types =
-    testing::Types<unsigned_constant<8U>, unsigned_constant<9U>,
-                   unsigned_constant<15U>, unsigned_constant<16U>,
-                   unsigned_constant<17U>, unsigned_constant<24U>,
-                   unsigned_constant<31U>, unsigned_constant<32U>>;
+using width_types = testing::Types<
+    unsigned_constant<7U>, unsigned_constant<8U>, unsigned_constant<9U>,
+    unsigned_constant<15U>, unsigned_constant<16U>, unsigned_constant<17U>,
+    unsigned_constant<24U>, unsigned_constant<31U>, unsigned_constant<32U>>;
 INSTANTIATE_TYPED_TEST_SUITE_P (ExplicitWidths, Saturation, width_types, );
