@@ -3,6 +3,7 @@
 
 #include <cassert>
 #include <cstdint>
+#include <cstdlib>
 #include <limits>
 #include <type_traits>
 
@@ -58,7 +59,7 @@ struct uinteger<64> {
 // Equivalent to (T{1}<<N)-T{1}, where T is an unsigned integer type, but
 // without the risk of overflow if N is equal to the number of bits in T.
 // Returns 0 if n is 0.
-template <unsigned Bits>
+template <size_t Bits>
 struct mask {
   static constexpr uinteger_t<Bits> value =
       uinteger_t<Bits>{mask<Bits - 1U>::value} << 1U | uinteger_t<Bits>{1};
@@ -74,8 +75,9 @@ inline constexpr auto mask_v = mask<Bits>::value;
 // unsigned arithmetic
 // *******************
 
-template <unsigned Bits>
-constexpr uinteger_t<Bits> addu (uinteger_t<Bits> const x, uinteger_t<Bits> const y) {
+template <size_t Bits>
+constexpr uinteger_t<Bits> addu (uinteger_t<Bits> const x,
+                                 uinteger_t<Bits> const y) {
   constexpr auto maxu = mask_v<Bits>;
   uinteger_t<Bits> res = x + y;
   res |= -((res < x) | (res > maxu));
@@ -88,8 +90,9 @@ constexpr uint16_t addu16 (uint16_t const x, uint16_t const y) {
   return addu<16> (x, y);
 }
 
-template <unsigned Bits>
-constexpr uinteger_t<Bits> subu (uinteger_t<Bits> const x, uinteger_t<Bits> const y) {
+template <size_t Bits>
+constexpr uinteger_t<Bits> subu (uinteger_t<Bits> const x,
+                                 uinteger_t<Bits> const y) {
   constexpr auto maxu = mask_v<Bits>;
   uinteger_t<Bits> res = x - y;
   res &= -(res <= x);
@@ -103,8 +106,9 @@ constexpr uint16_t subu16 (uint16_t const x, uint16_t const y) {
   return subu<16> (x, y);
 }
 
-template <unsigned Bits>
-constexpr uinteger_t<Bits> divu (uinteger_t<Bits> const x, uinteger_t<Bits> const y) {
+template <size_t Bits>
+constexpr uinteger_t<Bits> divu (uinteger_t<Bits> const x,
+                                 uinteger_t<Bits> const y) {
   return x / y;
 }
 constexpr uint32_t divu32 (uint32_t const x, uint32_t const y) {
@@ -114,8 +118,9 @@ constexpr uint16_t divu16 (uint16_t const x, uint16_t const y) {
   return divu<16> (x, y);
 }
 
-template <unsigned Bits>
-constexpr uinteger_t<Bits> mulu (uinteger_t<Bits> const x, uinteger_t<Bits> const y) {
+template <size_t Bits>
+constexpr uinteger_t<Bits> mulu (uinteger_t<Bits> const x,
+                                 uinteger_t<Bits> const y) {
   auto const res = static_cast<uinteger_t<Bits * 2U>> (x) *
                    static_cast<uinteger_t<Bits * 2U>> (y);
   auto const hi = res >> Bits;
@@ -151,7 +156,7 @@ struct ulimits {
 
 namespace details {
 
-template <unsigned N, bool IsUnsigned>
+template <size_t N, bool IsUnsigned>
 class nbit_scalar {
 public:
   using type = std::conditional_t<IsUnsigned, uinteger_t<N>, sinteger_t<N>>;
@@ -173,7 +178,7 @@ private:
 
 }  // end namespace details
 
-template <unsigned Bits>
+template <size_t Bits>
 constexpr sinteger_t<Bits> adds (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
   using uint = uinteger_t<Bits>;
