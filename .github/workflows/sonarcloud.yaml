@@ -74,4 +74,5 @@ jobs:
                         --define sonar.projectVersion=`git rev-parse HEAD`                             \
                         --define sonar.organization=paulhuggett-github                                 \
                         --define sonar.sourceEncoding=UTF-8                                            \
-                        --define sonar.exclusions='build/**/*'
+                        --define sonar.exclusions='build/**/*'                                         \
+                        --define sonar.tests=klee,unittests
