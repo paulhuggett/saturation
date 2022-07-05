@@ -1,11 +1,8 @@
-#include <klee/klee.h>
-
 #include <cinttypes>
 #include <cstdio>
 #include <cstdlib>
 
 #include "common.hpp"
-#include "saturation.hpp"
 
 static uint32_t sat_divu32_branchy (uint32_t const x, uint32_t const y) {
   return clampu32 (static_cast<uint64_t> (x) / static_cast<uint64_t> (y));

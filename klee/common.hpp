@@ -1,9 +1,13 @@
 #ifndef KLEE_COMMON_HPP
 #define KLEE_COMMON_HPP
 
+#include <klee/klee.h>
+
 #include <algorithm>
 #include <cstdint>
 #include <limits>
+
+#include "saturation.hpp"
 
 #ifndef KLEE_RUN
 #define KLEE_RUN 0
@@ -37,4 +41,11 @@ inline int32_t clamp24 (int64_t const x) {
   constexpr auto min = -max - 1;
   return static_cast<int32_t> (std::clamp (x, min, max));
 }
+
+template <size_t Bits, typename T>
+inline void klee_assume_range (T t) {
+  klee_assume (t >= saturation::limits<Bits>::min ());
+  klee_assume (t <= saturation::limits<Bits>::max ());
+}
+
 #endif  // KLEE_COMMON_HPP
