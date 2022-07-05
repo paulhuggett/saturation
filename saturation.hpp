@@ -191,15 +191,18 @@ constexpr sinteger_t<Bits> adds (sinteger_t<Bits> const x,
   // Get the answer (with potential overflow).
   auto const res = ubits{static_cast<uint> (ux + uy)};
 
-  if (sbits{static_cast<sint> ((ux ^ uy) | ~(uy ^ res))} >= 0) {
-    // Calculate the overflowed result but preserve the sign of ux.
-    auto const v = sbits{static_cast<sint> (
-        ubits{static_cast<uint> ((ux >> (Bits - 1U)) + limits<Bits>::max ())})};
-    assert (v == limits<Bits>::max () || v == limits<Bits>::min ());
+  // Calculate the overflowed result as max or min depending on the sign of ux.
+  auto const v = sbits{static_cast<sint> (
+      ubits{static_cast<uint> ((ux >> (Bits - 1U)) + limits<Bits>::max ())})};
+  assert (v == ux < sint{0} ? limits<Bits>::min () : limits<Bits>::max ());
+
+  // Check for overflow.
+  if (sbits{static_cast<sint> ((static_cast<uint> (v) ^ uy) | ~(uy ^ res))} >=
+      0) {
     return v;
   }
   // There was no overflow: return the proper result.
-  return static_cast<sinteger_t<Bits>> (res);
+  return sbits{static_cast<sint> (res)};
 }
 
 constexpr int32_t adds32 (int32_t const x, int32_t const y) {
@@ -209,15 +212,38 @@ constexpr int16_t adds16 (int16_t const x, int16_t const y) {
   return adds<16> (x, y);
 }
 
-constexpr int32_t subs32 (int32_t const x, int32_t const y) {
-  auto ux = static_cast<uint32_t> (x);
-  auto const uy = static_cast<uint32_t> (y);
-  uint32_t const res = ux - uy;
-  ux = (ux >> 31) + std::numeric_limits<int32_t>::max ();
-  if (static_cast<int32_t> ((ux ^ uy) & (ux ^ res)) < 0) {
-    return static_cast<int32_t> (ux);
+template <size_t Bits>
+constexpr sinteger_t<Bits> subs (sinteger_t<Bits> const x,
+                                 sinteger_t<Bits> const y) {
+  using uint = uinteger_t<Bits>;
+  using sint = sinteger_t<Bits>;
+  using ubits = details::nbit_scalar<Bits, true>;
+  using sbits = details::nbit_scalar<Bits, false>;
+
+  // unsigned versions of x and y.
+  auto const ux = ubits{static_cast<uint> (x)};
+  auto const uy = ubits{static_cast<uint> (y)};
+  auto const res = ubits{static_cast<uint> (ux - uy)};
+
+  // Calculate the overflowed result as max or min depending on the sign of ux.
+  auto const v = sbits{static_cast<sint> (
+      ubits{static_cast<uint> ((ux >> (Bits - 1U)) + limits<Bits>::max ())})};
+  assert (v == ux < sint{0} ? limits<Bits>::min () : limits<Bits>::max ());
+
+  // Check for overflow.
+  if (sbits{static_cast<sint> ((static_cast<uint> (v) ^ uy) & (ux ^ res))} <
+      0) {
+    return v;
   }
-  return static_cast<int32_t> (res);
+  // There was no overflow: return the proper result.
+  return sbits{static_cast<sint> (res)};
+}
+
+constexpr int32_t subs32 (int32_t const x, int32_t const y) {
+  return subs<32> (x, y);
+}
+constexpr int32_t subs16 (int16_t const x, int16_t const y) {
+  return subs<16> (x, y);
 }
 
 // Division, unlike in the unsigned case, can overflow in signed arithmetic. The

@@ -111,7 +111,6 @@ TEST_F (Saturation16, SignedAdd) {
   EXPECT_EQ (adds16 (max, max), max);
   EXPECT_EQ (adds16 (int16_t{16772}, int16_t{21332}), max);
 }
-#if 0  // TODO: Not Yet Implemented
 TEST_F (Saturation16, SignedSubtract) {
   EXPECT_EQ (subs16 (int16_t{0}, int16_t{0}), int16_t{0});
   EXPECT_EQ (subs16 (int16_t{0}, int16_t{1}), int16_t{-1});
@@ -121,7 +120,7 @@ TEST_F (Saturation16, SignedSubtract) {
   EXPECT_EQ (subs16 (max, max), int16_t{0});
   EXPECT_EQ (subs16 (max, int16_t{1}), int16_t{max - 1});
 }
-
+#if 0  // TODO: Not Yet Implemented
 TEST_F (Saturation16, SignedDivide) {
   EXPECT_EQ (divs16 (int16_t{0}, int16_t{1}), int16_t{0});
   EXPECT_EQ (divs16 (int16_t{4}, int16_t{2}), int16_t{2});
@@ -194,6 +193,19 @@ TYPED_TEST_P (Saturation, UnsignedSubtract) {
   EXPECT_EQ (subu<bits> (maxu, uint_type{0}), maxu);
   EXPECT_EQ (subu<bits> (maxu, maxu), uint_type{0});
 }
+TYPED_TEST_P (Saturation, SignedSubtract) {
+  constexpr auto bits = TypeParam::value;
+  using sint_type = sinteger_t<bits>;
+  constexpr auto max = limits<bits>::max ();
+  constexpr auto min = limits<bits>::min ();
+  EXPECT_EQ (subs<bits> (sint_type{0}, sint_type{0}), sint_type{0});
+  EXPECT_EQ (subs<bits> (sint_type{0}, sint_type{1}), sint_type{-1});
+  EXPECT_EQ (subs<bits> (min, sint_type{1}), min);
+  EXPECT_EQ (subs<bits> (0, min), max);
+  EXPECT_EQ (subs<bits> (max, sint_type{0}), max);
+  EXPECT_EQ (subs<bits> (max, max), sint_type{0});
+  EXPECT_EQ (subs<bits> (max, sint_type{1}), sint_type{max - 1});
+}
 TYPED_TEST_P (Saturation, Divu) {
   constexpr auto bits = TypeParam::value;
   using uint_type = uinteger_t<bits>;
@@ -216,7 +228,7 @@ TYPED_TEST_P (Saturation, Mulu) {
                uint_type{4294967295U & maxu});
   }
 }
-REGISTER_TYPED_TEST_SUITE_P (Saturation, UnsignedAdd, SignedAdd,
+REGISTER_TYPED_TEST_SUITE_P (Saturation, UnsignedAdd, SignedAdd, SignedSubtract,
                              UnsignedSubtract, Divu, Mulu);
 template <unsigned Value>
 using unsigned_constant = std::integral_constant<unsigned, Value>;
