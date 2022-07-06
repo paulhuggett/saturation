@@ -178,7 +178,7 @@ private:
 
 }  // end namespace details
 
-template <size_t Bits>
+template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 constexpr sinteger_t<Bits> adds (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
   using uint = uinteger_t<Bits>;
@@ -194,7 +194,7 @@ constexpr sinteger_t<Bits> adds (sinteger_t<Bits> const x,
   // Calculate the overflowed result as max or min depending on the sign of ux.
   auto const v = sbits{static_cast<sint> (
       ubits{static_cast<uint> ((ux >> (Bits - 1U)) + limits<Bits>::max ())})};
-  assert (v == ux < sint{0} ? limits<Bits>::min () : limits<Bits>::max ());
+  assert (v == (x < sint{0} ? limits<Bits>::min () : limits<Bits>::max ()));
 
   // Check for overflow.
   if (sbits{static_cast<sint> ((static_cast<uint> (v) ^ uy) | ~(uy ^ res))} >=
@@ -212,7 +212,7 @@ constexpr int16_t adds16 (int16_t const x, int16_t const y) {
   return adds<16> (x, y);
 }
 
-template <size_t Bits>
+template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 constexpr sinteger_t<Bits> subs (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
   using uint = uinteger_t<Bits>;
@@ -228,7 +228,7 @@ constexpr sinteger_t<Bits> subs (sinteger_t<Bits> const x,
   // Calculate the overflowed result as max or min depending on the sign of ux.
   auto const v = sbits{static_cast<sint> (
       ubits{static_cast<uint> ((ux >> (Bits - 1U)) + limits<Bits>::max ())})};
-  assert (v == ux < sint{0} ? limits<Bits>::min () : limits<Bits>::max ());
+  assert (v == (x < sint{0} ? limits<Bits>::min () : limits<Bits>::max ()));
 
   // Check for overflow.
   if (sbits{static_cast<sint> ((static_cast<uint> (v) ^ uy) & (ux ^ res))} <
