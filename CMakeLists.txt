@@ -2,6 +2,7 @@ project (saturation)
 cmake_minimum_required (VERSION 3.16)
 
 set (CMAKE_CXX_STANDARD 17 CACHE STRING "C++ Standard Version")
+option (WERROR "Compiler warnings are errors")
 
 function (setup_target target)
   set (clang_options

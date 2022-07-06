@@ -84,6 +84,7 @@ jobs:
                 -B "${{ runner.workspace }}/build"           \
                 -G "${{ matrix.generator }}"                 \
                 -D CMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+                -D WERROR=Yes                                \
                 ${{ matrix.cxx_compiler }}                   \
                 ${{ matrix.options }}
 
