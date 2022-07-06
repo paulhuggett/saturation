@@ -1,25 +1,9 @@
-#include <cinttypes>
-#include <cstdio>
-#include <cstdlib>
-
 #include "common.hpp"
 
-static uint32_t sat_subu32_branchy (uint32_t const x, uint32_t const y) {
-  return clampu32 (static_cast<int64_t> (x) - static_cast<int64_t> (y));
-}
-
 int main () {
-  auto a = uint32_t{0};
-  auto b = uint32_t{0};
-  klee_make_symbolic (&a, sizeof (a), "a");
-  klee_make_symbolic (&b, sizeof (b), "b");
-
-  uint32_t const c = saturation::subu32 (a, b);
-  uint32_t const expected = sat_subu32_branchy (a, b);
-#if KLEE_RUN
-  std::printf ("a=%" PRIu32 " b=%" PRIu32 " expected=%" PRIu32
-               " actual=%" PRIu32 "\n",
-               a, b, expected, c);
-#endif
-  return c == expected ? EXIT_SUCCESS : EXIT_FAILURE;
+  return test_main<32, true> (
+      [] (uint32_t x, uint32_t y) { return saturation::subu32 (x, y); },
+      [] (uint32_t x, uint32_t y) {
+        return clampu32 (static_cast<int64_t> (x) - static_cast<int64_t> (y));
+      });
 }
