@@ -216,16 +216,18 @@ TYPED_TEST_P (Saturation, Divu) {
 }
 TYPED_TEST_P (Saturation, Mulu) {
   constexpr auto bits = TypeParam::value;
-  using uint_type = uinteger_t<bits>;
-  constexpr auto maxu = mask_v<bits>;
-  EXPECT_EQ (mulu<bits> (uint_type{0}, uint_type{0}), uint_type{0});
-  EXPECT_EQ (mulu<bits> (uint_type{3}, uint_type{5}), uint_type{15});
-  EXPECT_EQ (mulu<bits> (maxu, uint_type{1}), maxu);
-  EXPECT_EQ (mulu<bits> (maxu >> 1U, uint_type{2}), uint_type{maxu - 1U});
-  EXPECT_EQ (mulu<bits> (maxu, uint_type{2}), maxu);
-  if constexpr (bits > 16U) {
-    EXPECT_EQ (mulu<bits> (uint_type{13862387}, uint_type{1076719596}),
-               uint_type{4294967295U & maxu});
+  if constexpr (bits <= 32U) {
+    using uint_type = uinteger_t<bits>;
+    constexpr auto maxu = mask_v<bits>;
+    EXPECT_EQ (mulu<bits> (uint_type{0}, uint_type{0}), uint_type{0});
+    EXPECT_EQ (mulu<bits> (uint_type{3}, uint_type{5}), uint_type{15});
+    EXPECT_EQ (mulu<bits> (maxu, uint_type{1}), maxu);
+    EXPECT_EQ (mulu<bits> (maxu >> 1U, uint_type{2}), uint_type{maxu - 1U});
+    EXPECT_EQ (mulu<bits> (maxu, uint_type{2}), maxu);
+    if constexpr (bits > 16U) {
+      EXPECT_EQ (mulu<bits> (uint_type{13862387}, uint_type{1076719596}),
+                 uint_type{4294967295U & maxu});
+    }
   }
 }
 REGISTER_TYPED_TEST_SUITE_P (Saturation, UnsignedAdd, SignedAdd, SignedSubtract,
@@ -235,5 +237,6 @@ using unsigned_constant = std::integral_constant<unsigned, Value>;
 using width_types = testing::Types<
     unsigned_constant<7U>, unsigned_constant<8U>, unsigned_constant<9U>,
     unsigned_constant<15U>, unsigned_constant<16U>, unsigned_constant<17U>,
-    unsigned_constant<24U>, unsigned_constant<31U>, unsigned_constant<32U>>;
+    unsigned_constant<24U>, unsigned_constant<31U>, unsigned_constant<32U>,
+    unsigned_constant<33U>, unsigned_constant<63U>, unsigned_constant<64U>>;
 INSTANTIATE_TYPED_TEST_SUITE_P (ExplicitWidths, Saturation, width_types, );

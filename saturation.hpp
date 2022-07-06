@@ -10,7 +10,7 @@
 namespace saturation {
 
 /// Yields the smallest signed integer type with at least \p Bits bits.
-template <size_t Bits>
+template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 struct sinteger {
   using type = typename sinteger<Bits + 1>::type;
 };
@@ -34,7 +34,7 @@ struct sinteger<64> {
 };
 
 /// Yields the smallest unsigned integer type with at least \p Bits bits.
-template <size_t Bits>
+template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 struct uinteger {
   using type = typename uinteger<Bits + 1>::type;
 };
@@ -59,7 +59,7 @@ struct uinteger<64> {
 // Equivalent to (T{1}<<N)-T{1}, where T is an unsigned integer type, but
 // without the risk of overflow if N is equal to the number of bits in T.
 // Returns 0 if n is 0.
-template <size_t Bits>
+template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 struct mask {
   static constexpr uinteger_t<Bits> value =
       uinteger_t<Bits>{mask<Bits - 1U>::value} << 1U | uinteger_t<Bits>{1};
@@ -75,7 +75,7 @@ inline constexpr auto mask_v = mask<Bits>::value;
 // unsigned arithmetic
 // *******************
 
-template <size_t Bits>
+template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 constexpr uinteger_t<Bits> addu (uinteger_t<Bits> const x,
                                  uinteger_t<Bits> const y) {
   constexpr auto maxu = mask_v<Bits>;
@@ -90,7 +90,7 @@ constexpr uint16_t addu16 (uint16_t const x, uint16_t const y) {
   return addu<16> (x, y);
 }
 
-template <size_t Bits>
+template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 constexpr uinteger_t<Bits> subu (uinteger_t<Bits> const x,
                                  uinteger_t<Bits> const y) {
   constexpr auto maxu = mask_v<Bits>;
@@ -106,7 +106,7 @@ constexpr uint16_t subu16 (uint16_t const x, uint16_t const y) {
   return subu<16> (x, y);
 }
 
-template <size_t Bits>
+template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 constexpr uinteger_t<Bits> divu (uinteger_t<Bits> const x,
                                  uinteger_t<Bits> const y) {
   return x / y;
@@ -118,7 +118,7 @@ constexpr uint16_t divu16 (uint16_t const x, uint16_t const y) {
   return divu<16> (x, y);
 }
 
-template <size_t Bits>
+template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 32)>>
 constexpr uinteger_t<Bits> mulu (uinteger_t<Bits> const x,
                                  uinteger_t<Bits> const y) {
   auto const res = static_cast<uinteger_t<Bits * 2U>> (x) *
