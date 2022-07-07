@@ -177,7 +177,7 @@ TYPED_TEST_P (Saturation, SignedAdd) {
   constexpr auto max = limits<bits>::max ();
   constexpr auto min = limits<bits>::min ();
   EXPECT_EQ (adds<bits> (sint_type{0}, sint_type{0}), sint_type{0});
-  EXPECT_EQ (adds<bits> (sint_type{3}, sint_type{5}), sint_type{8});
+  EXPECT_EQ (adds<bits> (sint_type{1}, sint_type{3}), sint_type{4});
   EXPECT_EQ (adds<bits> (min, min), min);
   EXPECT_EQ (adds<bits> (max, max), max);
 }
@@ -235,8 +235,9 @@ REGISTER_TYPED_TEST_SUITE_P (Saturation, UnsignedAdd, SignedAdd, SignedSubtract,
 template <unsigned Value>
 using unsigned_constant = std::integral_constant<unsigned, Value>;
 using width_types = testing::Types<
-    unsigned_constant<7U>, unsigned_constant<8U>, unsigned_constant<9U>,
-    unsigned_constant<15U>, unsigned_constant<16U>, unsigned_constant<17U>,
-    unsigned_constant<24U>, unsigned_constant<31U>, unsigned_constant<32U>,
-    unsigned_constant<33U>, unsigned_constant<63U>, unsigned_constant<64U>>;
+    unsigned_constant<4U>, unsigned_constant<7U>, unsigned_constant<8U>,
+    unsigned_constant<9U>, unsigned_constant<15U>, unsigned_constant<16U>,
+    unsigned_constant<17U>, unsigned_constant<24U>, unsigned_constant<31U>,
+    unsigned_constant<32U>, unsigned_constant<33U>, unsigned_constant<63U>,
+    unsigned_constant<64U>>;
 INSTANTIATE_TYPED_TEST_SUITE_P (ExplicitWidths, Saturation, width_types, );
