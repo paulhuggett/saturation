@@ -118,11 +118,15 @@ inline void dump (uint32_t x, uint32_t y, uint32_t expected, uint32_t actual) {
 ///   test.
 /// \param fut  A function which will invoke the function under test.
 /// \param expected  A function which will yield the test's expected result.
+/// \param allow_y0  Is the second argument passed to \p fut or \p expected
+///   permitted to have the value 0? Normally true, but set false when testing
+///   division operations to avoid division by zero.
 /// \returns EXIT_SUCCESS if the function under test produces the expected
 ///   result, EXIT_FAILURE otherwise.
 template <size_t Bits, bool IsUnsigned, typename FunctionUnderTest,
           typename ExpectedFunction>
-int test_main (FunctionUnderTest fut, ExpectedFunction expected) {
+int test_main (FunctionUnderTest fut, ExpectedFunction expected,
+               bool const allow_y0 = true) {
   using type = test_type<Bits, IsUnsigned>;
 
   auto x = type{0};
@@ -131,6 +135,9 @@ int test_main (FunctionUnderTest fut, ExpectedFunction expected) {
   klee_make_symbolic (&y, sizeof (y), "y");
   details::assume_range<Bits, IsUnsigned> (x);
   details::assume_range<Bits, IsUnsigned> (y);
+  if (!allow_y0) {
+    klee_assume (y != 0);
+  }
 
   type const actual = fut (x, y);
   type const e = expected (x, y);

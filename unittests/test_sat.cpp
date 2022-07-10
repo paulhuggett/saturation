@@ -120,14 +120,13 @@ TEST_F (Saturation16, SignedSubtract) {
   EXPECT_EQ (subs16 (max, max), int16_t{0});
   EXPECT_EQ (subs16 (max, int16_t{1}), int16_t{max - 1});
 }
-#if 0  // TODO: Not Yet Implemented
 TEST_F (Saturation16, SignedDivide) {
   EXPECT_EQ (divs16 (int16_t{0}, int16_t{1}), int16_t{0});
   EXPECT_EQ (divs16 (int16_t{4}, int16_t{2}), int16_t{2});
   EXPECT_EQ (divs16 (max, int16_t{2}), int16_t{max / 2});
   EXPECT_EQ (divs16 (min, int16_t{-1}), max);
 }
-
+#if 0  // TODO: Not Yet Implemented
 TEST_F (Saturation16, SignedMultiply) {
   EXPECT_EQ (muls16 (int16_t{0}, int16_t{0}), int16_t{0});
   EXPECT_EQ (muls16 (int16_t{3}, int16_t{5}), int16_t{15});
@@ -137,25 +136,77 @@ TEST_F (Saturation16, SignedMultiply) {
   EXPECT_EQ (muls16 (int16_t{3}, int16_t{997556224}), max);
 }
 #endif
-
 TEST_F (Saturation16, UnsignedAdd) {
   EXPECT_EQ (addu16 (uint16_t{0}, uint16_t{0}), uint16_t{0});
   EXPECT_EQ (addu16 (maxu, uint16_t{1}), maxu);
 }
-
 TEST_F (Saturation16, UnsignedSubtract) {
   EXPECT_EQ (subu16 (uint16_t{0}, uint16_t{0}), uint16_t{0});
   EXPECT_EQ (subu16 (uint16_t{0}, uint16_t{1}), uint16_t{0});
 }
-
 TEST_F (Saturation16, UnsignedDivide) {
   EXPECT_EQ (divu16 (uint16_t{0}, uint16_t{1364}), uint16_t{0});
 }
-
 TEST_F (Saturation16, UnsignedMultiply) {
   EXPECT_EQ (mulu16 (uint16_t{0}, uint16_t{0}), uint16_t{0});
   EXPECT_EQ (mulu16 (uint16_t{3}, uint16_t{5}), uint16_t{15});
   EXPECT_EQ (mulu16 (uint16_t{32768}, uint16_t{3}), maxu);
+}
+
+class Saturation8 : public testing::Test {
+protected:
+  static constexpr auto min = std::numeric_limits<int8_t>::min ();
+  static constexpr auto max = std::numeric_limits<int8_t>::max ();
+  static constexpr auto maxu = std::numeric_limits<uint8_t>::max ();
+};
+
+TEST_F (Saturation8, SignedAdd) {
+  EXPECT_EQ (adds8 (int8_t{0}, int8_t{0}), int8_t{0});
+  EXPECT_EQ (adds8 (int8_t{3}, int8_t{5}), int8_t{8});
+  EXPECT_EQ (adds8 (min, min), min);
+  EXPECT_EQ (adds8 (max, max), max);
+  EXPECT_EQ (adds8 (int8_t{106}, int8_t{97}), max);
+}
+TEST_F (Saturation8, SignedSubtract) {
+  EXPECT_EQ (subs8 (int8_t{0}, int8_t{0}), int8_t{0});
+  EXPECT_EQ (subs8 (int8_t{0}, int8_t{1}), int8_t{-1});
+  EXPECT_EQ (subs8 (min, int8_t{1}), min);
+  EXPECT_EQ (subs8 (0, min), max);
+  EXPECT_EQ (subs8 (max, int8_t{0}), max);
+  EXPECT_EQ (subs8 (max, max), int8_t{0});
+  EXPECT_EQ (subs8 (max, int8_t{1}), int8_t{max - 1});
+}
+TEST_F (Saturation8, SignedDivide) {
+  EXPECT_EQ (divs8 (int8_t{0}, int8_t{1}), int8_t{0});
+  EXPECT_EQ (divs8 (int8_t{4}, int8_t{2}), int8_t{2});
+  EXPECT_EQ (divs8 (max, int8_t{2}), int8_t{max / 2});
+  EXPECT_EQ (divs8 (min, int8_t{-1}), max);
+}
+#if 0  // TODO: Not Yet Implemented
+TEST_F (Saturation8, SignedMultiply) {
+  EXPECT_EQ (muls8 (int8_t{0}, int8_t{0}), int8_t{0});
+  EXPECT_EQ (muls8 (int8_t{3}, int8_t{5}), int8_t{15});
+  EXPECT_EQ (muls8 (int8_t{-3}, int8_t{5}), int8_t{-15});
+  EXPECT_EQ (muls8 (int8_t{3}, int8_t{-5}), int8_t{-15});
+  EXPECT_EQ (muls8 (int8_t{3}, int8_t{-1342177280}), min);
+  EXPECT_EQ (muls8 (int8_t{3}, int8_t{997556224}), max);
+}
+#endif
+TEST_F (Saturation8, UnsignedAdd) {
+  EXPECT_EQ (addu8 (uint8_t{0}, uint8_t{0}), uint8_t{0});
+  EXPECT_EQ (addu8 (maxu, uint8_t{1}), maxu);
+}
+TEST_F (Saturation8, UnsignedSubtract) {
+  EXPECT_EQ (subu8 (uint8_t{0}, uint8_t{0}), uint8_t{0});
+  EXPECT_EQ (subu8 (uint8_t{0}, uint8_t{1}), uint8_t{0});
+}
+TEST_F (Saturation8, UnsignedDivide) {
+  EXPECT_EQ (divu8 (uint8_t{0}, uint8_t{43}), uint8_t{0});
+}
+TEST_F (Saturation8, UnsignedMultiply) {
+  EXPECT_EQ (mulu8 (uint8_t{0}, uint8_t{0}), uint8_t{0});
+  EXPECT_EQ (mulu8 (uint8_t{3}, uint8_t{5}), uint8_t{15});
+  EXPECT_EQ (mulu8 (uint8_t{254}, uint8_t{3}), maxu);
 }
 
 template <typename T>
@@ -214,6 +265,16 @@ TYPED_TEST_P (Saturation, Divu) {
   EXPECT_EQ (divu<bits> (uint_type{10}, uint_type{2}), uint_type{5});
   EXPECT_EQ (divu<bits> (maxu, uint_type{1}), maxu);
 }
+TYPED_TEST_P (Saturation, SignedDivide) {
+  constexpr auto bits = TypeParam::value;
+  using sint_type = sinteger_t<bits>;
+  constexpr auto max = limits<bits>::max ();
+  constexpr auto min = limits<bits>::min ();
+  EXPECT_EQ (divs<bits> (sint_type{0}, sint_type{1}), sint_type{0});
+  EXPECT_EQ (divs<bits> (sint_type{4}, sint_type{2}), sint_type{2});
+  EXPECT_EQ (divs<bits> (max, sint_type{2}), sint_type{max / 2});
+  EXPECT_EQ (divs<bits> (min, sint_type{-1}), max);
+}
 TYPED_TEST_P (Saturation, Mulu) {
   constexpr auto bits = TypeParam::value;
   if constexpr (bits <= 32U) {
@@ -231,7 +292,7 @@ TYPED_TEST_P (Saturation, Mulu) {
   }
 }
 REGISTER_TYPED_TEST_SUITE_P (Saturation, UnsignedAdd, SignedAdd, SignedSubtract,
-                             UnsignedSubtract, Divu, Mulu);
+                             UnsignedSubtract, Divu, SignedDivide, Mulu);
 template <unsigned Value>
 using unsigned_constant = std::integral_constant<unsigned, Value>;
 using width_types = testing::Types<

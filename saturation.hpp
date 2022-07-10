@@ -89,6 +89,9 @@ constexpr uint32_t addu32 (uint32_t const x, uint32_t const y) {
 constexpr uint16_t addu16 (uint16_t const x, uint16_t const y) {
   return addu<16> (x, y);
 }
+constexpr uint8_t addu8 (uint8_t const x, uint8_t const y) {
+  return addu<8> (x, y);
+}
 
 template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 constexpr uinteger_t<Bits> subu (uinteger_t<Bits> const x,
@@ -105,6 +108,9 @@ constexpr uint32_t subu32 (uint32_t const x, uint32_t const y) {
 constexpr uint16_t subu16 (uint16_t const x, uint16_t const y) {
   return subu<16> (x, y);
 }
+constexpr uint8_t subu8 (uint8_t const x, uint8_t const y) {
+  return subu<8> (x, y);
+}
 
 template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 constexpr uinteger_t<Bits> divu (uinteger_t<Bits> const x,
@@ -116,6 +122,9 @@ constexpr uint32_t divu32 (uint32_t const x, uint32_t const y) {
 }
 constexpr uint16_t divu16 (uint16_t const x, uint16_t const y) {
   return divu<16> (x, y);
+}
+constexpr uint8_t divu8 (uint8_t const x, uint8_t const y) {
+  return divu<8> (x, y);
 }
 
 template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 32)>>
@@ -132,6 +141,9 @@ constexpr uint32_t mulu32 (uint32_t const x, uint32_t const y) {
 }
 constexpr uint16_t mulu16 (uint16_t const x, uint16_t const y) {
   return mulu<16> (x, y);
+}
+constexpr uint8_t mulu8 (uint8_t const x, uint8_t const y) {
+  return mulu<8> (x, y);
 }
 
 // *****************
@@ -211,6 +223,9 @@ constexpr int32_t adds32 (int32_t const x, int32_t const y) {
 constexpr int16_t adds16 (int16_t const x, int16_t const y) {
   return adds<16> (x, y);
 }
+constexpr int16_t adds8 (int8_t const x, int8_t const y) {
+  return adds<8> (x, y);
+}
 
 template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 constexpr sinteger_t<Bits> subs (sinteger_t<Bits> const x,
@@ -230,9 +245,8 @@ constexpr sinteger_t<Bits> subs (sinteger_t<Bits> const x,
       ubits{static_cast<uint> ((ux >> (Bits - 1U)) + limits<Bits>::max ())})};
   assert (v == (x < sint{0} ? limits<Bits>::min () : limits<Bits>::max ()));
 
-  // Check for overflow.
-  if (sbits{static_cast<sint> ((static_cast<uint> (v) ^ uy) & (ux ^ res))} <
-      0) {
+  // Check for overflow: ux must be different from uy and res.
+  if (sbits{static_cast<sint> ((ux ^ uy) & (ux ^ res))} < 0) {
     return v;
   }
   // There was no overflow: return the proper result.
@@ -242,18 +256,35 @@ constexpr sinteger_t<Bits> subs (sinteger_t<Bits> const x,
 constexpr int32_t subs32 (int32_t const x, int32_t const y) {
   return subs<32> (x, y);
 }
-constexpr int32_t subs16 (int16_t const x, int16_t const y) {
+constexpr int16_t subs16 (int16_t const x, int16_t const y) {
   return subs<16> (x, y);
 }
+constexpr int8_t subs8 (int8_t const x, int8_t const y) {
+  return subs<8> (x, y);
+}
 
-// Division, unlike in the unsigned case, can overflow in signed arithmetic. The
-// only case where it happens is when you divide INT_MIN by -1 since the correct
-// answer would be INT_MAX + 1.
-constexpr int32_t divs32 (int32_t x, int32_t y) {
-  x += !(static_cast<uint32_t> (y + 1) |
-         (static_cast<uint32_t> (x) +
-          static_cast<uint32_t> (std::numeric_limits<int32_t>::min ())));
-  return x / y;
+// Twos complement signed division can overflow because
+// limits<Bits>::min()/-1=limits<Bits>::max()+1.
+template <size_t Bits>
+constexpr sinteger_t<Bits> divs (sinteger_t<Bits> const x,
+                                 sinteger_t<Bits> const y) {
+  using uint = uinteger_t<Bits>;
+  using ubits = details::nbit_scalar<Bits, true>;
+  return (x + !(ubits{static_cast<uint> (y + 1)} |
+                ubits{static_cast<uint> (
+                    static_cast<uint> (x) +
+                    static_cast<uint> (limits<Bits>::min ()))})) /
+         y;
+}
+
+constexpr int32_t divs32 (int32_t const x, int32_t const y) {
+  return divs<32> (x, y);
+}
+constexpr int16_t divs16 (int16_t const x, int16_t const y) {
+  return divs<16> (x, y);
+}
+constexpr int8_t divs8 (int8_t const x, int8_t const y) {
+  return divs<8> (x, y);
 }
 
 constexpr int32_t muls32 (int32_t const x, int32_t const y) {
