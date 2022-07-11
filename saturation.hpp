@@ -105,8 +105,8 @@ template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr uinteger_t<Bits> addu (uinteger_t<Bits> const x,
                                  uinteger_t<Bits> const y) {
-  assert (x <= ulimits<Bits>::max ());
-  assert (y <= ulimits<Bits>::max ());
+  assert (x <= ulimits<Bits>::max () && "addu<> x value out of range");
+  assert (y <= ulimits<Bits>::max () && "addu<> y value out of range");
   constexpr auto maxu = mask_v<Bits>;
   uinteger_t<Bits> res = x + y;
   res |= -((res < x) | (res > maxu));
@@ -128,8 +128,8 @@ template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr uinteger_t<Bits> subu (uinteger_t<Bits> const x,
                                  uinteger_t<Bits> const y) {
-  assert (x <= ulimits<Bits>::max ());
-  assert (y <= ulimits<Bits>::max ());
+  assert (x <= ulimits<Bits>::max () && "subu<> x value out of range");
+  assert (y <= ulimits<Bits>::max () && "subu<> y value out of range");
   constexpr auto maxu = mask_v<Bits>;
   uinteger_t<Bits> res = x - y;
   res &= -(res <= x);
@@ -152,8 +152,8 @@ template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr uinteger_t<Bits> divu (uinteger_t<Bits> const x,
                                  uinteger_t<Bits> const y) {
-  assert (x <= ulimits<Bits>::max ());
-  assert (y <= ulimits<Bits>::max ());
+  assert (x <= ulimits<Bits>::max () && "divu<> x value out of range");
+  assert (y <= ulimits<Bits>::max () && "divu<> y value out of range");
   return x / y;
 }
 constexpr uint32_t divu32 (uint32_t const x, uint32_t const y) {
@@ -172,8 +172,8 @@ template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 32)>>
 constexpr uinteger_t<Bits> mulu (uinteger_t<Bits> const x,
                                  uinteger_t<Bits> const y) {
-  assert (x <= ulimits<Bits>::max ());
-  assert (y <= ulimits<Bits>::max ());
+  assert (x <= ulimits<Bits>::max () && "mulu<> x value out of range");
+  assert (y <= ulimits<Bits>::max () && "mulu<> y value out of range");
   auto const res = static_cast<uinteger_t<Bits * 2U>> (x) *
                    static_cast<uinteger_t<Bits * 2U>> (y);
   auto const hi = res >> Bits;
@@ -224,8 +224,10 @@ template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr sinteger_t<Bits> adds (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
-  assert (x >= limits<Bits>::min () && x <= limits<Bits>::max ());
-  assert (y >= limits<Bits>::min () && y <= limits<Bits>::max ());
+  assert (x >= limits<Bits>::min () && x <= limits<Bits>::max () &&
+          "adds<> x value out of range");
+  assert (y >= limits<Bits>::min () && y <= limits<Bits>::max () &&
+          "adds<> y value out of range");
   using uint = uinteger_t<Bits>;
   using sint = sinteger_t<Bits>;
   using ubits = details::nbit_scalar<Bits, true>;
@@ -321,8 +323,10 @@ template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr sinteger_t<Bits> divs (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
-  assert (x >= limits<Bits>::min () && x <= limits<Bits>::max ());
-  assert (y >= limits<Bits>::min () && y <= limits<Bits>::max ());
+  assert (x >= limits<Bits>::min () && x <= limits<Bits>::max () &&
+          "divs<> x value out of range");
+  assert (y >= limits<Bits>::min () && y <= limits<Bits>::max () &&
+          "divs<> y value out of range");
   using uint = uinteger_t<Bits>;
   using ubits = details::nbit_scalar<Bits, true>;
   return (x + !(ubits{static_cast<uint> (y + 1)} |
