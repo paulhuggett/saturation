@@ -49,7 +49,6 @@ TEST_F (Saturation32, SignedAdd) {
   EXPECT_EQ (adds32 (max, max), max);
   EXPECT_EQ (adds32 (16777216, 2130706432), max);
 }
-
 TEST_F (Saturation32, SignedSubtract) {
   EXPECT_EQ (subs32 (0, 0), 0);
   EXPECT_EQ (subs32 (0, 1), -1);
@@ -59,14 +58,12 @@ TEST_F (Saturation32, SignedSubtract) {
   EXPECT_EQ (subs32 (max, max), 0);
   EXPECT_EQ (subs32 (max, 1), max - 1);
 }
-
 TEST_F (Saturation32, SignedDivide) {
   EXPECT_EQ (divs32 (0, 1), 0);
   EXPECT_EQ (divs32 (4, 2), 2);
   EXPECT_EQ (divs32 (max, 2), max / 2);
   EXPECT_EQ (divs32 (min, -1), max);
 }
-
 TEST_F (Saturation32, SignedMultiply) {
   EXPECT_EQ (muls32 (0, 0), 0);
   EXPECT_EQ (muls32 (3, 5), 15);
@@ -75,22 +72,18 @@ TEST_F (Saturation32, SignedMultiply) {
   EXPECT_EQ (muls32 (3, -1342177280), min);
   EXPECT_EQ (muls32 (3, 997556224), max);
 }
-
 TEST_F (Saturation32, UnsignedAdd) {
   EXPECT_EQ (addu32 (0, 0), 0U);
   EXPECT_EQ (addu32 (maxu, 1), maxu);
 }
-
 TEST_F (Saturation32, UnsignedSubtract) {
   EXPECT_EQ (subu32 (0, 0), 0U);
   EXPECT_EQ (subu32 (4, 1), 3U);
   EXPECT_EQ (subu32 (0, 1), 0U);
 }
-
 TEST_F (Saturation32, UnsignedDivide) {
   EXPECT_EQ (divu32 (0, 16843009), 0U);
 }
-
 TEST_F (Saturation32, UnsignedMultiply) {
   EXPECT_EQ (mulu32 (0, 0), 0U);
   EXPECT_EQ (mulu32 (3, 5), 15U);
@@ -223,7 +216,6 @@ TYPED_TEST_P (Saturation, UnsignedAdd) {
   EXPECT_EQ (addu<n> (uint_type{2}, uint_type{3}), uint_type{5});
   EXPECT_EQ (addu<n> (maxu, uint_type{1}), maxu);
 }
-
 TYPED_TEST_P (Saturation, SignedAdd) {
   constexpr auto bits = TypeParam::value;
   using sint_type = sinteger_t<bits>;
@@ -234,7 +226,6 @@ TYPED_TEST_P (Saturation, SignedAdd) {
   EXPECT_EQ (adds<bits> (min, min), min);
   EXPECT_EQ (adds<bits> (max, max), max);
 }
-
 TYPED_TEST_P (Saturation, UnsignedSubtract) {
   constexpr auto bits = TypeParam::value;
   using uint_type = uinteger_t<bits>;
