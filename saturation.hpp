@@ -81,8 +81,13 @@ struct mask<0U> {
 template <unsigned Bits>
 inline constexpr auto mask_v = mask<Bits>::value;
 
+/// A type which provides a way to query the maximum and minimum values that a
+/// signed integer type of width \p Bits can hold.
+///
+/// \tparam Bits  The width in bits of the signed integer type to be queried.
 template <size_t Bits>
 struct limits {
+  /// The type of a signed integer of at least \p Bits bits.
   using type = sinteger_t<Bits>;
   /// Returns the maximum finite value representable by a signed integer type of
   /// \p Bits bits.
@@ -94,8 +99,13 @@ struct limits {
   static constexpr type min () { return static_cast<type> (-max () - 1); }
 };
 
+/// A type which provides a way to query the maximum and minimum values that an
+/// unsigned integer type of width \p Bits can hold.
+///
+/// \tparam Bits  The width in bits of the unsigned integer type to be queried.
 template <size_t Bits>
 struct ulimits {
+  /// The type of an unsigned integer of at least \p Bits bits.
   using type = uinteger_t<Bits>;
   /// Returns the maximum finite value representable by an unsigned integer type
   /// of \p Bits bits.
@@ -105,12 +115,54 @@ struct ulimits {
   static constexpr type min () { return 0U; }
 };
 
+namespace details {
+
+/// \brief Holds a value of \p N bits which may be signed or unsigned.
+///
+/// \tparam N The number of bits that the type should hold.
+/// \tparam IsUnsigned  True if the value is unsigned; false otherwise.
+template <size_t N, bool IsUnsigned>
+class nbit_scalar {
+public:
+  /// If \p IsUnsigned is true the unsigned integer type with at least \p N
+  /// bits; the signed type otherwise.
+  using type = std::conditional_t<IsUnsigned, uinteger_t<N>, sinteger_t<N>>;
+
+  constexpr nbit_scalar () : x_{0} {}
+  /// Casts from a standard integer type to nbit_scalar.
+  explicit constexpr nbit_scalar (type const x) : x_{x} {}
+  constexpr nbit_scalar (nbit_scalar const&) = default;
+  nbit_scalar& operator= (type const x) {
+    x_ = x;
+    return *this;
+  }
+  nbit_scalar& operator= (nbit_scalar const&) = default;
+
+  /// Casts the stored value to a standard integer type.
+  constexpr operator type () const { return x_; }
+
+private:
+  type x_ : N;
+};
+
+}  // end namespace details
+
 // *******************
 // unsigned arithmetic
 // *******************
 
 // addu
 // ~~~~
+/// Adds two unsigned values each \p Bits bits wide returning 2
+/// <sup> \p Bits </sup>-1 if the result cannot be represented in \p Bits
+/// bits.
+///
+/// \tparam Bits The number of bits for the unsigned arguments and result. May
+///   be in the range [4, 64].
+/// \param x The first of the two values to be added.
+/// \param y  The second of the two values to be added.
+/// \result  \p x + \p y or 2<sup>\p Bits </sup>-1 if the result cannot be
+///   represented in \p Bits bits.
 template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr uinteger_t<Bits> addu (uinteger_t<Bits> const x,
@@ -122,18 +174,52 @@ constexpr uinteger_t<Bits> addu (uinteger_t<Bits> const x,
   res |= -((res < x) | (res > maxu));
   return res & maxu;
 }
+/// Adds two unsigned 32-bit values returning 2<sup>32</sup>-1 if the result
+/// cannot be represented in 32 bits.
+///
+/// \param x The first of the two values to be added.
+/// \param y  The second of the two values to be added.
+/// \result  \p x + \p y or 2<sup>32</sup>-1 if the result cannot be
+///   represented in 32 bits.
 constexpr uint32_t addu32 (uint32_t const x, uint32_t const y) {
   return addu<32> (x, y);
 }
+/// Adds two unsigned 16-bit values returning 2<sup>16</sup>-1 if the result
+/// cannot be represented in 16 bits.
+///
+/// \param x The first of the two values to be added.
+/// \param y  The second of the two values to be added.
+/// \result  \p x + \p y or 2<sup>16</sup>-1 if the result cannot be
+///   represented in 16 bits.
 constexpr uint16_t addu16 (uint16_t const x, uint16_t const y) {
   return addu<16> (x, y);
 }
+/// Adds two unsigned 8-bit values returning 2<sup>8</sup>-1 if the result
+/// cannot be represented in 8 bits.
+///
+/// \param x The first of the two values to be added.
+/// \param y  The second of the two values to be added.
+/// \result  \p x + \p y or 2<sup>8</sup>-1 if the result cannot be
+///   represented in 8 bits.
 constexpr uint8_t addu8 (uint8_t const x, uint8_t const y) {
   return addu<8> (x, y);
 }
 
 // subu
 // ~~~~
+/// Computes the result of \p x - \p y. If the result overflows, that is, the
+/// result is too large or too small to be representable with an unsigned
+/// integer of the number of bits given by \p Bits, the result is
+/// saturation::ulimits<Bits>::min() or saturation::ulimits<Bits>::max()
+/// respectively.
+///
+/// \tparam Bits The number of bits for the unsigned arguments and result. May
+///   be in the range [4, 64].
+/// \param x  The value from which \p y is deducted.
+/// \param y  The value deducted from \p x.
+/// \returns  \p x - \p y. If the result would be too small,
+///   saturation::ulimits<Bits>::min(); if the result would be too large,
+///   saturation::ulimits<Bits>::max().
 template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr uinteger_t<Bits> subu (uinteger_t<Bits> const x,
@@ -158,6 +244,16 @@ constexpr uint8_t subu8 (uint8_t const x, uint8_t const y) {
 
 // divu
 // ~~~~
+/// Computes the unsigned result of \p x / \p y.
+///
+/// \note Unsigned division cannot overflow; this function is provided for
+///   symmetry and completeness.
+///
+/// \tparam Bits The number of bits for the arguments and result. May be any
+///   in the range [4, 64].
+/// \param x  The unsigned dividend.
+/// \param y  The unsigned divisor.
+/// \returns  \p x / \p y.
 template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr uinteger_t<Bits> divu (uinteger_t<Bits> const x,
@@ -166,12 +262,36 @@ constexpr uinteger_t<Bits> divu (uinteger_t<Bits> const x,
   assert (y <= ulimits<Bits>::max () && "divu<> y value out of range");
   return x / y;
 }
+/// Computes the unsigned result of \p x / \p y.
+///
+/// \note Unsigned division cannot overflow; this function is provided for
+///   symmetry and completeness.
+///
+/// \param x  The unsigned 32 bit dividend.
+/// \param y  The unsigned 32 bit divisor.
+/// \returns  \p x / \p y.
 constexpr uint32_t divu32 (uint32_t const x, uint32_t const y) {
   return divu<32> (x, y);
 }
+/// Computes the unsigned result of \p x / \p y.
+///
+/// \note Unsigned division cannot overflow; this function is provided for
+///   symmetry and completeness.
+///
+/// \param x  The unsigned 16 bit dividend.
+/// \param y  The unsigned 16 bit divisor.
+/// \returns  \p x / \p y.
 constexpr uint16_t divu16 (uint16_t const x, uint16_t const y) {
   return divu<16> (x, y);
 }
+/// Computes the unsigned result of \p x / \p y.
+///
+/// \note Unsigned division cannot overflow; this function is provided for
+///   symmetry and completeness.
+///
+/// \param x  The unsigned 8 bit dividend.
+/// \param y  The unsigned 8 bit divisor.
+/// \returns  \p x / \p y.
 constexpr uint8_t divu8 (uint8_t const x, uint8_t const y) {
   return divu<8> (x, y);
 }
@@ -203,30 +323,6 @@ constexpr uint8_t mulu8 (uint8_t const x, uint8_t const y) {
 // *****************
 // signed arithmetic
 // *****************
-
-namespace details {
-
-template <size_t N, bool IsUnsigned>
-class nbit_scalar {
-public:
-  using type = std::conditional_t<IsUnsigned, uinteger_t<N>, sinteger_t<N>>;
-
-  constexpr nbit_scalar () : x_{0} {}
-  explicit constexpr nbit_scalar (type const x) : x_{x} {}
-  constexpr nbit_scalar (nbit_scalar const&) = default;
-  nbit_scalar& operator= (type const x) {
-    x_ = x;
-    return *this;
-  }
-  nbit_scalar& operator= (nbit_scalar const&) = default;
-
-  constexpr operator type () const { return x_; }
-
-private:
-  type x_ : N;
-};
-
-}  // end namespace details
 
 // adds
 // ~~~~
@@ -279,8 +375,8 @@ constexpr int16_t adds8 (int8_t const x, int8_t const y) {
 /// saturation::limits<Bits>::min() or saturation::limits<Bits>::max()
 /// respectively.
 ///
-/// \tparam Bits The number of bits for the twos complement arguments and
-///   result. May be any value between 4 and 64.
+/// \tparam Bits  The number of bits for the twos complement arguments and
+///   result. May be in the range [4, 64].
 /// \param x  The value from which \p y is deducted.
 /// \param y  The value deducted from \p x.
 /// \returns  \p x - \p y. If the result would be too small,
@@ -334,7 +430,7 @@ constexpr int8_t subs8 (int8_t const x, int8_t const y) {
 ///   saturation::limits<Bits>::min()/-1=saturation::limits<Bits>::max()+1.
 ///
 /// \tparam Bits The number of bits for the twos complement arguments and
-///   result. May be any value between 4 and 64.
+///   result. May be in the range [4, 64].
 /// \param x  The signed dividend.
 /// \param y  The signed divisor.
 /// \returns  \p x / \p y. If the result would be too large,
