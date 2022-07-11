@@ -259,7 +259,13 @@ constexpr int16_t adds8 (int8_t const x, int8_t const y) {
 /// integer of the number of bits given by \p Bits, the result is
 /// limits<Bits>::min() or limits<Bits>::max() respectively.
 ///
-/// \tparam Bits The number of bits for the twos complement arguments and result.
+/// \tparam Bits The number of bits for the twos complement arguments and
+///   result. May be any value between 4 and 64.
+/// \param x  The value from which \p y is deducted.
+/// \param y  The value deducted from \p x.
+/// \returns  \p x - \p y. If the result would be too small,
+///   limits<Bits>::min(); if the result would be too large,
+///   limits<Bits>::max().
 template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr sinteger_t<Bits> subs (sinteger_t<Bits> const x,
