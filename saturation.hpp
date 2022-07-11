@@ -276,15 +276,16 @@ constexpr int16_t adds8 (int8_t const x, int8_t const y) {
 /// Computes the result of \p x - \p y. If the result overflows, that is, the
 /// result is too large or too small to be representable with a twos-complement
 /// integer of the number of bits given by \p Bits, the result is
-/// limits<Bits>::min() or limits<Bits>::max() respectively.
+/// saturation::limits<Bits>::min() or saturation::limits<Bits>::max()
+/// respectively.
 ///
 /// \tparam Bits The number of bits for the twos complement arguments and
 ///   result. May be any value between 4 and 64.
 /// \param x  The value from which \p y is deducted.
 /// \param y  The value deducted from \p x.
 /// \returns  \p x - \p y. If the result would be too small,
-///   limits<Bits>::min(); if the result would be too large,
-///   limits<Bits>::max().
+///   saturation::limits<Bits>::min(); if the result would be too large,
+///   saturation::limits<Bits>::max().
 template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr sinteger_t<Bits> subs (sinteger_t<Bits> const x,
@@ -327,8 +328,17 @@ constexpr int8_t subs8 (int8_t const x, int8_t const y) {
 
 // divs
 // ~~~~
-// Twos complement signed division can overflow because
-// limits<Bits>::min()/-1=limits<Bits>::max()+1.
+/// Computes the signed result of \p x / \p y.
+///
+/// \note Twos complement signed division can overflow because
+///   saturation::limits<Bits>::min()/-1=saturation::limits<Bits>::max()+1.
+///
+/// \tparam Bits The number of bits for the twos complement arguments and
+///   result. May be any value between 4 and 64.
+/// \param x  The signed dividend.
+/// \param y  The signed divisor.
+/// \returns  \p x / \p y. If the result would be too large,
+///   saturation::limits<Bits>::max().
 template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr sinteger_t<Bits> divs (sinteger_t<Bits> const x,
