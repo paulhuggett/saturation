@@ -56,9 +56,10 @@ template <>
 struct uinteger<64> {
   using type = uint64_t;
 };
-// Equivalent to (T{1}<<N)-T{1}, where T is an unsigned integer type, but
-// without the risk of overflow if N is equal to the number of bits in T.
-// Returns 0 if n is 0.
+
+/// Equivalent to (T{1}<<N)-T{1}, where T is an unsigned integer type, but
+/// without the risk of overflow if N is equal to the number of bits in T.
+/// Returns 0 if n is 0.
 template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 struct mask {
   static constexpr uinteger_t<Bits> value =
@@ -71,13 +72,34 @@ struct mask<0U> {
 template <unsigned Bits>
 inline constexpr auto mask_v = mask<Bits>::value;
 
+template <size_t Bits>
+struct limits {
+  using type = sinteger_t<Bits>;
+  static constexpr type max () {
+    return static_cast<type> ((uinteger_t<Bits>{1} << (Bits - 1U)) - 1);
+  }
+  static constexpr type min () { return static_cast<type> (-max () - 1); }
+};
+
+template <size_t Bits>
+struct ulimits {
+  using type = uinteger_t<Bits>;
+  static constexpr type max () { return mask_v<Bits>; }
+  static constexpr type min () { return 0U; }
+};
+
 // *******************
 // unsigned arithmetic
 // *******************
 
-template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
+// addu
+// ~~~~
+template <size_t Bits,
+          typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr uinteger_t<Bits> addu (uinteger_t<Bits> const x,
                                  uinteger_t<Bits> const y) {
+  assert (x <= ulimits<Bits>::max ());
+  assert (y <= ulimits<Bits>::max ());
   constexpr auto maxu = mask_v<Bits>;
   uinteger_t<Bits> res = x + y;
   res |= -((res < x) | (res > maxu));
@@ -93,9 +115,14 @@ constexpr uint8_t addu8 (uint8_t const x, uint8_t const y) {
   return addu<8> (x, y);
 }
 
-template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
+// subu
+// ~~~~
+template <size_t Bits,
+          typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr uinteger_t<Bits> subu (uinteger_t<Bits> const x,
                                  uinteger_t<Bits> const y) {
+  assert (x <= ulimits<Bits>::max ());
+  assert (y <= ulimits<Bits>::max ());
   constexpr auto maxu = mask_v<Bits>;
   uinteger_t<Bits> res = x - y;
   res &= -(res <= x);
@@ -112,9 +139,14 @@ constexpr uint8_t subu8 (uint8_t const x, uint8_t const y) {
   return subu<8> (x, y);
 }
 
-template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
+// divu
+// ~~~~
+template <size_t Bits,
+          typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr uinteger_t<Bits> divu (uinteger_t<Bits> const x,
                                  uinteger_t<Bits> const y) {
+  assert (x <= ulimits<Bits>::max ());
+  assert (y <= ulimits<Bits>::max ());
   return x / y;
 }
 constexpr uint32_t divu32 (uint32_t const x, uint32_t const y) {
@@ -127,9 +159,14 @@ constexpr uint8_t divu8 (uint8_t const x, uint8_t const y) {
   return divu<8> (x, y);
 }
 
-template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 32)>>
+// mulu
+// ~~~~
+template <size_t Bits,
+          typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 32)>>
 constexpr uinteger_t<Bits> mulu (uinteger_t<Bits> const x,
                                  uinteger_t<Bits> const y) {
+  assert (x <= ulimits<Bits>::max ());
+  assert (y <= ulimits<Bits>::max ());
   auto const res = static_cast<uinteger_t<Bits * 2U>> (x) *
                    static_cast<uinteger_t<Bits * 2U>> (y);
   auto const hi = res >> Bits;
@@ -149,22 +186,6 @@ constexpr uint8_t mulu8 (uint8_t const x, uint8_t const y) {
 // *****************
 // signed arithmetic
 // *****************
-
-template <size_t Bits>
-struct limits {
-  using type = sinteger_t<Bits>;
-  static constexpr type max () {
-    return static_cast<type> ((uinteger_t<Bits>{1} << (Bits - 1U)) - 1);
-  }
-  static constexpr type min () { return static_cast<type> (-max () - 1); }
-};
-
-template <size_t Bits>
-struct ulimits {
-  using type = uinteger_t<Bits>;
-  static constexpr type max () { return mask_v<Bits>; }
-  static constexpr type min () { return 0U; }
-};
 
 namespace details {
 
@@ -190,7 +211,10 @@ private:
 
 }  // end namespace details
 
-template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
+// adds
+// ~~~~
+template <size_t Bits,
+          typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr sinteger_t<Bits> adds (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
   assert (x >= limits<Bits>::min () && x <= limits<Bits>::max ());
@@ -218,7 +242,6 @@ constexpr sinteger_t<Bits> adds (sinteger_t<Bits> const x,
   // There was no overflow: return the proper result.
   return sbits{static_cast<sint> (res)};
 }
-
 constexpr int32_t adds32 (int32_t const x, int32_t const y) {
   return adds<32> (x, y);
 }
@@ -229,7 +252,10 @@ constexpr int16_t adds8 (int8_t const x, int8_t const y) {
   return adds<8> (x, y);
 }
 
-template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
+// subs
+// ~~~~
+template <size_t Bits,
+          typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr sinteger_t<Bits> subs (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
   assert (x >= limits<Bits>::min () && x <= limits<Bits>::max ());
@@ -256,7 +282,6 @@ constexpr sinteger_t<Bits> subs (sinteger_t<Bits> const x,
   // There was no overflow: return the proper result.
   return sbits{static_cast<sint> (res)};
 }
-
 constexpr int32_t subs32 (int32_t const x, int32_t const y) {
   return subs<32> (x, y);
 }
@@ -267,9 +292,12 @@ constexpr int8_t subs8 (int8_t const x, int8_t const y) {
   return subs<8> (x, y);
 }
 
+// divs
+// ~~~~
 // Twos complement signed division can overflow because
 // limits<Bits>::min()/-1=limits<Bits>::max()+1.
-template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
+template <size_t Bits,
+          typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr sinteger_t<Bits> divs (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
   assert (x >= limits<Bits>::min () && x <= limits<Bits>::max ());
@@ -282,7 +310,6 @@ constexpr sinteger_t<Bits> divs (sinteger_t<Bits> const x,
                     static_cast<uint> (limits<Bits>::min ()))})) /
          y;
 }
-
 constexpr int32_t divs32 (int32_t const x, int32_t const y) {
   return divs<32> (x, y);
 }
@@ -293,7 +320,10 @@ constexpr int8_t divs8 (int8_t const x, int8_t const y) {
   return divs<8> (x, y);
 }
 
-template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 32)>>
+// muls
+// ~~~~
+template <size_t Bits,
+          typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 32)>>
 constexpr sinteger_t<Bits> muls (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
   assert (x >= limits<Bits>::min () && x <= limits<Bits>::max () &&
@@ -321,7 +351,6 @@ constexpr sinteger_t<Bits> muls (sinteger_t<Bits> const x,
   }
   return static_cast<sint> (res);
 }
-
 constexpr int32_t muls32 (int32_t const x, int32_t const y) {
   return muls<32> (x, y);
 }

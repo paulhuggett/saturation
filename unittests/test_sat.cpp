@@ -287,10 +287,7 @@ TYPED_TEST_P (Saturation, UnsignedMultiply) {
     EXPECT_EQ (mulu<bits> (maxu, uint_type{1}), maxu);
     EXPECT_EQ (mulu<bits> (maxu >> 1U, uint_type{2}), uint_type{maxu - 1U});
     EXPECT_EQ (mulu<bits> (maxu, uint_type{2}), maxu);
-    if constexpr (bits > 16U) {
-      EXPECT_EQ (mulu<bits> (uint_type{13862387}, uint_type{1076719596}),
-                 uint_type{4294967295U & maxu});
-    }
+    EXPECT_EQ (mulu<bits> (uint_type{2}, uint_type{maxu - 2}), maxu);
   }
 }
 TYPED_TEST_P (Saturation, SignedMultiply) {
