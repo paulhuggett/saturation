@@ -254,12 +254,20 @@ constexpr int16_t adds8 (int8_t const x, int8_t const y) {
 
 // subs
 // ~~~~
+/// Computes the result of \p x - \p y. If the result overflows, that is, the
+/// result is too large or too small to be representable with a twos-complement
+/// integer of the number of bits given by \p Bits, the result is
+/// limits<Bits>::min() or limits<Bits>::max() respectively.
+///
+/// \tparam Bits The number of bits for the twos complement arguments and result.
 template <size_t Bits,
           typename = typename std::enable_if_t<(Bits >= 4 && Bits <= 64)>>
 constexpr sinteger_t<Bits> subs (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
-  assert (x >= limits<Bits>::min () && x <= limits<Bits>::max ());
-  assert (y >= limits<Bits>::min () && y <= limits<Bits>::max ());
+  assert (x >= limits<Bits>::min () && x <= limits<Bits>::max () &&
+          "subs<> x value out of range");
+  assert (y >= limits<Bits>::min () && y <= limits<Bits>::max () &&
+          "subs<> y value out of range");
   using uint = uinteger_t<Bits>;
   using sint = sinteger_t<Bits>;
   using ubits = details::nbit_scalar<Bits, true>;
