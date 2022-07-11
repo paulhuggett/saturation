@@ -1,3 +1,10 @@
+/// \file saturation.hpp
+///
+/// A collection of functions which provide saturating arithmetic (addition,
+/// subtraction, multiplication, and division) for signed and unsigned integer
+/// types from 4 to 64 bits. Integers of width matching target registers are
+/// likely to be branchless.
+
 #ifndef SATURATION_HPP
 #define SATURATION_HPP
 
