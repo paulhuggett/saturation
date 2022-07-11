@@ -43,58 +43,58 @@ protected:
 };
 
 TEST_F (Saturation32, SignedAdd) {
-  EXPECT_EQ (adds32 (int32_t{0}, int32_t{0}), int32_t{0});
-  EXPECT_EQ (adds32 (int32_t{3}, int32_t{5}), int32_t{8});
+  EXPECT_EQ (adds32 (0, 0), 0);
+  EXPECT_EQ (adds32 (3, 5), 8);
   EXPECT_EQ (adds32 (min, min), min);
   EXPECT_EQ (adds32 (max, max), max);
-  EXPECT_EQ (adds32 (int32_t{16777216}, int32_t{2130706432}), max);
+  EXPECT_EQ (adds32 (16777216, 2130706432), max);
 }
 
 TEST_F (Saturation32, SignedSubtract) {
-  EXPECT_EQ (subs32 (int32_t{0}, int32_t{0}), int32_t{0});
-  EXPECT_EQ (subs32 (int32_t{0}, int32_t{1}), int32_t{-1});
-  EXPECT_EQ (subs32 (min, int32_t{1}), min);
+  EXPECT_EQ (subs32 (0, 0), 0);
+  EXPECT_EQ (subs32 (0, 1), -1);
+  EXPECT_EQ (subs32 (min, 1), min);
   EXPECT_EQ (subs32 (0, min), max);
-  EXPECT_EQ (subs32 (max, int32_t{0}), max);
-  EXPECT_EQ (subs32 (max, max), int32_t{0});
-  EXPECT_EQ (subs32 (max, int32_t{1}), int32_t{max - 1});
+  EXPECT_EQ (subs32 (max, 0), max);
+  EXPECT_EQ (subs32 (max, max), 0);
+  EXPECT_EQ (subs32 (max, 1), max - 1);
 }
 
 TEST_F (Saturation32, SignedDivide) {
-  EXPECT_EQ (divs32 (int32_t{0}, int32_t{1}), int32_t{0});
-  EXPECT_EQ (divs32 (int32_t{4}, int32_t{2}), int32_t{2});
-  EXPECT_EQ (divs32 (max, int32_t{2}), int32_t{max / 2});
-  EXPECT_EQ (divs32 (min, int32_t{-1}), max);
+  EXPECT_EQ (divs32 (0, 1), 0);
+  EXPECT_EQ (divs32 (4, 2), 2);
+  EXPECT_EQ (divs32 (max, 2), max / 2);
+  EXPECT_EQ (divs32 (min, -1), max);
 }
 
 TEST_F (Saturation32, SignedMultiply) {
-  EXPECT_EQ (muls32 (int32_t{0}, int32_t{0}), int32_t{0});
-  EXPECT_EQ (muls32 (int32_t{3}, int32_t{5}), int32_t{15});
-  EXPECT_EQ (muls32 (int32_t{-3}, int32_t{5}), int32_t{-15});
-  EXPECT_EQ (muls32 (int32_t{3}, int32_t{-5}), int32_t{-15});
-  EXPECT_EQ (muls32 (int32_t{3}, int32_t{-1342177280}), min);
-  EXPECT_EQ (muls32 (int32_t{3}, int32_t{997556224}), max);
+  EXPECT_EQ (muls32 (0, 0), 0);
+  EXPECT_EQ (muls32 (3, 5), 15);
+  EXPECT_EQ (muls32 (-3, 5), -15);
+  EXPECT_EQ (muls32 (3, -5), -15);
+  EXPECT_EQ (muls32 (3, -1342177280), min);
+  EXPECT_EQ (muls32 (3, 997556224), max);
 }
 
 TEST_F (Saturation32, UnsignedAdd) {
-  EXPECT_EQ (addu32 (uint32_t{0}, uint32_t{0}), uint32_t{0});
-  EXPECT_EQ (addu32 (maxu, uint32_t{1}), maxu);
+  EXPECT_EQ (addu32 (0, 0), 0U);
+  EXPECT_EQ (addu32 (maxu, 1), maxu);
 }
 
 TEST_F (Saturation32, UnsignedSubtract) {
-  EXPECT_EQ (subu32 (uint32_t{0}, uint32_t{0}), uint32_t{0});
-  EXPECT_EQ (subu32 (uint32_t{0}, uint32_t{1}), uint32_t{0});
+  EXPECT_EQ (subu32 (0, 0), 0U);
+  EXPECT_EQ (subu32 (4, 1), 3U);
+  EXPECT_EQ (subu32 (0, 1), 0U);
 }
 
 TEST_F (Saturation32, UnsignedDivide) {
-  EXPECT_EQ (divu32 (uint32_t{0}, uint32_t{16843009}), uint32_t{0});
+  EXPECT_EQ (divu32 (0, 16843009), 0U);
 }
 
 TEST_F (Saturation32, UnsignedMultiply) {
-  EXPECT_EQ (mulu32 (uint32_t{0}, uint32_t{0}), uint32_t{0});
-  EXPECT_EQ (mulu32 (uint32_t{3}, uint32_t{5}), uint32_t{15});
-  EXPECT_EQ (mulu32 (uint32_t{13862387}, uint32_t{1076719596}),
-             uint32_t{4294967295});
+  EXPECT_EQ (mulu32 (0, 0), 0U);
+  EXPECT_EQ (mulu32 (3, 5), 15U);
+  EXPECT_EQ (mulu32 (13862387, 1076719596), 4294967295U);
 }
 
 class Saturation16 : public testing::Test {
@@ -105,53 +105,53 @@ protected:
 };
 
 TEST_F (Saturation16, SignedAdd) {
-  EXPECT_EQ (adds16 (int16_t{0}, int16_t{0}), int16_t{0});
-  EXPECT_EQ (adds16 (int16_t{3}, int16_t{5}), int16_t{8});
+  EXPECT_EQ (adds16 (0, 0), 0);
+  EXPECT_EQ (adds16 (3, 5), 8);
   EXPECT_EQ (adds16 (min, min), min);
   EXPECT_EQ (adds16 (max, max), max);
-  EXPECT_EQ (adds16 (int16_t{16772}, int16_t{21332}), max);
+  EXPECT_EQ (adds16 (16772, 21332), max);
 }
 TEST_F (Saturation16, SignedSubtract) {
-  EXPECT_EQ (subs16 (int16_t{0}, int16_t{0}), int16_t{0});
-  EXPECT_EQ (subs16 (int16_t{0}, int16_t{1}), int16_t{-1});
-  EXPECT_EQ (subs16 (min, int16_t{1}), min);
+  EXPECT_EQ (subs16 (0, 0), 0);
+  EXPECT_EQ (subs16 (0, 1), -1);
+  EXPECT_EQ (subs16 (min, 1), min);
   EXPECT_EQ (subs16 (0, min), max);
-  EXPECT_EQ (subs16 (max, int16_t{0}), max);
-  EXPECT_EQ (subs16 (max, max), int16_t{0});
-  EXPECT_EQ (subs16 (max, int16_t{1}), int16_t{max - 1});
+  EXPECT_EQ (subs16 (max, 0), max);
+  EXPECT_EQ (subs16 (max, max), 0);
+  EXPECT_EQ (subs16 (max, 1), max - 1);
 }
 TEST_F (Saturation16, SignedDivide) {
-  EXPECT_EQ (divs16 (int16_t{0}, int16_t{1}), int16_t{0});
-  EXPECT_EQ (divs16 (int16_t{4}, int16_t{2}), int16_t{2});
-  EXPECT_EQ (divs16 (max, int16_t{2}), int16_t{max / 2});
-  EXPECT_EQ (divs16 (min, int16_t{-1}), max);
+  EXPECT_EQ (divs16 (0, 1), 0);
+  EXPECT_EQ (divs16 (4, 2), 2);
+  EXPECT_EQ (divs16 (max, 2), max / 2);
+  EXPECT_EQ (divs16 (min, -1), max);
 }
 TEST_F (Saturation16, SignedMultiply) {
-  EXPECT_EQ (muls16 (int16_t{0}, int16_t{0}), int16_t{0});
-  EXPECT_EQ (muls16 (int16_t{3}, int16_t{5}), int16_t{15});
-  EXPECT_EQ (muls16 (int16_t{-3}, int16_t{5}), int16_t{-15});
+  EXPECT_EQ (muls16 (0, 0), 0);
+  EXPECT_EQ (muls16 (3, 5), 15);
+  EXPECT_EQ (muls16 (-3, 5), -15);
   EXPECT_EQ (muls16 (int16_t{3}, int16_t{-5}), int16_t{-15});
   EXPECT_EQ (muls16 (max, int16_t{1}), max);
-  EXPECT_EQ (muls16 (max, int16_t{2}), max);
-  EXPECT_EQ (muls16 (min, int16_t{1}), min);
+  EXPECT_EQ (muls16 (max, 2), max);
+  EXPECT_EQ (muls16 (min, 1), min);
   EXPECT_EQ (muls16 (min, int16_t{-1}), max);
   EXPECT_EQ (muls16 (min, int16_t{-2}), max);
 }
 TEST_F (Saturation16, UnsignedAdd) {
-  EXPECT_EQ (addu16 (uint16_t{0}, uint16_t{0}), uint16_t{0});
-  EXPECT_EQ (addu16 (maxu, uint16_t{1}), maxu);
+  EXPECT_EQ (addu16 (0, 0), 0U);
+  EXPECT_EQ (addu16 (maxu, 1), maxu);
 }
 TEST_F (Saturation16, UnsignedSubtract) {
-  EXPECT_EQ (subu16 (uint16_t{0}, uint16_t{0}), uint16_t{0});
-  EXPECT_EQ (subu16 (uint16_t{0}, uint16_t{1}), uint16_t{0});
+  EXPECT_EQ (subu16 (0, 0), 0U);
+  EXPECT_EQ (subu16 (0, 1), 0U);
 }
 TEST_F (Saturation16, UnsignedDivide) {
-  EXPECT_EQ (divu16 (uint16_t{0}, uint16_t{1364}), uint16_t{0});
+  EXPECT_EQ (divu16 (0, 1364), 0U);
 }
 TEST_F (Saturation16, UnsignedMultiply) {
-  EXPECT_EQ (mulu16 (uint16_t{0}, uint16_t{0}), uint16_t{0});
-  EXPECT_EQ (mulu16 (uint16_t{3}, uint16_t{5}), uint16_t{15});
-  EXPECT_EQ (mulu16 (uint16_t{32768}, uint16_t{3}), maxu);
+  EXPECT_EQ (mulu16 (0, 0), 0U);
+  EXPECT_EQ (mulu16 (3, 5), 15U);
+  EXPECT_EQ (mulu16 (32768, 3), maxu);
 }
 
 class Saturation8 : public testing::Test {
@@ -162,26 +162,26 @@ protected:
 };
 
 TEST_F (Saturation8, SignedAdd) {
-  EXPECT_EQ (adds8 (int8_t{0}, int8_t{0}), int8_t{0});
-  EXPECT_EQ (adds8 (int8_t{3}, int8_t{5}), int8_t{8});
+  EXPECT_EQ (adds8 (0, 0), 0);
+  EXPECT_EQ (adds8 (3, 5), 8);
   EXPECT_EQ (adds8 (min, min), min);
   EXPECT_EQ (adds8 (max, max), max);
-  EXPECT_EQ (adds8 (int8_t{106}, int8_t{97}), max);
+  EXPECT_EQ (adds8 (106, 97), max);
 }
 TEST_F (Saturation8, SignedSubtract) {
-  EXPECT_EQ (subs8 (int8_t{0}, int8_t{0}), int8_t{0});
-  EXPECT_EQ (subs8 (int8_t{0}, int8_t{1}), int8_t{-1});
-  EXPECT_EQ (subs8 (min, int8_t{1}), min);
+  EXPECT_EQ (subs8 (0, 0), 0);
+  EXPECT_EQ (subs8 (0, 1), -1);
+  EXPECT_EQ (subs8 (min, 1), min);
   EXPECT_EQ (subs8 (0, min), max);
-  EXPECT_EQ (subs8 (max, int8_t{0}), max);
-  EXPECT_EQ (subs8 (max, max), int8_t{0});
-  EXPECT_EQ (subs8 (max, int8_t{1}), int8_t{max - 1});
+  EXPECT_EQ (subs8 (max, 0), max);
+  EXPECT_EQ (subs8 (max, max), 0);
+  EXPECT_EQ (subs8 (max, 1), max - 1);
 }
 TEST_F (Saturation8, SignedDivide) {
-  EXPECT_EQ (divs8 (int8_t{0}, int8_t{1}), int8_t{0});
-  EXPECT_EQ (divs8 (int8_t{4}, int8_t{2}), int8_t{2});
-  EXPECT_EQ (divs8 (max, int8_t{2}), int8_t{max / 2});
-  EXPECT_EQ (divs8 (min, int8_t{-1}), max);
+  EXPECT_EQ (divs8 (0, 1), 0);
+  EXPECT_EQ (divs8 (4, 2), 2);
+  EXPECT_EQ (divs8 (max, 2), max / 2);
+  EXPECT_EQ (divs8 (min, -1), max);
 }
 TEST_F (Saturation8, SignedMultiply) {
   EXPECT_EQ (muls8 (0, 0), 0);
@@ -195,20 +195,20 @@ TEST_F (Saturation8, SignedMultiply) {
   EXPECT_EQ (muls8 (min, -2), max);
 }
 TEST_F (Saturation8, UnsignedAdd) {
-  EXPECT_EQ (addu8 (uint8_t{0}, uint8_t{0}), uint8_t{0});
-  EXPECT_EQ (addu8 (maxu, uint8_t{1}), maxu);
+  EXPECT_EQ (addu8 (0, 0), 0U);
+  EXPECT_EQ (addu8 (maxu, 1), maxu);
 }
 TEST_F (Saturation8, UnsignedSubtract) {
-  EXPECT_EQ (subu8 (uint8_t{0}, uint8_t{0}), uint8_t{0});
-  EXPECT_EQ (subu8 (uint8_t{0}, uint8_t{1}), uint8_t{0});
+  EXPECT_EQ (subu8 (0, 0), 0U);
+  EXPECT_EQ (subu8 (0, 1), 0U);
 }
 TEST_F (Saturation8, UnsignedDivide) {
-  EXPECT_EQ (divu8 (uint8_t{0}, uint8_t{43}), uint8_t{0});
+  EXPECT_EQ (divu8 (0, 43), 0U);
 }
 TEST_F (Saturation8, UnsignedMultiply) {
-  EXPECT_EQ (mulu8 (uint8_t{0}, uint8_t{0}), uint8_t{0});
-  EXPECT_EQ (mulu8 (uint8_t{3}, uint8_t{5}), uint8_t{15});
-  EXPECT_EQ (mulu8 (uint8_t{254}, uint8_t{3}), maxu);
+  EXPECT_EQ (mulu8 (0, 0), 0U);
+  EXPECT_EQ (mulu8 (3, 5), 15U);
+  EXPECT_EQ (mulu8 (254, 3), maxu);
 }
 
 template <typename T>

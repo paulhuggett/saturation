@@ -17,6 +17,7 @@ function (setup_target target)
     -Wno-padded
     -Wno-weak-vtables
     -Wno-nullability-extension
+    -Wno-used-but-marked-unused
   )
   set (gcc_options
     -Wall
