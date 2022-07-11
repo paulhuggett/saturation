@@ -126,16 +126,17 @@ TEST_F (Saturation16, SignedDivide) {
   EXPECT_EQ (divs16 (max, int16_t{2}), int16_t{max / 2});
   EXPECT_EQ (divs16 (min, int16_t{-1}), max);
 }
-#if 0  // TODO: Not Yet Implemented
 TEST_F (Saturation16, SignedMultiply) {
   EXPECT_EQ (muls16 (int16_t{0}, int16_t{0}), int16_t{0});
   EXPECT_EQ (muls16 (int16_t{3}, int16_t{5}), int16_t{15});
   EXPECT_EQ (muls16 (int16_t{-3}, int16_t{5}), int16_t{-15});
   EXPECT_EQ (muls16 (int16_t{3}, int16_t{-5}), int16_t{-15});
-  EXPECT_EQ (muls16 (int16_t{3}, int16_t{-1342177280}), min);
-  EXPECT_EQ (muls16 (int16_t{3}, int16_t{997556224}), max);
+  EXPECT_EQ (muls16 (max, int16_t{1}), max);
+  EXPECT_EQ (muls16 (max, int16_t{2}), max);
+  EXPECT_EQ (muls16 (min, int16_t{1}), min);
+  EXPECT_EQ (muls16 (min, int16_t{-1}), max);
+  EXPECT_EQ (muls16 (min, int16_t{-2}), max);
 }
-#endif
 TEST_F (Saturation16, UnsignedAdd) {
   EXPECT_EQ (addu16 (uint16_t{0}, uint16_t{0}), uint16_t{0});
   EXPECT_EQ (addu16 (maxu, uint16_t{1}), maxu);
@@ -182,16 +183,17 @@ TEST_F (Saturation8, SignedDivide) {
   EXPECT_EQ (divs8 (max, int8_t{2}), int8_t{max / 2});
   EXPECT_EQ (divs8 (min, int8_t{-1}), max);
 }
-#if 0  // TODO: Not Yet Implemented
 TEST_F (Saturation8, SignedMultiply) {
-  EXPECT_EQ (muls8 (int8_t{0}, int8_t{0}), int8_t{0});
-  EXPECT_EQ (muls8 (int8_t{3}, int8_t{5}), int8_t{15});
-  EXPECT_EQ (muls8 (int8_t{-3}, int8_t{5}), int8_t{-15});
-  EXPECT_EQ (muls8 (int8_t{3}, int8_t{-5}), int8_t{-15});
-  EXPECT_EQ (muls8 (int8_t{3}, int8_t{-1342177280}), min);
-  EXPECT_EQ (muls8 (int8_t{3}, int8_t{997556224}), max);
+  EXPECT_EQ (muls8 (0, 0), 0);
+  EXPECT_EQ (muls8 (3, 2), 6);
+  EXPECT_EQ (muls8 (-3, 2), -6);
+  EXPECT_EQ (muls8 (3, -2), -6);
+  EXPECT_EQ (muls8 (max, 1), max);
+  EXPECT_EQ (muls8 (max, 2), max);
+  EXPECT_EQ (muls8 (min, 1), min);
+  EXPECT_EQ (muls8 (min, -1), max);
+  EXPECT_EQ (muls8 (min, -2), max);
 }
-#endif
 TEST_F (Saturation8, UnsignedAdd) {
   EXPECT_EQ (addu8 (uint8_t{0}, uint8_t{0}), uint8_t{0});
   EXPECT_EQ (addu8 (maxu, uint8_t{1}), maxu);
@@ -257,7 +259,7 @@ TYPED_TEST_P (Saturation, SignedSubtract) {
   EXPECT_EQ (subs<bits> (max, max), sint_type{0});
   EXPECT_EQ (subs<bits> (max, sint_type{1}), sint_type{max - 1});
 }
-TYPED_TEST_P (Saturation, Divu) {
+TYPED_TEST_P (Saturation, UnsignedDivide) {
   constexpr auto bits = TypeParam::value;
   using uint_type = uinteger_t<bits>;
   constexpr auto maxu = ulimits<bits>::max ();
@@ -275,7 +277,7 @@ TYPED_TEST_P (Saturation, SignedDivide) {
   EXPECT_EQ (divs<bits> (max, sint_type{2}), sint_type{max / 2});
   EXPECT_EQ (divs<bits> (min, sint_type{-1}), max);
 }
-TYPED_TEST_P (Saturation, Mulu) {
+TYPED_TEST_P (Saturation, UnsignedMultiply) {
   constexpr auto bits = TypeParam::value;
   if constexpr (bits <= 32U) {
     using uint_type = uinteger_t<bits>;
@@ -291,8 +293,30 @@ TYPED_TEST_P (Saturation, Mulu) {
     }
   }
 }
+TYPED_TEST_P (Saturation, SignedMultiply) {
+  constexpr auto bits = TypeParam::value;
+  if constexpr (bits <= 32U) {
+    using sint_type = sinteger_t<bits>;
+    constexpr auto max = limits<bits>::max ();
+    constexpr auto min = limits<bits>::min ();
+    EXPECT_EQ (muls<bits> (sint_type{0}, sint_type{0}), sint_type{0});
+    EXPECT_EQ (muls<bits> (sint_type{3}, sint_type{2}), sint_type{6});
+    EXPECT_EQ (muls<bits> (sint_type{-3}, sint_type{2}), sint_type{-6});
+    EXPECT_EQ (muls<bits> (sint_type{3}, sint_type{-2}), sint_type{-6});
+    EXPECT_EQ (muls<bits> (max, sint_type{1}), max);
+    EXPECT_EQ (muls<bits> (max, sint_type{2}), max);
+    EXPECT_EQ (muls<bits> (min, sint_type{1}), min);
+    EXPECT_EQ (muls<bits> (min, sint_type{-1}), max);
+    EXPECT_EQ (muls<bits> (min, sint_type{-2}), max);
+    EXPECT_EQ (muls<bits> (sint_type{3}, static_cast<sint_type> (min + 2)),
+               min);
+    EXPECT_EQ (muls<bits> (sint_type{3}, sint_type{max - 2}), max);
+  }
+}
+
 REGISTER_TYPED_TEST_SUITE_P (Saturation, UnsignedAdd, SignedAdd, SignedSubtract,
-                             UnsignedSubtract, Divu, SignedDivide, Mulu);
+                             UnsignedSubtract, UnsignedDivide, SignedDivide,
+                             UnsignedMultiply, SignedMultiply);
 template <unsigned Value>
 using unsigned_constant = std::integral_constant<unsigned, Value>;
 using width_types = testing::Types<

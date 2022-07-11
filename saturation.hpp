@@ -193,6 +193,8 @@ private:
 template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 constexpr sinteger_t<Bits> adds (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
+  assert (x >= limits<Bits>::min () && x <= limits<Bits>::max ());
+  assert (y >= limits<Bits>::min () && y <= limits<Bits>::max ());
   using uint = uinteger_t<Bits>;
   using sint = sinteger_t<Bits>;
   using ubits = details::nbit_scalar<Bits, true>;
@@ -230,6 +232,8 @@ constexpr int16_t adds8 (int8_t const x, int8_t const y) {
 template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 constexpr sinteger_t<Bits> subs (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
+  assert (x >= limits<Bits>::min () && x <= limits<Bits>::max ());
+  assert (y >= limits<Bits>::min () && y <= limits<Bits>::max ());
   using uint = uinteger_t<Bits>;
   using sint = sinteger_t<Bits>;
   using ubits = details::nbit_scalar<Bits, true>;
@@ -265,9 +269,11 @@ constexpr int8_t subs8 (int8_t const x, int8_t const y) {
 
 // Twos complement signed division can overflow because
 // limits<Bits>::min()/-1=limits<Bits>::max()+1.
-template <size_t Bits>
+template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 64)>>
 constexpr sinteger_t<Bits> divs (sinteger_t<Bits> const x,
                                  sinteger_t<Bits> const y) {
+  assert (x >= limits<Bits>::min () && x <= limits<Bits>::max ());
+  assert (y >= limits<Bits>::min () && y <= limits<Bits>::max ());
   using uint = uinteger_t<Bits>;
   using ubits = details::nbit_scalar<Bits, true>;
   return (x + !(ubits{static_cast<uint> (y + 1)} |
@@ -287,13 +293,43 @@ constexpr int8_t divs8 (int8_t const x, int8_t const y) {
   return divs<8> (x, y);
 }
 
-constexpr int32_t muls32 (int32_t const x, int32_t const y) {
-  auto const res = static_cast<int64_t> (x) * static_cast<int64_t> (y);
-  if (static_cast<int32_t> (res >> 32) != (static_cast<int32_t> (res) >> 31)) {
-    return (static_cast<uint32_t> (x ^ y) >> 31) +
-           std::numeric_limits<int32_t>::max ();
+template <size_t Bits, typename = typename std::enable_if_t<(Bits <= 32)>>
+constexpr sinteger_t<Bits> muls (sinteger_t<Bits> const x,
+                                 sinteger_t<Bits> const y) {
+  assert (x >= limits<Bits>::min () && x <= limits<Bits>::max () &&
+          "muls<> x value out of range");
+  assert (y >= limits<Bits>::min () && y <= limits<Bits>::max () &&
+          "muls<> y value out of range");
+
+  using s2bits = details::nbit_scalar<Bits * 2, false>;
+  using s2int = typename s2bits::type;
+
+  using sbits = details::nbit_scalar<Bits, false>;
+  using sint = typename sbits::type;
+  using ubits = details::nbit_scalar<Bits, true>;
+  using uint = typename ubits::type;
+
+  auto const res = s2bits{
+      static_cast<s2int> (static_cast<s2int> (x) * static_cast<s2int> (y))};
+  if (static_cast<sint> (res >> Bits) !=
+      static_cast<sint> (res >> (Bits - 1U))) {
+    auto const v = sbits{static_cast<sint> (ubits{static_cast<uint> (
+        static_cast<uint> (ubits{static_cast<uint> (x ^ y)} >> (Bits - 1U)) +
+        static_cast<uint> (limits<Bits>::max ()))})};
+    assert (v == (res < sint{0} ? limits<Bits>::min () : limits<Bits>::max ()));
+    return v;
   }
-  return static_cast<int32_t> (res);
+  return static_cast<sint> (res);
+}
+
+constexpr int32_t muls32 (int32_t const x, int32_t const y) {
+  return muls<32> (x, y);
+}
+constexpr int16_t muls16 (int16_t const x, int16_t const y) {
+  return muls<16> (x, y);
+}
+constexpr int8_t muls8 (int8_t const x, int8_t const y) {
+  return muls<8> (x, y);
 }
 
 }  // end namespace saturation

@@ -62,6 +62,7 @@ function (add_klee_target)
     
   add_library (${bitcode_target} OBJECT ${sources})
   setup_klee_target (${bitcode_target})
+  target_compile_definitions (${bitcode_target} PRIVATE NDEBUG)
   target_compile_options (${bitcode_target} PRIVATE -emit-llvm)
 
   # Executable Target
@@ -130,4 +131,6 @@ if (klee_available)
   add_klee_target (TARGET klee_adds24 SOURCES adds24.cpp common.hpp ../saturation.hpp)
   add_klee_target (TARGET klee_subs24 SOURCES subs24.cpp common.hpp ../saturation.hpp)
   add_klee_target (TARGET klee_divs24 SOURCES divs24.cpp common.hpp ../saturation.hpp)
+  #(Disabled: appears to cause klee 2.3 to hang)
+  #add_klee_target (TARGET klee_muls24 SOURCES muls24.cpp common.hpp ../saturation.hpp)
 endif ()
