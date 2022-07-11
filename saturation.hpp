@@ -1,9 +1,11 @@
 /// \file saturation.hpp
+/// \brief A collection of functions which provide saturating arithmetic
+/// (addition, subtraction, multiplication, and division) for signed and
+/// unsigned integer types.
 ///
-/// A collection of functions which provide saturating arithmetic (addition,
-/// subtraction, multiplication, and division) for signed and unsigned integer
-/// types from 4 to 64 bits. Integers of width matching target registers are
-/// likely to be branchless.
+/// Types can range from 4 to 64 bits for addition, subtraction, and division,
+/// and from 4 to 32 bits for multiplication. Operations using integers of width
+/// matching target registers are likely to be branchless.
 
 #ifndef SATURATION_HPP
 #define SATURATION_HPP
@@ -82,16 +84,24 @@ inline constexpr auto mask_v = mask<Bits>::value;
 template <size_t Bits>
 struct limits {
   using type = sinteger_t<Bits>;
+  /// Returns the maximum finite value representable by a signed integer type of
+  /// \p Bits bits.
   static constexpr type max () {
     return static_cast<type> ((uinteger_t<Bits>{1} << (Bits - 1U)) - 1);
   }
+  /// Returns the minimum finite value representable by a signed integer type of
+  /// \p Bits bits.
   static constexpr type min () { return static_cast<type> (-max () - 1); }
 };
 
 template <size_t Bits>
 struct ulimits {
   using type = uinteger_t<Bits>;
+  /// Returns the maximum finite value representable by an unsigned integer type
+  /// of \p Bits bits.
   static constexpr type max () { return mask_v<Bits>; }
+  /// Returns the minimum finite value representable by an unsigned integer type
+  /// of \p Bits bits.
   static constexpr type min () { return 0U; }
 };
 
