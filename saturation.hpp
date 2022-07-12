@@ -552,13 +552,13 @@ constexpr sinteger_t<N> subs (sinteger_t<N> const x, sinteger_t<N> const y) {
   auto const uy = ubits{static_cast<uint> (y)};
   auto const res = ubits{static_cast<uint> (ux - uy)};
 
-  // Calculate the overflowed result as max or min depending on the sign of ux.
-  auto const v = sbits{static_cast<sint> (
-      ubits{static_cast<uint> ((ux >> (N - 1U)) + limits<N>::max ())})};
-  assert (v == (x < sint{0} ? limits<N>::min () : limits<N>::max ()));
-
   // Check for overflow: ux must be different from uy and res.
   if (sbits{static_cast<sint> ((ux ^ uy) & (ux ^ res))} < 0) {
+    // Calculate the overflowed result as max or min depending on the sign of
+    // ux.
+    auto const v = sbits{static_cast<sint> (
+        ubits{static_cast<uint> ((ux >> (N - 1U)) + limits<N>::max ())})};
+    assert (v == (x < sint{0} ? limits<N>::min () : limits<N>::max ()));
     return v;
   }
   // There was no overflow: return the proper result.
