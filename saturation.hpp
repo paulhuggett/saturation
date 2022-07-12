@@ -618,7 +618,8 @@ constexpr int8_t subs8 (int8_t const x, int8_t const y) {
 /// \brief Computes the signed result of \p x / \p y.
 ///
 /// \note Twos complement signed division can overflow because
-///   \f$ \frac{-2^{N-1}}{-1} = 2^{N-1} \f$.
+///   \f$ \frac{-2^{N-1}}{-1} = 2^{N-1} \f$ and the largest value that can be
+///   represented is \f$ 2^{N-1}-1 \f$.
 ///
 /// \tparam N The number of bits for the twos complement arguments and
 ///   result. May be in the range \f$ [4, 64] \f$.
