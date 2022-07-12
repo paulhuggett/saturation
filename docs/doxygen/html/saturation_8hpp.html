@@ -72,7 +72,6 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">saturation.hpp File Reference</div></div>
 </div><!--header-->
@@ -151,109 +150,133 @@ template&lt;size_t N&gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga3679bc95b3ff1b910027aecdbc786fdc"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
-<tr class="memitem:ga3679bc95b3ff1b910027aecdbc786fdc"><td class="memTemplItemLeft" align="right" valign="top">constexpr uinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__addu.html#ga3679bc95b3ff1b910027aecdbc786fdc">saturation::addu</a> (uinteger_t&lt; N &gt; const x, uinteger_t&lt; N &gt; const y)</td></tr>
-<tr class="memdesc:ga3679bc95b3ff1b910027aecdbc786fdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned values each <code>N</code> bits wide.  <a href="group__addu.html#ga3679bc95b3ff1b910027aecdbc786fdc">More...</a><br /></td></tr>
-<tr class="separator:ga3679bc95b3ff1b910027aecdbc786fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2edb59acff23537f60d203db87f49e22"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__addu.html#ga2edb59acff23537f60d203db87f49e22">saturation::addu32</a> (uint32_t const x, uint32_t const y)</td></tr>
-<tr class="memdesc:ga2edb59acff23537f60d203db87f49e22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned 32 bit values.  <a href="group__addu.html#ga2edb59acff23537f60d203db87f49e22">More...</a><br /></td></tr>
-<tr class="separator:ga2edb59acff23537f60d203db87f49e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac6bdf02a502d211a8f2187f509bbcf98"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__addu.html#gac6bdf02a502d211a8f2187f509bbcf98">saturation::addu16</a> (uint16_t const x, uint16_t const y)</td></tr>
-<tr class="memdesc:gac6bdf02a502d211a8f2187f509bbcf98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned 16 bit values.  <a href="group__addu.html#gac6bdf02a502d211a8f2187f509bbcf98">More...</a><br /></td></tr>
-<tr class="separator:gac6bdf02a502d211a8f2187f509bbcf98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf3d2a1f2a949d740acf9076485c70a29"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__addu.html#gaf3d2a1f2a949d740acf9076485c70a29">saturation::addu8</a> (uint8_t const x, uint8_t const y)</td></tr>
-<tr class="memdesc:gaf3d2a1f2a949d740acf9076485c70a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned 8 bit values.  <a href="group__addu.html#gaf3d2a1f2a949d740acf9076485c70a29">More...</a><br /></td></tr>
-<tr class="separator:gaf3d2a1f2a949d740acf9076485c70a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5158b7680d4b465f34edbfd8b8a08498"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
-<tr class="memitem:ga5158b7680d4b465f34edbfd8b8a08498"><td class="memTemplItemLeft" align="right" valign="top">constexpr uinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__subu.html#ga5158b7680d4b465f34edbfd8b8a08498">saturation::subu</a> (uinteger_t&lt; N &gt; const x, uinteger_t&lt; N &gt; const y)</td></tr>
-<tr class="separator:ga5158b7680d4b465f34edbfd8b8a08498"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga22e744f6f7792ac346b2411fcc6bc522"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__subu.html#ga22e744f6f7792ac346b2411fcc6bc522">saturation::subu32</a> (uint32_t const x, uint32_t const y)</td></tr>
-<tr class="memdesc:ga22e744f6f7792ac346b2411fcc6bc522"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 32 bit unsigned result of <code>x</code> - <code>y</code>.  <a href="group__subu.html#ga22e744f6f7792ac346b2411fcc6bc522">More...</a><br /></td></tr>
-<tr class="separator:ga22e744f6f7792ac346b2411fcc6bc522"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac8f333ee4039141f9a2e9bc2ef52de60"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__subu.html#gac8f333ee4039141f9a2e9bc2ef52de60">saturation::subu16</a> (uint16_t const x, uint16_t const y)</td></tr>
-<tr class="memdesc:gac8f333ee4039141f9a2e9bc2ef52de60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 16 bit unsigned result of <code>x</code> - <code>y</code>.  <a href="group__subu.html#gac8f333ee4039141f9a2e9bc2ef52de60">More...</a><br /></td></tr>
-<tr class="separator:gac8f333ee4039141f9a2e9bc2ef52de60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga116d1768149c1eca6cf285bcd21affb4"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__subu.html#ga116d1768149c1eca6cf285bcd21affb4">saturation::subu8</a> (uint8_t const x, uint8_t const y)</td></tr>
-<tr class="memdesc:ga116d1768149c1eca6cf285bcd21affb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 8 bit unsigned result of <code>x</code> - <code>y</code>.  <a href="group__subu.html#ga116d1768149c1eca6cf285bcd21affb4">More...</a><br /></td></tr>
-<tr class="separator:ga116d1768149c1eca6cf285bcd21affb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2f93716fee711b811f476e9fdef8da58"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
-<tr class="memitem:ga2f93716fee711b811f476e9fdef8da58"><td class="memTemplItemLeft" align="right" valign="top">constexpr uinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__divu.html#ga2f93716fee711b811f476e9fdef8da58">saturation::divu</a> (uinteger_t&lt; N &gt; const x, uinteger_t&lt; N &gt; const y)</td></tr>
-<tr class="memdesc:ga2f93716fee711b811f476e9fdef8da58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned result of <code>x</code> / <code>y</code>.  <a href="group__divu.html#ga2f93716fee711b811f476e9fdef8da58">More...</a><br /></td></tr>
-<tr class="separator:ga2f93716fee711b811f476e9fdef8da58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae3bd45d3e550927074d8b7099e592363"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__divu.html#gae3bd45d3e550927074d8b7099e592363">saturation::divu32</a> (uint32_t const x, uint32_t const y)</td></tr>
-<tr class="memdesc:gae3bd45d3e550927074d8b7099e592363"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned result of <code>x</code> / <code>y</code>.  <a href="group__divu.html#gae3bd45d3e550927074d8b7099e592363">More...</a><br /></td></tr>
-<tr class="separator:gae3bd45d3e550927074d8b7099e592363"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga615a49f4e34625066ca04f3eabfde164"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__divu.html#ga615a49f4e34625066ca04f3eabfde164">saturation::divu16</a> (uint16_t const x, uint16_t const y)</td></tr>
-<tr class="memdesc:ga615a49f4e34625066ca04f3eabfde164"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned result of <code>x</code> / <code>y</code>.  <a href="group__divu.html#ga615a49f4e34625066ca04f3eabfde164">More...</a><br /></td></tr>
-<tr class="separator:ga615a49f4e34625066ca04f3eabfde164"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaab65049549d121c66491f57558679150"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__divu.html#gaab65049549d121c66491f57558679150">saturation::divu8</a> (uint8_t const x, uint8_t const y)</td></tr>
-<tr class="memdesc:gaab65049549d121c66491f57558679150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned result of <code>x</code> / <code>y</code>.  <a href="group__divu.html#gaab65049549d121c66491f57558679150">More...</a><br /></td></tr>
-<tr class="separator:gaab65049549d121c66491f57558679150"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae8ee4b4520de406361fb5149cba9e48e"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 32)&gt;&gt; </td></tr>
-<tr class="memitem:gae8ee4b4520de406361fb5149cba9e48e"><td class="memTemplItemLeft" align="right" valign="top">constexpr uinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__mulu.html#gae8ee4b4520de406361fb5149cba9e48e">saturation::mulu</a> (uinteger_t&lt; N &gt; const x, uinteger_t&lt; N &gt; const y)</td></tr>
-<tr class="memdesc:gae8ee4b4520de406361fb5149cba9e48e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the value of <code>x</code> &times; <code>y</code>.  <a href="group__mulu.html#gae8ee4b4520de406361fb5149cba9e48e">More...</a><br /></td></tr>
-<tr class="separator:gae8ee4b4520de406361fb5149cba9e48e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga13c3bb333e3131b1497ac713d84a996d"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mulu.html#ga13c3bb333e3131b1497ac713d84a996d">saturation::mulu32</a> (uint32_t const x, uint32_t const y)</td></tr>
-<tr class="memdesc:ga13c3bb333e3131b1497ac713d84a996d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned 32 bit value of <code>x</code> &times; <code>y</code>.  <a href="group__mulu.html#ga13c3bb333e3131b1497ac713d84a996d">More...</a><br /></td></tr>
-<tr class="separator:ga13c3bb333e3131b1497ac713d84a996d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga09d07c000f05690fd75704a6b94007e5"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mulu.html#ga09d07c000f05690fd75704a6b94007e5">saturation::mulu16</a> (uint16_t const x, uint16_t const y)</td></tr>
-<tr class="memdesc:ga09d07c000f05690fd75704a6b94007e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned 16 bit value of <code>x</code> &times; <code>y</code>.  <a href="group__mulu.html#ga09d07c000f05690fd75704a6b94007e5">More...</a><br /></td></tr>
-<tr class="separator:ga09d07c000f05690fd75704a6b94007e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8f71756c557d5153d18b03cc90ea13f1"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mulu.html#ga8f71756c557d5153d18b03cc90ea13f1">saturation::mulu8</a> (uint8_t const x, uint8_t const y)</td></tr>
-<tr class="memdesc:ga8f71756c557d5153d18b03cc90ea13f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned 8 bit value of <code>x</code> &times; <code>y</code>.  <a href="group__mulu.html#ga8f71756c557d5153d18b03cc90ea13f1">More...</a><br /></td></tr>
-<tr class="separator:ga8f71756c557d5153d18b03cc90ea13f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5b51c37abde06fbcaeadc24041dc3640"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
-<tr class="memitem:ga5b51c37abde06fbcaeadc24041dc3640"><td class="memTemplItemLeft" align="right" valign="top">constexpr sinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__adds.html#ga5b51c37abde06fbcaeadc24041dc3640">saturation::adds</a> (sinteger_t&lt; N &gt; const x, sinteger_t&lt; N &gt; const y)</td></tr>
-<tr class="memdesc:ga5b51c37abde06fbcaeadc24041dc3640"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed values each <code>N</code> bits wide.  <a href="group__adds.html#ga5b51c37abde06fbcaeadc24041dc3640">More...</a><br /></td></tr>
-<tr class="separator:ga5b51c37abde06fbcaeadc24041dc3640"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga58b632592b3c743780b19bdbc3d20000"><td class="memItemLeft" align="right" valign="top">constexpr int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__adds.html#ga58b632592b3c743780b19bdbc3d20000">saturation::adds32</a> (int32_t const x, int32_t const y)</td></tr>
-<tr class="memdesc:ga58b632592b3c743780b19bdbc3d20000"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed 32 bit values.  <a href="group__adds.html#ga58b632592b3c743780b19bdbc3d20000">More...</a><br /></td></tr>
-<tr class="separator:ga58b632592b3c743780b19bdbc3d20000"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab4239169a29842e126180788f0edb165"><td class="memItemLeft" align="right" valign="top">constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__adds.html#gab4239169a29842e126180788f0edb165">saturation::adds16</a> (int16_t const x, int16_t const y)</td></tr>
-<tr class="memdesc:gab4239169a29842e126180788f0edb165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed 16 bit values.  <a href="group__adds.html#gab4239169a29842e126180788f0edb165">More...</a><br /></td></tr>
-<tr class="separator:gab4239169a29842e126180788f0edb165"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2b82d56fdb2f5f069be97276e997b277"><td class="memItemLeft" align="right" valign="top">constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__adds.html#ga2b82d56fdb2f5f069be97276e997b277">saturation::adds8</a> (int8_t const x, int8_t const y)</td></tr>
-<tr class="memdesc:ga2b82d56fdb2f5f069be97276e997b277"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed 8 bit values.  <a href="group__adds.html#ga2b82d56fdb2f5f069be97276e997b277">More...</a><br /></td></tr>
-<tr class="separator:ga2b82d56fdb2f5f069be97276e997b277"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4a6e2f5418aedfc8e0f1f60501fd1411"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
-<tr class="memitem:ga4a6e2f5418aedfc8e0f1f60501fd1411"><td class="memTemplItemLeft" align="right" valign="top">constexpr sinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__subs.html#ga4a6e2f5418aedfc8e0f1f60501fd1411">saturation::subs</a> (sinteger_t&lt; N &gt; const x, sinteger_t&lt; N &gt; const y)</td></tr>
-<tr class="memdesc:ga4a6e2f5418aedfc8e0f1f60501fd1411"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed result of <code>x</code> - <code>y</code>.  <a href="group__subs.html#ga4a6e2f5418aedfc8e0f1f60501fd1411">More...</a><br /></td></tr>
-<tr class="separator:ga4a6e2f5418aedfc8e0f1f60501fd1411"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga22e9c5913914a1a45302a70c374aef51"><td class="memItemLeft" align="right" valign="top">constexpr int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__subs.html#ga22e9c5913914a1a45302a70c374aef51">saturation::subs32</a> (int32_t const x, int32_t const y)</td></tr>
-<tr class="memdesc:ga22e9c5913914a1a45302a70c374aef51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 32 bit signed result of <code>x</code> - <code>y</code>.  <a href="group__subs.html#ga22e9c5913914a1a45302a70c374aef51">More...</a><br /></td></tr>
-<tr class="separator:ga22e9c5913914a1a45302a70c374aef51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac23b6b0273dd429607630aefd40610c1"><td class="memItemLeft" align="right" valign="top">constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__subs.html#gac23b6b0273dd429607630aefd40610c1">saturation::subs16</a> (int16_t const x, int16_t const y)</td></tr>
-<tr class="memdesc:gac23b6b0273dd429607630aefd40610c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 16 bit signed result of <code>x</code> - <code>y</code>.  <a href="group__subs.html#gac23b6b0273dd429607630aefd40610c1">More...</a><br /></td></tr>
-<tr class="separator:gac23b6b0273dd429607630aefd40610c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6c523fae2d5f8d17280195e925f08fc8"><td class="memItemLeft" align="right" valign="top">constexpr int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__subs.html#ga6c523fae2d5f8d17280195e925f08fc8">saturation::subs8</a> (int8_t const x, int8_t const y)</td></tr>
-<tr class="memdesc:ga6c523fae2d5f8d17280195e925f08fc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 8 bit signed result of <code>x</code> - <code>y</code>.  <a href="group__subs.html#ga6c523fae2d5f8d17280195e925f08fc8">More...</a><br /></td></tr>
-<tr class="separator:ga6c523fae2d5f8d17280195e925f08fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga89910bf95097ffa58c91a8a39ed08c6e"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
-<tr class="memitem:ga89910bf95097ffa58c91a8a39ed08c6e"><td class="memTemplItemLeft" align="right" valign="top">constexpr sinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__divs.html#ga89910bf95097ffa58c91a8a39ed08c6e">saturation::divs</a> (sinteger_t&lt; N &gt; const x, sinteger_t&lt; N &gt; const y)</td></tr>
-<tr class="memdesc:ga89910bf95097ffa58c91a8a39ed08c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed result of <code>x</code> / <code>y</code>.  <a href="group__divs.html#ga89910bf95097ffa58c91a8a39ed08c6e">More...</a><br /></td></tr>
-<tr class="separator:ga89910bf95097ffa58c91a8a39ed08c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3849c4a2e9d56fd018fb51cb5a239ffc"><td class="memItemLeft" align="right" valign="top">constexpr int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__divs.html#ga3849c4a2e9d56fd018fb51cb5a239ffc">saturation::divs32</a> (int32_t const x, int32_t const y)</td></tr>
-<tr class="memdesc:ga3849c4a2e9d56fd018fb51cb5a239ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 32 bit signed result of <code>x</code> / <code>y</code>.  <a href="group__divs.html#ga3849c4a2e9d56fd018fb51cb5a239ffc">More...</a><br /></td></tr>
-<tr class="separator:ga3849c4a2e9d56fd018fb51cb5a239ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad0be9b5a2a9d881da86424183934804f"><td class="memItemLeft" align="right" valign="top">constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__divs.html#gad0be9b5a2a9d881da86424183934804f">saturation::divs16</a> (int16_t const x, int16_t const y)</td></tr>
-<tr class="memdesc:gad0be9b5a2a9d881da86424183934804f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 16 bit signed result of <code>x</code> / <code>y</code>.  <a href="group__divs.html#gad0be9b5a2a9d881da86424183934804f">More...</a><br /></td></tr>
-<tr class="separator:gad0be9b5a2a9d881da86424183934804f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga27eea6afc962651b475458a8c28082b1"><td class="memItemLeft" align="right" valign="top">constexpr int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__divs.html#ga27eea6afc962651b475458a8c28082b1">saturation::divs8</a> (int8_t const x, int8_t const y)</td></tr>
-<tr class="memdesc:ga27eea6afc962651b475458a8c28082b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 8 bit signed result of <code>x</code> / <code>y</code>.  <a href="group__divs.html#ga27eea6afc962651b475458a8c28082b1">More...</a><br /></td></tr>
-<tr class="separator:ga27eea6afc962651b475458a8c28082b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga27552aac61d63ad3e86613c11e67038e"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 32)&gt;&gt; </td></tr>
-<tr class="memitem:ga27552aac61d63ad3e86613c11e67038e"><td class="memTemplItemLeft" align="right" valign="top">constexpr sinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__muls.html#ga27552aac61d63ad3e86613c11e67038e">saturation::muls</a> (sinteger_t&lt; N &gt; const x, sinteger_t&lt; N &gt; const y)</td></tr>
-<tr class="memdesc:ga27552aac61d63ad3e86613c11e67038e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed result of multiplying <code>x</code> by <code>y</code>.  <a href="group__muls.html#ga27552aac61d63ad3e86613c11e67038e">More...</a><br /></td></tr>
-<tr class="separator:ga27552aac61d63ad3e86613c11e67038e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga08a083d8f9e4da67e02f6dcb93b28e52"><td class="memItemLeft" align="right" valign="top">constexpr int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__muls.html#ga08a083d8f9e4da67e02f6dcb93b28e52">saturation::muls32</a> (int32_t const x, int32_t const y)</td></tr>
-<tr class="memdesc:ga08a083d8f9e4da67e02f6dcb93b28e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed 32 bit result of multiplying <code>x</code> by <code>y</code>.  <a href="group__muls.html#ga08a083d8f9e4da67e02f6dcb93b28e52">More...</a><br /></td></tr>
-<tr class="separator:ga08a083d8f9e4da67e02f6dcb93b28e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8bb04e9ac8eef8189544a331c81566de"><td class="memItemLeft" align="right" valign="top">constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__muls.html#ga8bb04e9ac8eef8189544a331c81566de">saturation::muls16</a> (int16_t const x, int16_t const y)</td></tr>
-<tr class="memdesc:ga8bb04e9ac8eef8189544a331c81566de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed 16 bit result of multiplying <code>x</code> by <code>y</code>.  <a href="group__muls.html#ga8bb04e9ac8eef8189544a331c81566de">More...</a><br /></td></tr>
-<tr class="separator:ga8bb04e9ac8eef8189544a331c81566de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga57a69f571a148dfdb3acff8114e8051a"><td class="memItemLeft" align="right" valign="top">constexpr int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__muls.html#ga57a69f571a148dfdb3acff8114e8051a">saturation::muls8</a> (int8_t const x, int8_t const y)</td></tr>
-<tr class="memdesc:ga57a69f571a148dfdb3acff8114e8051a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed 8 bit result of multiplying <code>x</code> by <code>y</code>.  <a href="group__muls.html#ga57a69f571a148dfdb3acff8114e8051a">More...</a><br /></td></tr>
-<tr class="separator:ga57a69f571a148dfdb3acff8114e8051a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Unsigned Addition</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating addition of unsigned integral quantities from 4 to 64 bits. </p>
+</div></td></tr>
+<tr class="memitem:a3679bc95b3ff1b910027aecdbc786fdc"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
+<tr class="memitem:a3679bc95b3ff1b910027aecdbc786fdc"><td class="memTemplItemLeft" align="right" valign="top">constexpr uinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a3679bc95b3ff1b910027aecdbc786fdc">saturation::addu</a> (uinteger_t&lt; N &gt; const x, uinteger_t&lt; N &gt; const y)</td></tr>
+<tr class="memdesc:a3679bc95b3ff1b910027aecdbc786fdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned values each <code>N</code> bits wide.  <a href="saturation_8hpp.html#a3679bc95b3ff1b910027aecdbc786fdc">More...</a><br /></td></tr>
+<tr class="separator:a3679bc95b3ff1b910027aecdbc786fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2edb59acff23537f60d203db87f49e22"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a2edb59acff23537f60d203db87f49e22">saturation::addu32</a> (uint32_t const x, uint32_t const y)</td></tr>
+<tr class="memdesc:a2edb59acff23537f60d203db87f49e22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned 32 bit values.  <a href="saturation_8hpp.html#a2edb59acff23537f60d203db87f49e22">More...</a><br /></td></tr>
+<tr class="separator:a2edb59acff23537f60d203db87f49e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6bdf02a502d211a8f2187f509bbcf98"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ac6bdf02a502d211a8f2187f509bbcf98">saturation::addu16</a> (uint16_t const x, uint16_t const y)</td></tr>
+<tr class="memdesc:ac6bdf02a502d211a8f2187f509bbcf98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned 16 bit values.  <a href="saturation_8hpp.html#ac6bdf02a502d211a8f2187f509bbcf98">More...</a><br /></td></tr>
+<tr class="separator:ac6bdf02a502d211a8f2187f509bbcf98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3d2a1f2a949d740acf9076485c70a29"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#af3d2a1f2a949d740acf9076485c70a29">saturation::addu8</a> (uint8_t const x, uint8_t const y)</td></tr>
+<tr class="memdesc:af3d2a1f2a949d740acf9076485c70a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned 8 bit values.  <a href="saturation_8hpp.html#af3d2a1f2a949d740acf9076485c70a29">More...</a><br /></td></tr>
+<tr class="separator:af3d2a1f2a949d740acf9076485c70a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Unsigned Subtraction</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating subtraction of unsigned integral quantities from 4 to 64 bits. </p>
+</div></td></tr>
+<tr class="memitem:a5158b7680d4b465f34edbfd8b8a08498"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
+<tr class="memitem:a5158b7680d4b465f34edbfd8b8a08498"><td class="memTemplItemLeft" align="right" valign="top">constexpr uinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a5158b7680d4b465f34edbfd8b8a08498">saturation::subu</a> (uinteger_t&lt; N &gt; const x, uinteger_t&lt; N &gt; const y)</td></tr>
+<tr class="separator:a5158b7680d4b465f34edbfd8b8a08498"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22e744f6f7792ac346b2411fcc6bc522"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a22e744f6f7792ac346b2411fcc6bc522">saturation::subu32</a> (uint32_t const x, uint32_t const y)</td></tr>
+<tr class="memdesc:a22e744f6f7792ac346b2411fcc6bc522"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 32 bit unsigned result of <code>x</code> - <code>y</code>.  <a href="saturation_8hpp.html#a22e744f6f7792ac346b2411fcc6bc522">More...</a><br /></td></tr>
+<tr class="separator:a22e744f6f7792ac346b2411fcc6bc522"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8f333ee4039141f9a2e9bc2ef52de60"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ac8f333ee4039141f9a2e9bc2ef52de60">saturation::subu16</a> (uint16_t const x, uint16_t const y)</td></tr>
+<tr class="memdesc:ac8f333ee4039141f9a2e9bc2ef52de60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 16 bit unsigned result of <code>x</code> - <code>y</code>.  <a href="saturation_8hpp.html#ac8f333ee4039141f9a2e9bc2ef52de60">More...</a><br /></td></tr>
+<tr class="separator:ac8f333ee4039141f9a2e9bc2ef52de60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a116d1768149c1eca6cf285bcd21affb4"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a116d1768149c1eca6cf285bcd21affb4">saturation::subu8</a> (uint8_t const x, uint8_t const y)</td></tr>
+<tr class="memdesc:a116d1768149c1eca6cf285bcd21affb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 8 bit unsigned result of <code>x</code> - <code>y</code>.  <a href="saturation_8hpp.html#a116d1768149c1eca6cf285bcd21affb4">More...</a><br /></td></tr>
+<tr class="separator:a116d1768149c1eca6cf285bcd21affb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Unsigned Division</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating division of unsigned integral quantities from 4 to 64 bits. </p>
+</div></td></tr>
+<tr class="memitem:a2f93716fee711b811f476e9fdef8da58"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
+<tr class="memitem:a2f93716fee711b811f476e9fdef8da58"><td class="memTemplItemLeft" align="right" valign="top">constexpr uinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a2f93716fee711b811f476e9fdef8da58">saturation::divu</a> (uinteger_t&lt; N &gt; const x, uinteger_t&lt; N &gt; const y)</td></tr>
+<tr class="memdesc:a2f93716fee711b811f476e9fdef8da58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned result of <code>x</code> / <code>y</code>.  <a href="saturation_8hpp.html#a2f93716fee711b811f476e9fdef8da58">More...</a><br /></td></tr>
+<tr class="separator:a2f93716fee711b811f476e9fdef8da58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3bd45d3e550927074d8b7099e592363"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ae3bd45d3e550927074d8b7099e592363">saturation::divu32</a> (uint32_t const x, uint32_t const y)</td></tr>
+<tr class="memdesc:ae3bd45d3e550927074d8b7099e592363"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned result of <code>x</code> / <code>y</code>.  <a href="saturation_8hpp.html#ae3bd45d3e550927074d8b7099e592363">More...</a><br /></td></tr>
+<tr class="separator:ae3bd45d3e550927074d8b7099e592363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a615a49f4e34625066ca04f3eabfde164"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a615a49f4e34625066ca04f3eabfde164">saturation::divu16</a> (uint16_t const x, uint16_t const y)</td></tr>
+<tr class="memdesc:a615a49f4e34625066ca04f3eabfde164"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned result of <code>x</code> / <code>y</code>.  <a href="saturation_8hpp.html#a615a49f4e34625066ca04f3eabfde164">More...</a><br /></td></tr>
+<tr class="separator:a615a49f4e34625066ca04f3eabfde164"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab65049549d121c66491f57558679150"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#aab65049549d121c66491f57558679150">saturation::divu8</a> (uint8_t const x, uint8_t const y)</td></tr>
+<tr class="memdesc:aab65049549d121c66491f57558679150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned result of <code>x</code> / <code>y</code>.  <a href="saturation_8hpp.html#aab65049549d121c66491f57558679150">More...</a><br /></td></tr>
+<tr class="separator:aab65049549d121c66491f57558679150"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Unsigned Multiplication</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating multiplication of unsigned integral quantities from 4 to 32 bits. </p>
+</div></td></tr>
+<tr class="memitem:ae8ee4b4520de406361fb5149cba9e48e"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 32)&gt;&gt; </td></tr>
+<tr class="memitem:ae8ee4b4520de406361fb5149cba9e48e"><td class="memTemplItemLeft" align="right" valign="top">constexpr uinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ae8ee4b4520de406361fb5149cba9e48e">saturation::mulu</a> (uinteger_t&lt; N &gt; const x, uinteger_t&lt; N &gt; const y)</td></tr>
+<tr class="memdesc:ae8ee4b4520de406361fb5149cba9e48e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the value of <code>x</code> &times; <code>y</code>.  <a href="saturation_8hpp.html#ae8ee4b4520de406361fb5149cba9e48e">More...</a><br /></td></tr>
+<tr class="separator:ae8ee4b4520de406361fb5149cba9e48e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13c3bb333e3131b1497ac713d84a996d"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a13c3bb333e3131b1497ac713d84a996d">saturation::mulu32</a> (uint32_t const x, uint32_t const y)</td></tr>
+<tr class="memdesc:a13c3bb333e3131b1497ac713d84a996d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned 32 bit value of <code>x</code> &times; <code>y</code>.  <a href="saturation_8hpp.html#a13c3bb333e3131b1497ac713d84a996d">More...</a><br /></td></tr>
+<tr class="separator:a13c3bb333e3131b1497ac713d84a996d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09d07c000f05690fd75704a6b94007e5"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a09d07c000f05690fd75704a6b94007e5">saturation::mulu16</a> (uint16_t const x, uint16_t const y)</td></tr>
+<tr class="memdesc:a09d07c000f05690fd75704a6b94007e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned 16 bit value of <code>x</code> &times; <code>y</code>.  <a href="saturation_8hpp.html#a09d07c000f05690fd75704a6b94007e5">More...</a><br /></td></tr>
+<tr class="separator:a09d07c000f05690fd75704a6b94007e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f71756c557d5153d18b03cc90ea13f1"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a8f71756c557d5153d18b03cc90ea13f1">saturation::mulu8</a> (uint8_t const x, uint8_t const y)</td></tr>
+<tr class="memdesc:a8f71756c557d5153d18b03cc90ea13f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned 8 bit value of <code>x</code> &times; <code>y</code>.  <a href="saturation_8hpp.html#a8f71756c557d5153d18b03cc90ea13f1">More...</a><br /></td></tr>
+<tr class="separator:a8f71756c557d5153d18b03cc90ea13f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Signed Addition</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating addition of signed integral quantities from 4 to 64 bits. </p>
+</div></td></tr>
+<tr class="memitem:a5b51c37abde06fbcaeadc24041dc3640"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
+<tr class="memitem:a5b51c37abde06fbcaeadc24041dc3640"><td class="memTemplItemLeft" align="right" valign="top">constexpr sinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a5b51c37abde06fbcaeadc24041dc3640">saturation::adds</a> (sinteger_t&lt; N &gt; const x, sinteger_t&lt; N &gt; const y)</td></tr>
+<tr class="memdesc:a5b51c37abde06fbcaeadc24041dc3640"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed values each <code>N</code> bits wide.  <a href="saturation_8hpp.html#a5b51c37abde06fbcaeadc24041dc3640">More...</a><br /></td></tr>
+<tr class="separator:a5b51c37abde06fbcaeadc24041dc3640"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58b632592b3c743780b19bdbc3d20000"><td class="memItemLeft" align="right" valign="top">constexpr int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a58b632592b3c743780b19bdbc3d20000">saturation::adds32</a> (int32_t const x, int32_t const y)</td></tr>
+<tr class="memdesc:a58b632592b3c743780b19bdbc3d20000"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed 32 bit values.  <a href="saturation_8hpp.html#a58b632592b3c743780b19bdbc3d20000">More...</a><br /></td></tr>
+<tr class="separator:a58b632592b3c743780b19bdbc3d20000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4239169a29842e126180788f0edb165"><td class="memItemLeft" align="right" valign="top">constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ab4239169a29842e126180788f0edb165">saturation::adds16</a> (int16_t const x, int16_t const y)</td></tr>
+<tr class="memdesc:ab4239169a29842e126180788f0edb165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed 16 bit values.  <a href="saturation_8hpp.html#ab4239169a29842e126180788f0edb165">More...</a><br /></td></tr>
+<tr class="separator:ab4239169a29842e126180788f0edb165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b82d56fdb2f5f069be97276e997b277"><td class="memItemLeft" align="right" valign="top">constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a2b82d56fdb2f5f069be97276e997b277">saturation::adds8</a> (int8_t const x, int8_t const y)</td></tr>
+<tr class="memdesc:a2b82d56fdb2f5f069be97276e997b277"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed 8 bit values.  <a href="saturation_8hpp.html#a2b82d56fdb2f5f069be97276e997b277">More...</a><br /></td></tr>
+<tr class="separator:a2b82d56fdb2f5f069be97276e997b277"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Signed Subtraction</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating subtraction of signed integral quantities from 4 to 64 bits. </p>
+</div></td></tr>
+<tr class="memitem:a4a6e2f5418aedfc8e0f1f60501fd1411"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
+<tr class="memitem:a4a6e2f5418aedfc8e0f1f60501fd1411"><td class="memTemplItemLeft" align="right" valign="top">constexpr sinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a4a6e2f5418aedfc8e0f1f60501fd1411">saturation::subs</a> (sinteger_t&lt; N &gt; const x, sinteger_t&lt; N &gt; const y)</td></tr>
+<tr class="memdesc:a4a6e2f5418aedfc8e0f1f60501fd1411"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed result of <code>x</code> - <code>y</code>.  <a href="saturation_8hpp.html#a4a6e2f5418aedfc8e0f1f60501fd1411">More...</a><br /></td></tr>
+<tr class="separator:a4a6e2f5418aedfc8e0f1f60501fd1411"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22e9c5913914a1a45302a70c374aef51"><td class="memItemLeft" align="right" valign="top">constexpr int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a22e9c5913914a1a45302a70c374aef51">saturation::subs32</a> (int32_t const x, int32_t const y)</td></tr>
+<tr class="memdesc:a22e9c5913914a1a45302a70c374aef51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 32 bit signed result of <code>x</code> - <code>y</code>.  <a href="saturation_8hpp.html#a22e9c5913914a1a45302a70c374aef51">More...</a><br /></td></tr>
+<tr class="separator:a22e9c5913914a1a45302a70c374aef51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac23b6b0273dd429607630aefd40610c1"><td class="memItemLeft" align="right" valign="top">constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ac23b6b0273dd429607630aefd40610c1">saturation::subs16</a> (int16_t const x, int16_t const y)</td></tr>
+<tr class="memdesc:ac23b6b0273dd429607630aefd40610c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 16 bit signed result of <code>x</code> - <code>y</code>.  <a href="saturation_8hpp.html#ac23b6b0273dd429607630aefd40610c1">More...</a><br /></td></tr>
+<tr class="separator:ac23b6b0273dd429607630aefd40610c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c523fae2d5f8d17280195e925f08fc8"><td class="memItemLeft" align="right" valign="top">constexpr int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a6c523fae2d5f8d17280195e925f08fc8">saturation::subs8</a> (int8_t const x, int8_t const y)</td></tr>
+<tr class="memdesc:a6c523fae2d5f8d17280195e925f08fc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 8 bit signed result of <code>x</code> - <code>y</code>.  <a href="saturation_8hpp.html#a6c523fae2d5f8d17280195e925f08fc8">More...</a><br /></td></tr>
+<tr class="separator:a6c523fae2d5f8d17280195e925f08fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Signed Division</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating division of signed integral quantities from 4 to 64 bits. </p>
+</div></td></tr>
+<tr class="memitem:a89910bf95097ffa58c91a8a39ed08c6e"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
+<tr class="memitem:a89910bf95097ffa58c91a8a39ed08c6e"><td class="memTemplItemLeft" align="right" valign="top">constexpr sinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a89910bf95097ffa58c91a8a39ed08c6e">saturation::divs</a> (sinteger_t&lt; N &gt; const x, sinteger_t&lt; N &gt; const y)</td></tr>
+<tr class="memdesc:a89910bf95097ffa58c91a8a39ed08c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed result of <code>x</code> / <code>y</code>.  <a href="saturation_8hpp.html#a89910bf95097ffa58c91a8a39ed08c6e">More...</a><br /></td></tr>
+<tr class="separator:a89910bf95097ffa58c91a8a39ed08c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3849c4a2e9d56fd018fb51cb5a239ffc"><td class="memItemLeft" align="right" valign="top">constexpr int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a3849c4a2e9d56fd018fb51cb5a239ffc">saturation::divs32</a> (int32_t const x, int32_t const y)</td></tr>
+<tr class="memdesc:a3849c4a2e9d56fd018fb51cb5a239ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 32 bit signed result of <code>x</code> / <code>y</code>.  <a href="saturation_8hpp.html#a3849c4a2e9d56fd018fb51cb5a239ffc">More...</a><br /></td></tr>
+<tr class="separator:a3849c4a2e9d56fd018fb51cb5a239ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0be9b5a2a9d881da86424183934804f"><td class="memItemLeft" align="right" valign="top">constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ad0be9b5a2a9d881da86424183934804f">saturation::divs16</a> (int16_t const x, int16_t const y)</td></tr>
+<tr class="memdesc:ad0be9b5a2a9d881da86424183934804f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 16 bit signed result of <code>x</code> / <code>y</code>.  <a href="saturation_8hpp.html#ad0be9b5a2a9d881da86424183934804f">More...</a><br /></td></tr>
+<tr class="separator:ad0be9b5a2a9d881da86424183934804f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27eea6afc962651b475458a8c28082b1"><td class="memItemLeft" align="right" valign="top">constexpr int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a27eea6afc962651b475458a8c28082b1">saturation::divs8</a> (int8_t const x, int8_t const y)</td></tr>
+<tr class="memdesc:a27eea6afc962651b475458a8c28082b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 8 bit signed result of <code>x</code> / <code>y</code>.  <a href="saturation_8hpp.html#a27eea6afc962651b475458a8c28082b1">More...</a><br /></td></tr>
+<tr class="separator:a27eea6afc962651b475458a8c28082b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Signed Multiplication</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating multiplication of signed integral quantities from 4 to 32 bits. </p>
+</div></td></tr>
+<tr class="memitem:a27552aac61d63ad3e86613c11e67038e"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 32)&gt;&gt; </td></tr>
+<tr class="memitem:a27552aac61d63ad3e86613c11e67038e"><td class="memTemplItemLeft" align="right" valign="top">constexpr sinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a27552aac61d63ad3e86613c11e67038e">saturation::muls</a> (sinteger_t&lt; N &gt; const x, sinteger_t&lt; N &gt; const y)</td></tr>
+<tr class="memdesc:a27552aac61d63ad3e86613c11e67038e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed result of multiplying <code>x</code> by <code>y</code>.  <a href="saturation_8hpp.html#a27552aac61d63ad3e86613c11e67038e">More...</a><br /></td></tr>
+<tr class="separator:a27552aac61d63ad3e86613c11e67038e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08a083d8f9e4da67e02f6dcb93b28e52"><td class="memItemLeft" align="right" valign="top">constexpr int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a08a083d8f9e4da67e02f6dcb93b28e52">saturation::muls32</a> (int32_t const x, int32_t const y)</td></tr>
+<tr class="memdesc:a08a083d8f9e4da67e02f6dcb93b28e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed 32 bit result of multiplying <code>x</code> by <code>y</code>.  <a href="saturation_8hpp.html#a08a083d8f9e4da67e02f6dcb93b28e52">More...</a><br /></td></tr>
+<tr class="separator:a08a083d8f9e4da67e02f6dcb93b28e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bb04e9ac8eef8189544a331c81566de"><td class="memItemLeft" align="right" valign="top">constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a8bb04e9ac8eef8189544a331c81566de">saturation::muls16</a> (int16_t const x, int16_t const y)</td></tr>
+<tr class="memdesc:a8bb04e9ac8eef8189544a331c81566de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed 16 bit result of multiplying <code>x</code> by <code>y</code>.  <a href="saturation_8hpp.html#a8bb04e9ac8eef8189544a331c81566de">More...</a><br /></td></tr>
+<tr class="separator:a8bb04e9ac8eef8189544a331c81566de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57a69f571a148dfdb3acff8114e8051a"><td class="memItemLeft" align="right" valign="top">constexpr int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a57a69f571a148dfdb3acff8114e8051a">saturation::muls8</a> (int8_t const x, int8_t const y)</td></tr>
+<tr class="memdesc:a57a69f571a148dfdb3acff8114e8051a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed 8 bit result of multiplying <code>x</code> by <code>y</code>.  <a href="saturation_8hpp.html#a57a69f571a148dfdb3acff8114e8051a">More...</a><br /></td></tr>
+<tr class="separator:a57a69f571a148dfdb3acff8114e8051a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -266,7 +289,1570 @@ template&lt;size_t N&gt; </td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A collection of functions which provide saturating arithmetic (addition, subtraction, multiplication, and division) for signed and unsigned integer types. </p>
 <p >Types can range from 4 to 64 bits for addition, subtraction, and division, and from 4 to 32 bits for multiplication. Operations using integers of width matching target registers are likely to be branchless. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a5b51c37abde06fbcaeadc24041dc3640" name="a5b51c37abde06fbcaeadc24041dc3640"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b51c37abde06fbcaeadc24041dc3640">&#9670;&nbsp;</a></span>adds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr sinteger_t&lt; N &gt; saturation::adds </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a15483fcb0b3f2248d8d858163ab505aa">sinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a15483fcb0b3f2248d8d858163ab505aa">sinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds two signed values each <code>N</code> bits wide. </p>
+<p >Returns \( 2^{N-1}-1 \) or \( -2^{N-1} \) if the result cannot be represented in <code>N</code> bits.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">N</td><td>The number of bits for the unsigned arguments and result. May be in the range \( [4, 64] \). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first of the two values to be added. </td></tr>
+    <tr><td class="paramname">y</td><td>The second of the two values to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^{N-1}-1 \) if the result is positive but cannot be represented in <code>N</code> bits; \( -2{N-1} \) if the result is negative but cannot be represented in <code>N</code> bits. </dd></dl>
+
+</div>
+</div>
+<a id="ab4239169a29842e126180788f0edb165" name="ab4239169a29842e126180788f0edb165"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4239169a29842e126180788f0edb165">&#9670;&nbsp;</a></span>adds16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int16_t saturation::adds16 </td>
+          <td>(</td>
+          <td class="paramtype">int16_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds two signed 16 bit values. </p>
+<p >Returns \( 2^{14}-1 \) or \( -2^{14} \) if the result cannot be represented in 16 bits.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first of the two signed 16 bit values to be added. </td></tr>
+    <tr><td class="paramname">y</td><td>The second of the two signed 16 bit values to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^{15}-1 \) if the result is positive but cannot be represented in 16 bits; \( -2{15} \) if the result is negative but cannot be represented in 16 bits. </dd></dl>
+
+</div>
+</div>
+<a id="a58b632592b3c743780b19bdbc3d20000" name="a58b632592b3c743780b19bdbc3d20000"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58b632592b3c743780b19bdbc3d20000">&#9670;&nbsp;</a></span>adds32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int32_t saturation::adds32 </td>
+          <td>(</td>
+          <td class="paramtype">int32_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds two signed 32 bit values. </p>
+<p >Returns \( 2^{31}-1 \) or \( -2^{31} \) if the result cannot be represented in 32 bits.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first of the two signed 32 bit values to be added. </td></tr>
+    <tr><td class="paramname">y</td><td>The second of the two signed 32 bit values to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^{31}-1 \) if the result is positive but cannot be represented in 32 bits; \( -2{31} \) if the result is negative but cannot be represented in 32 bits. </dd></dl>
+
+</div>
+</div>
+<a id="a2b82d56fdb2f5f069be97276e997b277" name="a2b82d56fdb2f5f069be97276e997b277"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b82d56fdb2f5f069be97276e997b277">&#9670;&nbsp;</a></span>adds8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int16_t saturation::adds8 </td>
+          <td>(</td>
+          <td class="paramtype">int8_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int8_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds two signed 8 bit values. </p>
+<p >Returns \( 2^{7}-1 \) or \( -2^{7} \) if the result cannot be represented in 8 bits.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first of the two signed 8 bit values to be added. </td></tr>
+    <tr><td class="paramname">y</td><td>The second of the two signed 8 bit values to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^{7}-1 \) if the result is positive but cannot be represented in 8 bits; \( -2{7} \) if the result is negative but cannot be represented in 8 bits. </dd></dl>
+
+</div>
+</div>
+<a id="a3679bc95b3ff1b910027aecdbc786fdc" name="a3679bc95b3ff1b910027aecdbc786fdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3679bc95b3ff1b910027aecdbc786fdc">&#9670;&nbsp;</a></span>addu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uinteger_t&lt; N &gt; saturation::addu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a9b1646f9c84af944a40963d416567a34">uinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a9b1646f9c84af944a40963d416567a34">uinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds two unsigned values each <code>N</code> bits wide. </p>
+<p >Returns \( 2^N-1 \) if the result cannot be represented in <code>N</code> bits.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">N</td><td>The number of bits for the unsigned arguments and result. May be in the range \( [4, 64] \). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first of the two unsigned values to be added. </td></tr>
+    <tr><td class="paramname">y</td><td>The second of the two unsigned values to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^N-1 \) if the result cannot be represented in <code>N</code> bits. </dd></dl>
+
+</div>
+</div>
+<a id="ac6bdf02a502d211a8f2187f509bbcf98" name="ac6bdf02a502d211a8f2187f509bbcf98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6bdf02a502d211a8f2187f509bbcf98">&#9670;&nbsp;</a></span>addu16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint16_t saturation::addu16 </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds two unsigned 16 bit values. </p>
+<p >Returns \( 2^{16}-1 \) if the result cannot be represented in 16 bits.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first of the two unsigned 16 bit values to be added. </td></tr>
+    <tr><td class="paramname">y</td><td>The second of the two unsigned 16 bit values to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^{16}-1 \) if the result cannot be represented in 16 bits. </dd></dl>
+
+</div>
+</div>
+<a id="a2edb59acff23537f60d203db87f49e22" name="a2edb59acff23537f60d203db87f49e22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2edb59acff23537f60d203db87f49e22">&#9670;&nbsp;</a></span>addu32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint32_t saturation::addu32 </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds two unsigned 32 bit values. </p>
+<p >Returns \( 2^{32}-1 \) if the result cannot be represented in 32 bits.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first of the two unsigned 32 bit values to be added. </td></tr>
+    <tr><td class="paramname">y</td><td>The second of the two unsigned 32 bit values to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^{32}-1 \) if the result cannot be represented in 32 bits. </dd></dl>
+
+</div>
+</div>
+<a id="af3d2a1f2a949d740acf9076485c70a29" name="af3d2a1f2a949d740acf9076485c70a29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3d2a1f2a949d740acf9076485c70a29">&#9670;&nbsp;</a></span>addu8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint8_t saturation::addu8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds two unsigned 8 bit values. </p>
+<p >Returns \( 2^8-1 \) if the result cannot be represented in 8 bits.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first of the two unsigned 8 bit values to be added. </td></tr>
+    <tr><td class="paramname">y</td><td>The second of the two unsigned 8 bit values to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^8-1 \) if the result cannot be represented in 8 bits. </dd></dl>
+
+</div>
+</div>
+<a id="a89910bf95097ffa58c91a8a39ed08c6e" name="a89910bf95097ffa58c91a8a39ed08c6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89910bf95097ffa58c91a8a39ed08c6e">&#9670;&nbsp;</a></span>divs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr sinteger_t&lt; N &gt; saturation::divs </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a15483fcb0b3f2248d8d858163ab505aa">sinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a15483fcb0b3f2248d8d858163ab505aa">sinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the signed result of <code>x</code> / <code>y</code>. </p>
+<dl class="section note"><dt>Note</dt><dd>Twos complement signed division can overflow because \( \frac{-2^{N-1}}{-1} = 2^{N-1} \).</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">N</td><td>The number of bits for the twos complement arguments and result. May be in the range \( [4, 64] \). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The signed dividend. </td></tr>
+    <tr><td class="paramname">y</td><td>The signed divisor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> / <code>y</code>. If the result would be too large and positive, \( 2^{N-1}-1 \) (<a class="el" href="structsaturation_1_1limits.html#a2f8f91afe4b74da175e8bde1281597d2">saturation::limits&lt;N&gt;::max()</a>); if the result would be too large and negative, \( -2^{N-1} \) (<a class="el" href="structsaturation_1_1limits.html#a06f1b78fecb9d8e8b3090da471e7722c">saturation::limits&lt;N&gt;::min()</a>). </dd></dl>
+
+</div>
+</div>
+<a id="ad0be9b5a2a9d881da86424183934804f" name="ad0be9b5a2a9d881da86424183934804f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0be9b5a2a9d881da86424183934804f">&#9670;&nbsp;</a></span>divs16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int16_t saturation::divs16 </td>
+          <td>(</td>
+          <td class="paramtype">int16_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the 16 bit signed result of <code>x</code> / <code>y</code>. </p>
+<dl class="section note"><dt>Note</dt><dd>Twos complement signed division can overflow because \( \frac{-2^{15}}{-1} = 2^{15} \).</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The 16 bit signed dividend. </td></tr>
+    <tr><td class="paramname">y</td><td>The 16 bit signed divisor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> / <code>y</code>. If the result would be too large and positive, \( 2^{15}-1 \) (that is, std::numeric_limits&lt;int16_t&gt;::max()); if the result would be too large and negative, \( -2^{15} \) (that is, std::numeric_limits&lt;int16_t&gt;::min()). </dd></dl>
+
+</div>
+</div>
+<a id="a3849c4a2e9d56fd018fb51cb5a239ffc" name="a3849c4a2e9d56fd018fb51cb5a239ffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3849c4a2e9d56fd018fb51cb5a239ffc">&#9670;&nbsp;</a></span>divs32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int32_t saturation::divs32 </td>
+          <td>(</td>
+          <td class="paramtype">int32_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the 32 bit signed result of <code>x</code> / <code>y</code>. </p>
+<dl class="section note"><dt>Note</dt><dd>Twos complement signed division can overflow because \( \frac{-2^{31}}{-1} = 2^{31} \).</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The 32 bit signed dividend. </td></tr>
+    <tr><td class="paramname">y</td><td>The 32 bit signed divisor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> / <code>y</code>. If the result would be too large and positive, \( 2^{31}-1 \) (that is, std::numeric_limits&lt;int32_t&gt;::max()); if the result would be too large and negative, \( -2^{31} \) (that is, std::numeric_limits&lt;int32_t&gt;::min()). </dd></dl>
+
+</div>
+</div>
+<a id="a27eea6afc962651b475458a8c28082b1" name="a27eea6afc962651b475458a8c28082b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27eea6afc962651b475458a8c28082b1">&#9670;&nbsp;</a></span>divs8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int8_t saturation::divs8 </td>
+          <td>(</td>
+          <td class="paramtype">int8_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int8_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the 8 bit signed result of <code>x</code> / <code>y</code>. </p>
+<dl class="section note"><dt>Note</dt><dd>Twos complement signed division can overflow because \( \frac{-2^7}{-1} = 2^7 \).</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The 8 bit signed dividend. </td></tr>
+    <tr><td class="paramname">y</td><td>The 8 bit signed divisor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> / <code>y</code>. If the result would be too large and positive, \( 2^7-1 \) (that is, std::numeric_limits&lt;int8_t&gt;::max()); if the result would be too large and negative, \( -2^7 \) (that is, std::numeric_limits&lt;int8_t&gt;::min()). </dd></dl>
+
+</div>
+</div>
+<a id="a2f93716fee711b811f476e9fdef8da58" name="a2f93716fee711b811f476e9fdef8da58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f93716fee711b811f476e9fdef8da58">&#9670;&nbsp;</a></span>divu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uinteger_t&lt; N &gt; saturation::divu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a9b1646f9c84af944a40963d416567a34">uinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a9b1646f9c84af944a40963d416567a34">uinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the unsigned result of <code>x</code> / <code>y</code>. </p>
+<dl class="section note"><dt>Note</dt><dd>Unsigned division cannot overflow; this function is provided for symmetry and completeness.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">N</td><td>The number of bits for the arguments and result. May be any in the range \( [4, 64] \). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The unsigned dividend. </td></tr>
+    <tr><td class="paramname">y</td><td>The unsigned divisor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> / <code>y</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a615a49f4e34625066ca04f3eabfde164" name="a615a49f4e34625066ca04f3eabfde164"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a615a49f4e34625066ca04f3eabfde164">&#9670;&nbsp;</a></span>divu16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint16_t saturation::divu16 </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the unsigned result of <code>x</code> / <code>y</code>. </p>
+<dl class="section note"><dt>Note</dt><dd>Unsigned division cannot overflow; this function is provided for symmetry and completeness.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The unsigned 16 bit dividend. </td></tr>
+    <tr><td class="paramname">y</td><td>The unsigned 16 bit divisor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> / <code>y</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ae3bd45d3e550927074d8b7099e592363" name="ae3bd45d3e550927074d8b7099e592363"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3bd45d3e550927074d8b7099e592363">&#9670;&nbsp;</a></span>divu32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint32_t saturation::divu32 </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the unsigned result of <code>x</code> / <code>y</code>. </p>
+<dl class="section note"><dt>Note</dt><dd>Unsigned division cannot overflow; this function is provided for symmetry and completeness.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The unsigned 32 bit dividend. </td></tr>
+    <tr><td class="paramname">y</td><td>The unsigned 32 bit divisor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> / <code>y</code>. </dd></dl>
+
+</div>
+</div>
+<a id="aab65049549d121c66491f57558679150" name="aab65049549d121c66491f57558679150"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab65049549d121c66491f57558679150">&#9670;&nbsp;</a></span>divu8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint8_t saturation::divu8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the unsigned result of <code>x</code> / <code>y</code>. </p>
+<dl class="section note"><dt>Note</dt><dd>Unsigned division cannot overflow; this function is provided for symmetry and completeness.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The unsigned 8 bit dividend. </td></tr>
+    <tr><td class="paramname">y</td><td>The unsigned 8 bit divisor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> / <code>y</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a27552aac61d63ad3e86613c11e67038e" name="a27552aac61d63ad3e86613c11e67038e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27552aac61d63ad3e86613c11e67038e">&#9670;&nbsp;</a></span>muls()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 32)&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr sinteger_t&lt; N &gt; saturation::muls </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a15483fcb0b3f2248d8d858163ab505aa">sinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a15483fcb0b3f2248d8d858163ab505aa">sinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the signed result of multiplying <code>x</code> by <code>y</code>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">N</td><td>The number of bits for the twos complement arguments and result. May be in the range \( [4, 32] \). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first value to be multiplied. </td></tr>
+    <tr><td class="paramname">y</td><td>The second value to be multiplied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large and positive, \( 2^{N-1}-1 \) (<a class="el" href="structsaturation_1_1limits.html#a2f8f91afe4b74da175e8bde1281597d2">saturation::limits&lt;N&gt;::max()</a>); if the result would be too large and negative, \( -2^{N-1} \) (<a class="el" href="structsaturation_1_1limits.html#a06f1b78fecb9d8e8b3090da471e7722c">saturation::limits&lt;N&gt;::min()</a>). </dd></dl>
+
+</div>
+</div>
+<a id="a8bb04e9ac8eef8189544a331c81566de" name="a8bb04e9ac8eef8189544a331c81566de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bb04e9ac8eef8189544a331c81566de">&#9670;&nbsp;</a></span>muls16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int16_t saturation::muls16 </td>
+          <td>(</td>
+          <td class="paramtype">int16_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the signed 16 bit result of multiplying <code>x</code> by <code>y</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first 16 bit signed value to be multiplied. </td></tr>
+    <tr><td class="paramname">y</td><td>The second 16 bit signed value to be multiplied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large and positive, \( 2^{15}-1 \) (<code>std::numeric_limits&lt;int16_t&gt;::max()</code>); if the result would be too large and negative, \( -2^{15} \) (<code>std::numeric_limits&lt;int16_t&gt;::min()</code>). </dd></dl>
+
+</div>
+</div>
+<a id="a08a083d8f9e4da67e02f6dcb93b28e52" name="a08a083d8f9e4da67e02f6dcb93b28e52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08a083d8f9e4da67e02f6dcb93b28e52">&#9670;&nbsp;</a></span>muls32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int32_t saturation::muls32 </td>
+          <td>(</td>
+          <td class="paramtype">int32_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the signed 32 bit result of multiplying <code>x</code> by <code>y</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first 32 bit signed value to be multiplied. </td></tr>
+    <tr><td class="paramname">y</td><td>The second 32 bit signed value to be multiplied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large and positive, \( 2^{31}-1 \) (<code>std::numeric_limits&lt;int32_t&gt;::max()</code>); if the result would be too large and negative, \( -2^{31} \) (<code>std::numeric_limits&lt;int32_t&gt;::min()</code>). </dd></dl>
+
+</div>
+</div>
+<a id="a57a69f571a148dfdb3acff8114e8051a" name="a57a69f571a148dfdb3acff8114e8051a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57a69f571a148dfdb3acff8114e8051a">&#9670;&nbsp;</a></span>muls8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int8_t saturation::muls8 </td>
+          <td>(</td>
+          <td class="paramtype">int8_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int8_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the signed 8 bit result of multiplying <code>x</code> by <code>y</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first 8 bit signed value to be multiplied. </td></tr>
+    <tr><td class="paramname">y</td><td>The second 8 bit signed value to be multiplied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large and positive, \( 2^7-1 \) (<code>std::numeric_limits&lt;int8_t&gt;::max()</code>); if the result would be too large and negative, \( -2^7 \) (<code>std::numeric_limits&lt;int8_t&gt;::min()</code>). </dd></dl>
+
+</div>
+</div>
+<a id="ae8ee4b4520de406361fb5149cba9e48e" name="ae8ee4b4520de406361fb5149cba9e48e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8ee4b4520de406361fb5149cba9e48e">&#9670;&nbsp;</a></span>mulu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 32)&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uinteger_t&lt; N &gt; saturation::mulu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a9b1646f9c84af944a40963d416567a34">uinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a9b1646f9c84af944a40963d416567a34">uinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the value of <code>x</code> &times; <code>y</code>. </p>
+<p >If the result overflows &mdash; that is, the correct answer is too large to be representable with an unsigned integer of <code>N</code> bits &mdash; the returned value is \( 2^N-1 \).</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">N</td><td>The number of bits for the unsigned arguments and result. May be in the range \( [4, 64] \). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first value to be multiplied. </td></tr>
+    <tr><td class="paramname">y</td><td>The second value to be multiplied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large, \( 2^N-1 \) (<a class="el" href="structsaturation_1_1limits.html#a2f8f91afe4b74da175e8bde1281597d2">saturation::limits&lt;N&gt;::max()</a>). </dd></dl>
+
+</div>
+</div>
+<a id="a09d07c000f05690fd75704a6b94007e5" name="a09d07c000f05690fd75704a6b94007e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09d07c000f05690fd75704a6b94007e5">&#9670;&nbsp;</a></span>mulu16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint16_t saturation::mulu16 </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the unsigned 16 bit value of <code>x</code> &times; <code>y</code>. </p>
+<p >If the result overflows &mdash; that is, the correct answer is too large to be representable by a 16 bit unsigned integer &mdash; the returned value is \( 2^{16}-1 \).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first value to be multiplied. </td></tr>
+    <tr><td class="paramname">y</td><td>The second value to be multiplied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large, \( 2^{16}-1 \) (<code>std::numeric_limits&lt;uint16_t&gt;::max()</code>). </dd></dl>
+
+</div>
+</div>
+<a id="a13c3bb333e3131b1497ac713d84a996d" name="a13c3bb333e3131b1497ac713d84a996d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13c3bb333e3131b1497ac713d84a996d">&#9670;&nbsp;</a></span>mulu32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint32_t saturation::mulu32 </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the unsigned 32 bit value of <code>x</code> &times; <code>y</code>. </p>
+<p >If the result overflows &mdash; that is, the correct answer is too large to be representable by a 32 bit unsigned integer &mdash; the returned value is \( 2^{32}-1 \).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first value to be multiplied. </td></tr>
+    <tr><td class="paramname">y</td><td>The second value to be multiplied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large, \( 2^{32}-1 \) (<code>std::numeric_limits&lt;uint32_t&gt;::max()</code>). </dd></dl>
+
+</div>
+</div>
+<a id="a8f71756c557d5153d18b03cc90ea13f1" name="a8f71756c557d5153d18b03cc90ea13f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f71756c557d5153d18b03cc90ea13f1">&#9670;&nbsp;</a></span>mulu8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint8_t saturation::mulu8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the unsigned 8 bit value of <code>x</code> &times; <code>y</code>. </p>
+<p >If the result overflows &mdash; that is, the correct answer is too large to be representable by an 8 bit unsigned integer &mdash; the returned value is \( 2^{8}-1 \).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first value to be multiplied. </td></tr>
+    <tr><td class="paramname">y</td><td>The second value to be multiplied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large, \( 2^{8}-1 \) (<code>std::numeric_limits&lt;uint8_t&gt;::max()</code>). </dd></dl>
+
+</div>
+</div>
+<a id="a4a6e2f5418aedfc8e0f1f60501fd1411" name="a4a6e2f5418aedfc8e0f1f60501fd1411"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a6e2f5418aedfc8e0f1f60501fd1411">&#9670;&nbsp;</a></span>subs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr sinteger_t&lt; N &gt; saturation::subs </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a15483fcb0b3f2248d8d858163ab505aa">sinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a15483fcb0b3f2248d8d858163ab505aa">sinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the signed result of <code>x</code> - <code>y</code>. </p>
+<p >If the result overflows &mdash; that is, the result is either too large or too small to be representable with a twos-complement integer of <code>N</code> bits &mdash; the result is \( 2^{N-1}-1 \) or \( -2^{N-1} \) respectively.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">N</td><td>The number of bits for the twos complement arguments and result. May be in the range \( [4, 64] \). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The value from which <code>y</code> is deducted. </td></tr>
+    <tr><td class="paramname">y</td><td>The value deducted from <code>x</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> - <code>y</code>. If the result would be too small, \( -2^{N-1} \) (<a class="el" href="structsaturation_1_1limits.html#a06f1b78fecb9d8e8b3090da471e7722c">saturation::limits&lt;N&gt;::min()</a>); if the result would be too large, \( 2^{N-1}-1 \) (<a class="el" href="structsaturation_1_1limits.html#a2f8f91afe4b74da175e8bde1281597d2">saturation::limits&lt;N&gt;::max()</a>). </dd></dl>
+
+</div>
+</div>
+<a id="ac23b6b0273dd429607630aefd40610c1" name="ac23b6b0273dd429607630aefd40610c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac23b6b0273dd429607630aefd40610c1">&#9670;&nbsp;</a></span>subs16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int16_t saturation::subs16 </td>
+          <td>(</td>
+          <td class="paramtype">int16_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the 16 bit signed result of <code>x</code> - <code>y</code>. </p>
+<p >If the result overflows &mdash; that is, the result is either too large or too small to be representable by a twos-complement integer of 16 bits &mdash; the result is \( 2^{15}-1 \) or \( -2^{15} \) respectively.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The 16 bit signed value from which <code>y</code> is deducted. </td></tr>
+    <tr><td class="paramname">y</td><td>The 16 bit signed value deducted from <code>x</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> - <code>y</code>. If the result would be too small, \( -2^{15} \) (std::numeric_limits&lt;int16_t&gt;::min()); if the result would be too large, \( 2^{15}-1 \) (std::numeric_limits&lt;int16_t&gt;::max()). </dd></dl>
+
+</div>
+</div>
+<a id="a22e9c5913914a1a45302a70c374aef51" name="a22e9c5913914a1a45302a70c374aef51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22e9c5913914a1a45302a70c374aef51">&#9670;&nbsp;</a></span>subs32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int32_t saturation::subs32 </td>
+          <td>(</td>
+          <td class="paramtype">int32_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the 32 bit signed result of <code>x</code> - <code>y</code>. </p>
+<p >If the result overflows &mdash; that is, the result is either too large or too small to be representable by a twos-complement integer of 32 bits &mdash; the result is \( 2^{31}-1 \) or \( -2^{31} \) respectively.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The 32 bit signed value from which <code>y</code> is deducted. </td></tr>
+    <tr><td class="paramname">y</td><td>The 32 bit signed value deducted from <code>x</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> - <code>y</code>. If the result would be too small, \( -2^{31} \) (std::numeric_limits&lt;int32_t&gt;::min()); if the result would be too large, \( 2^{31}-1 \) (std::numeric_limits&lt;int32_t&gt;::max()). </dd></dl>
+
+</div>
+</div>
+<a id="a6c523fae2d5f8d17280195e925f08fc8" name="a6c523fae2d5f8d17280195e925f08fc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c523fae2d5f8d17280195e925f08fc8">&#9670;&nbsp;</a></span>subs8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int8_t saturation::subs8 </td>
+          <td>(</td>
+          <td class="paramtype">int8_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int8_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the 8 bit signed result of <code>x</code> - <code>y</code>. </p>
+<p >If the result overflows &mdash; that is, the result is either too large or too small to be representable by a twos-complement integer of 8 bits &mdash; the result is \( 2^7-1 \) or \( -2^7 \) respectively.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The 8 bit signed value from which <code>y</code> is deducted. </td></tr>
+    <tr><td class="paramname">y</td><td>The 8 bit signed value deducted from <code>x</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> - <code>y</code>. If the result would be too small, \( -2^7 \) (std::numeric_limits&lt;int8_t&gt;::min()); if the result would be too large, \( 2^7-1 \) (std::numeric_limits&lt;int8_t&gt;::max()). </dd></dl>
+
+</div>
+</div>
+<a id="a5158b7680d4b465f34edbfd8b8a08498" name="a5158b7680d4b465f34edbfd8b8a08498"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5158b7680d4b465f34edbfd8b8a08498">&#9670;&nbsp;</a></span>subu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uinteger_t&lt; N &gt; saturation::subu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a9b1646f9c84af944a40963d416567a34">uinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="saturation_8hpp.html#a9b1646f9c84af944a40963d416567a34">uinteger_t</a>&lt; N &gt; const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Computes the result of <code>x</code> - <code>y</code>. If the result overflows &mdash; that is, the result is too large to be representable with an unsigned integer of <code>N</code> bits &mdash; the returned value is \( 2^N-1 \).</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">N</td><td>The number of bits for the unsigned arguments and result. May be in the range \( [4, 64] \). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The value from which <code>y</code> is deducted. </td></tr>
+    <tr><td class="paramname">y</td><td>The value deducted from <code>x</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> - <code>y</code>. If the result would be too large, \( 2^N-1 \) (<a class="el" href="structsaturation_1_1limits.html#a2f8f91afe4b74da175e8bde1281597d2">saturation::limits&lt;N&gt;::max()</a>). </dd></dl>
+
+</div>
+</div>
+<a id="ac8f333ee4039141f9a2e9bc2ef52de60" name="ac8f333ee4039141f9a2e9bc2ef52de60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8f333ee4039141f9a2e9bc2ef52de60">&#9670;&nbsp;</a></span>subu16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint16_t saturation::subu16 </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the 16 bit unsigned result of <code>x</code> - <code>y</code>. </p>
+<p >If the result overflows (that is, the correct result would be &ge; \( 2^{16} \) ) the result is \( 2^{16}-1 \).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The 16 bit unsigned value from which <code>y</code> is deducted. </td></tr>
+    <tr><td class="paramname">y</td><td>The 16 bit unsigned value deducted from <code>x</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> - <code>y</code>. If the result would be too large, \( 2^{16}-1 \) (<code>std::numeric_limits&lt;uint16_t&gt;::max()</code>). </dd></dl>
+
+</div>
+</div>
+<a id="a22e744f6f7792ac346b2411fcc6bc522" name="a22e744f6f7792ac346b2411fcc6bc522"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22e744f6f7792ac346b2411fcc6bc522">&#9670;&nbsp;</a></span>subu32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint32_t saturation::subu32 </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the 32 bit unsigned result of <code>x</code> - <code>y</code>. </p>
+<p >If the result overflows (that is, the correct result would be &ge; \( 2^{32} \) ) the returned value is \( 2^{32}-1 \).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The 32 bit unsigned value from which <code>y</code> is deducted. </td></tr>
+    <tr><td class="paramname">y</td><td>The 32 bit unsigned value deducted from <code>x</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> - <code>y</code>. If the result would be too large, \( 2^{32}-1 \) (<code>std::numeric_limits&lt;uint32_t&gt;::max()</code>). </dd></dl>
+
+</div>
+</div>
+<a id="a116d1768149c1eca6cf285bcd21affb4" name="a116d1768149c1eca6cf285bcd21affb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a116d1768149c1eca6cf285bcd21affb4">&#9670;&nbsp;</a></span>subu8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint8_t saturation::subu8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the 8 bit unsigned result of <code>x</code> - <code>y</code>. </p>
+<p >If the result overflows (that is, the correct result would be &ge; \( 2^{8} \) ) the result is \( 2^{8}-1 \).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The 8 bit unsigned value from which <code>y</code> is deducted. </td></tr>
+    <tr><td class="paramname">y</td><td>The 8 bit unsigned value deducted from <code>x</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> - <code>y</code>. If the result would be too large, \( 2^{8}-1 \) (<code>std::numeric_limits&lt;uint8_t&gt;::max()</code>). </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4

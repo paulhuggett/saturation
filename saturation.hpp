@@ -171,9 +171,9 @@ private:
 
 // addu
 // ~~~~
-/// \defgroup addu Unsigned Addition
-/// \brief Functions that perform saturating addition of unsigned integral
-///   quantities from 4 to 64 bits.
+/// \name Unsigned Addition
+/// Functions that perform saturating addition of unsigned integral
+/// quantities from 4 to 64 bits.
 /// @{
 
 /// \brief Adds two unsigned values each \p N bits wide.
@@ -232,9 +232,9 @@ constexpr uint8_t addu8 (uint8_t const x, uint8_t const y) {
 
 // subu
 // ~~~~
-/// \defgroup subu Unsigned Subtraction
-/// \brief  Functions that perform saturating subtraction of unsigned integral
-///   quantities from 4 to 64 bits.
+/// \name Unsigned Subtraction
+/// Functions that perform saturating subtraction of unsigned integral
+/// quantities from 4 to 64 bits.
 /// @{
 
 /// Computes the result of \p x - \p y. If the result overflows --- that is, the
@@ -297,9 +297,9 @@ constexpr uint8_t subu8 (uint8_t const x, uint8_t const y) {
 
 // divu
 // ~~~~
-/// \defgroup divu Unsigned Division
-/// \brief  Functions that perform saturating division of unsigned integral
-///   quantities from 4 to 64 bits.
+/// \name Unsigned Division
+/// Functions that perform saturating division of unsigned integral
+/// quantities from 4 to 64 bits.
 /// @{
 
 /// \brief Computes the unsigned result of \p x / \p y.
@@ -355,9 +355,9 @@ constexpr uint8_t divu8 (uint8_t const x, uint8_t const y) {
 
 // mulu
 // ~~~~
-/// \defgroup mulu Unsigned Multiplication
-/// \brief  Functions that perform saturating multiplication of unsigned
-///   integral quantities from 4 to 32 bits.
+/// \name Unsigned Multiplication
+/// Functions that perform saturating multiplication of unsigned
+/// integral quantities from 4 to 32 bits.
 /// @{
 
 /// \brief Computes the value of \p x &times; \p y.
@@ -427,9 +427,9 @@ constexpr uint8_t mulu8 (uint8_t const x, uint8_t const y) {
 // signed arithmetic
 // *****************
 
-/// \defgroup adds Signed Addition
-/// \brief  Functions that perform saturating addition of signed integral
-///   quantities from 4 to 64 bits.
+/// \name Signed Addition
+/// Functions that perform saturating addition of signed integral
+/// quantities from 4 to 64 bits.
 /// @{
 
 // adds
@@ -518,9 +518,9 @@ constexpr int16_t adds8 (int8_t const x, int8_t const y) {
 
 // subs
 // ~~~~
-/// \defgroup subs Signed Subtraction
-/// \brief  Functions that perform saturating subtraction of signed integral
-///   quantities from 4 to 64 bits.
+/// \name Signed Subtraction
+/// Functions that perform saturating subtraction of signed integral
+/// quantities from 4 to 64 bits.
 /// @{
 
 /// \brief Computes the signed result of \p x - \p y.
@@ -610,9 +610,9 @@ constexpr int8_t subs8 (int8_t const x, int8_t const y) {
 
 // divs
 // ~~~~
-/// \defgroup divs Signed Division
-/// \brief  Functions that perform saturating division of signed integral
-///   quantities from 4 to 64 bits.
+/// \name Signed Division
+/// Functions that perform saturating division of signed integral
+/// quantities from 4 to 64 bits.
 /// @{
 
 /// \brief Computes the signed result of \p x / \p y.
@@ -688,9 +688,9 @@ constexpr int8_t divs8 (int8_t const x, int8_t const y) {
 
 // muls
 // ~~~~
-/// \defgroup muls Signed Multiplication
-/// \brief  Functions that perform saturating multiplication of signed integral
-///   quantities from 4 to 32 bits.
+/// \name Signed Multiplication
+/// Functions that perform saturating multiplication of signed integral
+/// quantities from 4 to 32 bits.
 /// @{
 
 /// \brief Computes the signed result of multiplying \p x by \p y.
