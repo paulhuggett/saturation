@@ -80,8 +80,12 @@ f (_S_integer_t<_X_> a,
 }
 EOF
         clang++ -I.. -x c++ -std=c++17 -S -O3 -DNDEBUG -target $cpu-apple-darwin20.1.0 -o $asm $cpp
+        if [[ $? -ne 0 ]]; then
+            exit 1
+        fi
+
         # delete assembler directives and comment lines.
-        sed -I~ -e '/^[[:space:]]*[.@#;]/d' $asm
+        sed -I '' -e '/^[[:space:]]*[.@#;]/d' $asm
 
         sign_class_name="sign-$sign"
         if [ $sign == 's' ]; then 
