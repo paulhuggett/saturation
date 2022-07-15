@@ -27,25 +27,29 @@ struct sinteger {
 /// \brief A helper type for convenient use of sinteger<N>::type.
 template <size_t N>
 using sinteger_t = typename sinteger<N>::type;
-/// \brief Yields a signed integral type of 8 bits.
+/// \brief Yields a signed integral type of 8 bits or more.
 template <>
 struct sinteger<8> {
-  using type = int8_t;  ///< The type of a signed 8 bit integral.
+  /// Smallest signed integer type with width of at least 8 bits.
+  using type = int_least8_t;
 };
-/// \brief Yields a signed integral type of 16 bits.
+/// \brief Yields a signed integral type of 16 bits or more.
 template <>
 struct sinteger<16> {
-  using type = int16_t;  ///< The type of a signed 16 bit integral.
+  /// Smallest signed integer type with width of at least 16 bits.
+  using type = int_least16_t;
 };
-/// \brief Yields a signed integral type of 32 bits.
+/// \brief Yields a signed integral type of 32 bits or more.
 template <>
 struct sinteger<32> {
-  using type = int32_t;  ///< The type of a signed 32 bit integral.
+  /// Smallest signed integer type with width of at least 32 bits.
+  using type = int_least32_t;
 };
-/// \brief Yields a signed integral type of 64 bits.
+/// \brief Yields a signed integral type of 64 bits or more.
 template <>
 struct sinteger<64> {
-  using type = int64_t;  ///< The type of a signed 64 bit integral.
+  /// Smallest signed integer type with width of at least 64 bits.
+  using type = int_least64_t;
 };
 
 /// \brief Yields the smallest unsigned integral type with at least \p N bits.
@@ -57,25 +61,29 @@ struct uinteger {
 /// \brief A helper type for convenient use of uinteger<N>::type.
 template <size_t N>
 using uinteger_t = typename uinteger<N>::type;
-/// \brief Yields an unsigned integral type of 8 bits.
+/// \brief Yields an unsigned integral type of 8 bits or more.
 template <>
 struct uinteger<8> {
-  using type = uint8_t;  ///< An unsigned 8 bit integral type.
+  /// Smallest unsigned integer type with width of at least 8 bits.
+  using type = uint_least8_t;
 };
-/// \brief Yields an unsigned integral type of 16 bits.
+/// \brief Yields an unsigned integral type of 16 bits or more.
 template <>
 struct uinteger<16> {
-  using type = uint16_t;  ///< An unsigned 16 bit integral type.
+  /// Smallest unsigned integer type with width of at least 16 bits.
+  using type = uint_least16_t;
 };
-/// \brief Yields an unsigned integral type of 32 bits.
+/// \brief Yields an unsigned integral type of 32 bits or more.
 template <>
 struct uinteger<32> {
-  using type = uint32_t;  ///< An unsigned 32 bit integral type.
+  /// Smallest unsigned integer type with width of at least 32 bits.
+  using type = uint_least32_t;
 };
-/// \brief Yields an unsigned integral type of 64 bits.
+/// \brief Yields an unsigned integral type of 64 bits or more.
 template <>
 struct uinteger<64> {
-  using type = uint64_t;  ///< An unsigned 64 bit integral type.
+  /// Smallest unsigned integer type with width of at least 64 bits.
+  using type = uint_least64_t;
 };
 
 /// \brief Equivalent to (T{1}<<N)-T{1} where T is an unsigned integral type.
