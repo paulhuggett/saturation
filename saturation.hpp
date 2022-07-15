@@ -201,7 +201,8 @@ constexpr uinteger_t<N> addu (uinteger_t<N> const x, uinteger_t<N> const y) {
 ///
 /// \param x  The first of the two unsigned 32 bit values to be added.
 /// \param y  The second of the two unsigned 32 bit values to be added.
-/// \result  \p x + \p y or \f$ 2^{32}-1 \f$ if the result cannot be
+/// \result  \p x + \p y or \f$ 2^{32}-1 \f$
+///   (`std::numeric_limits<uint32_t>::max()`) if the result cannot be
 ///   represented in 32 bits.
 constexpr uint32_t addu32 (uint32_t const x, uint32_t const y) {
   return addu<32> (x, y);
@@ -212,7 +213,8 @@ constexpr uint32_t addu32 (uint32_t const x, uint32_t const y) {
 ///
 /// \param x The first of the two unsigned 16 bit values to be added.
 /// \param y  The second of the two unsigned 16 bit values to be added.
-/// \result  \p x + \p y or \f$ 2^{16}-1 \f$ if the result cannot be
+/// \result  \p x + \p y or \f$ 2^{16}-1 \f$
+///   (`std::numeric_limits<uint16_t>::max()`) if the result cannot be
 ///   represented in 16 bits.
 constexpr uint16_t addu16 (uint16_t const x, uint16_t const y) {
   return addu<16> (x, y);
@@ -223,7 +225,8 @@ constexpr uint16_t addu16 (uint16_t const x, uint16_t const y) {
 ///
 /// \param x  The first of the two unsigned 8 bit values to be added.
 /// \param y  The second of the two unsigned 8 bit values to be added.
-/// \result  \p x + \p y or \f$ 2^8-1 \f$ if the result cannot be
+/// \result  \p x + \p y or \f$ 2^8-1 \f$
+///   (`std::numeric_limits<uint8_t>::max()`). if the result cannot be
 ///   represented in 8 bits.
 constexpr uint8_t addu8 (uint8_t const x, uint8_t const y) {
   return addu<8> (x, y);
@@ -388,8 +391,8 @@ constexpr uinteger_t<N> mulu (uinteger_t<N> const x, uinteger_t<N> const y) {
 /// representable by a 32 bit unsigned integer --- the returned value is
 /// \f$ 2^{32}-1 \f$.
 ///
-/// \param x  The first value to be multiplied.
-/// \param y  The second value to be multiplied.
+/// \param x  The first unsigned 32 bit value to be multiplied.
+/// \param y  The second unsigned 32 bit value to be multiplied.
 /// \returns  \p x &times; \p y. If the result would be too large,
 ///   \f$ 2^{32}-1 \f$ (`std::numeric_limits<uint32_t>::max()`).
 constexpr uint32_t mulu32 (uint32_t const x, uint32_t const y) {
@@ -401,8 +404,8 @@ constexpr uint32_t mulu32 (uint32_t const x, uint32_t const y) {
 /// representable by a 16 bit unsigned integer --- the returned value is
 /// \f$ 2^{16}-1 \f$.
 ///
-/// \param x  The first value to be multiplied.
-/// \param y  The second value to be multiplied.
+/// \param x  The first unsigned 16 bit value to be multiplied.
+/// \param y  The second unsigned 16 bit value to be multiplied.
 /// \returns  \p x &times; \p y. If the result would be too large,
 ///   \f$ 2^{16}-1 \f$ (`std::numeric_limits<uint16_t>::max()`).
 constexpr uint16_t mulu16 (uint16_t const x, uint16_t const y) {
@@ -414,8 +417,8 @@ constexpr uint16_t mulu16 (uint16_t const x, uint16_t const y) {
 /// representable by an 8 bit unsigned integer --- the returned value is
 /// \f$ 2^{8}-1 \f$.
 ///
-/// \param x  The first value to be multiplied.
-/// \param y  The second value to be multiplied.
+/// \param x  The first unsigned 8 bit value to be multiplied.
+/// \param y  The second unsigned 8 bit value to be multiplied.
 /// \returns  \p x &times; \p y. If the result would be too large,
 ///   \f$ 2^{8}-1 \f$ (`std::numeric_limits<uint8_t>::max()`).
 constexpr uint8_t mulu8 (uint8_t const x, uint8_t const y) {

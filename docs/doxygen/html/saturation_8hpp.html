@@ -584,7 +584,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^{16}-1 \) if the result cannot be represented in 16 bits. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^{16}-1 \) (<code>std::numeric_limits&lt;uint16_t&gt;::max()</code>) if the result cannot be represented in 16 bits. </dd></dl>
 
 </div>
 </div>
@@ -631,7 +631,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^{32}-1 \) if the result cannot be represented in 32 bits. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^{32}-1 \) (<code>std::numeric_limits&lt;uint32_t&gt;::max()</code>) if the result cannot be represented in 32 bits. </dd></dl>
 
 </div>
 </div>
@@ -678,7 +678,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^8-1 \) if the result cannot be represented in 8 bits. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> + <code>y</code> or \( 2^8-1 \) (<code>std::numeric_limits&lt;uint8_t&gt;::max()</code>). if the result cannot be represented in 8 bits. </dd></dl>
 
 </div>
 </div>
@@ -1359,8 +1359,8 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
 <p >If the result overflows &mdash; that is, the correct answer is too large to be representable by a 16 bit unsigned integer &mdash; the returned value is \( 2^{16}-1 \).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>The first value to be multiplied. </td></tr>
-    <tr><td class="paramname">y</td><td>The second value to be multiplied. </td></tr>
+    <tr><td class="paramname">x</td><td>The first unsigned 16 bit value to be multiplied. </td></tr>
+    <tr><td class="paramname">y</td><td>The second unsigned 16 bit value to be multiplied. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1406,8 +1406,8 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
 <p >If the result overflows &mdash; that is, the correct answer is too large to be representable by a 32 bit unsigned integer &mdash; the returned value is \( 2^{32}-1 \).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>The first value to be multiplied. </td></tr>
-    <tr><td class="paramname">y</td><td>The second value to be multiplied. </td></tr>
+    <tr><td class="paramname">x</td><td>The first unsigned 32 bit value to be multiplied. </td></tr>
+    <tr><td class="paramname">y</td><td>The second unsigned 32 bit value to be multiplied. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1453,8 +1453,8 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
 <p >If the result overflows &mdash; that is, the correct answer is too large to be representable by an 8 bit unsigned integer &mdash; the returned value is \( 2^{8}-1 \).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>The first value to be multiplied. </td></tr>
-    <tr><td class="paramname">y</td><td>The second value to be multiplied. </td></tr>
+    <tr><td class="paramname">x</td><td>The first unsigned 8 bit value to be multiplied. </td></tr>
+    <tr><td class="paramname">y</td><td>The second unsigned 8 bit value to be multiplied. </td></tr>
   </table>
   </dd>
 </dl>

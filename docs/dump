@@ -1,0 +1,130 @@
+#!/bin/bash
+
+cat <<EOF1
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Saturation</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/default.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/languages/armasm.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/languages/x86asm.min.js"></script>
+
+    <link rel="stylesheet" href="./foo.css">
+    <script src="./foo.js"></script>
+  </head>
+  <body>
+    <fieldset>
+        <legend>Targets</legend>
+        <input type="checkbox" id="showX86-64" checked><label for="showX86-64">x86-64</label>
+        <input type="checkbox" id="showARM64"><label for="showARM64">ARM64</label>
+        <input type="checkbox" id="showARM"><label for="showARM">ARM</label>
+    </fieldset>
+    <fieldset>
+        <legend>Columns</legend>
+        <input type="checkbox" id="show-target"><label for="show-target">Show Target</label>
+        <input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label>
+    </fieldset>
+EOF1
+
+for cpu in x86_64 arm arm64; do
+  if [ $cpu == x86_64 ]; then
+    cpu_class_name="cpu-x86_64"
+    cpu_language_name="language-x86asm"
+  elif [ $cpu == arm ]; then
+    cpu_class_name="cpu-arm"
+    cpu_language_name="language-armasm"
+  elif [ $cpu == arm64 ]; then
+    cpu_class_name="cpu-arm64"
+    cpu_language_name="language-armasm"
+  else
+    cpu_class_name="cpu-unknown"
+    cpu_language_name="language-unknown"
+  fi
+
+  echo "<h2>CPU: $cpu</h2>"
+  cat <<TABLE_HEAD_EOF
+    <div class="wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th class="column-target">Target</th>
+            <th class="column-bits">Bits</th>
+            <th class="column-op">Op</th>
+            <th class="column-sign">Signed</th>
+            <th class="column-cpp">C++ Code</th>
+            <th>Compiler Output</th>
+          </tr>
+        </thead>
+        <tbody>
+TABLE_HEAD_EOF
+
+  for fn in add sub mul div; do
+    for (( bits=4; bits<=64; bits += 64 )); do
+      if [[ $fn == mul && $bits -ge 32 ]]; then
+        continue
+      fi
+
+      for sign in s u; do
+        cpp=$(mktemp)
+        asm=$(mktemp)
+        sed -e "s/_X_/${bits}/g" -e "s/_S_/${sign}/g" -e "s/_FN_/${fn}/" > $cpp <<EOF
+#include "saturation.hpp"
+using namespace saturation;
+extern "C" _S_integer_t<_X_> 
+f (_S_integer_t<_X_> a, 
+   _S_integer_t<_X_> b) {
+    return _FN__S_<_X_>(a, b);
+}
+EOF
+        clang++ -I.. -x c++ -std=c++17 -S -O3 -DNDEBUG -target $cpu-apple-darwin20.1.0 -o $asm $cpp
+        if [[ $? -ne 0 ]]; then
+            exit 1
+        fi
+
+        # delete assembler directives and comment lines.
+        sed -I '' -e '/^[[:space:]]*[.@#;]/d' $asm
+
+        sign_class_name="sign-$sign"
+        if [ $sign == 's' ]; then 
+          sign_name="signed"
+        else
+          sign_name="unsigned"
+        fi
+
+        echo "<tr class='$sign_class_name $fn $bits $cpu_class_name'>"
+        echo "<td class='column-target'>$cpu</td>"
+        echo "<td class='column-bits'>$bits</td>"
+        echo "<td class='column-op'>$fn</td>"
+        echo "<td class='column-sign'>$sign_name</td>"
+
+        echo -n "<td class='column-cpp'><pre><code class='language-cpp'>"
+        # replace <, >, &, ", and ' characters with HTML entities
+        html_escape='s/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g'
+        cat $cpp | sed -e "$html_escape"
+        echo '</code></pre></td>'
+
+        echo -n "<td><pre><code class='$cpu_language_name'>"
+        cat $asm | sed -e "$html_escape"
+        echo '</code></pre></td>'
+        echo '</tr>'
+
+        rm $cpp $asm
+      done
+    done
+  done
+
+  cat <<TABLE_END_EOF
+        </tbody>
+      </table>
+    </div>
+TABLE_END_EOF
+
+done
+
+cat <<EOF3
+  </body>
+</html>
+EOF3

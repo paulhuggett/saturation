@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Saturation</title>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/default.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/languages/armasm.min.js"></script>
+
+    <link rel="stylesheet" href="./foo.css">
+    <script src="./foo.js"></script>
+
+    <style>
+      /* th:nth-child(4), td:nth-child(4) { display: none; } */
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type="checkbox" id="showARM64" checked>
+      <label for="showARM64">Show ARM64?</label>
+    </div>
+    <div>
+      <input type="checkbox" id="showB" checked>
+      <label for="showB">Show B?</label>
+    </div>
+    <div class="wrapper">
+      <table>
+        <!-- <caption>Examples</caption> -->
+        <thead>
+          <tr>
+            <th>Target</th>
+            <th>Bits</th>
+            <th>Op</th>
+            <th>C++ Code</th>
+            <th>Compiler Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="a 1 add">
+            <td>target</td>
+            <td>bits 2</td>
+            <td>+</td>
+            <td>
+              <pre><code class="language-cpp">#include &lt;iostream&gt;
+int main () { 
+  std::cout &lt;&lt; "Hello world\n";
+}</code></pre>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="a 2 sub">
+            <td>target</td>
+            <td>bits 2</td>
+            <td>-</td>
+            <td>
+              <pre><code class="language-cpp">#include &lt;iostream&gt;
+int main () { 
+  std::cout &lt;&lt; "Hello world\n";
+}</code></pre>
+          </td>
+          <td></td>
+        </tr>
+        <tr class="b 1 mul">
+          <td>target</td>
+          <td>bits 2</td>
+          <td>&times;</td>
+          <td>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+int main () { 
+  std::cout &lt;&lt; "Hello world\n";
+}</code></pre>
+          </td>
+          <td></td>
+        </tr>
+        <tr class="b 2 div">
+          <td>target</td>
+          <td>bits 2</td>
+          <td>&divide;</td>
+          <td>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+int main () { 
+  std::cout << "Hello world\n";
+}</code></pre>
+          </td>
+          <td></td>
+        </tr>
+        <tr class="signed sub 4 arm64">
+          <td>ARM64</td>
+          <td>4</td>
+          <td>-</td>
+          <td>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+int main () { 
+  std::cout << "Hello world\n";
+}</code></pre>
+          </td>
+          <td>
+            <pre><code class="language-armasm">_f:                                     ; @f
+          eor	w8, w1, w0
+          sub	w9, w0, w1
+          eor	w10, w9, w0
+          and	w8, w8, w10
+          ubfx	w10, w0, #3, #1
+          add	w10, w10, #7
+          tst	w8, #0x8
+          csel	w8, w9, w10, eq
+          sbfx	w0, w8, #0, #4
+          ret</code></pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div> <!-- wrapper -->
+  </body>
+</html>
