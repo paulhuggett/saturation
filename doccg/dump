@@ -61,16 +61,16 @@ for cpu in x86_64 arm arm64; do
         <tbody>
 TABLE_HEAD_EOF
 
-for fn in add sub mul div; do
-for (( bits=4; bits<=64; bits += 64 )); do
-if [[ $fn == mul && $bits -ge 32 ]]; then
-  continue
-fi
+  for fn in add sub mul div; do
+    for (( bits=4; bits<=64; bits += 64 )); do
+      if [[ $fn == mul && $bits -ge 32 ]]; then
+        continue
+      fi
 
-for sign in s u; do
-  cpp=t.cpp
-  asm=t.s
-  sed -e "s/_X_/${bits}/g" -e "s/_S_/${sign}/g" -e "s/_FN_/${fn}/" > $cpp <<EOF
+      for sign in s u; do
+        cpp=$(mktemp)
+        asm=$(mktemp)
+        sed -e "s/_X_/${bits}/g" -e "s/_S_/${sign}/g" -e "s/_FN_/${fn}/" > $cpp <<EOF
 #include "saturation.hpp"
 using namespace saturation;
 extern "C" _S_integer_t<_X_> 
@@ -79,55 +79,46 @@ f (_S_integer_t<_X_> a,
     return _FN__S_<_X_>(a, b);
 }
 EOF
-  clang++ -I.. -std=c++17 -S -O3 -DNDEBUG -target $cpu-apple-darwin20.1.0 -o $asm $cpp
-  # delete assembler directives and comment lines.
-  sed -I~ -e '/^[[:space:]]*[.@#;]/d'  $asm
+        clang++ -I.. -x c++ -std=c++17 -S -O3 -DNDEBUG -target $cpu-apple-darwin20.1.0 -o $asm $cpp
+        # delete assembler directives and comment lines.
+        sed -I~ -e '/^[[:space:]]*[.@#;]/d' $asm
 
-  sign_class_name="sign-$sign"
-  if [ $sign == 's' ]; then 
-    sign_name="signed"
-  else
-    sign_name="unsigned"
-  fi
+        sign_class_name="sign-$sign"
+        if [ $sign == 's' ]; then 
+          sign_name="signed"
+        else
+          sign_name="unsigned"
+        fi
 
-echo '<tr class="'"$sign_class_name $fn $bits $cpu_class_name"'">'
-echo '<td class="column-target">'"$cpu"'</td>'
-echo '<td class="column-bits">'"$bits"'</td>'
-echo '<td class="column-op">'"$fn"'</td>'
-echo '<td class="column-sign">'"$sign_name"'</td>'
+        echo "<tr class='$sign_class_name $fn $bits $cpu_class_name'>"
+        echo "<td class='column-target'>$cpu</td>"
+        echo "<td class='column-bits'>$bits</td>"
+        echo "<td class='column-op'>$fn</td>"
+        echo "<td class='column-sign'>$sign_name</td>"
 
-echo -n '<td class="column-cpp"><pre><code class="language-cpp">'
+        echo -n "<td class='column-cpp'><pre><code class='language-cpp'>"
+        # replace <, >, &, ", and ' characters with HTML entities
+        html_escape='s/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g'
+        cat $cpp | sed -e "$html_escape"
+        echo '</code></pre></td>'
 
-# replace <, >, &, ", and ' characters with HTML entities
-html_escape='s/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g'
-cat $cpp | sed -e "$html_escape"
-echo '</code></pre></td>'
+        echo -n "<td><pre><code class='$cpu_language_name'>"
+        cat $asm | sed -e "$html_escape"
+        echo '</code></pre></td>'
+        echo '</tr>'
 
-
-echo -n "<td><pre><code class='$cpu_language_name'>"
-cat $asm | sed -e "$html_escape"
-echo '</code></pre></td>'
-echo '</tr>'
-
-            done
-        done
+        rm $cpp $asm
+      done
     done
+  done
 
-cat <<TABLE_END_EOF
-      </tbody>
-    </table>
-  </div>
+  cat <<TABLE_END_EOF
+        </tbody>
+      </table>
+    </div>
 TABLE_END_EOF
 
 done
-
-
-#[ arm arm64 x64_64 ]
-#clang++ -std=c++17 -S -O3 -DNDEBUG -target arm-apple-darwin20.1.0 adds32.cpp
-#clang++ -std=c++17 -S -O3 -DNDEBUG -target arm64-apple-darwin20.1.0 adds32.cpp
-#clang++ -std=c++17 -S -O3 -DNDEBUG -target x86_64-apple-darwin20.1.0 adds32.cpp
-## delete assembler directives and comments.
-#sed -e '/^[[:space:]]*[.#@]/d' adds32.s
 
 cat <<EOF3
   </body>
