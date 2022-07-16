@@ -1,32 +1,28 @@
 #!/bin/bash
 
 cat <<EOF1
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Saturation</title>
-    <meta charset="UTF-8">
+---
+title: Saturation
+---
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/languages/armasm.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/languages/x86asm.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/default.min.css">
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/highlight.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/languages/armasm.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/languages/x86asm.min.js"></script>
+<!-- <link rel="stylesheet" href="./foo.css"> -->
+<script src="./foo.js"></script>
 
-    <link rel="stylesheet" href="./foo.css">
-    <script src="./foo.js"></script>
-  </head>
-  <body>
-    <fieldset>
-        <legend>Targets</legend>
-        <input type="checkbox" id="showX86-64" checked><label for="showX86-64">x86-64</label>
-        <input type="checkbox" id="showARM64"><label for="showARM64">ARM64</label>
-        <input type="checkbox" id="showARM"><label for="showARM">ARM</label>
-    </fieldset>
-    <fieldset>
-        <legend>Columns</legend>
-        <input type="checkbox" id="show-target"><label for="show-target">Show Target</label>
-        <input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label>
-    </fieldset>
+<fieldset>
+    <legend>Targets</legend>
+    <input type="checkbox" id="showX86-64" checked><label for="showX86-64">x86-64</label>
+    <input type="checkbox" id="showARM64"><label for="showARM64">ARM64</label>
+    <input type="checkbox" id="showARM"><label for="showARM">ARM</label>
+</fieldset>
+<fieldset>
+    <legend>Columns</legend>
+    <input type="checkbox" id="show-target"><label for="show-target">Show Target</label>
+    <input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label>
+</fieldset>
 EOF1
 
 for cpu in x86_64 arm arm64; do
@@ -46,19 +42,19 @@ for cpu in x86_64 arm arm64; do
 
   echo "<h2>CPU: $cpu</h2>"
   cat <<TABLE_HEAD_EOF
-    <div class="wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th class="column-target">Target</th>
-            <th class="column-bits">Bits</th>
-            <th class="column-op">Op</th>
-            <th class="column-sign">Signed</th>
-            <th class="column-cpp">C++ Code</th>
-            <th>Compiler Output</th>
-          </tr>
-        </thead>
-        <tbody>
+<div class="wrapper">
+<table>
+<thead>
+<tr>
+<th class="column-target">Target</th>
+<th class="column-bits">Bits</th>
+<th class="column-op">Op</th>
+<th class="column-sign">Signed</th>
+<th class="column-cpp">C++ Code</th>
+<th>Compiler Output</th>
+</tr>
+</thead>
+<tbody>
 TABLE_HEAD_EOF
 
   for fn in add sub mul div; do
@@ -117,14 +113,9 @@ EOF
   done
 
   cat <<TABLE_END_EOF
-        </tbody>
-      </table>
-    </div>
+</tbody>
+</table>
+</div>
 TABLE_END_EOF
 
 done
-
-cat <<EOF3
-  </body>
-</html>
-EOF3

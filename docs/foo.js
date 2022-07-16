@@ -4,14 +4,20 @@ function showHide (checkBoxSelector, rowSelector) {
   'use strict'
 
   const checkBox = document.querySelector(checkBoxSelector)
-  if (checkBox !== null) {
-    const update = () => {
-      const display = 'display:' + (checkBox.checked ? 'table-row;' : 'none;')
-      document.querySelectorAll(rowSelector).forEach(el => el.setAttribute('style', display))
-    }
-    checkBox.addEventListener('change', update)
-    update() // set initial state
+  if (checkBox === null) {
+    console.log(`selector ${checkBoxSelector} was not found`)
+    return
   }
+  const update = () => {
+    const display = 'display:' + (checkBox.checked ? 'table-row;' : 'none;')
+    const rows = document.querySelectorAll(rowSelector)
+    if (rows.length === 0) {
+      console.log(`row selector ${rowSelector} array is empty`)
+    }
+    rows.forEach(el => el.setAttribute('style', display))
+  }
+  checkBox.addEventListener('change', update)
+  update() // set initial state
 }
 
 function showHideColumn (checkBoxSelector, columnSelector) {
@@ -21,6 +27,10 @@ function showHideColumn (checkBoxSelector, columnSelector) {
   if (checkBox !== null) {
     const update = () => {
       const display = 'display:' + (checkBox.checked ? 'table-cell;' : 'none;')
+      const columns = document.querySelectorAll(columnSelector)
+      if (columns.length === 0) {
+        console.log(`columns selector ${columnSelector} array is empty`)
+      }
       document.querySelectorAll(columnSelector).forEach(el => el.setAttribute('style', display))
     }
     checkBox.addEventListener('change', update)
