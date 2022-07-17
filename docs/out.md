@@ -1,28 +1,28 @@
 ---
 title: Saturation
 ---
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/default.min.css">
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/highlight.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/languages/armasm.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/languages/x86asm.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/languages/armasm.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/languages/x86asm.min.js"></script>
 
 <!-- <link rel="stylesheet" href="./foo.css"> -->
 <script src="./foo.js"></script>
 
 <fieldset>
-    <legend>Targets</legend>
-    <input type="checkbox" id="showX86-64" checked><label for="showX86-64">x86-64</label>
-    <input type="checkbox" id="showARM64"><label for="showARM64">ARM64</label>
-    <input type="checkbox" id="showARM"><label for="showARM">ARM</label>
-</fieldset>
-<fieldset>
     <legend>Columns</legend>
     <input type="checkbox" id="show-target"><label for="show-target">Show Target</label>
     <input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label>
 </fieldset>
-<h2>CPU: x86_64</h2>
-<div class="wrapper">
-<table>
+
+<label for="targets-select">Target:</label>
+<select name="targets" id="targets-select">
+<option value="target-x86_64">x86-64</option>
+<option value="target-arm">ARM</option>
+<option value="target-arm64">ARM64</option>
+</select>
+
+<table class="target target-x86_64">
 <thead>
 <tr>
 <th class="column-target">Target</th>
@@ -276,10 +276,7 @@ f (uinteger_t&lt;4&gt; a,
 </tr>
 </tbody>
 </table>
-</div>
-<h2>CPU: arm</h2>
-<div class="wrapper">
-<table>
+<table class="target target-arm">
 <thead>
 <tr>
 <th class="column-target">Target</th>
@@ -494,10 +491,7 @@ f (uinteger_t&lt;4&gt; a,
 </tr>
 </tbody>
 </table>
-</div>
-<h2>CPU: arm64</h2>
-<div class="wrapper">
-<table>
+<table class="target target-arm64">
 <thead>
 <tr>
 <th class="column-target">Target</th>
@@ -701,4 +695,3 @@ f (uinteger_t&lt;4&gt; a,
 </tr>
 </tbody>
 </table>
-</div>

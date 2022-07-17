@@ -31,7 +31,7 @@ function showHideColumn (checkBoxSelector, columnSelector) {
       if (columns.length === 0) {
         console.log(`columns selector ${columnSelector} array is empty`)
       }
-      document.querySelectorAll(columnSelector).forEach(el => el.setAttribute('style', display))
+      columns.forEach(el => el.setAttribute('style', display))
     }
     checkBox.addEventListener('change', update)
     update() // set initial state
@@ -39,11 +39,21 @@ function showHideColumn (checkBoxSelector, columnSelector) {
 }
 window.onload = () => {
   'use strict'
-  showHide('#showX86-64', '.cpu-x86_64')
-  showHide('#showARM64', '.cpu-arm64')
-  showHide('#showARM', '.cpu-arm')
-
   showHideColumn('#show-target', '.column-target')
   showHideColumn('#show-cpp', '.column-cpp')
   hljs.highlightAll()
+
+  const targetsSelect = document.querySelector('#targets-select')
+  if (targetsSelect == null) {
+    console.error('#targets-select select was not found')
+  } else {
+    const change = () => {
+      // Hide all of the tables.
+      document.querySelectorAll('.target').forEach(el => el.setAttribute('style', 'display:none;'))
+      // Make the selected one visible.
+      document.querySelector('.' + targetsSelect.value).setAttribute('style', 'display:table;')
+    }
+    targetsSelect.addEventListener('change', change)
+    change() // make the correct table visible
+  }
 }
