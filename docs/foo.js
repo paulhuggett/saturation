@@ -41,7 +41,6 @@ window.onload = () => {
   'use strict'
   showHideColumn('#show-target', '.column-target')
   showHideColumn('#show-cpp', '.column-cpp')
-  hljs.highlightAll()
 
   const targetsSelect = document.querySelector('#targets-select')
   if (targetsSelect == null) {

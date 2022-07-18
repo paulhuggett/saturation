@@ -1,13 +1,10 @@
 #!/bin/bash
+#set -o verbose
 
 cat <<EOF1
 ---
 title: Saturation
 ---
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/default.min.css">
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/languages/armasm.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/languages/x86asm.min.js"></script>
 
 <!-- <link rel="stylesheet" href="./foo.css"> -->
 <script src="./foo.js"></script>
@@ -20,9 +17,9 @@ title: Saturation
 
 <label for="targets-select">Target:</label>
 <select name="targets" id="targets-select">
-<option value="target-x86_64">x86-64</option>
-<option value="target-arm">ARM</option>
-<option value="target-arm64">ARM64</option>
+<option value="cpu-x86_64">x86-64</option>
+<option value="cpu-arm">ARM</option>
+<option value="cpu-arm64">ARM64</option>
 </select>
 
 EOF1
@@ -30,20 +27,20 @@ EOF1
 for cpu in x86_64 arm arm64; do
   if [ $cpu == x86_64 ]; then
     cpu_class_name="cpu-x86_64"
-    cpu_language_name="language-x86asm"
+    cpu_language_name="x86asm"
   elif [ $cpu == arm ]; then
     cpu_class_name="cpu-arm"
-    cpu_language_name="language-armasm"
+    cpu_language_name="armasm"
   elif [ $cpu == arm64 ]; then
     cpu_class_name="cpu-arm64"
-    cpu_language_name="language-armasm"
+    cpu_language_name="armasm"
   else
     cpu_class_name="cpu-unknown"
-    cpu_language_name="language-unknown"
+    cpu_language_name="unknown"
   fi
 
   cat <<TABLE_HEAD_EOF
-<table class="target target-$cpu">
+<table class="target $cpu_class_name">
 <thead>
 <tr>
 <th class="column-target">Target</th>
@@ -69,8 +66,8 @@ TABLE_HEAD_EOF
         sed -e "s/_X_/${bits}/g" -e "s/_S_/${sign}/g" -e "s/_FN_/${fn}/" > $cpp <<EOF
 #include "saturation.hpp"
 using namespace saturation;
-extern "C" _S_integer_t<_X_> 
-f (_S_integer_t<_X_> a, 
+extern "C" _S_integer_t<_X_>
+f (_S_integer_t<_X_> a,
    _S_integer_t<_X_> b) {
     return _FN__S_<_X_>(a, b);
 }
@@ -96,17 +93,18 @@ EOF
         echo "<td class='column-op'>$fn</td>"
         echo "<td class='column-sign'>$sign_name</td>"
 
-        echo -n "<td class='column-cpp'><pre><code class='language-cpp'>"
-        # replace <, >, &, ", and ' characters with HTML entities
-        html_escape='s/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g'
-        cat $cpp | sed -e "$html_escape"
-        echo '</code></pre></td>'
-
-        echo -n "<td><pre><code class='$cpu_language_name'>"
-        cat $asm | sed -e "$html_escape"
-        echo '</code></pre></td>'
-        echo '</tr>'
-
+        echo "<td class='column-cpp'>"
+        echo "{% highlight cpp %}"
+        cat "$cpp"
+        echo "{% endhighlight %}"
+        echo "</td>"
+        echo "<td class='column-asm'>"
+        echo ""
+        echo "{% highlight $cpu_language_name %}"
+        cat $asm
+        echo "{% endhighlight %}"
+        echo "</td>"
+        echo "</tr>"
         rm $cpp $asm
       done
     done

@@ -1,10 +1,6 @@
 ---
 title: Saturation
 ---
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/default.min.css">
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/languages/armasm.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/languages/x86asm.min.js"></script>
 
 <!-- <link rel="stylesheet" href="./foo.css"> -->
 <script src="./foo.js"></script>
@@ -17,12 +13,12 @@ title: Saturation
 
 <label for="targets-select">Target:</label>
 <select name="targets" id="targets-select">
-<option value="target-x86_64">x86-64</option>
-<option value="target-arm">ARM</option>
-<option value="target-arm64">ARM64</option>
+<option value="cpu-x86_64">x86-64</option>
+<option value="cpu-arm">ARM</option>
+<option value="cpu-arm64">ARM64</option>
 </select>
 
-<table class="target target-x86_64">
+<table class="target cpu-x86_64">
 <thead>
 <tr>
 <th class="column-target">Target</th>
@@ -39,15 +35,21 @@ title: Saturation
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
 <td class='column-sign'>signed</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; sinteger_t&lt;4&gt; 
-f (sinteger_t&lt;4&gt; a, 
-   sinteger_t&lt;4&gt; b) {
-    return adds&lt;4&gt;(a, b);
+extern "C" sinteger_t<4>
+f (sinteger_t<4> a,
+   sinteger_t<4> b) {
+    return adds<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-x86asm'>_f:                                     ## @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight x86asm %}
+_f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	leal	(%rsi,%rdi), %eax
@@ -68,22 +70,29 @@ f (sinteger_t&lt;4&gt; a,
 	movsbl	%al, %eax
 	popq	%rbp
 	retq
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-u add 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
 <td class='column-sign'>unsigned</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; uinteger_t&lt;4&gt; 
-f (uinteger_t&lt;4&gt; a, 
-   uinteger_t&lt;4&gt; b) {
-    return addu&lt;4&gt;(a, b);
+extern "C" uinteger_t<4>
+f (uinteger_t<4> a,
+   uinteger_t<4> b) {
+    return addu<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-x86asm'>_f:                                     ## @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight x86asm %}
+_f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	leal	(%rsi,%rdi), %eax
@@ -98,22 +107,29 @@ f (uinteger_t&lt;4&gt; a,
 	movzbl	%al, %eax
 	popq	%rbp
 	retq
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-s sub 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
 <td class='column-sign'>signed</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; sinteger_t&lt;4&gt; 
-f (sinteger_t&lt;4&gt; a, 
-   sinteger_t&lt;4&gt; b) {
-    return subs&lt;4&gt;(a, b);
+extern "C" sinteger_t<4>
+f (sinteger_t<4> a,
+   sinteger_t<4> b) {
+    return subs<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-x86asm'>_f:                                     ## @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight x86asm %}
+_f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%edi, %eax
@@ -133,22 +149,29 @@ f (sinteger_t&lt;4&gt; a,
 	movsbl	%al, %eax
 	popq	%rbp
 	retq
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-u sub 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
 <td class='column-sign'>unsigned</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; uinteger_t&lt;4&gt; 
-f (uinteger_t&lt;4&gt; a, 
-   uinteger_t&lt;4&gt; b) {
-    return subu&lt;4&gt;(a, b);
+extern "C" uinteger_t<4>
+f (uinteger_t<4> a,
+   uinteger_t<4> b) {
+    return subu<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-x86asm'>_f:                                     ## @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight x86asm %}
+_f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	xorl	%ecx, %ecx
@@ -158,22 +181,29 @@ f (uinteger_t&lt;4&gt; a,
 	andl	$15, %eax
 	popq	%rbp
 	retq
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-s mul 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
 <td class='column-sign'>signed</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; sinteger_t&lt;4&gt; 
-f (sinteger_t&lt;4&gt; a, 
-   sinteger_t&lt;4&gt; b) {
-    return muls&lt;4&gt;(a, b);
+extern "C" sinteger_t<4>
+f (sinteger_t<4> a,
+   sinteger_t<4> b) {
+    return muls<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-x86asm'>_f:                                     ## @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight x86asm %}
+_f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%esi, %eax
@@ -194,22 +224,29 @@ LBB0_2:
 	movsbl	%al, %eax
 	popq	%rbp
 	retq
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-u mul 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
 <td class='column-sign'>unsigned</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; uinteger_t&lt;4&gt; 
-f (uinteger_t&lt;4&gt; a, 
-   uinteger_t&lt;4&gt; b) {
-    return mulu&lt;4&gt;(a, b);
+extern "C" uinteger_t<4>
+f (uinteger_t<4> a,
+   uinteger_t<4> b) {
+    return mulu<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-x86asm'>_f:                                     ## @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight x86asm %}
+_f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	imull	%esi, %edi
@@ -219,22 +256,29 @@ f (uinteger_t&lt;4&gt; a,
 	movzbl	%al, %eax
 	popq	%rbp
 	retq
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-s div 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
 <td class='column-sign'>signed</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; sinteger_t&lt;4&gt; 
-f (sinteger_t&lt;4&gt; a, 
-   sinteger_t&lt;4&gt; b) {
-    return divs&lt;4&gt;(a, b);
+extern "C" sinteger_t<4>
+f (sinteger_t<4> a,
+   sinteger_t<4> b) {
+    return divs<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-x86asm'>_f:                                     ## @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight x86asm %}
+_f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%edi, %eax
@@ -249,22 +293,29 @@ f (sinteger_t&lt;4&gt; a,
 	movsbl	%al, %eax
 	popq	%rbp
 	retq
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-u div 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
 <td class='column-sign'>unsigned</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; uinteger_t&lt;4&gt; 
-f (uinteger_t&lt;4&gt; a, 
-   uinteger_t&lt;4&gt; b) {
-    return divu&lt;4&gt;(a, b);
+extern "C" uinteger_t<4>
+f (uinteger_t<4> a,
+   uinteger_t<4> b) {
+    return divu<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-x86asm'>_f:                                     ## @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight x86asm %}
+_f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movzbl	%dil, %eax
@@ -272,11 +323,12 @@ f (uinteger_t&lt;4&gt; a,
 	movzbl	%al, %eax
 	popq	%rbp
 	retq
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 </tbody>
 </table>
-<table class="target target-arm">
+<table class="target cpu-arm">
 <thead>
 <tr>
 <th class="column-target">Target</th>
@@ -293,15 +345,21 @@ f (uinteger_t&lt;4&gt; a,
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
 <td class='column-sign'>signed</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; sinteger_t&lt;4&gt; 
-f (sinteger_t&lt;4&gt; a, 
-   sinteger_t&lt;4&gt; b) {
-    return adds&lt;4&gt;(a, b);
+extern "C" sinteger_t<4>
+f (sinteger_t<4> a,
+   sinteger_t<4> b) {
+    return adds<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:
 	mov	r2, #16
 	and	r2, r2, r0, lsl #1
 	add	r0, r1, r0
@@ -316,22 +374,29 @@ f (sinteger_t&lt;4&gt; a,
 	tst	r1, #8
 	asreq	r0, r2, #28
 	bx	lr
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-u add 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
 <td class='column-sign'>unsigned</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; uinteger_t&lt;4&gt; 
-f (uinteger_t&lt;4&gt; a, 
-   uinteger_t&lt;4&gt; b) {
-    return addu&lt;4&gt;(a, b);
+extern "C" uinteger_t<4>
+f (uinteger_t<4> a,
+   uinteger_t<4> b) {
+    return addu<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:
 	add	r1, r1, r0
 	and	r2, r1, #255
 	and	r0, r1, #15
@@ -340,22 +405,29 @@ f (uinteger_t&lt;4&gt; a,
 	cmp	r2, r1
 	movne	r0, #15
 	bx	lr
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-s sub 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
 <td class='column-sign'>signed</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; sinteger_t&lt;4&gt; 
-f (sinteger_t&lt;4&gt; a, 
-   sinteger_t&lt;4&gt; b) {
-    return subs&lt;4&gt;(a, b);
+extern "C" sinteger_t<4>
+f (sinteger_t<4> a,
+   sinteger_t<4> b) {
+    return subs<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:
 	eor	r2, r1, r0
 	sub	r1, r0, r1
 	eor	r3, r1, r0
@@ -367,42 +439,56 @@ f (sinteger_t&lt;4&gt; a,
 	lsl	r0, r1, #28
 	asr	r0, r0, #28
 	bx	lr
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-u sub 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
 <td class='column-sign'>unsigned</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; uinteger_t&lt;4&gt; 
-f (uinteger_t&lt;4&gt; a, 
-   uinteger_t&lt;4&gt; b) {
-    return subu&lt;4&gt;(a, b);
+extern "C" uinteger_t<4>
+f (uinteger_t<4> a,
+   uinteger_t<4> b) {
+    return subu<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:
 	subs	r0, r0, r1
 	movlo	r0, #0
 	and	r0, r0, #15
 	bx	lr
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-s mul 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
 <td class='column-sign'>signed</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; sinteger_t&lt;4&gt; 
-f (sinteger_t&lt;4&gt; a, 
-   sinteger_t&lt;4&gt; b) {
-    return muls&lt;4&gt;(a, b);
+extern "C" sinteger_t<4>
+f (sinteger_t<4> a,
+   sinteger_t<4> b) {
+    return muls<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:
 	mul	r2, r1, r0
 	eor	r0, r1, r0
 	mov	r1, #16
@@ -417,43 +503,57 @@ f (sinteger_t&lt;4&gt; a,
 	lsl	r0, r2, #24
 	asr	r0, r0, #24
 	bx	lr
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-u mul 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
 <td class='column-sign'>unsigned</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; uinteger_t&lt;4&gt; 
-f (uinteger_t&lt;4&gt; a, 
-   uinteger_t&lt;4&gt; b) {
-    return mulu&lt;4&gt;(a, b);
+extern "C" uinteger_t<4>
+f (uinteger_t<4> a,
+   uinteger_t<4> b) {
+    return mulu<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:
 	mul	r2, r1, r0
 	cmp	r2, #15
 	movhs	r2, #15
 	and	r0, r2, #255
 	bx	lr
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-s div 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
 <td class='column-sign'>signed</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; sinteger_t&lt;4&gt; 
-f (sinteger_t&lt;4&gt; a, 
-   sinteger_t&lt;4&gt; b) {
-    return divs&lt;4&gt;(a, b);
+extern "C" sinteger_t<4>
+f (sinteger_t<4> a,
+   sinteger_t<4> b) {
+    return divs<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:
 	push	{r7, lr}
 	mov	r7, sp
 	add	r2, r0, #8
@@ -466,32 +566,40 @@ f (sinteger_t&lt;4&gt; a,
 	asr	r0, r0, #24
 	pop	{r7, lr}
 	bx	lr
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-u div 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
 <td class='column-sign'>unsigned</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; uinteger_t&lt;4&gt; 
-f (uinteger_t&lt;4&gt; a, 
-   uinteger_t&lt;4&gt; b) {
-    return divu&lt;4&gt;(a, b);
+extern "C" uinteger_t<4>
+f (uinteger_t<4> a,
+   uinteger_t<4> b) {
+    return divu<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:
 	push	{r7, lr}
 	mov	r7, sp
 	bl	___udivsi3
 	pop	{r7, lr}
 	bx	lr
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 </tbody>
 </table>
-<table class="target target-arm64">
+<table class="target cpu-arm64">
 <thead>
 <tr>
 <th class="column-target">Target</th>
@@ -508,15 +616,21 @@ f (uinteger_t&lt;4&gt; a,
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
 <td class='column-sign'>signed</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; sinteger_t&lt;4&gt; 
-f (sinteger_t&lt;4&gt; a, 
-   sinteger_t&lt;4&gt; b) {
-    return adds&lt;4&gt;(a, b);
+extern "C" sinteger_t<4>
+f (sinteger_t<4> a,
+   sinteger_t<4> b) {
+    return adds<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:                                     ; @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:                                     ; @f
 	lsl	w8, w0, #1
 	and	w8, w8, #0x10
 	add	w8, w8, #112
@@ -529,22 +643,29 @@ f (sinteger_t&lt;4&gt; a,
 	tst	w9, #0x8
 	csel	w0, w8, w10, eq
 	ret
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-u add 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
 <td class='column-sign'>unsigned</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; uinteger_t&lt;4&gt; 
-f (uinteger_t&lt;4&gt; a, 
-   uinteger_t&lt;4&gt; b) {
-    return addu&lt;4&gt;(a, b);
+extern "C" uinteger_t<4>
+f (uinteger_t<4> a,
+   uinteger_t<4> b) {
+    return addu<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:                                     ; @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:                                     ; @f
 	add	w8, w1, w0
 	and	w9, w8, #0xff
 	cmp	w9, #15
@@ -553,22 +674,29 @@ f (uinteger_t&lt;4&gt; a,
 	mov	w9, #15
 	csel	w0, w9, w8, ne
 	ret
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-s sub 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
 <td class='column-sign'>signed</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; sinteger_t&lt;4&gt; 
-f (sinteger_t&lt;4&gt; a, 
-   sinteger_t&lt;4&gt; b) {
-    return subs&lt;4&gt;(a, b);
+extern "C" sinteger_t<4>
+f (sinteger_t<4> a,
+   sinteger_t<4> b) {
+    return subs<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:                                     ; @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:                                     ; @f
 	eor	w8, w1, w0
 	sub	w9, w0, w1
 	eor	w10, w9, w0
@@ -579,42 +707,56 @@ f (sinteger_t&lt;4&gt; a,
 	csel	w8, w9, w10, eq
 	sbfx	w0, w8, #0, #4
 	ret
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-u sub 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
 <td class='column-sign'>unsigned</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; uinteger_t&lt;4&gt; 
-f (uinteger_t&lt;4&gt; a, 
-   uinteger_t&lt;4&gt; b) {
-    return subu&lt;4&gt;(a, b);
+extern "C" uinteger_t<4>
+f (uinteger_t<4> a,
+   uinteger_t<4> b) {
+    return subu<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:                                     ; @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:                                     ; @f
 	subs	w8, w0, w1
 	csel	w8, wzr, w8, lo
 	and	w0, w8, #0xf
 	ret
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-s mul 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
 <td class='column-sign'>signed</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; sinteger_t&lt;4&gt; 
-f (sinteger_t&lt;4&gt; a, 
-   sinteger_t&lt;4&gt; b) {
-    return muls&lt;4&gt;(a, b);
+extern "C" sinteger_t<4>
+f (sinteger_t<4> a,
+   sinteger_t<4> b) {
+    return muls<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:                                     ; @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:                                     ; @f
 	mul	w8, w1, w0
 	sxtb	w9, w8
 	sbfx	w10, w8, #4, #4
@@ -627,44 +769,58 @@ f (sinteger_t&lt;4&gt; a,
 	csel	w8, w8, w9, eq
 	sxtb	w0, w8
 	ret
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-u mul 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
 <td class='column-sign'>unsigned</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; uinteger_t&lt;4&gt; 
-f (uinteger_t&lt;4&gt; a, 
-   uinteger_t&lt;4&gt; b) {
-    return mulu&lt;4&gt;(a, b);
+extern "C" uinteger_t<4>
+f (uinteger_t<4> a,
+   uinteger_t<4> b) {
+    return mulu<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:                                     ; @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:                                     ; @f
 	mul	w8, w1, w0
 	mov	w9, #15
 	cmp	w8, #15
 	csel	w8, w8, w9, lo
 	and	w0, w8, #0xff
 	ret
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-s div 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
 <td class='column-sign'>signed</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; sinteger_t&lt;4&gt; 
-f (sinteger_t&lt;4&gt; a, 
-   sinteger_t&lt;4&gt; b) {
-    return divs&lt;4&gt;(a, b);
+extern "C" sinteger_t<4>
+f (sinteger_t<4> a,
+   sinteger_t<4> b) {
+    return divs<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:                                     ; @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:                                     ; @f
 	add	w8, w1, #1
 	add	w9, w0, #8
 	orr	w8, w8, w9
@@ -673,25 +829,33 @@ f (sinteger_t&lt;4&gt; a,
 	sdiv	w8, w8, w1
 	sxtb	w0, w8
 	ret
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 <tr class='sign-u div 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
 <td class='column-sign'>unsigned</td>
-<td class='column-cpp'><pre><code class='language-cpp'>#include &quot;saturation.hpp&quot;
+<td class='column-cpp'>
+{% highlight cpp %}
+#include "saturation.hpp"
 using namespace saturation;
-extern &quot;C&quot; uinteger_t&lt;4&gt; 
-f (uinteger_t&lt;4&gt; a, 
-   uinteger_t&lt;4&gt; b) {
-    return divu&lt;4&gt;(a, b);
+extern "C" uinteger_t<4>
+f (uinteger_t<4> a,
+   uinteger_t<4> b) {
+    return divu<4>(a, b);
 }
-</code></pre></td>
-<td><pre><code class='language-armasm'>_f:                                     ; @f
+{% endhighlight %}
+</td>
+<td class='column-asm'>
+
+{% highlight armasm %}
+_f:                                     ; @f
 	udiv	w0, w0, w1
 	ret
-</code></pre></td>
+{% endhighlight %}
+</td>
 </tr>
 </tbody>
 </table>
