@@ -16,6 +16,10 @@
 #include <limits>
 #include <type_traits>
 
+#ifndef HAVE_INT128
+#define HAVE_INT128  0
+#endif
+
 namespace saturation {
 
 /// Yields the smallest signed integral type with at least \p N bits.
