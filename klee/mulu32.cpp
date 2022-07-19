@@ -1,25 +1,7 @@
-#include <cinttypes>
-#include <cstdio>
-#include <cstdlib>
-
-#include "common.hpp"
-
-static uint32_t sat_mulu32_branchy (uint32_t const x, uint32_t const y) {
-  return clampu32 (static_cast<uint64_t> (x) * static_cast<uint64_t> (y));
-}
-
+#include "mulu.hpp"
 int main () {
-  auto a = uint32_t{0};
-  auto b = uint32_t{0};
-  klee_make_symbolic (&a, sizeof (a), "a");
-  klee_make_symbolic (&b, sizeof (b), "b");
-
-  uint32_t const c = saturation::mulu32 (a, b);
-  uint32_t const expected = sat_mulu32_branchy (a, b);
-#if KLEE_RUN
-  std::printf ("a=%" PRIu32 " b=%" PRIu32 " expected=%" PRIu32
-               " actual=%" PRIu32 "\n",
-               a, b, expected, c);
-#endif
-  return c == expected ? EXIT_SUCCESS : EXIT_FAILURE;
+  do_test<24> ();
+  do_test<31> ();
+  do_test<32> ();
+  // do_test<33> ();
 }
