@@ -12,22 +12,43 @@ title: Saturation
 <fieldset>
     <legend>Columns</legend>
     <input type="checkbox" id="show-target"><label for="show-target">Show Target</label>
+    <input type="checkbox" id="show-op"><label for="show-op">Show Op</label>
     <input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label>
+    <input type="checkbox" id="show-asm" checked><label for="show-asm">Show Compiler Output</label>
 </fieldset>
-
 <label for="targets-select">Target:</label>
 <select name="targets" id="targets-select">
 <option value="cpu-x86_64">x86-64</option>
 <option value="cpu-arm">ARM</option>
 <option value="cpu-arm64">ARM64</option>
 </select>
+<label for="op-select">Operation:</label>
+<select name="op" id="op-select">
+<option value="op-add">add</option>
+<option value="op-sub">subtract</option>
+<option value="op-mul">multiply</option>
+<option value="op-div">divide</option>
+</select>
+
+<table>
+<thead>
+<tr>
+<th class="column-target">Target</th>
+<th class="column-bits">Bits</th>
+<th class="column-op">Op</th>
+<th class="column-sign">Signed</th>
+<th class="column-cpp">C++ Code</th>
+<th class="column-asm">Compiler Output</th>
+</tr>
+</thead>
+<tbody>
 
 EOF1
 
 for cpu in x86_64 arm arm64; do
   if [ $cpu == x86_64 ]; then
     cpu_class_name="cpu-x86_64"
-    cpu_language_name="x86asm"
+    cpu_language_name="armasm"
   elif [ $cpu == arm ]; then
     cpu_class_name="cpu-arm"
     cpu_language_name="armasm"
@@ -38,21 +59,6 @@ for cpu in x86_64 arm arm64; do
     cpu_class_name="cpu-unknown"
     cpu_language_name="unknown"
   fi
-
-  cat <<TABLE_HEAD_EOF
-<table class="target $cpu_class_name">
-<thead>
-<tr>
-<th class="column-target">Target</th>
-<th class="column-bits">Bits</th>
-<th class="column-op">Op</th>
-<th class="column-sign">Signed</th>
-<th class="column-cpp">C++ Code</th>
-<th>Compiler Output</th>
-</tr>
-</thead>
-<tbody>
-TABLE_HEAD_EOF
 
   for fn in add sub mul div; do
     for (( bits=4; bits<=64; bits += 64 )); do
@@ -87,7 +93,7 @@ EOF
           sign_name="unsigned"
         fi
 
-        echo "<tr class='$sign_class_name $fn $bits $cpu_class_name'>"
+        echo "<tr class='$sign_class_name op-$fn $bits $cpu_class_name'>"
         echo "<td class='column-target'>$cpu</td>"
         echo "<td class='column-bits'>$bits</td>"
         echo "<td class='column-op'>$fn</td>"
@@ -109,10 +115,9 @@ EOF
       done
     done
   done
+done
 
-  cat <<TABLE_END_EOF
+cat <<TABLE_END_EOF
 </tbody>
 </table>
 TABLE_END_EOF
-
-done

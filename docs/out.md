@@ -8,17 +8,25 @@ title: Saturation
 <fieldset>
     <legend>Columns</legend>
     <input type="checkbox" id="show-target"><label for="show-target">Show Target</label>
+    <input type="checkbox" id="show-op"><label for="show-op">Show Op</label>
     <input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label>
+    <input type="checkbox" id="show-asm" checked><label for="show-asm">Show Compiler Output</label>
 </fieldset>
-
 <label for="targets-select">Target:</label>
 <select name="targets" id="targets-select">
 <option value="cpu-x86_64">x86-64</option>
 <option value="cpu-arm">ARM</option>
 <option value="cpu-arm64">ARM64</option>
 </select>
+<label for="op-select">Operation:</label>
+<select name="op" id="op-select">
+<option value="op-add">add</option>
+<option value="op-sub">subtract</option>
+<option value="op-mul">multiply</option>
+<option value="op-div">divide</option>
+</select>
 
-<table class="target cpu-x86_64">
+<table>
 <thead>
 <tr>
 <th class="column-target">Target</th>
@@ -26,11 +34,12 @@ title: Saturation
 <th class="column-op">Op</th>
 <th class="column-sign">Signed</th>
 <th class="column-cpp">C++ Code</th>
-<th>Compiler Output</th>
+<th class="column-asm">Compiler Output</th>
 </tr>
 </thead>
 <tbody>
-<tr class='sign-s add 4 cpu-x86_64'>
+
+<tr class='sign-s op-add 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
@@ -48,7 +57,7 @@ f (sinteger_t<4> a,
 </td>
 <td class='column-asm'>
 
-{% highlight x86asm %}
+{% highlight armasm %}
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
@@ -73,7 +82,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u add 4 cpu-x86_64'>
+<tr class='sign-u op-add 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
@@ -91,7 +100,7 @@ f (uinteger_t<4> a,
 </td>
 <td class='column-asm'>
 
-{% highlight x86asm %}
+{% highlight armasm %}
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
@@ -110,7 +119,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s sub 4 cpu-x86_64'>
+<tr class='sign-s op-sub 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
@@ -128,7 +137,7 @@ f (sinteger_t<4> a,
 </td>
 <td class='column-asm'>
 
-{% highlight x86asm %}
+{% highlight armasm %}
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
@@ -152,7 +161,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u sub 4 cpu-x86_64'>
+<tr class='sign-u op-sub 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
@@ -170,7 +179,7 @@ f (uinteger_t<4> a,
 </td>
 <td class='column-asm'>
 
-{% highlight x86asm %}
+{% highlight armasm %}
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
@@ -184,7 +193,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s mul 4 cpu-x86_64'>
+<tr class='sign-s op-mul 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
@@ -202,7 +211,7 @@ f (sinteger_t<4> a,
 </td>
 <td class='column-asm'>
 
-{% highlight x86asm %}
+{% highlight armasm %}
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
@@ -227,7 +236,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u mul 4 cpu-x86_64'>
+<tr class='sign-u op-mul 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
@@ -245,7 +254,7 @@ f (uinteger_t<4> a,
 </td>
 <td class='column-asm'>
 
-{% highlight x86asm %}
+{% highlight armasm %}
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
@@ -259,7 +268,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s div 4 cpu-x86_64'>
+<tr class='sign-s op-div 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
@@ -277,7 +286,7 @@ f (sinteger_t<4> a,
 </td>
 <td class='column-asm'>
 
-{% highlight x86asm %}
+{% highlight armasm %}
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
@@ -296,7 +305,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u div 4 cpu-x86_64'>
+<tr class='sign-u op-div 4 cpu-x86_64'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
@@ -314,7 +323,7 @@ f (uinteger_t<4> a,
 </td>
 <td class='column-asm'>
 
-{% highlight x86asm %}
+{% highlight armasm %}
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
@@ -326,21 +335,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-</tbody>
-</table>
-<table class="target cpu-arm">
-<thead>
-<tr>
-<th class="column-target">Target</th>
-<th class="column-bits">Bits</th>
-<th class="column-op">Op</th>
-<th class="column-sign">Signed</th>
-<th class="column-cpp">C++ Code</th>
-<th>Compiler Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class='sign-s add 4 cpu-arm'>
+<tr class='sign-s op-add 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
@@ -377,7 +372,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u add 4 cpu-arm'>
+<tr class='sign-u op-add 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
@@ -408,7 +403,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s sub 4 cpu-arm'>
+<tr class='sign-s op-sub 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
@@ -442,7 +437,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u sub 4 cpu-arm'>
+<tr class='sign-u op-sub 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
@@ -469,7 +464,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s mul 4 cpu-arm'>
+<tr class='sign-s op-mul 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
@@ -506,7 +501,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u mul 4 cpu-arm'>
+<tr class='sign-u op-mul 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
@@ -534,7 +529,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s div 4 cpu-arm'>
+<tr class='sign-s op-div 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
@@ -569,7 +564,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u div 4 cpu-arm'>
+<tr class='sign-u op-div 4 cpu-arm'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
@@ -597,21 +592,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-</tbody>
-</table>
-<table class="target cpu-arm64">
-<thead>
-<tr>
-<th class="column-target">Target</th>
-<th class="column-bits">Bits</th>
-<th class="column-op">Op</th>
-<th class="column-sign">Signed</th>
-<th class="column-cpp">C++ Code</th>
-<th>Compiler Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class='sign-s add 4 cpu-arm64'>
+<tr class='sign-s op-add 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
@@ -646,7 +627,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u add 4 cpu-arm64'>
+<tr class='sign-u op-add 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
@@ -677,7 +658,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s sub 4 cpu-arm64'>
+<tr class='sign-s op-sub 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
@@ -710,7 +691,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u sub 4 cpu-arm64'>
+<tr class='sign-u op-sub 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
@@ -737,7 +718,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s mul 4 cpu-arm64'>
+<tr class='sign-s op-mul 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
@@ -772,7 +753,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u mul 4 cpu-arm64'>
+<tr class='sign-u op-mul 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
@@ -801,7 +782,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s div 4 cpu-arm64'>
+<tr class='sign-s op-div 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
@@ -832,7 +813,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u div 4 cpu-arm64'>
+<tr class='sign-u op-div 4 cpu-arm64'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
