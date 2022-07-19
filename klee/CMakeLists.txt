@@ -17,7 +17,8 @@ function (setup_klee_target target)
     -g
     -fno-threadsafe-statics
     -target x86_64-pc-linux-gnu
-  )
+    )
+  target_compile_definitions (${target} PRIVATE HAVE_INT128)
 endfunction (setup_klee_target)
 
 
@@ -118,8 +119,6 @@ klee_is_available (klee_available)
 message (STATUS "KLEE available? ${klee_available}")
 if (klee_available)
   add_custom_target (klee-all)
-  add_klee_target (TARGET klee_adds32 SOURCES adds32.cpp common.hpp ../saturation.hpp)
-  add_klee_target (TARGET klee_addu32 SOURCES addu32.cpp common.hpp ../saturation.hpp)
   add_klee_target (TARGET klee_divs32 SOURCES divs32.cpp common.hpp ../saturation.hpp)
   add_klee_target (TARGET klee_divu32 SOURCES divu32.cpp common.hpp ../saturation.hpp)
   add_klee_target (TARGET klee_muls32 SOURCES muls32.cpp common.hpp ../saturation.hpp)
@@ -127,10 +126,18 @@ if (klee_available)
   add_klee_target (TARGET klee_subs32 SOURCES subs32.cpp common.hpp ../saturation.hpp)
   add_klee_target (TARGET klee_subu32 SOURCES subu32.cpp common.hpp ../saturation.hpp)
 
-  add_klee_target (TARGET klee_addu24 SOURCES addu24.cpp common.hpp ../saturation.hpp)
-  add_klee_target (TARGET klee_adds24 SOURCES adds24.cpp common.hpp ../saturation.hpp)
   add_klee_target (TARGET klee_subs24 SOURCES subs24.cpp common.hpp ../saturation.hpp)
   add_klee_target (TARGET klee_divs24 SOURCES divs24.cpp common.hpp ../saturation.hpp)
   #(Disabled: appears to cause klee 2.3 to hang)
   #add_klee_target (TARGET klee_muls24 SOURCES muls24.cpp common.hpp ../saturation.hpp)
+
+  add_klee_target (TARGET klee_adds64 SOURCES adds64.cpp adds.hpp common.hpp ../saturation.hpp)  
+  add_klee_target (TARGET klee_adds32 SOURCES adds32.cpp adds.hpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_adds16 SOURCES adds16.cpp adds.hpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_adds8 SOURCES adds8.cpp adds.hpp common.hpp ../saturation.hpp)
+
+  add_klee_target (TARGET klee_addu64 SOURCES addu64.cpp addu.hpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_addu32 SOURCES addu32.cpp addu.hpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_addu16 SOURCES addu16.cpp addu.hpp common.hpp ../saturation.hpp)
+  add_klee_target (TARGET klee_addu8 SOURCES addu8.cpp addu.hpp common.hpp ../saturation.hpp)
 endif ()

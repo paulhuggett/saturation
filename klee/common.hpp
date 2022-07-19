@@ -102,6 +102,16 @@ inline void dump (uint32_t x, uint32_t y, uint32_t expected, uint32_t actual) {
                " actual=%" PRIu32 "\n",
                x, y, expected, actual);
 }
+inline void dump (int64_t x, int64_t y, int64_t expected, int64_t actual) {
+  std::printf ("x=%" PRId64 " y=%" PRId64 " expected=%" PRId64
+               " actual=%" PRId64 "\n",
+               x, y, expected, actual);
+}
+inline void dump (uint64_t x, uint64_t y, uint64_t expected, uint64_t actual) {
+  std::printf ("x=%" PRIu64 " y=%" PRIu64 " expected=%" PRIu64
+               " actual=%" PRIu64 "\n",
+               x, y, expected, actual);
+}
 
 }  // end namespace details
 
@@ -131,8 +141,11 @@ int test_main (FunctionUnderTest fut, ExpectedFunction expected,
 
   auto x = type{0};
   auto y = type{0};
-  klee_make_symbolic (&x, sizeof (x), "x");
-  klee_make_symbolic (&y, sizeof (y), "y");
+  char name[4];
+  std::snprintf (name, sizeof (name), "x%zu", Bits);
+  klee_make_symbolic (&x, sizeof (x), name);
+  std::snprintf (name, sizeof (name), "y%zu", Bits);
+  klee_make_symbolic (&y, sizeof (y), name);
   details::assume_range<Bits, IsUnsigned> (x);
   details::assume_range<Bits, IsUnsigned> (y);
   if (!allow_y0) {

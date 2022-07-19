@@ -19,7 +19,7 @@
 namespace saturation {
 
 /// Yields the smallest signed integral type with at least \p N bits.
-template <size_t N, typename = typename std::enable_if_t<(N <= 64)>>
+template <size_t N, typename = typename std::enable_if_t<(N <= 128)>>
 struct sinteger {
   /// The type of a signed integral with at least \p N bits.
   using type = typename sinteger<N + 1>::type;
@@ -51,9 +51,21 @@ struct sinteger<64> {
   /// Smallest signed integer type with width of at least 64 bits.
   using type = int_least64_t;
 };
+#if HAVE_INT128
+/// \brief Yields a signed integral type of 128 bits.
+template <>
+struct sinteger<128> {
+  /// A 128 bit signed integer type.
+  using type = __int128;
+};
+#else
+/// \brief Yields no type when the compiler does not support 128 bit integers.
+template <>
+struct sinteger<128> {};
+#endif
 
 /// \brief Yields the smallest unsigned integral type with at least \p N bits.
-template <size_t N, typename = typename std::enable_if_t<(N <= 64)>>
+template <size_t N, typename = typename std::enable_if_t<(N <= 128)>>
 struct uinteger {
   /// The type of an unsigned integral with at least \p N bits.
   using type = typename uinteger<N + 1>::type;
@@ -85,6 +97,18 @@ struct uinteger<64> {
   /// Smallest unsigned integer type with width of at least 64 bits.
   using type = uint_least64_t;
 };
+#if HAVE_INT128
+/// \brief Yields an unsigned integral type of 128 bits.
+template <>
+struct uinteger<128> {
+  /// A 128 bit signed integer type.
+  using type = unsigned __int128;
+};
+#else
+/// \brief Yields no type when the compiler does not support 128 bit integers.
+template <>
+struct uinteger<128> {};
+#endif
 
 /// \brief Equivalent to (T{1}<<N)-T{1} where T is an unsigned integral type.
 ///

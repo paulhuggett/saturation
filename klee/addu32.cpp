@@ -1,9 +1,8 @@
-#include "common.hpp"
-
+// Test unsigned add for 24 and 31-33 bit values.
+#include "addu.hpp"
 int main () {
-  return test_main<32, true> (
-      [] (uint32_t x, uint32_t y) { return saturation::addu32 (x, y); },
-      [] (uint32_t x, uint32_t y) {
-        return clampu32 (static_cast<int64_t> (x) + static_cast<int64_t> (y));
-      });
+  do_test<24> ();
+  do_test<31> ();
+  do_test<32> ();
+  do_test<33> ();
 }
