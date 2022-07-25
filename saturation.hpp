@@ -392,11 +392,74 @@ constexpr uint8_t divu8 (uint8_t const x, uint8_t const y) {
 }
 /// @}
 
+namespace details {
+
+template <typename T,
+          typename = typename std::enable_if_t<std::is_integral_v<T>>>
+constexpr std::pair<T, T> multiply (T const u, T const v) {
+  using UT = std::make_unsigned_t<T>;
+  constexpr auto half_shift = sizeof (T) * 4U;
+  constexpr auto half_mask = (T{1} << half_shift) - 1U;
+
+  T const u_hi = u >> half_shift;
+  UT const u_lo = static_cast<UT> (u) & half_mask;
+  T const v_hi = v >> half_shift;
+  UT const v_lo = static_cast<UT> (v) & half_mask;
+
+  UT const lo_lo = u_lo * v_lo;
+  UT const lo_lo_mod = lo_lo & half_mask;
+  UT const lo_lo_over = lo_lo >> half_shift;
+
+  UT const hi_lo = static_cast<UT> (u_hi) * v_lo + lo_lo_over;
+  UT const hi_lo_mod = hi_lo & half_mask;
+  UT const hi_lo_over = static_cast<UT> (static_cast<T> (hi_lo) >> half_shift);
+
+  UT const lo_hi = u_lo * static_cast<UT> (v_hi) + hi_lo_mod;
+  UT const lo_hi_over = static_cast<UT> (static_cast<T> (lo_hi) >> half_shift);
+
+  T const hi =
+      static_cast<T> (static_cast<UT> (u_hi * v_hi) + hi_lo_over + lo_hi_over);
+  T const lo = static_cast<T> ((lo_hi << half_shift) +
+                               lo_lo_mod);  // (Expression could be "u * v")
+  return std::make_pair (hi, lo);
+}
+
+template <size_t N, bool Wide = (N > 32)>
+struct mulux {
+  constexpr std::pair<uinteger_t<N>, uinteger_t<N>> operator() (
+      uinteger_t<N> const x, uinteger_t<N> const y) const {
+    auto const res = static_cast<uinteger_t<N * 2U>> (x) * y;
+    return std::make_pair (static_cast<uinteger_t<N>> (res >> N),
+                           static_cast<uinteger_t<N>> (res));
+  }
+};
+
+template <size_t N>
+struct mulux<N, true> {
+  static_assert (N > 32);
+
+  constexpr std::pair<uinteger_t<N>, uinteger_t<N>> operator() (
+      uinteger_t<N> const x, uinteger_t<N> const y) const {
+    auto res = multiply (x, y);
+    if constexpr (N < 64) {
+      res.first = (res.first << N) | (res.second >> N);
+      res.second &= mask_v<N>;
+    }
+    assert ((res.first & ~mask_v<N>) == 0 &&
+            "mulux<>-wide low result is out of range");
+    assert ((res.second & ~mask_v<N>) == 0 &&
+            "mulux<>-wide high result is out of range");
+    return res;
+  }
+};
+
+}  // end namespace details
+
 // mulu
 // ~~~~
 /// \name Unsigned Multiplication
 /// Functions that perform saturating multiplication of unsigned
-/// integral quantities from 4 to 32 bits.
+/// integral quantities from 4 to 64 bits.
 /// @{
 
 /// \brief Computes the value of \p x &times; \p y.
@@ -411,14 +474,11 @@ constexpr uint8_t divu8 (uint8_t const x, uint8_t const y) {
 /// \param y  The second value to be multiplied.
 /// \returns  \p x &times; \p y. If the result would be too large,
 ///   \f$ 2^N-1 \f$ (saturation::limits<N>::max()).
-template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 32)>>
+template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr uinteger_t<N> mulu (uinteger_t<N> const x, uinteger_t<N> const y) {
   assert (x <= ulimits<N>::max () && "mulu<> x value out of range");
   assert (y <= ulimits<N>::max () && "mulu<> y value out of range");
-  auto const res =
-      static_cast<uinteger_t<N * 2U>> (x) * static_cast<uinteger_t<N * 2U>> (y);
-  auto const hi = res >> N;
-  auto const lo = static_cast<uinteger_t<N>> (res);
+  auto const [hi, lo] = details::mulux<N>{}(x, y);
   return (lo | -!!hi) & mask_v<N>;
 }
 /// \brief Computes the unsigned 32 bit value of \p x &times; \p y.

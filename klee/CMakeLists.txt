@@ -95,8 +95,7 @@ function (add_klee_target)
             --optimize
             --output-dir=${CMAKE_CURRENT_BINARY_DIR}/kout/${target_base}
             --watchdog
-
-            --max-time=600
+            --max-time=1000
             ${link_llvm_lib}
             $<TARGET_OBJECTS:${bitcode_target}>
 
@@ -145,6 +144,7 @@ if (klee_available)
   add_klee_target (TARGET klee_subs16 SOURCES subs16.cpp)
   add_klee_target (TARGET klee_subs8 SOURCES subs8.cpp)
 
+  add_klee_target (TARGET klee_mulu64 SOURCES mulu64.cpp)
   add_klee_target (TARGET klee_mulu32 SOURCES mulu32.cpp)
   add_klee_target (TARGET klee_mulu16 SOURCES mulu16.cpp)
   add_klee_target (TARGET klee_mulu8 SOURCES mulu8.cpp)

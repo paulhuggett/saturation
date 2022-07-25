@@ -10,14 +10,13 @@ void do_test () {
 #endif
   using uinteger = saturation::uinteger_t<N>;
   int exit_code = test_main<N, true> (
-      [] (uinteger x, uinteger y) {
-        klee_assume (y != 0);
-        return saturation::divu<N> (x, y);
-      },
+      [] (uinteger x, uinteger y) { return saturation::divu<N> (x, y); },
       [] (uinteger x, uinteger y) {
         // Can't overflow!
         return static_cast<uinteger> (x / y);
-      });
+      },
+      false  // Ensure y!=0
+  );
   if (exit_code != EXIT_SUCCESS) {
     std::exit (exit_code);
   }
