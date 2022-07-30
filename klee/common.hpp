@@ -72,45 +72,37 @@ inline void assume_range (test_type<Bits, IsUnsigned> v) {
   ar<Bits, IsUnsigned>::assume (v);
 }
 
-inline void dump (int8_t x, int8_t y, int8_t expected, int8_t actual) {
-  std::printf ("x=%" PRId8 " y=%" PRId8 " expected=%" PRId8 " actual=%" PRId8
-               "\n",
-               x, y, expected, actual);
+inline void dump (char const* xn, int8_t const x, char const* yn,
+                  int8_t const y) {
+  std::printf ("%s=%" PRId8 " %s=%" PRId8, xn, x, yn, y);
 }
-inline void dump (uint8_t x, uint8_t y, uint8_t expected, uint8_t actual) {
-  std::printf ("x=%" PRIu8 " y=%" PRIu8 " expected=%" PRIu8 " actual=%" PRIu8
-               "\n",
-               x, y, expected, actual);
+inline void dump (char const* xn, uint8_t const x, char const* yn,
+                  uint8_t const y) {
+  std::printf ("%s=%" PRIu8 " %s=%" PRIu8, xn, x, yn, y);
 }
-inline void dump (int16_t x, int16_t y, int16_t expected, int16_t actual) {
-  std::printf ("x=%" PRId16 " y=%" PRId16 " expected=%" PRId16
-               " actual=%" PRId16 "\n",
-               x, y, expected, actual);
+inline void dump (char const* xn, int16_t const x, char const* yn,
+                  int16_t const y) {
+  std::printf ("%s=%" PRId16 " %s=%" PRId16, xn, x, yn, y);
 }
-inline void dump (uint16_t x, uint16_t y, uint16_t expected, uint16_t actual) {
-  std::printf ("x=%" PRIu16 " y=%" PRIu16 " expected=%" PRIu16
-               " actual=%" PRIu16 "\n",
-               x, y, expected, actual);
+inline void dump (char const* xn, uint16_t const x, char const* yn,
+                  uint16_t const y) {
+  std::printf ("%s=%" PRIu16 " %s=%" PRIu16, xn, x, yn, y);
 }
-inline void dump (int32_t x, int32_t y, int32_t expected, int32_t actual) {
-  std::printf ("x=%" PRId32 " y=%" PRId32 " expected=%" PRId32
-               " actual=%" PRId32 "\n",
-               x, y, expected, actual);
+inline void dump (char const* xn, int32_t const x, char const* yn,
+                  int32_t const y) {
+  std::printf ("%s=%" PRId32 " %s=%" PRId32, xn, x, yn, y);
 }
-inline void dump (uint32_t x, uint32_t y, uint32_t expected, uint32_t actual) {
-  std::printf ("x=%" PRIu32 " y=%" PRIu32 " expected=%" PRIu32
-               " actual=%" PRIu32 "\n",
-               x, y, expected, actual);
+inline void dump (char const* xn, uint32_t const x, char const* yn,
+                  uint32_t const y) {
+  std::printf ("%s=%" PRIu32 " %s=%" PRIu32, xn, x, yn, y);
 }
-inline void dump (int64_t x, int64_t y, int64_t expected, int64_t actual) {
-  std::printf ("x=%" PRId64 " y=%" PRId64 " expected=%" PRId64
-               " actual=%" PRId64 "\n",
-               x, y, expected, actual);
+inline void dump (char const* xn, int64_t const x, char const* yn,
+                  int64_t const y) {
+  std::printf ("%s=%" PRId64 " %s=%" PRId64, xn, x, yn, y);
 }
-inline void dump (uint64_t x, uint64_t y, uint64_t expected, uint64_t actual) {
-  std::printf ("x=%" PRIu64 " y=%" PRIu64 " expected=%" PRIu64
-               " actual=%" PRIu64 "\n",
-               x, y, expected, actual);
+inline void dump (char const* xn, uint64_t const x, char const* yn,
+                  uint64_t const y) {
+  std::printf ("%s=%" PRIu64 " %s=%" PRIu64, xn, x, yn, y);
 }
 
 }  // end namespace details
@@ -141,21 +133,28 @@ int test_main (FunctionUnderTest fut, ExpectedFunction expected,
 
   auto x = type{0};
   auto y = type{0};
-  char name[4];
-  std::snprintf (name, sizeof (name), "x%zu", Bits);
-  klee_make_symbolic (&x, sizeof (x), name);
-  std::snprintf (name, sizeof (name), "y%zu", Bits);
-  klee_make_symbolic (&y, sizeof (y), name);
+  char namex[4];
+  std::snprintf (namex, sizeof (namex), "x%zu", Bits);
+  klee_make_symbolic (&x, sizeof (x), namex);
+  char namey[4];
+  std::snprintf (namey, sizeof (namey), "y%zu", Bits);
+  klee_make_symbolic (&y, sizeof (y), namey);
   details::assume_range<Bits, IsUnsigned> (x);
   details::assume_range<Bits, IsUnsigned> (y);
   if (!allow_y0) {
     klee_assume (y != 0);
   }
 
+#if KLEE_RUN
+  details::dump (namex, x, namey, y);
+  std::fflush (stdout);
+#endif
   type const actual = fut (x, y);
   type const e = expected (x, y);
 #if KLEE_RUN
-  details::dump (x, y, e, actual);
+  details::dump (" expected", e, "actual", actual);
+  std::putchar ('\n');
+  std::fflush (stdout);
 #endif
   return actual == e ? EXIT_SUCCESS : EXIT_FAILURE;
 }

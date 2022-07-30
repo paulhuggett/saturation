@@ -17,7 +17,7 @@ function (setup_klee_target target)
     -g
     -fno-threadsafe-statics
     -target x86_64-pc-linux-gnu
-    )
+  )
   target_compile_definitions (${target} PRIVATE HAVE_INT128)
 endfunction (setup_klee_target)
 
@@ -91,8 +91,6 @@ function (add_klee_target)
     COMMAND klee
             --libc=uclibc
             --posix-runtime
-            --only-output-states-covering-new
-            --optimize
             --output-dir=${CMAKE_CURRENT_BINARY_DIR}/kout/${target_base}
             --watchdog
             --max-time=1000
@@ -121,7 +119,7 @@ if (klee_available)
   add_klee_target (TARGET klee_divs32 SOURCES divs32.cpp common.hpp ../saturation.hpp)
   add_klee_target (TARGET klee_muls32 SOURCES muls32.cpp common.hpp ../saturation.hpp)
   add_klee_target (TARGET klee_divs24 SOURCES divs24.cpp common.hpp ../saturation.hpp)
-  #(Disabled: appears to cause klee 2.3 to hang)
+  #(Disabled for the time being)
   #add_klee_target (TARGET klee_muls24 SOURCES muls24.cpp common.hpp ../saturation.hpp)
 
   add_klee_target (TARGET klee_adds64 SOURCES adds64.cpp)

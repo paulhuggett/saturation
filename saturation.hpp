@@ -11,6 +11,7 @@
 #define SATURATION_HPP
 
 #include <cassert>
+#include <climits>
 #include <cstdint>
 #include <cstdlib>
 #include <limits>
@@ -442,7 +443,8 @@ struct mulux<N, true> {
       uinteger_t<N> const x, uinteger_t<N> const y) const {
     auto res = multiply (x, y);
     if constexpr (N < 64) {
-      res.first = (res.first << N) | (res.second >> N);
+      res.first = (res.first << (sizeof (res.second) * CHAR_BIT - N)) |
+                  (res.second >> N);
       res.second &= mask_v<N>;
     }
     assert ((res.first & ~mask_v<N>) == 0 &&

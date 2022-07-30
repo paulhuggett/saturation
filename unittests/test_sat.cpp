@@ -333,6 +333,14 @@ TEST (Multiply, Signed64) {
              (s64pair{-1, 0}));
 }
 
+TEST (Mulu, 48) {
+  using uint_type = uinteger_t<48>;
+  EXPECT_EQ (mulu<48> (uint_type{0x800000000000}, uint_type{0x000100000000}),
+             uint_type{0xFFFFFFFFFFFF});
+  EXPECT_EQ (mulu<48> (uint_type{140737488355328}, uint_type{1099511627776}),
+             uint_type{281474976710655});
+}
+
 class Saturation32 : public testing::Test {
 protected:
   static constexpr auto min = std::numeric_limits<int32_t>::min ();
@@ -607,6 +615,6 @@ using width_types = testing::Types<
     unsigned_constant<4U>, unsigned_constant<7U>, unsigned_constant<8U>,
     unsigned_constant<9U>, unsigned_constant<15U>, unsigned_constant<16U>,
     unsigned_constant<17U>, unsigned_constant<24U>, unsigned_constant<31U>,
-    unsigned_constant<32U>, unsigned_constant<33U>, unsigned_constant<63U>,
-    unsigned_constant<64U>>;
+    unsigned_constant<32U>, unsigned_constant<33U>, unsigned_constant<48U>,
+    unsigned_constant<63U>, unsigned_constant<64U>>;
 INSTANTIATE_TYPED_TEST_SUITE_P (ExplicitWidths, Saturation, width_types, );
