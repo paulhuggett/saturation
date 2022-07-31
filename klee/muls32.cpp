@@ -1,9 +1,8 @@
-#include "common.hpp"
+#include "muls.hpp"
 
 int main () {
-  return test_main<32, false> (
-      [] (int32_t x, int32_t y) { return saturation::muls32 (x, y); },
-      [] (int32_t x, int32_t y) {
-        return clamp32 (static_cast<int64_t> (x) * static_cast<int64_t> (y));
-      });
+  do_test<24> ();
+  do_test<31> ();
+  do_test<32> ();
+  do_test<33> ();
 }

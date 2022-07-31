@@ -425,8 +425,10 @@ constexpr std::pair<T, T> multiply (T const u, T const v) {
   return std::make_pair (hi, lo);
 }
 
-template <size_t N, bool Wide = (N > 32)>
-struct mulux {
+constexpr auto narrow_multiply_max = 32U;
+
+template <size_t N, bool Wide = (N > narrow_multiply_max)>
+struct umultiplier {
   constexpr std::pair<uinteger_t<N>, uinteger_t<N>> operator() (
       uinteger_t<N> const x, uinteger_t<N> const y) const {
     auto const res = static_cast<uinteger_t<N * 2U>> (x) * y;
@@ -436,8 +438,8 @@ struct mulux {
 };
 
 template <size_t N>
-struct mulux<N, true> {
-  static_assert (N > 32);
+struct umultiplier<N, true> {
+  static_assert (N > narrow_multiply_max);
 
   constexpr std::pair<uinteger_t<N>, uinteger_t<N>> operator() (
       uinteger_t<N> const x, uinteger_t<N> const y) const {
@@ -480,7 +482,7 @@ template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr uinteger_t<N> mulu (uinteger_t<N> const x, uinteger_t<N> const y) {
   assert (x <= ulimits<N>::max () && "mulu<> x value out of range");
   assert (y <= ulimits<N>::max () && "mulu<> y value out of range");
-  auto const [hi, lo] = details::mulux<N>{}(x, y);
+  auto const [hi, lo] = details::umultiplier<N>{}(x, y);
   return (lo | -!!hi) & mask_v<N>;
 }
 /// \brief Computes the unsigned 32 bit value of \p x &times; \p y.
@@ -788,11 +790,45 @@ constexpr int8_t divs8 (int8_t const x, int8_t const y) {
 }
 /// @}
 
+namespace details {
+
+template <size_t N, bool Wide = (N > narrow_multiply_max)>
+struct smultiplier {
+  constexpr std::pair<sinteger_t<N>, sinteger_t<N>> operator() (
+      sinteger_t<N> const x, sinteger_t<N> const y) const {
+    auto const res = static_cast<sinteger_t<N * 2U>> (x) * y;
+    return std::make_pair (static_cast<sinteger_t<N>> (res >> N),
+                           static_cast<sinteger_t<N>> (res));
+  }
+};
+
+template <size_t N>
+struct smultiplier<N, true> {
+  static_assert (N > narrow_multiply_max);
+
+  constexpr std::pair<sinteger_t<N>, sinteger_t<N>> operator() (
+      sinteger_t<N> const x, sinteger_t<N> const y) const {
+    auto res = multiply (x, y);
+    if constexpr (N < 64) {
+      using ST = sinteger_t<N>;
+      using UT = uinteger_t<N>;
+      constexpr auto shift = sizeof (res.second) * CHAR_BIT - N;
+      res.first = static_cast<ST> (static_cast<UT> (res.first) << shift |
+                                   (static_cast<UT> (res.second) >> N));
+      res.second =
+          static_cast<ST> (static_cast<UT> (res.second) << shift) >> shift;
+    }
+    return res;
+  }
+};
+
+}  // end namespace details
+
 // muls
 // ~~~~
 /// \name Signed Multiplication
 /// Functions that perform saturating multiplication of signed integral
-/// quantities from 4 to 32 bits.
+/// quantities from 4 to 64 bits.
 /// @{
 
 /// \brief Computes the signed result of multiplying \p x by \p y.
@@ -805,31 +841,28 @@ constexpr int8_t divs8 (int8_t const x, int8_t const y) {
 ///   \f$ 2^{N-1}-1 \f$ (saturation::limits<N>::max()); if the result
 ///   would be too large and negative, \f$ -2^{N-1} \f$
 ///   (saturation::limits<N>::min()).
-template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 32)>>
+template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr sinteger_t<N> muls (sinteger_t<N> const x, sinteger_t<N> const y) {
   assert (x >= limits<N>::min () && x <= limits<N>::max () &&
           "muls<> x value out of range");
   assert (y >= limits<N>::min () && y <= limits<N>::max () &&
           "muls<> y value out of range");
 
-  using s2bits = nbit_scalar<N * 2, false>;
-  using s2int = typename s2bits::type;
-
   using sbits = nbit_scalar<N, false>;
   using sint = typename sbits::type;
-  using ubits = nbit_scalar<N, true>;
-  using uint = typename ubits::type;
 
-  auto const res = s2bits{
-      static_cast<s2int> (static_cast<s2int> (x) * static_cast<s2int> (y))};
-  if (static_cast<sint> (res >> N) != static_cast<sint> (res >> (N - 1U))) {
+  auto const [hi, lo] = details::smultiplier<N>{}(x, y);
+  if (hi != lo >> (N - 1)) {
+    using ubits = nbit_scalar<N, true>;
+    using uint = typename ubits::type;
+
     auto const v = sbits{static_cast<sint> (ubits{static_cast<uint> (
         static_cast<uint> (ubits{static_cast<uint> (x ^ y)} >> (N - 1U)) +
         static_cast<uint> (limits<N>::max ()))})};
-    assert (v == (res < sint{0} ? limits<N>::min () : limits<N>::max ()));
+    assert (v == (hi < 0 ? limits<N>::min () : limits<N>::max ()));
     return v;
   }
-  return static_cast<sint> (res);
+  return static_cast<sint> (lo);
 }
 /// \brief Computes the signed 32 bit result of multiplying \p x by \p y.
 ///

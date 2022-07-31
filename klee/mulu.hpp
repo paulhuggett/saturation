@@ -5,9 +5,9 @@
 
 template <size_t N>
 void do_test () {
-#if KLEE_RUN
-  std::printf ("bits=%zu: ", N);
-#endif
+  if constexpr (KLEE_RUN) {
+    std::printf ("bits=%zu: ", N);
+  }
   using uinteger = saturation::uinteger_t<N>;
   int exit_code = test_main<N, true> (
       [] (uinteger x, uinteger y) {

@@ -587,23 +587,23 @@ TYPED_TEST_P (Saturation, UnsignedMultiply) {
 }
 TYPED_TEST_P (Saturation, SignedMultiply) {
   constexpr auto bits = TypeParam::value;
-  if constexpr (bits <= 32U) {
-    using sint_type = sinteger_t<bits>;
-    constexpr auto max = limits<bits>::max ();
-    constexpr auto min = limits<bits>::min ();
-    EXPECT_EQ (muls<bits> (sint_type{0}, sint_type{0}), sint_type{0});
-    EXPECT_EQ (muls<bits> (sint_type{3}, sint_type{2}), sint_type{6});
-    EXPECT_EQ (muls<bits> (sint_type{-3}, sint_type{2}), sint_type{-6});
-    EXPECT_EQ (muls<bits> (sint_type{3}, sint_type{-2}), sint_type{-6});
-    EXPECT_EQ (muls<bits> (max, sint_type{1}), max);
-    EXPECT_EQ (muls<bits> (max, sint_type{2}), max);
-    EXPECT_EQ (muls<bits> (min, sint_type{1}), min);
-    EXPECT_EQ (muls<bits> (min, sint_type{-1}), max);
-    EXPECT_EQ (muls<bits> (min, sint_type{-2}), max);
-    EXPECT_EQ (muls<bits> (sint_type{3}, static_cast<sint_type> (min + 2)),
-               min);
-    EXPECT_EQ (muls<bits> (sint_type{3}, sint_type{max - 2}), max);
-  }
+  using sint_type = sinteger_t<bits>;
+  constexpr auto max = limits<bits>::max ();
+  constexpr auto min = limits<bits>::min ();
+  EXPECT_EQ (muls<bits> (sint_type{0}, sint_type{0}), sint_type{0});
+  EXPECT_EQ (muls<bits> (sint_type{-1}, sint_type{-1}), sint_type{1});
+  EXPECT_EQ (muls<bits> (sint_type{1}, sint_type{-1}), sint_type{-1});
+  EXPECT_EQ (muls<bits> (sint_type{-1}, sint_type{1}), sint_type{-1});
+  EXPECT_EQ (muls<bits> (sint_type{3}, sint_type{2}), sint_type{6});
+  EXPECT_EQ (muls<bits> (sint_type{-3}, sint_type{2}), sint_type{-6});
+  EXPECT_EQ (muls<bits> (sint_type{3}, sint_type{-2}), sint_type{-6});
+  EXPECT_EQ (muls<bits> (max, sint_type{1}), max);
+  EXPECT_EQ (muls<bits> (max, sint_type{2}), max);
+  EXPECT_EQ (muls<bits> (min, sint_type{1}), min);
+  EXPECT_EQ (muls<bits> (min, sint_type{-1}), max);
+  EXPECT_EQ (muls<bits> (min, sint_type{-2}), max);
+  EXPECT_EQ (muls<bits> (sint_type{3}, static_cast<sint_type> (min + 2)), min);
+  EXPECT_EQ (muls<bits> (sint_type{3}, sint_type{max - 2}), max);
 }
 
 REGISTER_TYPED_TEST_SUITE_P (Saturation, UnsignedAdd, SignedAdd, SignedSubtract,
