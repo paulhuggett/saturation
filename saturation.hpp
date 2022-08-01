@@ -451,7 +451,7 @@ private:
   static constexpr auto shift = sizeof (arg_type) * CHAR_BIT - N;
   using unsigned_type = std::make_unsigned_t<arg_type>;
 
-  static constexpr std::pair<arg_type, arg_type> adjust (
+  static constexpr std::pair<arg_type, arg_type>& adjust (
       std::pair<arg_type, arg_type>&& wide_res) {
     if constexpr (shift == 0) {
       return wide_res;
