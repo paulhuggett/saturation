@@ -3,8 +3,7 @@
 /// (addition, subtraction, multiplication, and division) for signed and
 /// unsigned integer types.
 ///
-/// Types can range from 4 to 64 bits for addition, subtraction, and division,
-/// and from 4 to 32 bits for multiplication. Operations using integers of width
+/// Types can range from 4 to 64 bits. Operations using integers of width
 /// matching target registers are likely to be branchless.
 
 #ifndef SATURATION_HPP
@@ -16,6 +15,7 @@
 #include <cstdlib>
 #include <limits>
 #include <type_traits>
+#include <utility>
 
 #ifndef HAVE_INT128
 #define HAVE_INT128  0
@@ -399,61 +399,71 @@ template <typename T,
           typename = typename std::enable_if_t<std::is_integral_v<T>>>
 constexpr std::pair<T, T> multiply (T const u, T const v) {
   using UT = std::make_unsigned_t<T>;
-  constexpr auto half_shift = sizeof (T) * 4U;
+  constexpr auto half_shift =
+      sizeof (T) * CHAR_BIT / 2U;  // half the number of bits in type T.
   constexpr auto half_mask = (T{1} << half_shift) - 1U;
 
-  T const u_hi = u >> half_shift;
-  UT const u_lo = static_cast<UT> (u) & half_mask;
-  T const v_hi = v >> half_shift;
-  UT const v_lo = static_cast<UT> (v) & half_mask;
+  auto const u_hi = u >> half_shift;
+  auto const u_lo = static_cast<UT> (u) & half_mask;
+  auto const v_hi = v >> half_shift;
+  auto const v_lo = static_cast<UT> (v) & half_mask;
 
-  UT const lo_lo = u_lo * v_lo;
-  UT const lo_lo_mod = lo_lo & half_mask;
-  UT const lo_lo_over = lo_lo >> half_shift;
+  auto const lo_lo = u_lo * v_lo;
+  auto const lo_lo_mod = lo_lo & half_mask;
+  auto const lo_lo_over = lo_lo >> half_shift;
 
-  UT const hi_lo = static_cast<UT> (u_hi) * v_lo + lo_lo_over;
-  UT const hi_lo_mod = hi_lo & half_mask;
-  UT const hi_lo_over = static_cast<UT> (static_cast<T> (hi_lo) >> half_shift);
+  auto const hi_lo = static_cast<UT> (u_hi) * v_lo + lo_lo_over;
+  auto const hi_lo_mod = hi_lo & half_mask;
+  auto const hi_lo_over =
+      static_cast<UT> (static_cast<T> (hi_lo) >> half_shift);
 
-  UT const lo_hi = u_lo * static_cast<UT> (v_hi) + hi_lo_mod;
-  UT const lo_hi_over = static_cast<UT> (static_cast<T> (lo_hi) >> half_shift);
+  auto const lo_hi = u_lo * static_cast<UT> (v_hi) + hi_lo_mod;
+  auto const lo_hi_over =
+      static_cast<UT> (static_cast<T> (lo_hi) >> half_shift);
 
-  T const hi =
+  auto const hi =
       static_cast<T> (static_cast<UT> (u_hi * v_hi) + hi_lo_over + lo_hi_over);
-  T const lo = static_cast<T> ((lo_hi << half_shift) +
-                               lo_lo_mod);  // (Expression could be "u * v")
+  auto const lo = static_cast<T> ((lo_hi << half_shift) +
+                                  lo_lo_mod);  // (Expression could be "u * v")
   return std::make_pair (hi, lo);
 }
 
-constexpr auto narrow_multiply_max = 32U;
+template <size_t N, bool IsUnsigned>
+struct multiplier {
+  static constexpr auto narrow_multiply_max = size_t{32};
 
-template <size_t N, bool Wide = (N > narrow_multiply_max)>
-struct umultiplier {
-  constexpr std::pair<uinteger_t<N>, uinteger_t<N>> operator() (
-      uinteger_t<N> const x, uinteger_t<N> const y) const {
-    auto const res = static_cast<uinteger_t<N * 2U>> (x) * y;
-    return std::make_pair (static_cast<uinteger_t<N>> (res >> N),
-                           static_cast<uinteger_t<N>> (res));
-  }
-};
+  using arg_type = std::conditional_t<IsUnsigned, uinteger_t<N>, sinteger_t<N>>;
+  using unsigned_type = std::make_unsigned_t<arg_type>;
+  static constexpr auto shift = sizeof (arg_type) * CHAR_BIT - N;
 
-template <size_t N>
-struct umultiplier<N, true> {
-  static_assert (N > narrow_multiply_max);
-
-  constexpr std::pair<uinteger_t<N>, uinteger_t<N>> operator() (
-      uinteger_t<N> const x, uinteger_t<N> const y) const {
-    auto res = multiply (x, y);
-    if constexpr (N < 64) {
-      res.first = (res.first << (sizeof (res.second) * CHAR_BIT - N)) |
-                  (res.second >> N);
-      res.second &= mask_v<N>;
+  constexpr std::pair<arg_type, arg_type> operator() (arg_type const x,
+                                                      arg_type const y) const {
+    if constexpr (N <= narrow_multiply_max) {
+      auto const narrow_res =
+          static_cast<std::conditional_t<IsUnsigned, uinteger_t<N * 2>,
+                                         sinteger_t<N * 2>>> (x) *
+          y;
+      return std::make_pair (static_cast<arg_type> (narrow_res >> N),
+                             static_cast<arg_type> (narrow_res));
+    } else {
+      auto wide_res = multiply (x, y);
+      if constexpr (shift > 0) {
+        wide_res.first = static_cast<arg_type> (
+            static_cast<unsigned_type> (wide_res.first) << shift |
+            (static_cast<unsigned_type> (wide_res.second) >> N));
+        wide_res.second =
+            static_cast<arg_type> (static_cast<unsigned_type> (wide_res.second)
+                                   << shift) >>
+            shift;
+        assert ((wide_res.first >> N) == 0 ||
+                (!IsUnsigned && wide_res.first >> N == -1) &&
+                    "multiplier<>-wide low result is out of range");
+        assert ((wide_res.second >> N) == 0 ||
+                (!IsUnsigned && wide_res.second >> N == -1) &&
+                    "multiplier<>-wide high result is out of range");
+      }
+      return wide_res;
     }
-    assert ((res.first & ~mask_v<N>) == 0 &&
-            "mulux<>-wide low result is out of range");
-    assert ((res.second & ~mask_v<N>) == 0 &&
-            "mulux<>-wide high result is out of range");
-    return res;
   }
 };
 
@@ -482,7 +492,7 @@ template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr uinteger_t<N> mulu (uinteger_t<N> const x, uinteger_t<N> const y) {
   assert (x <= ulimits<N>::max () && "mulu<> x value out of range");
   assert (y <= ulimits<N>::max () && "mulu<> y value out of range");
-  auto const [hi, lo] = details::umultiplier<N>{}(x, y);
+  auto const [hi, lo] = details::multiplier<N, true>{}(x, y);
   return (lo | -!!hi) & mask_v<N>;
 }
 /// \brief Computes the unsigned 32 bit value of \p x &times; \p y.
@@ -790,40 +800,6 @@ constexpr int8_t divs8 (int8_t const x, int8_t const y) {
 }
 /// @}
 
-namespace details {
-
-template <size_t N, bool Wide = (N > narrow_multiply_max)>
-struct smultiplier {
-  constexpr std::pair<sinteger_t<N>, sinteger_t<N>> operator() (
-      sinteger_t<N> const x, sinteger_t<N> const y) const {
-    auto const res = static_cast<sinteger_t<N * 2U>> (x) * y;
-    return std::make_pair (static_cast<sinteger_t<N>> (res >> N),
-                           static_cast<sinteger_t<N>> (res));
-  }
-};
-
-template <size_t N>
-struct smultiplier<N, true> {
-  static_assert (N > narrow_multiply_max);
-
-  constexpr std::pair<sinteger_t<N>, sinteger_t<N>> operator() (
-      sinteger_t<N> const x, sinteger_t<N> const y) const {
-    auto res = multiply (x, y);
-    if constexpr (N < 64) {
-      using ST = sinteger_t<N>;
-      using UT = uinteger_t<N>;
-      constexpr auto shift = sizeof (res.second) * CHAR_BIT - N;
-      res.first = static_cast<ST> (static_cast<UT> (res.first) << shift |
-                                   (static_cast<UT> (res.second) >> N));
-      res.second =
-          static_cast<ST> (static_cast<UT> (res.second) << shift) >> shift;
-    }
-    return res;
-  }
-};
-
-}  // end namespace details
-
 // muls
 // ~~~~
 /// \name Signed Multiplication
@@ -851,7 +827,7 @@ constexpr sinteger_t<N> muls (sinteger_t<N> const x, sinteger_t<N> const y) {
   using sbits = nbit_scalar<N, false>;
   using sint = typename sbits::type;
 
-  auto const [hi, lo] = details::smultiplier<N>{}(x, y);
+  auto const [hi, lo] = details::multiplier<N, false>{}(x, y);
   if (hi != lo >> (N - 1)) {
     using ubits = nbit_scalar<N, true>;
     using uint = typename ubits::type;
