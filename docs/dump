@@ -61,11 +61,7 @@ for cpu in x86_64 arm arm64; do
   fi
 
   for fn in add sub mul div; do
-    for (( bits=4; bits<=64; bits += 64 )); do
-      if [[ $fn == mul && $bits -ge 32 ]]; then
-        continue
-      fi
-
+    for (( bits=4; bits<=64; bits += 1 )); do
       for sign in s u; do
         cpp=$(mktemp)
         asm=$(mktemp)
