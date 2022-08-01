@@ -456,10 +456,10 @@ struct multiplier {
                                    << shift) >>
             shift;
         assert ((wide_res.first >> N) == 0 ||
-                (!IsUnsigned && wide_res.first >> N == -1) &&
+                (!IsUnsigned && (wide_res.first >> N) == -1) &&
                     "multiplier<>-wide low result is out of range");
         assert ((wide_res.second >> N) == 0 ||
-                (!IsUnsigned && wide_res.second >> N == -1) &&
+                (!IsUnsigned && (wide_res.second >> N) == -1) &&
                     "multiplier<>-wide high result is out of range");
       }
       return wide_res;
