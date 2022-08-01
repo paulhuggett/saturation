@@ -430,11 +430,7 @@ constexpr std::pair<T, T> multiply (T const u, T const v) {
 
 template <size_t N, bool IsUnsigned>
 struct multiplier {
-  static constexpr auto narrow_multiply_max = size_t{32};
-
   using arg_type = std::conditional_t<IsUnsigned, uinteger_t<N>, sinteger_t<N>>;
-  using unsigned_type = std::make_unsigned_t<arg_type>;
-  static constexpr auto shift = sizeof (arg_type) * CHAR_BIT - N;
 
   constexpr std::pair<arg_type, arg_type> operator() (arg_type const x,
                                                       arg_type const y) const {
@@ -446,22 +442,35 @@ struct multiplier {
       return std::make_pair (static_cast<arg_type> (narrow_res >> N),
                              static_cast<arg_type> (narrow_res));
     } else {
-      auto wide_res = multiply (x, y);
-      if constexpr (shift > 0) {
-        wide_res.first = static_cast<arg_type> (
-            static_cast<unsigned_type> (wide_res.first) << shift |
-            (static_cast<unsigned_type> (wide_res.second) >> N));
-        wide_res.second =
-            static_cast<arg_type> (static_cast<unsigned_type> (wide_res.second)
-                                   << shift) >>
-            shift;
-        assert ((wide_res.first >> N) == 0 ||
-                (!IsUnsigned && (wide_res.first >> N) == -1) &&
-                    "multiplier<>-wide low result is out of range");
-        assert ((wide_res.second >> N) == 0 ||
-                (!IsUnsigned && (wide_res.second >> N) == -1) &&
-                    "multiplier<>-wide high result is out of range");
-      }
+      return adjust (multiply (x, y));
+    }
+  }
+
+private:
+  static constexpr auto narrow_multiply_max = size_t{32};
+  static constexpr auto shift = sizeof (arg_type) * CHAR_BIT - N;
+  using unsigned_type = std::make_unsigned_t<arg_type>;
+
+  static constexpr std::pair<arg_type, arg_type> adjust (
+      std::pair<arg_type, arg_type>&& wide_res) {
+    if constexpr (shift == 0) {
+      return wide_res;
+    } else {
+      wide_res.first = static_cast<arg_type> (
+          static_cast<unsigned_type> (wide_res.first) << shift |
+          (static_cast<unsigned_type> (wide_res.second) >> N));
+      wide_res.second =
+          static_cast<arg_type> (static_cast<unsigned_type> (wide_res.second)
+                                 << shift) >>
+          shift;
+      assert (((wide_res.first >> N) == 0 ||
+               (!IsUnsigned &&
+                (wide_res.first >> N) == static_cast<arg_type> (-1))) &&
+              "multiplier<>-wide low result is out of range");
+      assert (((wide_res.second >> N) == 0 ||
+               (!IsUnsigned &&
+                (wide_res.second >> N) == static_cast<arg_type> (-1))) &&
+              "multiplier<>-wide high result is out of range");
       return wide_res;
     }
   }
