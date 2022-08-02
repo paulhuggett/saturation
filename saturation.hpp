@@ -451,10 +451,10 @@ private:
   static constexpr auto shift = sizeof (arg_type) * CHAR_BIT - N;
   using unsigned_type = std::make_unsigned_t<arg_type>;
 
-  static constexpr std::pair<arg_type, arg_type>& adjust (
+  static constexpr std::pair<arg_type, arg_type> adjust (
       std::pair<arg_type, arg_type>&& wide_res) {
     if constexpr (shift == 0) {
-      return wide_res;
+      return std::move (wide_res);
     } else {
       wide_res.first = static_cast<arg_type> (
           static_cast<unsigned_type> (wide_res.first) << shift |
@@ -471,7 +471,7 @@ private:
                (!IsUnsigned &&
                 (wide_res.second >> N) == static_cast<arg_type> (-1))) &&
               "multiplier<>-wide high result is out of range");
-      return wide_res;
+      return std::move (wide_res);
     }
   }
 };
