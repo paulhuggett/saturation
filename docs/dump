@@ -1,6 +1,9 @@
 #!/bin/bash
 #set -o verbose
 
+# set up Intel ICC.
+#. /opt/intel/oneapi/setvars.sh > /dev/null
+
 cat <<EOF1
 ---
 title: Saturation
@@ -10,25 +13,43 @@ title: Saturation
 <script src="./foo.js"></script>
 
 <fieldset>
-    <legend>Columns</legend>
-    <input type="checkbox" id="show-target"><label for="show-target">Show Target</label>
-    <input type="checkbox" id="show-op"><label for="show-op">Show Op</label>
-    <input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label>
-    <input type="checkbox" id="show-asm" checked><label for="show-asm">Show Compiler Output</label>
+  <legend>Columns</legend>
+  <input type="checkbox" id="show-target"><label for="show-target">Show Target</label>
+  <input type="checkbox" id="show-op"><label for="show-op">Show Op</label>
+  <input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label>
+  <input type="checkbox" id="show-asm" checked><label for="show-asm">Show Compiler Output</label>
 </fieldset>
-<label for="targets-select">Target:</label>
-<select name="targets" id="targets-select">
-<option value="cpu-x86_64">x86-64</option>
-<option value="cpu-arm">ARM</option>
-<option value="cpu-arm64">ARM64</option>
-</select>
-<label for="op-select">Operation:</label>
-<select name="op" id="op-select">
-<option value="op-add">add</option>
-<option value="op-sub">subtract</option>
-<option value="op-mul">multiply</option>
-<option value="op-div">divide</option>
-</select>
+<fieldset>
+  <legend>Filter</legend>
+  <label for="sign-select">Sign:</label>
+  <select name="sign" id="sign-select">
+    <option value="">Show All</option>
+    <option value="sign-u">Unsigned</option>
+    <option value="sign-s">Signed</option>
+  </select>
+  <label for="bits-select">Bits:</label>
+  <select name="bits" id="bits-select">
+    <option value="">Show All</option>
+    <option value="bits-x4">Multiples of 4</option>
+    <option value="bits-x8">Multiples of 8</option>
+    <option value="bits-p2">Register Widths</option>
+  </select>
+  <label for="targets-select">Target:</label>
+  <select name="targets" id="targets-select">
+    <option value="">Show All</option>
+    <option value="cpu-x86_64">x86-64</option>
+    <option value="cpu-arm">ARM</option>
+    <option value="cpu-arm64">ARM64</option>
+  </select>
+  <label for="op-select">Operation:</label>
+  <select name="op" id="op-select">
+    <option value="">Show All</option>
+    <option value="op-add">add</option>
+    <option value="op-sub">subtract</option>
+    <option value="op-mul">multiply</option>
+    <option value="op-div">divide</option>
+  </select>
+</fieldset>
 
 <table>
 <thead>
@@ -44,6 +65,11 @@ title: Saturation
 <tbody>
 
 EOF1
+
+function is_power_of_two () {
+    declare -i n=$1
+    (( n > 0 && (n & (n - 1)) == 0 ))
+}
 
 for cpu in x86_64 arm arm64; do
   if [ $cpu == x86_64 ]; then
@@ -89,7 +115,21 @@ EOF
           sign_name="unsigned"
         fi
 
-        echo "<tr class='$sign_class_name op-$fn $bits $cpu_class_name'>"
+        bits_class=""
+        if [[ $(expr $bits % 4) -eq 0 ]]; then
+          bits_class="$bits_class bits-x4"
+        fi
+        if [[ $(expr $bits % 8) -eq 0 ]]; then
+          bits_class="$bits_class bits-x8"
+        fi
+        # Register width
+        if ( is_power_of_two $bits ) && [ $bits -ge 8 ]; then 
+          bits_class="$bits_class bits-p2"
+        fi
+        selector="$sign_class_name op-$fn $bits $cpu_class_name $bits_class"
+        echo $selector 1>&2
+
+        echo "<tr class='$selector'>"
         echo "<td class='column-target'>$cpu</td>"
         echo "<td class='column-bits'>$bits</td>"
         echo "<td class='column-op'>$fn</td>"

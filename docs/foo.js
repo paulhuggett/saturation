@@ -47,22 +47,27 @@ window.onload = () => {
   showHideColumn('#show-op', '.column-op')
   showHideColumn('#show-asm', '.column-asm')
 
-  const targetsSelect = document.querySelector('#targets-select')
-  if (targetsSelect == null) {
-    console.error('#targets-select select was not found')
-  }
-  const opSelect = document.querySelector('#op-select')
-  if (opSelect == null) {
-    console.error('#op-select select was not found')
-  }
+  const menus =
+      ['#sign-select', '#bits-select', '#targets-select', '#op-select']
+          .map(id => {
+            const el = document.querySelector(id)
+            if (el === null) {
+              console.error(`${id} was not found`)
+            }
+            return el
+          })
+          .filter(el => el !== null)
   const body = document.querySelector('tbody')
   const change = () => {
+    // Show just the selected rows.
+    const selector =
+        menus.map(el => el.value).filter(s => s.length > 0).join('.')
+    const dot = selector.length > 0 ? '.' : ''
     // Hide all of rows.
     body.querySelectorAll('tr').forEach(el => el.setAttribute('style', 'display:none;'))
-    // Show just the selected rows.
-    body.querySelectorAll(`tr.${targetsSelect.value}.${opSelect.value}`).forEach(el => el.setAttribute('style', 'display:table-row;'))
-  }
-  targetsSelect.addEventListener('change', change)
-  opSelect.addEventListener('change', change)
+    // Show the selected ones.
+    body.querySelectorAll(`tr${dot}${selector}`)
+        .forEach(el => el.setAttribute('style', 'display:table-row;'))
+  } menus.forEach(el => el.addEventListener('change', change))
   change() // make the correct table rows visible
 }

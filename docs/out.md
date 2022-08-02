@@ -6,25 +6,43 @@ title: Saturation
 <script src="./foo.js"></script>
 
 <fieldset>
-    <legend>Columns</legend>
-    <input type="checkbox" id="show-target"><label for="show-target">Show Target</label>
-    <input type="checkbox" id="show-op"><label for="show-op">Show Op</label>
-    <input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label>
-    <input type="checkbox" id="show-asm" checked><label for="show-asm">Show Compiler Output</label>
+  <legend>Columns</legend>
+  <input type="checkbox" id="show-target"><label for="show-target">Show Target</label>
+  <input type="checkbox" id="show-op"><label for="show-op">Show Op</label>
+  <input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label>
+  <input type="checkbox" id="show-asm" checked><label for="show-asm">Show Compiler Output</label>
 </fieldset>
-<label for="targets-select">Target:</label>
-<select name="targets" id="targets-select">
-<option value="cpu-x86_64">x86-64</option>
-<option value="cpu-arm">ARM</option>
-<option value="cpu-arm64">ARM64</option>
-</select>
-<label for="op-select">Operation:</label>
-<select name="op" id="op-select">
-<option value="op-add">add</option>
-<option value="op-sub">subtract</option>
-<option value="op-mul">multiply</option>
-<option value="op-div">divide</option>
-</select>
+<fieldset>
+  <legend>Filter</legend>
+  <label for="sign-select">Sign:</label>
+  <select name="sign" id="sign-select">
+    <option value="">Show All</option>
+    <option value="sign-u">Unsigned</option>
+    <option value="sign-s">Signed</option>
+  </select>
+  <label for="bits-select">Bits:</label>
+  <select name="bits" id="bits-select">
+    <option value="">Show All</option>
+    <option value="bits-x4">Multiples of 4</option>
+    <option value="bits-x8">Multiples of 8</option>
+    <option value="bits-p2">Register Widths</option>
+  </select>
+  <label for="targets-select">Target:</label>
+  <select name="targets" id="targets-select">
+    <option value="">Show All</option>
+    <option value="cpu-x86_64">x86-64</option>
+    <option value="cpu-arm">ARM</option>
+    <option value="cpu-arm64">ARM64</option>
+  </select>
+  <label for="op-select">Operation:</label>
+  <select name="op" id="op-select">
+    <option value="">Show All</option>
+    <option value="op-add">add</option>
+    <option value="op-sub">subtract</option>
+    <option value="op-mul">multiply</option>
+    <option value="op-div">divide</option>
+  </select>
+</fieldset>
 
 <table>
 <thead>
@@ -39,7 +57,7 @@ title: Saturation
 </thead>
 <tbody>
 
-<tr class='sign-s op-add 4 cpu-x86_64'>
+<tr class='sign-s op-add 4 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
@@ -82,7 +100,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 4 cpu-x86_64'>
+<tr class='sign-u op-add 4 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
@@ -119,7 +137,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 5 cpu-x86_64'>
+<tr class='sign-s op-add 5 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>add</td>
@@ -162,7 +180,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 5 cpu-x86_64'>
+<tr class='sign-u op-add 5 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>add</td>
@@ -199,7 +217,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 6 cpu-x86_64'>
+<tr class='sign-s op-add 6 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>add</td>
@@ -242,7 +260,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 6 cpu-x86_64'>
+<tr class='sign-u op-add 6 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>add</td>
@@ -279,7 +297,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 7 cpu-x86_64'>
+<tr class='sign-s op-add 7 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>add</td>
@@ -322,7 +340,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 7 cpu-x86_64'>
+<tr class='sign-u op-add 7 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>add</td>
@@ -358,7 +376,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 8 cpu-x86_64'>
+<tr class='sign-s op-add 8 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>add</td>
@@ -396,7 +414,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 8 cpu-x86_64'>
+<tr class='sign-u op-add 8 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>add</td>
@@ -428,7 +446,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 9 cpu-x86_64'>
+<tr class='sign-s op-add 9 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>add</td>
@@ -472,7 +490,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 9 cpu-x86_64'>
+<tr class='sign-u op-add 9 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>add</td>
@@ -507,7 +525,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 10 cpu-x86_64'>
+<tr class='sign-s op-add 10 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>add</td>
@@ -551,7 +569,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 10 cpu-x86_64'>
+<tr class='sign-u op-add 10 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>add</td>
@@ -586,7 +604,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 11 cpu-x86_64'>
+<tr class='sign-s op-add 11 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>add</td>
@@ -630,7 +648,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 11 cpu-x86_64'>
+<tr class='sign-u op-add 11 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>add</td>
@@ -665,7 +683,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 12 cpu-x86_64'>
+<tr class='sign-s op-add 12 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>add</td>
@@ -709,7 +727,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 12 cpu-x86_64'>
+<tr class='sign-u op-add 12 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>add</td>
@@ -744,7 +762,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 13 cpu-x86_64'>
+<tr class='sign-s op-add 13 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>add</td>
@@ -788,7 +806,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 13 cpu-x86_64'>
+<tr class='sign-u op-add 13 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>add</td>
@@ -823,7 +841,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 14 cpu-x86_64'>
+<tr class='sign-s op-add 14 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>add</td>
@@ -867,7 +885,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 14 cpu-x86_64'>
+<tr class='sign-u op-add 14 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>add</td>
@@ -902,7 +920,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 15 cpu-x86_64'>
+<tr class='sign-s op-add 15 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>add</td>
@@ -946,7 +964,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 15 cpu-x86_64'>
+<tr class='sign-u op-add 15 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>add</td>
@@ -983,7 +1001,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 16 cpu-x86_64'>
+<tr class='sign-s op-add 16 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>add</td>
@@ -1021,7 +1039,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 16 cpu-x86_64'>
+<tr class='sign-u op-add 16 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>add</td>
@@ -1052,7 +1070,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 17 cpu-x86_64'>
+<tr class='sign-s op-add 17 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>add</td>
@@ -1093,7 +1111,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 17 cpu-x86_64'>
+<tr class='sign-u op-add 17 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>add</td>
@@ -1128,7 +1146,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 18 cpu-x86_64'>
+<tr class='sign-s op-add 18 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>add</td>
@@ -1169,7 +1187,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 18 cpu-x86_64'>
+<tr class='sign-u op-add 18 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>add</td>
@@ -1204,7 +1222,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 19 cpu-x86_64'>
+<tr class='sign-s op-add 19 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>add</td>
@@ -1245,7 +1263,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 19 cpu-x86_64'>
+<tr class='sign-u op-add 19 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>add</td>
@@ -1280,7 +1298,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 20 cpu-x86_64'>
+<tr class='sign-s op-add 20 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>add</td>
@@ -1321,7 +1339,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 20 cpu-x86_64'>
+<tr class='sign-u op-add 20 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>add</td>
@@ -1356,7 +1374,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 21 cpu-x86_64'>
+<tr class='sign-s op-add 21 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>add</td>
@@ -1397,7 +1415,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 21 cpu-x86_64'>
+<tr class='sign-u op-add 21 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>add</td>
@@ -1432,7 +1450,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 22 cpu-x86_64'>
+<tr class='sign-s op-add 22 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>add</td>
@@ -1473,7 +1491,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 22 cpu-x86_64'>
+<tr class='sign-u op-add 22 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>add</td>
@@ -1508,7 +1526,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 23 cpu-x86_64'>
+<tr class='sign-s op-add 23 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>add</td>
@@ -1549,7 +1567,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 23 cpu-x86_64'>
+<tr class='sign-u op-add 23 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>add</td>
@@ -1584,7 +1602,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 24 cpu-x86_64'>
+<tr class='sign-s op-add 24 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>add</td>
@@ -1625,7 +1643,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 24 cpu-x86_64'>
+<tr class='sign-u op-add 24 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>add</td>
@@ -1660,7 +1678,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 25 cpu-x86_64'>
+<tr class='sign-s op-add 25 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>add</td>
@@ -1701,7 +1719,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 25 cpu-x86_64'>
+<tr class='sign-u op-add 25 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>add</td>
@@ -1736,7 +1754,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 26 cpu-x86_64'>
+<tr class='sign-s op-add 26 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>add</td>
@@ -1777,7 +1795,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 26 cpu-x86_64'>
+<tr class='sign-u op-add 26 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>add</td>
@@ -1812,7 +1830,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 27 cpu-x86_64'>
+<tr class='sign-s op-add 27 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>add</td>
@@ -1853,7 +1871,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 27 cpu-x86_64'>
+<tr class='sign-u op-add 27 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>add</td>
@@ -1888,7 +1906,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 28 cpu-x86_64'>
+<tr class='sign-s op-add 28 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>add</td>
@@ -1929,7 +1947,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 28 cpu-x86_64'>
+<tr class='sign-u op-add 28 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>add</td>
@@ -1964,7 +1982,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 29 cpu-x86_64'>
+<tr class='sign-s op-add 29 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>add</td>
@@ -2005,7 +2023,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 29 cpu-x86_64'>
+<tr class='sign-u op-add 29 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>add</td>
@@ -2040,7 +2058,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 30 cpu-x86_64'>
+<tr class='sign-s op-add 30 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>add</td>
@@ -2081,7 +2099,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 30 cpu-x86_64'>
+<tr class='sign-u op-add 30 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>add</td>
@@ -2116,7 +2134,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 31 cpu-x86_64'>
+<tr class='sign-s op-add 31 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>add</td>
@@ -2157,7 +2175,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 31 cpu-x86_64'>
+<tr class='sign-u op-add 31 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>add</td>
@@ -2193,7 +2211,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 32 cpu-x86_64'>
+<tr class='sign-s op-add 32 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>add</td>
@@ -2229,7 +2247,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 32 cpu-x86_64'>
+<tr class='sign-u op-add 32 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>add</td>
@@ -2259,7 +2277,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 33 cpu-x86_64'>
+<tr class='sign-s op-add 33 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>add</td>
@@ -2301,7 +2319,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 33 cpu-x86_64'>
+<tr class='sign-u op-add 33 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>add</td>
@@ -2337,7 +2355,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 34 cpu-x86_64'>
+<tr class='sign-s op-add 34 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>add</td>
@@ -2379,7 +2397,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 34 cpu-x86_64'>
+<tr class='sign-u op-add 34 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>add</td>
@@ -2415,7 +2433,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 35 cpu-x86_64'>
+<tr class='sign-s op-add 35 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>add</td>
@@ -2457,7 +2475,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 35 cpu-x86_64'>
+<tr class='sign-u op-add 35 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>add</td>
@@ -2493,7 +2511,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 36 cpu-x86_64'>
+<tr class='sign-s op-add 36 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>add</td>
@@ -2535,7 +2553,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 36 cpu-x86_64'>
+<tr class='sign-u op-add 36 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>add</td>
@@ -2571,7 +2589,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 37 cpu-x86_64'>
+<tr class='sign-s op-add 37 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>add</td>
@@ -2613,7 +2631,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 37 cpu-x86_64'>
+<tr class='sign-u op-add 37 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>add</td>
@@ -2649,7 +2667,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 38 cpu-x86_64'>
+<tr class='sign-s op-add 38 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>add</td>
@@ -2691,7 +2709,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 38 cpu-x86_64'>
+<tr class='sign-u op-add 38 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>add</td>
@@ -2727,7 +2745,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 39 cpu-x86_64'>
+<tr class='sign-s op-add 39 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>add</td>
@@ -2769,7 +2787,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 39 cpu-x86_64'>
+<tr class='sign-u op-add 39 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>add</td>
@@ -2805,7 +2823,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 40 cpu-x86_64'>
+<tr class='sign-s op-add 40 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>add</td>
@@ -2847,7 +2865,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 40 cpu-x86_64'>
+<tr class='sign-u op-add 40 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>add</td>
@@ -2883,7 +2901,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 41 cpu-x86_64'>
+<tr class='sign-s op-add 41 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>add</td>
@@ -2925,7 +2943,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 41 cpu-x86_64'>
+<tr class='sign-u op-add 41 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>add</td>
@@ -2961,7 +2979,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 42 cpu-x86_64'>
+<tr class='sign-s op-add 42 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>add</td>
@@ -3003,7 +3021,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 42 cpu-x86_64'>
+<tr class='sign-u op-add 42 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>add</td>
@@ -3039,7 +3057,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 43 cpu-x86_64'>
+<tr class='sign-s op-add 43 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>add</td>
@@ -3081,7 +3099,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 43 cpu-x86_64'>
+<tr class='sign-u op-add 43 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>add</td>
@@ -3117,7 +3135,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 44 cpu-x86_64'>
+<tr class='sign-s op-add 44 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>add</td>
@@ -3159,7 +3177,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 44 cpu-x86_64'>
+<tr class='sign-u op-add 44 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>add</td>
@@ -3195,7 +3213,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 45 cpu-x86_64'>
+<tr class='sign-s op-add 45 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>add</td>
@@ -3237,7 +3255,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 45 cpu-x86_64'>
+<tr class='sign-u op-add 45 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>add</td>
@@ -3273,7 +3291,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 46 cpu-x86_64'>
+<tr class='sign-s op-add 46 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>add</td>
@@ -3315,7 +3333,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 46 cpu-x86_64'>
+<tr class='sign-u op-add 46 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>add</td>
@@ -3351,7 +3369,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 47 cpu-x86_64'>
+<tr class='sign-s op-add 47 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>add</td>
@@ -3393,7 +3411,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 47 cpu-x86_64'>
+<tr class='sign-u op-add 47 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>add</td>
@@ -3429,7 +3447,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 48 cpu-x86_64'>
+<tr class='sign-s op-add 48 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>add</td>
@@ -3471,7 +3489,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 48 cpu-x86_64'>
+<tr class='sign-u op-add 48 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>add</td>
@@ -3507,7 +3525,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 49 cpu-x86_64'>
+<tr class='sign-s op-add 49 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>add</td>
@@ -3549,7 +3567,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 49 cpu-x86_64'>
+<tr class='sign-u op-add 49 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>add</td>
@@ -3585,7 +3603,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 50 cpu-x86_64'>
+<tr class='sign-s op-add 50 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>add</td>
@@ -3627,7 +3645,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 50 cpu-x86_64'>
+<tr class='sign-u op-add 50 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>add</td>
@@ -3663,7 +3681,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 51 cpu-x86_64'>
+<tr class='sign-s op-add 51 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>add</td>
@@ -3705,7 +3723,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 51 cpu-x86_64'>
+<tr class='sign-u op-add 51 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>add</td>
@@ -3741,7 +3759,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 52 cpu-x86_64'>
+<tr class='sign-s op-add 52 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>add</td>
@@ -3783,7 +3801,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 52 cpu-x86_64'>
+<tr class='sign-u op-add 52 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>add</td>
@@ -3819,7 +3837,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 53 cpu-x86_64'>
+<tr class='sign-s op-add 53 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>add</td>
@@ -3861,7 +3879,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 53 cpu-x86_64'>
+<tr class='sign-u op-add 53 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>add</td>
@@ -3897,7 +3915,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 54 cpu-x86_64'>
+<tr class='sign-s op-add 54 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>add</td>
@@ -3939,7 +3957,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 54 cpu-x86_64'>
+<tr class='sign-u op-add 54 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>add</td>
@@ -3975,7 +3993,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 55 cpu-x86_64'>
+<tr class='sign-s op-add 55 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>add</td>
@@ -4017,7 +4035,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 55 cpu-x86_64'>
+<tr class='sign-u op-add 55 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>add</td>
@@ -4053,7 +4071,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 56 cpu-x86_64'>
+<tr class='sign-s op-add 56 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>add</td>
@@ -4095,7 +4113,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 56 cpu-x86_64'>
+<tr class='sign-u op-add 56 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>add</td>
@@ -4131,7 +4149,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 57 cpu-x86_64'>
+<tr class='sign-s op-add 57 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>add</td>
@@ -4173,7 +4191,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 57 cpu-x86_64'>
+<tr class='sign-u op-add 57 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>add</td>
@@ -4209,7 +4227,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 58 cpu-x86_64'>
+<tr class='sign-s op-add 58 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>add</td>
@@ -4251,7 +4269,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 58 cpu-x86_64'>
+<tr class='sign-u op-add 58 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>add</td>
@@ -4287,7 +4305,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 59 cpu-x86_64'>
+<tr class='sign-s op-add 59 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>add</td>
@@ -4329,7 +4347,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 59 cpu-x86_64'>
+<tr class='sign-u op-add 59 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>add</td>
@@ -4365,7 +4383,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 60 cpu-x86_64'>
+<tr class='sign-s op-add 60 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>add</td>
@@ -4407,7 +4425,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 60 cpu-x86_64'>
+<tr class='sign-u op-add 60 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>add</td>
@@ -4443,7 +4461,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 61 cpu-x86_64'>
+<tr class='sign-s op-add 61 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>add</td>
@@ -4485,7 +4503,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 61 cpu-x86_64'>
+<tr class='sign-u op-add 61 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>add</td>
@@ -4521,7 +4539,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 62 cpu-x86_64'>
+<tr class='sign-s op-add 62 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>add</td>
@@ -4563,7 +4581,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 62 cpu-x86_64'>
+<tr class='sign-u op-add 62 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>add</td>
@@ -4599,7 +4617,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 63 cpu-x86_64'>
+<tr class='sign-s op-add 63 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>add</td>
@@ -4641,7 +4659,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 63 cpu-x86_64'>
+<tr class='sign-u op-add 63 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>add</td>
@@ -4678,7 +4696,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 64 cpu-x86_64'>
+<tr class='sign-s op-add 64 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>add</td>
@@ -4715,7 +4733,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 64 cpu-x86_64'>
+<tr class='sign-u op-add 64 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>add</td>
@@ -4745,7 +4763,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 4 cpu-x86_64'>
+<tr class='sign-s op-sub 4 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
@@ -4787,7 +4805,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 4 cpu-x86_64'>
+<tr class='sign-u op-sub 4 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
@@ -4819,7 +4837,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 5 cpu-x86_64'>
+<tr class='sign-s op-sub 5 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>sub</td>
@@ -4861,7 +4879,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 5 cpu-x86_64'>
+<tr class='sign-u op-sub 5 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>sub</td>
@@ -4893,7 +4911,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 6 cpu-x86_64'>
+<tr class='sign-s op-sub 6 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>sub</td>
@@ -4935,7 +4953,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 6 cpu-x86_64'>
+<tr class='sign-u op-sub 6 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>sub</td>
@@ -4967,7 +4985,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 7 cpu-x86_64'>
+<tr class='sign-s op-sub 7 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>sub</td>
@@ -5009,7 +5027,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 7 cpu-x86_64'>
+<tr class='sign-u op-sub 7 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>sub</td>
@@ -5041,7 +5059,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 8 cpu-x86_64'>
+<tr class='sign-s op-sub 8 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>sub</td>
@@ -5079,7 +5097,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 8 cpu-x86_64'>
+<tr class='sign-u op-sub 8 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>sub</td>
@@ -5111,7 +5129,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 9 cpu-x86_64'>
+<tr class='sign-s op-sub 9 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>sub</td>
@@ -5152,7 +5170,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 9 cpu-x86_64'>
+<tr class='sign-u op-sub 9 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>sub</td>
@@ -5183,7 +5201,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 10 cpu-x86_64'>
+<tr class='sign-s op-sub 10 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>sub</td>
@@ -5224,7 +5242,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 10 cpu-x86_64'>
+<tr class='sign-u op-sub 10 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>sub</td>
@@ -5255,7 +5273,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 11 cpu-x86_64'>
+<tr class='sign-s op-sub 11 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>sub</td>
@@ -5296,7 +5314,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 11 cpu-x86_64'>
+<tr class='sign-u op-sub 11 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>sub</td>
@@ -5327,7 +5345,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 12 cpu-x86_64'>
+<tr class='sign-s op-sub 12 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>sub</td>
@@ -5368,7 +5386,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 12 cpu-x86_64'>
+<tr class='sign-u op-sub 12 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>sub</td>
@@ -5399,7 +5417,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 13 cpu-x86_64'>
+<tr class='sign-s op-sub 13 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>sub</td>
@@ -5440,7 +5458,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 13 cpu-x86_64'>
+<tr class='sign-u op-sub 13 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>sub</td>
@@ -5471,7 +5489,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 14 cpu-x86_64'>
+<tr class='sign-s op-sub 14 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>sub</td>
@@ -5512,7 +5530,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 14 cpu-x86_64'>
+<tr class='sign-u op-sub 14 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>sub</td>
@@ -5543,7 +5561,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 15 cpu-x86_64'>
+<tr class='sign-s op-sub 15 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>sub</td>
@@ -5584,7 +5602,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 15 cpu-x86_64'>
+<tr class='sign-u op-sub 15 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>sub</td>
@@ -5615,7 +5633,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 16 cpu-x86_64'>
+<tr class='sign-s op-sub 16 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>sub</td>
@@ -5652,7 +5670,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 16 cpu-x86_64'>
+<tr class='sign-u op-sub 16 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>sub</td>
@@ -5683,7 +5701,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 17 cpu-x86_64'>
+<tr class='sign-s op-sub 17 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>sub</td>
@@ -5723,7 +5741,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 17 cpu-x86_64'>
+<tr class='sign-u op-sub 17 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>sub</td>
@@ -5754,7 +5772,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 18 cpu-x86_64'>
+<tr class='sign-s op-sub 18 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>sub</td>
@@ -5794,7 +5812,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 18 cpu-x86_64'>
+<tr class='sign-u op-sub 18 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>sub</td>
@@ -5825,7 +5843,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 19 cpu-x86_64'>
+<tr class='sign-s op-sub 19 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>sub</td>
@@ -5865,7 +5883,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 19 cpu-x86_64'>
+<tr class='sign-u op-sub 19 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>sub</td>
@@ -5896,7 +5914,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 20 cpu-x86_64'>
+<tr class='sign-s op-sub 20 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>sub</td>
@@ -5936,7 +5954,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 20 cpu-x86_64'>
+<tr class='sign-u op-sub 20 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>sub</td>
@@ -5967,7 +5985,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 21 cpu-x86_64'>
+<tr class='sign-s op-sub 21 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>sub</td>
@@ -6007,7 +6025,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 21 cpu-x86_64'>
+<tr class='sign-u op-sub 21 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>sub</td>
@@ -6038,7 +6056,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 22 cpu-x86_64'>
+<tr class='sign-s op-sub 22 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>sub</td>
@@ -6078,7 +6096,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 22 cpu-x86_64'>
+<tr class='sign-u op-sub 22 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>sub</td>
@@ -6109,7 +6127,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 23 cpu-x86_64'>
+<tr class='sign-s op-sub 23 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>sub</td>
@@ -6149,7 +6167,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 23 cpu-x86_64'>
+<tr class='sign-u op-sub 23 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>sub</td>
@@ -6180,7 +6198,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 24 cpu-x86_64'>
+<tr class='sign-s op-sub 24 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>sub</td>
@@ -6220,7 +6238,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 24 cpu-x86_64'>
+<tr class='sign-u op-sub 24 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>sub</td>
@@ -6251,7 +6269,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 25 cpu-x86_64'>
+<tr class='sign-s op-sub 25 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>sub</td>
@@ -6291,7 +6309,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 25 cpu-x86_64'>
+<tr class='sign-u op-sub 25 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>sub</td>
@@ -6322,7 +6340,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 26 cpu-x86_64'>
+<tr class='sign-s op-sub 26 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>sub</td>
@@ -6362,7 +6380,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 26 cpu-x86_64'>
+<tr class='sign-u op-sub 26 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>sub</td>
@@ -6393,7 +6411,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 27 cpu-x86_64'>
+<tr class='sign-s op-sub 27 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>sub</td>
@@ -6433,7 +6451,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 27 cpu-x86_64'>
+<tr class='sign-u op-sub 27 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>sub</td>
@@ -6464,7 +6482,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 28 cpu-x86_64'>
+<tr class='sign-s op-sub 28 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>sub</td>
@@ -6504,7 +6522,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 28 cpu-x86_64'>
+<tr class='sign-u op-sub 28 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>sub</td>
@@ -6535,7 +6553,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 29 cpu-x86_64'>
+<tr class='sign-s op-sub 29 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>sub</td>
@@ -6575,7 +6593,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 29 cpu-x86_64'>
+<tr class='sign-u op-sub 29 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>sub</td>
@@ -6606,7 +6624,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 30 cpu-x86_64'>
+<tr class='sign-s op-sub 30 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>sub</td>
@@ -6646,7 +6664,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 30 cpu-x86_64'>
+<tr class='sign-u op-sub 30 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>sub</td>
@@ -6677,7 +6695,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 31 cpu-x86_64'>
+<tr class='sign-s op-sub 31 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>sub</td>
@@ -6717,7 +6735,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 31 cpu-x86_64'>
+<tr class='sign-u op-sub 31 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>sub</td>
@@ -6748,7 +6766,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 32 cpu-x86_64'>
+<tr class='sign-s op-sub 32 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>sub</td>
@@ -6785,7 +6803,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 32 cpu-x86_64'>
+<tr class='sign-u op-sub 32 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>sub</td>
@@ -6815,7 +6833,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 33 cpu-x86_64'>
+<tr class='sign-s op-sub 33 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>sub</td>
@@ -6856,7 +6874,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 33 cpu-x86_64'>
+<tr class='sign-u op-sub 33 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>sub</td>
@@ -6888,7 +6906,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 34 cpu-x86_64'>
+<tr class='sign-s op-sub 34 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>sub</td>
@@ -6929,7 +6947,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 34 cpu-x86_64'>
+<tr class='sign-u op-sub 34 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>sub</td>
@@ -6961,7 +6979,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 35 cpu-x86_64'>
+<tr class='sign-s op-sub 35 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>sub</td>
@@ -7002,7 +7020,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 35 cpu-x86_64'>
+<tr class='sign-u op-sub 35 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>sub</td>
@@ -7034,7 +7052,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 36 cpu-x86_64'>
+<tr class='sign-s op-sub 36 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>sub</td>
@@ -7075,7 +7093,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 36 cpu-x86_64'>
+<tr class='sign-u op-sub 36 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>sub</td>
@@ -7107,7 +7125,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 37 cpu-x86_64'>
+<tr class='sign-s op-sub 37 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>sub</td>
@@ -7148,7 +7166,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 37 cpu-x86_64'>
+<tr class='sign-u op-sub 37 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>sub</td>
@@ -7180,7 +7198,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 38 cpu-x86_64'>
+<tr class='sign-s op-sub 38 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>sub</td>
@@ -7221,7 +7239,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 38 cpu-x86_64'>
+<tr class='sign-u op-sub 38 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>sub</td>
@@ -7253,7 +7271,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 39 cpu-x86_64'>
+<tr class='sign-s op-sub 39 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>sub</td>
@@ -7294,7 +7312,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 39 cpu-x86_64'>
+<tr class='sign-u op-sub 39 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>sub</td>
@@ -7326,7 +7344,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 40 cpu-x86_64'>
+<tr class='sign-s op-sub 40 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>sub</td>
@@ -7367,7 +7385,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 40 cpu-x86_64'>
+<tr class='sign-u op-sub 40 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>sub</td>
@@ -7399,7 +7417,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 41 cpu-x86_64'>
+<tr class='sign-s op-sub 41 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>sub</td>
@@ -7440,7 +7458,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 41 cpu-x86_64'>
+<tr class='sign-u op-sub 41 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>sub</td>
@@ -7472,7 +7490,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 42 cpu-x86_64'>
+<tr class='sign-s op-sub 42 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>sub</td>
@@ -7513,7 +7531,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 42 cpu-x86_64'>
+<tr class='sign-u op-sub 42 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>sub</td>
@@ -7545,7 +7563,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 43 cpu-x86_64'>
+<tr class='sign-s op-sub 43 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>sub</td>
@@ -7586,7 +7604,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 43 cpu-x86_64'>
+<tr class='sign-u op-sub 43 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>sub</td>
@@ -7618,7 +7636,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 44 cpu-x86_64'>
+<tr class='sign-s op-sub 44 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>sub</td>
@@ -7659,7 +7677,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 44 cpu-x86_64'>
+<tr class='sign-u op-sub 44 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>sub</td>
@@ -7691,7 +7709,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 45 cpu-x86_64'>
+<tr class='sign-s op-sub 45 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>sub</td>
@@ -7732,7 +7750,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 45 cpu-x86_64'>
+<tr class='sign-u op-sub 45 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>sub</td>
@@ -7764,7 +7782,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 46 cpu-x86_64'>
+<tr class='sign-s op-sub 46 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>sub</td>
@@ -7805,7 +7823,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 46 cpu-x86_64'>
+<tr class='sign-u op-sub 46 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>sub</td>
@@ -7837,7 +7855,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 47 cpu-x86_64'>
+<tr class='sign-s op-sub 47 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>sub</td>
@@ -7878,7 +7896,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 47 cpu-x86_64'>
+<tr class='sign-u op-sub 47 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>sub</td>
@@ -7910,7 +7928,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 48 cpu-x86_64'>
+<tr class='sign-s op-sub 48 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>sub</td>
@@ -7951,7 +7969,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 48 cpu-x86_64'>
+<tr class='sign-u op-sub 48 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>sub</td>
@@ -7983,7 +8001,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 49 cpu-x86_64'>
+<tr class='sign-s op-sub 49 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>sub</td>
@@ -8024,7 +8042,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 49 cpu-x86_64'>
+<tr class='sign-u op-sub 49 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>sub</td>
@@ -8056,7 +8074,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 50 cpu-x86_64'>
+<tr class='sign-s op-sub 50 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>sub</td>
@@ -8097,7 +8115,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 50 cpu-x86_64'>
+<tr class='sign-u op-sub 50 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>sub</td>
@@ -8129,7 +8147,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 51 cpu-x86_64'>
+<tr class='sign-s op-sub 51 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>sub</td>
@@ -8170,7 +8188,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 51 cpu-x86_64'>
+<tr class='sign-u op-sub 51 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>sub</td>
@@ -8202,7 +8220,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 52 cpu-x86_64'>
+<tr class='sign-s op-sub 52 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>sub</td>
@@ -8243,7 +8261,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 52 cpu-x86_64'>
+<tr class='sign-u op-sub 52 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>sub</td>
@@ -8275,7 +8293,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 53 cpu-x86_64'>
+<tr class='sign-s op-sub 53 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>sub</td>
@@ -8316,7 +8334,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 53 cpu-x86_64'>
+<tr class='sign-u op-sub 53 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>sub</td>
@@ -8348,7 +8366,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 54 cpu-x86_64'>
+<tr class='sign-s op-sub 54 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>sub</td>
@@ -8389,7 +8407,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 54 cpu-x86_64'>
+<tr class='sign-u op-sub 54 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>sub</td>
@@ -8421,7 +8439,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 55 cpu-x86_64'>
+<tr class='sign-s op-sub 55 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>sub</td>
@@ -8462,7 +8480,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 55 cpu-x86_64'>
+<tr class='sign-u op-sub 55 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>sub</td>
@@ -8494,7 +8512,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 56 cpu-x86_64'>
+<tr class='sign-s op-sub 56 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>sub</td>
@@ -8535,7 +8553,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 56 cpu-x86_64'>
+<tr class='sign-u op-sub 56 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>sub</td>
@@ -8567,7 +8585,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 57 cpu-x86_64'>
+<tr class='sign-s op-sub 57 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>sub</td>
@@ -8609,7 +8627,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 57 cpu-x86_64'>
+<tr class='sign-u op-sub 57 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>sub</td>
@@ -8641,7 +8659,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 58 cpu-x86_64'>
+<tr class='sign-s op-sub 58 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>sub</td>
@@ -8683,7 +8701,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 58 cpu-x86_64'>
+<tr class='sign-u op-sub 58 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>sub</td>
@@ -8715,7 +8733,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 59 cpu-x86_64'>
+<tr class='sign-s op-sub 59 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>sub</td>
@@ -8757,7 +8775,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 59 cpu-x86_64'>
+<tr class='sign-u op-sub 59 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>sub</td>
@@ -8789,7 +8807,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 60 cpu-x86_64'>
+<tr class='sign-s op-sub 60 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>sub</td>
@@ -8831,7 +8849,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 60 cpu-x86_64'>
+<tr class='sign-u op-sub 60 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>sub</td>
@@ -8863,7 +8881,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 61 cpu-x86_64'>
+<tr class='sign-s op-sub 61 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>sub</td>
@@ -8905,7 +8923,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 61 cpu-x86_64'>
+<tr class='sign-u op-sub 61 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>sub</td>
@@ -8937,7 +8955,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 62 cpu-x86_64'>
+<tr class='sign-s op-sub 62 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>sub</td>
@@ -8979,7 +8997,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 62 cpu-x86_64'>
+<tr class='sign-u op-sub 62 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>sub</td>
@@ -9011,7 +9029,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 63 cpu-x86_64'>
+<tr class='sign-s op-sub 63 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>sub</td>
@@ -9053,7 +9071,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 63 cpu-x86_64'>
+<tr class='sign-u op-sub 63 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>sub</td>
@@ -9085,7 +9103,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 64 cpu-x86_64'>
+<tr class='sign-s op-sub 64 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>sub</td>
@@ -9122,7 +9140,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 64 cpu-x86_64'>
+<tr class='sign-u op-sub 64 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>sub</td>
@@ -9152,7 +9170,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 4 cpu-x86_64'>
+<tr class='sign-s op-mul 4 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
@@ -9195,7 +9213,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 4 cpu-x86_64'>
+<tr class='sign-u op-mul 4 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
@@ -9230,7 +9248,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 5 cpu-x86_64'>
+<tr class='sign-s op-mul 5 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>mul</td>
@@ -9273,7 +9291,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 5 cpu-x86_64'>
+<tr class='sign-u op-mul 5 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>mul</td>
@@ -9308,7 +9326,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 6 cpu-x86_64'>
+<tr class='sign-s op-mul 6 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>mul</td>
@@ -9351,7 +9369,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 6 cpu-x86_64'>
+<tr class='sign-u op-mul 6 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>mul</td>
@@ -9386,7 +9404,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 7 cpu-x86_64'>
+<tr class='sign-s op-mul 7 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>mul</td>
@@ -9429,7 +9447,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 7 cpu-x86_64'>
+<tr class='sign-u op-mul 7 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>mul</td>
@@ -9464,7 +9482,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 8 cpu-x86_64'>
+<tr class='sign-s op-mul 8 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>mul</td>
@@ -9506,7 +9524,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 8 cpu-x86_64'>
+<tr class='sign-u op-mul 8 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>mul</td>
@@ -9539,7 +9557,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 9 cpu-x86_64'>
+<tr class='sign-s op-mul 9 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>mul</td>
@@ -9582,7 +9600,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 9 cpu-x86_64'>
+<tr class='sign-u op-mul 9 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>mul</td>
@@ -9615,7 +9633,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 10 cpu-x86_64'>
+<tr class='sign-s op-mul 10 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>mul</td>
@@ -9658,7 +9676,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 10 cpu-x86_64'>
+<tr class='sign-u op-mul 10 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>mul</td>
@@ -9691,7 +9709,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 11 cpu-x86_64'>
+<tr class='sign-s op-mul 11 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>mul</td>
@@ -9734,7 +9752,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 11 cpu-x86_64'>
+<tr class='sign-u op-mul 11 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>mul</td>
@@ -9767,7 +9785,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 12 cpu-x86_64'>
+<tr class='sign-s op-mul 12 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>mul</td>
@@ -9810,7 +9828,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 12 cpu-x86_64'>
+<tr class='sign-u op-mul 12 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>mul</td>
@@ -9843,7 +9861,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 13 cpu-x86_64'>
+<tr class='sign-s op-mul 13 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>mul</td>
@@ -9886,7 +9904,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 13 cpu-x86_64'>
+<tr class='sign-u op-mul 13 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>mul</td>
@@ -9919,7 +9937,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 14 cpu-x86_64'>
+<tr class='sign-s op-mul 14 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>mul</td>
@@ -9962,7 +9980,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 14 cpu-x86_64'>
+<tr class='sign-u op-mul 14 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>mul</td>
@@ -9995,7 +10013,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 15 cpu-x86_64'>
+<tr class='sign-s op-mul 15 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>mul</td>
@@ -10038,7 +10056,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 15 cpu-x86_64'>
+<tr class='sign-u op-mul 15 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>mul</td>
@@ -10071,7 +10089,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 16 cpu-x86_64'>
+<tr class='sign-s op-mul 16 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>mul</td>
@@ -10112,7 +10130,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 16 cpu-x86_64'>
+<tr class='sign-u op-mul 16 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>mul</td>
@@ -10149,7 +10167,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 17 cpu-x86_64'>
+<tr class='sign-s op-mul 17 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>mul</td>
@@ -10192,7 +10210,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 17 cpu-x86_64'>
+<tr class='sign-u op-mul 17 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>mul</td>
@@ -10228,7 +10246,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 18 cpu-x86_64'>
+<tr class='sign-s op-mul 18 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>mul</td>
@@ -10271,7 +10289,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 18 cpu-x86_64'>
+<tr class='sign-u op-mul 18 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>mul</td>
@@ -10307,7 +10325,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 19 cpu-x86_64'>
+<tr class='sign-s op-mul 19 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>mul</td>
@@ -10350,7 +10368,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 19 cpu-x86_64'>
+<tr class='sign-u op-mul 19 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>mul</td>
@@ -10386,7 +10404,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 20 cpu-x86_64'>
+<tr class='sign-s op-mul 20 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>mul</td>
@@ -10429,7 +10447,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 20 cpu-x86_64'>
+<tr class='sign-u op-mul 20 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>mul</td>
@@ -10465,7 +10483,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 21 cpu-x86_64'>
+<tr class='sign-s op-mul 21 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>mul</td>
@@ -10508,7 +10526,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 21 cpu-x86_64'>
+<tr class='sign-u op-mul 21 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>mul</td>
@@ -10544,7 +10562,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 22 cpu-x86_64'>
+<tr class='sign-s op-mul 22 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>mul</td>
@@ -10587,7 +10605,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 22 cpu-x86_64'>
+<tr class='sign-u op-mul 22 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>mul</td>
@@ -10623,7 +10641,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 23 cpu-x86_64'>
+<tr class='sign-s op-mul 23 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>mul</td>
@@ -10666,7 +10684,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 23 cpu-x86_64'>
+<tr class='sign-u op-mul 23 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>mul</td>
@@ -10702,7 +10720,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 24 cpu-x86_64'>
+<tr class='sign-s op-mul 24 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>mul</td>
@@ -10745,7 +10763,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 24 cpu-x86_64'>
+<tr class='sign-u op-mul 24 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>mul</td>
@@ -10781,7 +10799,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 25 cpu-x86_64'>
+<tr class='sign-s op-mul 25 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>mul</td>
@@ -10824,7 +10842,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 25 cpu-x86_64'>
+<tr class='sign-u op-mul 25 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>mul</td>
@@ -10860,7 +10878,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 26 cpu-x86_64'>
+<tr class='sign-s op-mul 26 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>mul</td>
@@ -10903,7 +10921,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 26 cpu-x86_64'>
+<tr class='sign-u op-mul 26 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>mul</td>
@@ -10939,7 +10957,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 27 cpu-x86_64'>
+<tr class='sign-s op-mul 27 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>mul</td>
@@ -10982,7 +11000,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 27 cpu-x86_64'>
+<tr class='sign-u op-mul 27 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>mul</td>
@@ -11018,7 +11036,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 28 cpu-x86_64'>
+<tr class='sign-s op-mul 28 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>mul</td>
@@ -11061,7 +11079,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 28 cpu-x86_64'>
+<tr class='sign-u op-mul 28 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>mul</td>
@@ -11097,7 +11115,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 29 cpu-x86_64'>
+<tr class='sign-s op-mul 29 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>mul</td>
@@ -11140,7 +11158,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 29 cpu-x86_64'>
+<tr class='sign-u op-mul 29 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>mul</td>
@@ -11176,7 +11194,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 30 cpu-x86_64'>
+<tr class='sign-s op-mul 30 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>mul</td>
@@ -11219,7 +11237,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 30 cpu-x86_64'>
+<tr class='sign-u op-mul 30 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>mul</td>
@@ -11255,7 +11273,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 31 cpu-x86_64'>
+<tr class='sign-s op-mul 31 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>mul</td>
@@ -11298,7 +11316,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 31 cpu-x86_64'>
+<tr class='sign-u op-mul 31 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>mul</td>
@@ -11334,7 +11352,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 32 cpu-x86_64'>
+<tr class='sign-s op-mul 32 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>mul</td>
@@ -11375,7 +11393,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 32 cpu-x86_64'>
+<tr class='sign-u op-mul 32 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>mul</td>
@@ -11413,7 +11431,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 33 cpu-x86_64'>
+<tr class='sign-s op-mul 33 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>mul</td>
@@ -11474,7 +11492,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 33 cpu-x86_64'>
+<tr class='sign-u op-mul 33 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>mul</td>
@@ -11528,7 +11546,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 34 cpu-x86_64'>
+<tr class='sign-s op-mul 34 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>mul</td>
@@ -11589,7 +11607,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 34 cpu-x86_64'>
+<tr class='sign-u op-mul 34 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>mul</td>
@@ -11643,7 +11661,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 35 cpu-x86_64'>
+<tr class='sign-s op-mul 35 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>mul</td>
@@ -11704,7 +11722,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 35 cpu-x86_64'>
+<tr class='sign-u op-mul 35 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>mul</td>
@@ -11758,7 +11776,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 36 cpu-x86_64'>
+<tr class='sign-s op-mul 36 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>mul</td>
@@ -11819,7 +11837,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 36 cpu-x86_64'>
+<tr class='sign-u op-mul 36 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>mul</td>
@@ -11873,7 +11891,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 37 cpu-x86_64'>
+<tr class='sign-s op-mul 37 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>mul</td>
@@ -11934,7 +11952,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 37 cpu-x86_64'>
+<tr class='sign-u op-mul 37 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>mul</td>
@@ -11988,7 +12006,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 38 cpu-x86_64'>
+<tr class='sign-s op-mul 38 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>mul</td>
@@ -12049,7 +12067,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 38 cpu-x86_64'>
+<tr class='sign-u op-mul 38 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>mul</td>
@@ -12103,7 +12121,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 39 cpu-x86_64'>
+<tr class='sign-s op-mul 39 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>mul</td>
@@ -12164,7 +12182,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 39 cpu-x86_64'>
+<tr class='sign-u op-mul 39 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>mul</td>
@@ -12218,7 +12236,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 40 cpu-x86_64'>
+<tr class='sign-s op-mul 40 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>mul</td>
@@ -12279,7 +12297,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 40 cpu-x86_64'>
+<tr class='sign-u op-mul 40 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>mul</td>
@@ -12333,7 +12351,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 41 cpu-x86_64'>
+<tr class='sign-s op-mul 41 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>mul</td>
@@ -12394,7 +12412,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 41 cpu-x86_64'>
+<tr class='sign-u op-mul 41 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>mul</td>
@@ -12448,7 +12466,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 42 cpu-x86_64'>
+<tr class='sign-s op-mul 42 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>mul</td>
@@ -12509,7 +12527,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 42 cpu-x86_64'>
+<tr class='sign-u op-mul 42 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>mul</td>
@@ -12563,7 +12581,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 43 cpu-x86_64'>
+<tr class='sign-s op-mul 43 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>mul</td>
@@ -12624,7 +12642,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 43 cpu-x86_64'>
+<tr class='sign-u op-mul 43 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>mul</td>
@@ -12678,7 +12696,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 44 cpu-x86_64'>
+<tr class='sign-s op-mul 44 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>mul</td>
@@ -12739,7 +12757,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 44 cpu-x86_64'>
+<tr class='sign-u op-mul 44 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>mul</td>
@@ -12793,7 +12811,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 45 cpu-x86_64'>
+<tr class='sign-s op-mul 45 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>mul</td>
@@ -12854,7 +12872,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 45 cpu-x86_64'>
+<tr class='sign-u op-mul 45 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>mul</td>
@@ -12908,7 +12926,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 46 cpu-x86_64'>
+<tr class='sign-s op-mul 46 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>mul</td>
@@ -12969,7 +12987,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 46 cpu-x86_64'>
+<tr class='sign-u op-mul 46 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>mul</td>
@@ -13023,7 +13041,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 47 cpu-x86_64'>
+<tr class='sign-s op-mul 47 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>mul</td>
@@ -13084,7 +13102,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 47 cpu-x86_64'>
+<tr class='sign-u op-mul 47 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>mul</td>
@@ -13138,7 +13156,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 48 cpu-x86_64'>
+<tr class='sign-s op-mul 48 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>mul</td>
@@ -13199,7 +13217,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 48 cpu-x86_64'>
+<tr class='sign-u op-mul 48 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>mul</td>
@@ -13253,7 +13271,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 49 cpu-x86_64'>
+<tr class='sign-s op-mul 49 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>mul</td>
@@ -13314,7 +13332,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 49 cpu-x86_64'>
+<tr class='sign-u op-mul 49 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>mul</td>
@@ -13368,7 +13386,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 50 cpu-x86_64'>
+<tr class='sign-s op-mul 50 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>mul</td>
@@ -13429,7 +13447,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 50 cpu-x86_64'>
+<tr class='sign-u op-mul 50 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>mul</td>
@@ -13483,7 +13501,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 51 cpu-x86_64'>
+<tr class='sign-s op-mul 51 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>mul</td>
@@ -13544,7 +13562,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 51 cpu-x86_64'>
+<tr class='sign-u op-mul 51 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>mul</td>
@@ -13598,7 +13616,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 52 cpu-x86_64'>
+<tr class='sign-s op-mul 52 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>mul</td>
@@ -13659,7 +13677,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 52 cpu-x86_64'>
+<tr class='sign-u op-mul 52 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>mul</td>
@@ -13713,7 +13731,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 53 cpu-x86_64'>
+<tr class='sign-s op-mul 53 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>mul</td>
@@ -13774,7 +13792,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 53 cpu-x86_64'>
+<tr class='sign-u op-mul 53 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>mul</td>
@@ -13828,7 +13846,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 54 cpu-x86_64'>
+<tr class='sign-s op-mul 54 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>mul</td>
@@ -13889,7 +13907,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 54 cpu-x86_64'>
+<tr class='sign-u op-mul 54 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>mul</td>
@@ -13943,7 +13961,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 55 cpu-x86_64'>
+<tr class='sign-s op-mul 55 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>mul</td>
@@ -14004,7 +14022,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 55 cpu-x86_64'>
+<tr class='sign-u op-mul 55 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>mul</td>
@@ -14058,7 +14076,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 56 cpu-x86_64'>
+<tr class='sign-s op-mul 56 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>mul</td>
@@ -14119,7 +14137,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 56 cpu-x86_64'>
+<tr class='sign-u op-mul 56 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>mul</td>
@@ -14173,7 +14191,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 57 cpu-x86_64'>
+<tr class='sign-s op-mul 57 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>mul</td>
@@ -14234,7 +14252,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 57 cpu-x86_64'>
+<tr class='sign-u op-mul 57 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>mul</td>
@@ -14288,7 +14306,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 58 cpu-x86_64'>
+<tr class='sign-s op-mul 58 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>mul</td>
@@ -14349,7 +14367,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 58 cpu-x86_64'>
+<tr class='sign-u op-mul 58 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>mul</td>
@@ -14403,7 +14421,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 59 cpu-x86_64'>
+<tr class='sign-s op-mul 59 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>mul</td>
@@ -14464,7 +14482,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 59 cpu-x86_64'>
+<tr class='sign-u op-mul 59 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>mul</td>
@@ -14518,7 +14536,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 60 cpu-x86_64'>
+<tr class='sign-s op-mul 60 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>mul</td>
@@ -14579,7 +14597,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 60 cpu-x86_64'>
+<tr class='sign-u op-mul 60 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>mul</td>
@@ -14633,7 +14651,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 61 cpu-x86_64'>
+<tr class='sign-s op-mul 61 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>mul</td>
@@ -14694,7 +14712,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 61 cpu-x86_64'>
+<tr class='sign-u op-mul 61 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>mul</td>
@@ -14748,7 +14766,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 62 cpu-x86_64'>
+<tr class='sign-s op-mul 62 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>mul</td>
@@ -14809,7 +14827,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 62 cpu-x86_64'>
+<tr class='sign-u op-mul 62 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>mul</td>
@@ -14863,7 +14881,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 63 cpu-x86_64'>
+<tr class='sign-s op-mul 63 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>mul</td>
@@ -14924,7 +14942,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 63 cpu-x86_64'>
+<tr class='sign-u op-mul 63 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>mul</td>
@@ -14978,7 +14996,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 64 cpu-x86_64'>
+<tr class='sign-s op-mul 64 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>mul</td>
@@ -15034,7 +15052,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 64 cpu-x86_64'>
+<tr class='sign-u op-mul 64 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>mul</td>
@@ -15084,7 +15102,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 4 cpu-x86_64'>
+<tr class='sign-s op-div 4 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
@@ -15121,7 +15139,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 4 cpu-x86_64'>
+<tr class='sign-u op-div 4 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
@@ -15151,7 +15169,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 5 cpu-x86_64'>
+<tr class='sign-s op-div 5 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>div</td>
@@ -15188,7 +15206,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 5 cpu-x86_64'>
+<tr class='sign-u op-div 5 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>div</td>
@@ -15218,7 +15236,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 6 cpu-x86_64'>
+<tr class='sign-s op-div 6 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>div</td>
@@ -15255,7 +15273,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 6 cpu-x86_64'>
+<tr class='sign-u op-div 6 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>div</td>
@@ -15285,7 +15303,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 7 cpu-x86_64'>
+<tr class='sign-s op-div 7 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>div</td>
@@ -15322,7 +15340,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 7 cpu-x86_64'>
+<tr class='sign-u op-div 7 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>div</td>
@@ -15352,7 +15370,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 8 cpu-x86_64'>
+<tr class='sign-s op-div 8 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>div</td>
@@ -15389,7 +15407,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 8 cpu-x86_64'>
+<tr class='sign-u op-div 8 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>div</td>
@@ -15419,7 +15437,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 9 cpu-x86_64'>
+<tr class='sign-s op-div 9 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>div</td>
@@ -15456,7 +15474,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 9 cpu-x86_64'>
+<tr class='sign-u op-div 9 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>div</td>
@@ -15487,7 +15505,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 10 cpu-x86_64'>
+<tr class='sign-s op-div 10 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>div</td>
@@ -15524,7 +15542,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 10 cpu-x86_64'>
+<tr class='sign-u op-div 10 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>div</td>
@@ -15555,7 +15573,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 11 cpu-x86_64'>
+<tr class='sign-s op-div 11 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>div</td>
@@ -15592,7 +15610,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 11 cpu-x86_64'>
+<tr class='sign-u op-div 11 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>div</td>
@@ -15623,7 +15641,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 12 cpu-x86_64'>
+<tr class='sign-s op-div 12 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>div</td>
@@ -15660,7 +15678,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 12 cpu-x86_64'>
+<tr class='sign-u op-div 12 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>div</td>
@@ -15691,7 +15709,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 13 cpu-x86_64'>
+<tr class='sign-s op-div 13 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>div</td>
@@ -15728,7 +15746,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 13 cpu-x86_64'>
+<tr class='sign-u op-div 13 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>div</td>
@@ -15759,7 +15777,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 14 cpu-x86_64'>
+<tr class='sign-s op-div 14 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>div</td>
@@ -15796,7 +15814,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 14 cpu-x86_64'>
+<tr class='sign-u op-div 14 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>div</td>
@@ -15827,7 +15845,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 15 cpu-x86_64'>
+<tr class='sign-s op-div 15 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>div</td>
@@ -15864,7 +15882,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 15 cpu-x86_64'>
+<tr class='sign-u op-div 15 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>div</td>
@@ -15895,7 +15913,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 16 cpu-x86_64'>
+<tr class='sign-s op-div 16 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>div</td>
@@ -15932,7 +15950,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 16 cpu-x86_64'>
+<tr class='sign-u op-div 16 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>div</td>
@@ -15963,7 +15981,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 17 cpu-x86_64'>
+<tr class='sign-s op-div 17 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>div</td>
@@ -15999,7 +16017,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 17 cpu-x86_64'>
+<tr class='sign-u op-div 17 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>div</td>
@@ -16029,7 +16047,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 18 cpu-x86_64'>
+<tr class='sign-s op-div 18 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>div</td>
@@ -16065,7 +16083,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 18 cpu-x86_64'>
+<tr class='sign-u op-div 18 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>div</td>
@@ -16095,7 +16113,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 19 cpu-x86_64'>
+<tr class='sign-s op-div 19 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>div</td>
@@ -16131,7 +16149,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 19 cpu-x86_64'>
+<tr class='sign-u op-div 19 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>div</td>
@@ -16161,7 +16179,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 20 cpu-x86_64'>
+<tr class='sign-s op-div 20 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>div</td>
@@ -16197,7 +16215,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 20 cpu-x86_64'>
+<tr class='sign-u op-div 20 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>div</td>
@@ -16227,7 +16245,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 21 cpu-x86_64'>
+<tr class='sign-s op-div 21 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>div</td>
@@ -16263,7 +16281,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 21 cpu-x86_64'>
+<tr class='sign-u op-div 21 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>div</td>
@@ -16293,7 +16311,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 22 cpu-x86_64'>
+<tr class='sign-s op-div 22 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>div</td>
@@ -16329,7 +16347,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 22 cpu-x86_64'>
+<tr class='sign-u op-div 22 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>div</td>
@@ -16359,7 +16377,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 23 cpu-x86_64'>
+<tr class='sign-s op-div 23 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>div</td>
@@ -16395,7 +16413,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 23 cpu-x86_64'>
+<tr class='sign-u op-div 23 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>div</td>
@@ -16425,7 +16443,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 24 cpu-x86_64'>
+<tr class='sign-s op-div 24 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>div</td>
@@ -16461,7 +16479,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 24 cpu-x86_64'>
+<tr class='sign-u op-div 24 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>div</td>
@@ -16491,7 +16509,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 25 cpu-x86_64'>
+<tr class='sign-s op-div 25 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>div</td>
@@ -16527,7 +16545,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 25 cpu-x86_64'>
+<tr class='sign-u op-div 25 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>div</td>
@@ -16557,7 +16575,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 26 cpu-x86_64'>
+<tr class='sign-s op-div 26 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>div</td>
@@ -16593,7 +16611,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 26 cpu-x86_64'>
+<tr class='sign-u op-div 26 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>div</td>
@@ -16623,7 +16641,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 27 cpu-x86_64'>
+<tr class='sign-s op-div 27 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>div</td>
@@ -16659,7 +16677,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 27 cpu-x86_64'>
+<tr class='sign-u op-div 27 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>div</td>
@@ -16689,7 +16707,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 28 cpu-x86_64'>
+<tr class='sign-s op-div 28 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>div</td>
@@ -16725,7 +16743,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 28 cpu-x86_64'>
+<tr class='sign-u op-div 28 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>div</td>
@@ -16755,7 +16773,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 29 cpu-x86_64'>
+<tr class='sign-s op-div 29 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>div</td>
@@ -16791,7 +16809,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 29 cpu-x86_64'>
+<tr class='sign-u op-div 29 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>div</td>
@@ -16821,7 +16839,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 30 cpu-x86_64'>
+<tr class='sign-s op-div 30 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>div</td>
@@ -16857,7 +16875,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 30 cpu-x86_64'>
+<tr class='sign-u op-div 30 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>div</td>
@@ -16887,7 +16905,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 31 cpu-x86_64'>
+<tr class='sign-s op-div 31 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>div</td>
@@ -16923,7 +16941,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 31 cpu-x86_64'>
+<tr class='sign-u op-div 31 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>div</td>
@@ -16953,7 +16971,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 32 cpu-x86_64'>
+<tr class='sign-s op-div 32 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>div</td>
@@ -16989,7 +17007,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 32 cpu-x86_64'>
+<tr class='sign-u op-div 32 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>div</td>
@@ -17019,7 +17037,7 @@ _f:                                     ## @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 33 cpu-x86_64'>
+<tr class='sign-s op-div 33 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>div</td>
@@ -17066,7 +17084,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 33 cpu-x86_64'>
+<tr class='sign-u op-div 33 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>div</td>
@@ -17105,7 +17123,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 34 cpu-x86_64'>
+<tr class='sign-s op-div 34 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>div</td>
@@ -17152,7 +17170,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 34 cpu-x86_64'>
+<tr class='sign-u op-div 34 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>div</td>
@@ -17191,7 +17209,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 35 cpu-x86_64'>
+<tr class='sign-s op-div 35 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>div</td>
@@ -17238,7 +17256,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 35 cpu-x86_64'>
+<tr class='sign-u op-div 35 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>div</td>
@@ -17277,7 +17295,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 36 cpu-x86_64'>
+<tr class='sign-s op-div 36 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>div</td>
@@ -17324,7 +17342,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 36 cpu-x86_64'>
+<tr class='sign-u op-div 36 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>div</td>
@@ -17363,7 +17381,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 37 cpu-x86_64'>
+<tr class='sign-s op-div 37 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>div</td>
@@ -17410,7 +17428,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 37 cpu-x86_64'>
+<tr class='sign-u op-div 37 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>div</td>
@@ -17449,7 +17467,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 38 cpu-x86_64'>
+<tr class='sign-s op-div 38 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>div</td>
@@ -17496,7 +17514,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 38 cpu-x86_64'>
+<tr class='sign-u op-div 38 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>div</td>
@@ -17535,7 +17553,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 39 cpu-x86_64'>
+<tr class='sign-s op-div 39 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>div</td>
@@ -17582,7 +17600,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 39 cpu-x86_64'>
+<tr class='sign-u op-div 39 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>div</td>
@@ -17621,7 +17639,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 40 cpu-x86_64'>
+<tr class='sign-s op-div 40 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>div</td>
@@ -17668,7 +17686,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 40 cpu-x86_64'>
+<tr class='sign-u op-div 40 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>div</td>
@@ -17707,7 +17725,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 41 cpu-x86_64'>
+<tr class='sign-s op-div 41 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>div</td>
@@ -17754,7 +17772,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 41 cpu-x86_64'>
+<tr class='sign-u op-div 41 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>div</td>
@@ -17793,7 +17811,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 42 cpu-x86_64'>
+<tr class='sign-s op-div 42 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>div</td>
@@ -17840,7 +17858,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 42 cpu-x86_64'>
+<tr class='sign-u op-div 42 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>div</td>
@@ -17879,7 +17897,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 43 cpu-x86_64'>
+<tr class='sign-s op-div 43 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>div</td>
@@ -17926,7 +17944,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 43 cpu-x86_64'>
+<tr class='sign-u op-div 43 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>div</td>
@@ -17965,7 +17983,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 44 cpu-x86_64'>
+<tr class='sign-s op-div 44 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>div</td>
@@ -18012,7 +18030,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 44 cpu-x86_64'>
+<tr class='sign-u op-div 44 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>div</td>
@@ -18051,7 +18069,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 45 cpu-x86_64'>
+<tr class='sign-s op-div 45 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>div</td>
@@ -18098,7 +18116,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 45 cpu-x86_64'>
+<tr class='sign-u op-div 45 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>div</td>
@@ -18137,7 +18155,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 46 cpu-x86_64'>
+<tr class='sign-s op-div 46 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>div</td>
@@ -18184,7 +18202,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 46 cpu-x86_64'>
+<tr class='sign-u op-div 46 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>div</td>
@@ -18223,7 +18241,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 47 cpu-x86_64'>
+<tr class='sign-s op-div 47 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>div</td>
@@ -18270,7 +18288,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 47 cpu-x86_64'>
+<tr class='sign-u op-div 47 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>div</td>
@@ -18309,7 +18327,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 48 cpu-x86_64'>
+<tr class='sign-s op-div 48 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>div</td>
@@ -18356,7 +18374,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 48 cpu-x86_64'>
+<tr class='sign-u op-div 48 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>div</td>
@@ -18395,7 +18413,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 49 cpu-x86_64'>
+<tr class='sign-s op-div 49 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>div</td>
@@ -18442,7 +18460,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 49 cpu-x86_64'>
+<tr class='sign-u op-div 49 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>div</td>
@@ -18481,7 +18499,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 50 cpu-x86_64'>
+<tr class='sign-s op-div 50 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>div</td>
@@ -18528,7 +18546,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 50 cpu-x86_64'>
+<tr class='sign-u op-div 50 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>div</td>
@@ -18567,7 +18585,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 51 cpu-x86_64'>
+<tr class='sign-s op-div 51 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>div</td>
@@ -18614,7 +18632,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 51 cpu-x86_64'>
+<tr class='sign-u op-div 51 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>div</td>
@@ -18653,7 +18671,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 52 cpu-x86_64'>
+<tr class='sign-s op-div 52 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>div</td>
@@ -18700,7 +18718,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 52 cpu-x86_64'>
+<tr class='sign-u op-div 52 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>div</td>
@@ -18739,7 +18757,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 53 cpu-x86_64'>
+<tr class='sign-s op-div 53 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>div</td>
@@ -18786,7 +18804,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 53 cpu-x86_64'>
+<tr class='sign-u op-div 53 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>div</td>
@@ -18825,7 +18843,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 54 cpu-x86_64'>
+<tr class='sign-s op-div 54 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>div</td>
@@ -18872,7 +18890,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 54 cpu-x86_64'>
+<tr class='sign-u op-div 54 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>div</td>
@@ -18911,7 +18929,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 55 cpu-x86_64'>
+<tr class='sign-s op-div 55 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>div</td>
@@ -18958,7 +18976,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 55 cpu-x86_64'>
+<tr class='sign-u op-div 55 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>div</td>
@@ -18997,7 +19015,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 56 cpu-x86_64'>
+<tr class='sign-s op-div 56 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>div</td>
@@ -19044,7 +19062,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 56 cpu-x86_64'>
+<tr class='sign-u op-div 56 cpu-x86_64  bits-x4 bits-x8'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>div</td>
@@ -19083,7 +19101,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 57 cpu-x86_64'>
+<tr class='sign-s op-div 57 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>div</td>
@@ -19130,7 +19148,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 57 cpu-x86_64'>
+<tr class='sign-u op-div 57 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>div</td>
@@ -19169,7 +19187,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 58 cpu-x86_64'>
+<tr class='sign-s op-div 58 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>div</td>
@@ -19216,7 +19234,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 58 cpu-x86_64'>
+<tr class='sign-u op-div 58 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>div</td>
@@ -19255,7 +19273,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 59 cpu-x86_64'>
+<tr class='sign-s op-div 59 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>div</td>
@@ -19302,7 +19320,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 59 cpu-x86_64'>
+<tr class='sign-u op-div 59 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>div</td>
@@ -19341,7 +19359,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 60 cpu-x86_64'>
+<tr class='sign-s op-div 60 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>div</td>
@@ -19388,7 +19406,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 60 cpu-x86_64'>
+<tr class='sign-u op-div 60 cpu-x86_64  bits-x4'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>div</td>
@@ -19427,7 +19445,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 61 cpu-x86_64'>
+<tr class='sign-s op-div 61 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>div</td>
@@ -19474,7 +19492,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 61 cpu-x86_64'>
+<tr class='sign-u op-div 61 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>div</td>
@@ -19513,7 +19531,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 62 cpu-x86_64'>
+<tr class='sign-s op-div 62 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>div</td>
@@ -19560,7 +19578,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 62 cpu-x86_64'>
+<tr class='sign-u op-div 62 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>div</td>
@@ -19599,7 +19617,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 63 cpu-x86_64'>
+<tr class='sign-s op-div 63 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>div</td>
@@ -19646,7 +19664,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 63 cpu-x86_64'>
+<tr class='sign-u op-div 63 cpu-x86_64 '>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>div</td>
@@ -19685,7 +19703,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 64 cpu-x86_64'>
+<tr class='sign-s op-div 64 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>div</td>
@@ -19730,7 +19748,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 64 cpu-x86_64'>
+<tr class='sign-u op-div 64 cpu-x86_64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>x86_64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>div</td>
@@ -19769,7 +19787,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 4 cpu-arm'>
+<tr class='sign-s op-add 4 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
@@ -19806,7 +19824,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 4 cpu-arm'>
+<tr class='sign-u op-add 4 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
@@ -19837,7 +19855,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 5 cpu-arm'>
+<tr class='sign-s op-add 5 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>add</td>
@@ -19874,7 +19892,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 5 cpu-arm'>
+<tr class='sign-u op-add 5 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>add</td>
@@ -19905,7 +19923,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 6 cpu-arm'>
+<tr class='sign-s op-add 6 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>add</td>
@@ -19942,7 +19960,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 6 cpu-arm'>
+<tr class='sign-u op-add 6 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>add</td>
@@ -19973,7 +19991,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 7 cpu-arm'>
+<tr class='sign-s op-add 7 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>add</td>
@@ -20010,7 +20028,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 7 cpu-arm'>
+<tr class='sign-u op-add 7 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>add</td>
@@ -20042,7 +20060,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 8 cpu-arm'>
+<tr class='sign-s op-add 8 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>add</td>
@@ -20080,7 +20098,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 8 cpu-arm'>
+<tr class='sign-u op-add 8 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>add</td>
@@ -20107,7 +20125,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 9 cpu-arm'>
+<tr class='sign-s op-add 9 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>add</td>
@@ -20145,7 +20163,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 9 cpu-arm'>
+<tr class='sign-u op-add 9 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>add</td>
@@ -20181,7 +20199,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 10 cpu-arm'>
+<tr class='sign-s op-add 10 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>add</td>
@@ -20219,7 +20237,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 10 cpu-arm'>
+<tr class='sign-u op-add 10 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>add</td>
@@ -20255,7 +20273,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 11 cpu-arm'>
+<tr class='sign-s op-add 11 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>add</td>
@@ -20293,7 +20311,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 11 cpu-arm'>
+<tr class='sign-u op-add 11 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>add</td>
@@ -20329,7 +20347,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 12 cpu-arm'>
+<tr class='sign-s op-add 12 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>add</td>
@@ -20367,7 +20385,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 12 cpu-arm'>
+<tr class='sign-u op-add 12 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>add</td>
@@ -20403,7 +20421,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 13 cpu-arm'>
+<tr class='sign-s op-add 13 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>add</td>
@@ -20441,7 +20459,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 13 cpu-arm'>
+<tr class='sign-u op-add 13 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>add</td>
@@ -20477,7 +20495,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 14 cpu-arm'>
+<tr class='sign-s op-add 14 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>add</td>
@@ -20515,7 +20533,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 14 cpu-arm'>
+<tr class='sign-u op-add 14 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>add</td>
@@ -20551,7 +20569,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 15 cpu-arm'>
+<tr class='sign-s op-add 15 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>add</td>
@@ -20589,7 +20607,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 15 cpu-arm'>
+<tr class='sign-u op-add 15 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>add</td>
@@ -20625,7 +20643,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 16 cpu-arm'>
+<tr class='sign-s op-add 16 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>add</td>
@@ -20666,7 +20684,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 16 cpu-arm'>
+<tr class='sign-u op-add 16 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>add</td>
@@ -20695,7 +20713,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 17 cpu-arm'>
+<tr class='sign-s op-add 17 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>add</td>
@@ -20733,7 +20751,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 17 cpu-arm'>
+<tr class='sign-u op-add 17 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>add</td>
@@ -20766,7 +20784,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 18 cpu-arm'>
+<tr class='sign-s op-add 18 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>add</td>
@@ -20804,7 +20822,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 18 cpu-arm'>
+<tr class='sign-u op-add 18 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>add</td>
@@ -20837,7 +20855,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 19 cpu-arm'>
+<tr class='sign-s op-add 19 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>add</td>
@@ -20875,7 +20893,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 19 cpu-arm'>
+<tr class='sign-u op-add 19 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>add</td>
@@ -20908,7 +20926,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 20 cpu-arm'>
+<tr class='sign-s op-add 20 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>add</td>
@@ -20946,7 +20964,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 20 cpu-arm'>
+<tr class='sign-u op-add 20 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>add</td>
@@ -20979,7 +20997,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 21 cpu-arm'>
+<tr class='sign-s op-add 21 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>add</td>
@@ -21017,7 +21035,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 21 cpu-arm'>
+<tr class='sign-u op-add 21 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>add</td>
@@ -21050,7 +21068,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 22 cpu-arm'>
+<tr class='sign-s op-add 22 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>add</td>
@@ -21088,7 +21106,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 22 cpu-arm'>
+<tr class='sign-u op-add 22 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>add</td>
@@ -21121,7 +21139,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 23 cpu-arm'>
+<tr class='sign-s op-add 23 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>add</td>
@@ -21159,7 +21177,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 23 cpu-arm'>
+<tr class='sign-u op-add 23 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>add</td>
@@ -21192,7 +21210,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 24 cpu-arm'>
+<tr class='sign-s op-add 24 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>add</td>
@@ -21229,7 +21247,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 24 cpu-arm'>
+<tr class='sign-u op-add 24 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>add</td>
@@ -21260,7 +21278,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 25 cpu-arm'>
+<tr class='sign-s op-add 25 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>add</td>
@@ -21297,7 +21315,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 25 cpu-arm'>
+<tr class='sign-u op-add 25 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>add</td>
@@ -21328,7 +21346,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 26 cpu-arm'>
+<tr class='sign-s op-add 26 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>add</td>
@@ -21365,7 +21383,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 26 cpu-arm'>
+<tr class='sign-u op-add 26 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>add</td>
@@ -21395,7 +21413,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 27 cpu-arm'>
+<tr class='sign-s op-add 27 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>add</td>
@@ -21431,7 +21449,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 27 cpu-arm'>
+<tr class='sign-u op-add 27 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>add</td>
@@ -21461,7 +21479,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 28 cpu-arm'>
+<tr class='sign-s op-add 28 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>add</td>
@@ -21497,7 +21515,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 28 cpu-arm'>
+<tr class='sign-u op-add 28 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>add</td>
@@ -21527,7 +21545,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 29 cpu-arm'>
+<tr class='sign-s op-add 29 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>add</td>
@@ -21563,7 +21581,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 29 cpu-arm'>
+<tr class='sign-u op-add 29 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>add</td>
@@ -21593,7 +21611,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 30 cpu-arm'>
+<tr class='sign-s op-add 30 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>add</td>
@@ -21629,7 +21647,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 30 cpu-arm'>
+<tr class='sign-u op-add 30 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>add</td>
@@ -21659,7 +21677,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 31 cpu-arm'>
+<tr class='sign-s op-add 31 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>add</td>
@@ -21695,7 +21713,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 31 cpu-arm'>
+<tr class='sign-u op-add 31 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>add</td>
@@ -21726,7 +21744,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 32 cpu-arm'>
+<tr class='sign-s op-add 32 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>add</td>
@@ -21759,7 +21777,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 32 cpu-arm'>
+<tr class='sign-u op-add 32 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>add</td>
@@ -21785,7 +21803,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 33 cpu-arm'>
+<tr class='sign-s op-add 33 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>add</td>
@@ -21831,7 +21849,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 33 cpu-arm'>
+<tr class='sign-u op-add 33 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>add</td>
@@ -21865,7 +21883,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 34 cpu-arm'>
+<tr class='sign-s op-add 34 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>add</td>
@@ -21911,7 +21929,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 34 cpu-arm'>
+<tr class='sign-u op-add 34 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>add</td>
@@ -21945,7 +21963,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 35 cpu-arm'>
+<tr class='sign-s op-add 35 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>add</td>
@@ -21991,7 +22009,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 35 cpu-arm'>
+<tr class='sign-u op-add 35 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>add</td>
@@ -22025,7 +22043,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 36 cpu-arm'>
+<tr class='sign-s op-add 36 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>add</td>
@@ -22071,7 +22089,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 36 cpu-arm'>
+<tr class='sign-u op-add 36 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>add</td>
@@ -22105,7 +22123,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 37 cpu-arm'>
+<tr class='sign-s op-add 37 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>add</td>
@@ -22151,7 +22169,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 37 cpu-arm'>
+<tr class='sign-u op-add 37 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>add</td>
@@ -22185,7 +22203,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 38 cpu-arm'>
+<tr class='sign-s op-add 38 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>add</td>
@@ -22231,7 +22249,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 38 cpu-arm'>
+<tr class='sign-u op-add 38 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>add</td>
@@ -22265,7 +22283,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 39 cpu-arm'>
+<tr class='sign-s op-add 39 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>add</td>
@@ -22313,7 +22331,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 39 cpu-arm'>
+<tr class='sign-u op-add 39 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>add</td>
@@ -22347,7 +22365,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 40 cpu-arm'>
+<tr class='sign-s op-add 40 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>add</td>
@@ -22392,7 +22410,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 40 cpu-arm'>
+<tr class='sign-u op-add 40 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>add</td>
@@ -22426,7 +22444,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 41 cpu-arm'>
+<tr class='sign-s op-add 41 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>add</td>
@@ -22474,7 +22492,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 41 cpu-arm'>
+<tr class='sign-u op-add 41 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>add</td>
@@ -22510,7 +22528,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 42 cpu-arm'>
+<tr class='sign-s op-add 42 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>add</td>
@@ -22558,7 +22576,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 42 cpu-arm'>
+<tr class='sign-u op-add 42 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>add</td>
@@ -22594,7 +22612,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 43 cpu-arm'>
+<tr class='sign-s op-add 43 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>add</td>
@@ -22642,7 +22660,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 43 cpu-arm'>
+<tr class='sign-u op-add 43 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>add</td>
@@ -22678,7 +22696,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 44 cpu-arm'>
+<tr class='sign-s op-add 44 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>add</td>
@@ -22726,7 +22744,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 44 cpu-arm'>
+<tr class='sign-u op-add 44 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>add</td>
@@ -22762,7 +22780,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 45 cpu-arm'>
+<tr class='sign-s op-add 45 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>add</td>
@@ -22810,7 +22828,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 45 cpu-arm'>
+<tr class='sign-u op-add 45 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>add</td>
@@ -22846,7 +22864,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 46 cpu-arm'>
+<tr class='sign-s op-add 46 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>add</td>
@@ -22894,7 +22912,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 46 cpu-arm'>
+<tr class='sign-u op-add 46 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>add</td>
@@ -22930,7 +22948,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 47 cpu-arm'>
+<tr class='sign-s op-add 47 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>add</td>
@@ -22980,7 +22998,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 47 cpu-arm'>
+<tr class='sign-u op-add 47 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>add</td>
@@ -23016,7 +23034,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 48 cpu-arm'>
+<tr class='sign-s op-add 48 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>add</td>
@@ -23065,7 +23083,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 48 cpu-arm'>
+<tr class='sign-u op-add 48 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>add</td>
@@ -23101,7 +23119,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 49 cpu-arm'>
+<tr class='sign-s op-add 49 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>add</td>
@@ -23149,7 +23167,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 49 cpu-arm'>
+<tr class='sign-u op-add 49 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>add</td>
@@ -23185,7 +23203,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 50 cpu-arm'>
+<tr class='sign-s op-add 50 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>add</td>
@@ -23233,7 +23251,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 50 cpu-arm'>
+<tr class='sign-u op-add 50 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>add</td>
@@ -23269,7 +23287,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 51 cpu-arm'>
+<tr class='sign-s op-add 51 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>add</td>
@@ -23317,7 +23335,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 51 cpu-arm'>
+<tr class='sign-u op-add 51 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>add</td>
@@ -23353,7 +23371,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 52 cpu-arm'>
+<tr class='sign-s op-add 52 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>add</td>
@@ -23401,7 +23419,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 52 cpu-arm'>
+<tr class='sign-u op-add 52 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>add</td>
@@ -23437,7 +23455,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 53 cpu-arm'>
+<tr class='sign-s op-add 53 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>add</td>
@@ -23485,7 +23503,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 53 cpu-arm'>
+<tr class='sign-u op-add 53 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>add</td>
@@ -23521,7 +23539,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 54 cpu-arm'>
+<tr class='sign-s op-add 54 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>add</td>
@@ -23569,7 +23587,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 54 cpu-arm'>
+<tr class='sign-u op-add 54 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>add</td>
@@ -23605,7 +23623,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 55 cpu-arm'>
+<tr class='sign-s op-add 55 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>add</td>
@@ -23655,7 +23673,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 55 cpu-arm'>
+<tr class='sign-u op-add 55 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>add</td>
@@ -23691,7 +23709,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 56 cpu-arm'>
+<tr class='sign-s op-add 56 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>add</td>
@@ -23738,7 +23756,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 56 cpu-arm'>
+<tr class='sign-u op-add 56 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>add</td>
@@ -23773,7 +23791,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 57 cpu-arm'>
+<tr class='sign-s op-add 57 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>add</td>
@@ -23817,7 +23835,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 57 cpu-arm'>
+<tr class='sign-u op-add 57 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>add</td>
@@ -23852,7 +23870,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 58 cpu-arm'>
+<tr class='sign-s op-add 58 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>add</td>
@@ -23896,7 +23914,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 58 cpu-arm'>
+<tr class='sign-u op-add 58 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>add</td>
@@ -23930,7 +23948,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 59 cpu-arm'>
+<tr class='sign-s op-add 59 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>add</td>
@@ -23974,7 +23992,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 59 cpu-arm'>
+<tr class='sign-u op-add 59 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>add</td>
@@ -24008,7 +24026,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 60 cpu-arm'>
+<tr class='sign-s op-add 60 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>add</td>
@@ -24052,7 +24070,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 60 cpu-arm'>
+<tr class='sign-u op-add 60 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>add</td>
@@ -24086,7 +24104,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 61 cpu-arm'>
+<tr class='sign-s op-add 61 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>add</td>
@@ -24130,7 +24148,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 61 cpu-arm'>
+<tr class='sign-u op-add 61 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>add</td>
@@ -24164,7 +24182,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 62 cpu-arm'>
+<tr class='sign-s op-add 62 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>add</td>
@@ -24208,7 +24226,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 62 cpu-arm'>
+<tr class='sign-u op-add 62 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>add</td>
@@ -24242,7 +24260,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 63 cpu-arm'>
+<tr class='sign-s op-add 63 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>add</td>
@@ -24287,7 +24305,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 63 cpu-arm'>
+<tr class='sign-u op-add 63 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>add</td>
@@ -24320,7 +24338,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 64 cpu-arm'>
+<tr class='sign-s op-add 64 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>add</td>
@@ -24360,7 +24378,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 64 cpu-arm'>
+<tr class='sign-u op-add 64 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>add</td>
@@ -24390,7 +24408,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 4 cpu-arm'>
+<tr class='sign-s op-sub 4 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
@@ -24424,7 +24442,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 4 cpu-arm'>
+<tr class='sign-u op-sub 4 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
@@ -24451,7 +24469,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 5 cpu-arm'>
+<tr class='sign-s op-sub 5 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>sub</td>
@@ -24485,7 +24503,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 5 cpu-arm'>
+<tr class='sign-u op-sub 5 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>sub</td>
@@ -24512,7 +24530,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 6 cpu-arm'>
+<tr class='sign-s op-sub 6 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>sub</td>
@@ -24546,7 +24564,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 6 cpu-arm'>
+<tr class='sign-u op-sub 6 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>sub</td>
@@ -24573,7 +24591,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 7 cpu-arm'>
+<tr class='sign-s op-sub 7 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>sub</td>
@@ -24607,7 +24625,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 7 cpu-arm'>
+<tr class='sign-u op-sub 7 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>sub</td>
@@ -24634,7 +24652,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 8 cpu-arm'>
+<tr class='sign-s op-sub 8 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>sub</td>
@@ -24670,7 +24688,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 8 cpu-arm'>
+<tr class='sign-u op-sub 8 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>sub</td>
@@ -24696,7 +24714,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 9 cpu-arm'>
+<tr class='sign-s op-sub 9 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>sub</td>
@@ -24730,7 +24748,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 9 cpu-arm'>
+<tr class='sign-u op-sub 9 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>sub</td>
@@ -24759,7 +24777,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 10 cpu-arm'>
+<tr class='sign-s op-sub 10 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>sub</td>
@@ -24794,7 +24812,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 10 cpu-arm'>
+<tr class='sign-u op-sub 10 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>sub</td>
@@ -24823,7 +24841,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 11 cpu-arm'>
+<tr class='sign-s op-sub 11 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>sub</td>
@@ -24858,7 +24876,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 11 cpu-arm'>
+<tr class='sign-u op-sub 11 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>sub</td>
@@ -24887,7 +24905,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 12 cpu-arm'>
+<tr class='sign-s op-sub 12 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>sub</td>
@@ -24922,7 +24940,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 12 cpu-arm'>
+<tr class='sign-u op-sub 12 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>sub</td>
@@ -24951,7 +24969,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 13 cpu-arm'>
+<tr class='sign-s op-sub 13 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>sub</td>
@@ -24986,7 +25004,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 13 cpu-arm'>
+<tr class='sign-u op-sub 13 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>sub</td>
@@ -25015,7 +25033,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 14 cpu-arm'>
+<tr class='sign-s op-sub 14 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>sub</td>
@@ -25050,7 +25068,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 14 cpu-arm'>
+<tr class='sign-u op-sub 14 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>sub</td>
@@ -25079,7 +25097,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 15 cpu-arm'>
+<tr class='sign-s op-sub 15 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>sub</td>
@@ -25114,7 +25132,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 15 cpu-arm'>
+<tr class='sign-u op-sub 15 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>sub</td>
@@ -25143,7 +25161,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 16 cpu-arm'>
+<tr class='sign-s op-sub 16 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>sub</td>
@@ -25182,7 +25200,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 16 cpu-arm'>
+<tr class='sign-u op-sub 16 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>sub</td>
@@ -25208,7 +25226,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 17 cpu-arm'>
+<tr class='sign-s op-sub 17 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>sub</td>
@@ -25244,7 +25262,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 17 cpu-arm'>
+<tr class='sign-u op-sub 17 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>sub</td>
@@ -25273,7 +25291,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 18 cpu-arm'>
+<tr class='sign-s op-sub 18 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>sub</td>
@@ -25309,7 +25327,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 18 cpu-arm'>
+<tr class='sign-u op-sub 18 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>sub</td>
@@ -25338,7 +25356,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 19 cpu-arm'>
+<tr class='sign-s op-sub 19 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>sub</td>
@@ -25374,7 +25392,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 19 cpu-arm'>
+<tr class='sign-u op-sub 19 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>sub</td>
@@ -25403,7 +25421,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 20 cpu-arm'>
+<tr class='sign-s op-sub 20 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>sub</td>
@@ -25439,7 +25457,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 20 cpu-arm'>
+<tr class='sign-u op-sub 20 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>sub</td>
@@ -25468,7 +25486,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 21 cpu-arm'>
+<tr class='sign-s op-sub 21 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>sub</td>
@@ -25504,7 +25522,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 21 cpu-arm'>
+<tr class='sign-u op-sub 21 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>sub</td>
@@ -25533,7 +25551,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 22 cpu-arm'>
+<tr class='sign-s op-sub 22 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>sub</td>
@@ -25569,7 +25587,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 22 cpu-arm'>
+<tr class='sign-u op-sub 22 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>sub</td>
@@ -25598,7 +25616,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 23 cpu-arm'>
+<tr class='sign-s op-sub 23 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>sub</td>
@@ -25634,7 +25652,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 23 cpu-arm'>
+<tr class='sign-u op-sub 23 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>sub</td>
@@ -25663,7 +25681,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 24 cpu-arm'>
+<tr class='sign-s op-sub 24 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>sub</td>
@@ -25698,7 +25716,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 24 cpu-arm'>
+<tr class='sign-u op-sub 24 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>sub</td>
@@ -25725,7 +25743,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 25 cpu-arm'>
+<tr class='sign-s op-sub 25 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>sub</td>
@@ -25760,7 +25778,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 25 cpu-arm'>
+<tr class='sign-u op-sub 25 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>sub</td>
@@ -25787,7 +25805,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 26 cpu-arm'>
+<tr class='sign-s op-sub 26 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>sub</td>
@@ -25822,7 +25840,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 26 cpu-arm'>
+<tr class='sign-u op-sub 26 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>sub</td>
@@ -25849,7 +25867,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 27 cpu-arm'>
+<tr class='sign-s op-sub 27 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>sub</td>
@@ -25883,7 +25901,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 27 cpu-arm'>
+<tr class='sign-u op-sub 27 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>sub</td>
@@ -25910,7 +25928,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 28 cpu-arm'>
+<tr class='sign-s op-sub 28 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>sub</td>
@@ -25944,7 +25962,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 28 cpu-arm'>
+<tr class='sign-u op-sub 28 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>sub</td>
@@ -25971,7 +25989,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 29 cpu-arm'>
+<tr class='sign-s op-sub 29 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>sub</td>
@@ -26005,7 +26023,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 29 cpu-arm'>
+<tr class='sign-u op-sub 29 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>sub</td>
@@ -26032,7 +26050,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 30 cpu-arm'>
+<tr class='sign-s op-sub 30 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>sub</td>
@@ -26066,7 +26084,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 30 cpu-arm'>
+<tr class='sign-u op-sub 30 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>sub</td>
@@ -26093,7 +26111,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 31 cpu-arm'>
+<tr class='sign-s op-sub 31 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>sub</td>
@@ -26127,7 +26145,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 31 cpu-arm'>
+<tr class='sign-u op-sub 31 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>sub</td>
@@ -26154,7 +26172,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 32 cpu-arm'>
+<tr class='sign-s op-sub 32 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>sub</td>
@@ -26185,7 +26203,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 32 cpu-arm'>
+<tr class='sign-u op-sub 32 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>sub</td>
@@ -26211,7 +26229,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 33 cpu-arm'>
+<tr class='sign-s op-sub 33 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>sub</td>
@@ -26249,7 +26267,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 33 cpu-arm'>
+<tr class='sign-u op-sub 33 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>sub</td>
@@ -26281,7 +26299,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 34 cpu-arm'>
+<tr class='sign-s op-sub 34 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>sub</td>
@@ -26320,7 +26338,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 34 cpu-arm'>
+<tr class='sign-u op-sub 34 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>sub</td>
@@ -26352,7 +26370,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 35 cpu-arm'>
+<tr class='sign-s op-sub 35 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>sub</td>
@@ -26391,7 +26409,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 35 cpu-arm'>
+<tr class='sign-u op-sub 35 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>sub</td>
@@ -26423,7 +26441,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 36 cpu-arm'>
+<tr class='sign-s op-sub 36 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>sub</td>
@@ -26462,7 +26480,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 36 cpu-arm'>
+<tr class='sign-u op-sub 36 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>sub</td>
@@ -26494,7 +26512,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 37 cpu-arm'>
+<tr class='sign-s op-sub 37 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>sub</td>
@@ -26533,7 +26551,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 37 cpu-arm'>
+<tr class='sign-u op-sub 37 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>sub</td>
@@ -26565,7 +26583,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 38 cpu-arm'>
+<tr class='sign-s op-sub 38 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>sub</td>
@@ -26604,7 +26622,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 38 cpu-arm'>
+<tr class='sign-u op-sub 38 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>sub</td>
@@ -26636,7 +26654,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 39 cpu-arm'>
+<tr class='sign-s op-sub 39 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>sub</td>
@@ -26675,7 +26693,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 39 cpu-arm'>
+<tr class='sign-u op-sub 39 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>sub</td>
@@ -26707,7 +26725,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 40 cpu-arm'>
+<tr class='sign-s op-sub 40 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>sub</td>
@@ -26751,7 +26769,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 40 cpu-arm'>
+<tr class='sign-u op-sub 40 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>sub</td>
@@ -26783,7 +26801,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 41 cpu-arm'>
+<tr class='sign-s op-sub 41 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>sub</td>
@@ -26822,7 +26840,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 41 cpu-arm'>
+<tr class='sign-u op-sub 41 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>sub</td>
@@ -26856,7 +26874,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 42 cpu-arm'>
+<tr class='sign-s op-sub 42 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>sub</td>
@@ -26897,7 +26915,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 42 cpu-arm'>
+<tr class='sign-u op-sub 42 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>sub</td>
@@ -26931,7 +26949,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 43 cpu-arm'>
+<tr class='sign-s op-sub 43 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>sub</td>
@@ -26972,7 +26990,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 43 cpu-arm'>
+<tr class='sign-u op-sub 43 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>sub</td>
@@ -27006,7 +27024,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 44 cpu-arm'>
+<tr class='sign-s op-sub 44 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>sub</td>
@@ -27047,7 +27065,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 44 cpu-arm'>
+<tr class='sign-u op-sub 44 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>sub</td>
@@ -27081,7 +27099,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 45 cpu-arm'>
+<tr class='sign-s op-sub 45 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>sub</td>
@@ -27122,7 +27140,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 45 cpu-arm'>
+<tr class='sign-u op-sub 45 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>sub</td>
@@ -27156,7 +27174,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 46 cpu-arm'>
+<tr class='sign-s op-sub 46 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>sub</td>
@@ -27197,7 +27215,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 46 cpu-arm'>
+<tr class='sign-u op-sub 46 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>sub</td>
@@ -27231,7 +27249,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 47 cpu-arm'>
+<tr class='sign-s op-sub 47 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>sub</td>
@@ -27272,7 +27290,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 47 cpu-arm'>
+<tr class='sign-u op-sub 47 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>sub</td>
@@ -27306,7 +27324,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 48 cpu-arm'>
+<tr class='sign-s op-sub 48 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>sub</td>
@@ -27354,7 +27372,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 48 cpu-arm'>
+<tr class='sign-u op-sub 48 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>sub</td>
@@ -27388,7 +27406,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 49 cpu-arm'>
+<tr class='sign-s op-sub 49 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>sub</td>
@@ -27429,7 +27447,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 49 cpu-arm'>
+<tr class='sign-u op-sub 49 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>sub</td>
@@ -27463,7 +27481,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 50 cpu-arm'>
+<tr class='sign-s op-sub 50 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>sub</td>
@@ -27504,7 +27522,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 50 cpu-arm'>
+<tr class='sign-u op-sub 50 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>sub</td>
@@ -27538,7 +27556,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 51 cpu-arm'>
+<tr class='sign-s op-sub 51 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>sub</td>
@@ -27579,7 +27597,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 51 cpu-arm'>
+<tr class='sign-u op-sub 51 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>sub</td>
@@ -27613,7 +27631,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 52 cpu-arm'>
+<tr class='sign-s op-sub 52 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>sub</td>
@@ -27654,7 +27672,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 52 cpu-arm'>
+<tr class='sign-u op-sub 52 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>sub</td>
@@ -27688,7 +27706,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 53 cpu-arm'>
+<tr class='sign-s op-sub 53 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>sub</td>
@@ -27729,7 +27747,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 53 cpu-arm'>
+<tr class='sign-u op-sub 53 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>sub</td>
@@ -27763,7 +27781,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 54 cpu-arm'>
+<tr class='sign-s op-sub 54 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>sub</td>
@@ -27804,7 +27822,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 54 cpu-arm'>
+<tr class='sign-u op-sub 54 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>sub</td>
@@ -27838,7 +27856,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 55 cpu-arm'>
+<tr class='sign-s op-sub 55 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>sub</td>
@@ -27879,7 +27897,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 55 cpu-arm'>
+<tr class='sign-u op-sub 55 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>sub</td>
@@ -27913,7 +27931,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 56 cpu-arm'>
+<tr class='sign-s op-sub 56 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>sub</td>
@@ -27959,7 +27977,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 56 cpu-arm'>
+<tr class='sign-u op-sub 56 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>sub</td>
@@ -27991,7 +28009,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 57 cpu-arm'>
+<tr class='sign-s op-sub 57 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>sub</td>
@@ -28034,7 +28052,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 57 cpu-arm'>
+<tr class='sign-u op-sub 57 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>sub</td>
@@ -28066,7 +28084,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 58 cpu-arm'>
+<tr class='sign-s op-sub 58 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>sub</td>
@@ -28109,7 +28127,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 58 cpu-arm'>
+<tr class='sign-u op-sub 58 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>sub</td>
@@ -28141,7 +28159,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 59 cpu-arm'>
+<tr class='sign-s op-sub 59 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>sub</td>
@@ -28184,7 +28202,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 59 cpu-arm'>
+<tr class='sign-u op-sub 59 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>sub</td>
@@ -28216,7 +28234,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 60 cpu-arm'>
+<tr class='sign-s op-sub 60 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>sub</td>
@@ -28259,7 +28277,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 60 cpu-arm'>
+<tr class='sign-u op-sub 60 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>sub</td>
@@ -28291,7 +28309,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 61 cpu-arm'>
+<tr class='sign-s op-sub 61 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>sub</td>
@@ -28334,7 +28352,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 61 cpu-arm'>
+<tr class='sign-u op-sub 61 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>sub</td>
@@ -28366,7 +28384,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 62 cpu-arm'>
+<tr class='sign-s op-sub 62 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>sub</td>
@@ -28409,7 +28427,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 62 cpu-arm'>
+<tr class='sign-u op-sub 62 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>sub</td>
@@ -28441,7 +28459,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 63 cpu-arm'>
+<tr class='sign-s op-sub 63 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>sub</td>
@@ -28484,7 +28502,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 63 cpu-arm'>
+<tr class='sign-u op-sub 63 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>sub</td>
@@ -28516,7 +28534,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 64 cpu-arm'>
+<tr class='sign-s op-sub 64 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>sub</td>
@@ -28555,7 +28573,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 64 cpu-arm'>
+<tr class='sign-u op-sub 64 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>sub</td>
@@ -28586,7 +28604,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 4 cpu-arm'>
+<tr class='sign-s op-mul 4 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
@@ -28629,7 +28647,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 4 cpu-arm'>
+<tr class='sign-u op-mul 4 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
@@ -28657,7 +28675,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 5 cpu-arm'>
+<tr class='sign-s op-mul 5 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>mul</td>
@@ -28700,7 +28718,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 5 cpu-arm'>
+<tr class='sign-u op-mul 5 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>mul</td>
@@ -28730,7 +28748,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 6 cpu-arm'>
+<tr class='sign-s op-mul 6 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>mul</td>
@@ -28773,7 +28791,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 6 cpu-arm'>
+<tr class='sign-u op-mul 6 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>mul</td>
@@ -28801,7 +28819,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 7 cpu-arm'>
+<tr class='sign-s op-mul 7 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>mul</td>
@@ -28844,7 +28862,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 7 cpu-arm'>
+<tr class='sign-u op-mul 7 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>mul</td>
@@ -28874,7 +28892,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 8 cpu-arm'>
+<tr class='sign-s op-mul 8 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>mul</td>
@@ -28914,7 +28932,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 8 cpu-arm'>
+<tr class='sign-u op-mul 8 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>mul</td>
@@ -28943,7 +28961,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 9 cpu-arm'>
+<tr class='sign-s op-mul 9 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>mul</td>
@@ -28988,7 +29006,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 9 cpu-arm'>
+<tr class='sign-u op-mul 9 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>mul</td>
@@ -29019,7 +29037,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 10 cpu-arm'>
+<tr class='sign-s op-mul 10 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>mul</td>
@@ -29064,7 +29082,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 10 cpu-arm'>
+<tr class='sign-u op-mul 10 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>mul</td>
@@ -29095,7 +29113,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 11 cpu-arm'>
+<tr class='sign-s op-mul 11 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>mul</td>
@@ -29140,7 +29158,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 11 cpu-arm'>
+<tr class='sign-u op-mul 11 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>mul</td>
@@ -29171,7 +29189,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 12 cpu-arm'>
+<tr class='sign-s op-mul 12 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>mul</td>
@@ -29216,7 +29234,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 12 cpu-arm'>
+<tr class='sign-u op-mul 12 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>mul</td>
@@ -29247,7 +29265,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 13 cpu-arm'>
+<tr class='sign-s op-mul 13 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>mul</td>
@@ -29292,7 +29310,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 13 cpu-arm'>
+<tr class='sign-u op-mul 13 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>mul</td>
@@ -29323,7 +29341,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 14 cpu-arm'>
+<tr class='sign-s op-mul 14 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>mul</td>
@@ -29368,7 +29386,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 14 cpu-arm'>
+<tr class='sign-u op-mul 14 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>mul</td>
@@ -29399,7 +29417,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 15 cpu-arm'>
+<tr class='sign-s op-mul 15 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>mul</td>
@@ -29444,7 +29462,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 15 cpu-arm'>
+<tr class='sign-u op-mul 15 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>mul</td>
@@ -29475,7 +29493,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 16 cpu-arm'>
+<tr class='sign-s op-mul 16 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>mul</td>
@@ -29516,7 +29534,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 16 cpu-arm'>
+<tr class='sign-u op-mul 16 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>mul</td>
@@ -29546,7 +29564,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 17 cpu-arm'>
+<tr class='sign-s op-mul 17 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>mul</td>
@@ -29582,7 +29600,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 17 cpu-arm'>
+<tr class='sign-u op-mul 17 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>mul</td>
@@ -29615,7 +29633,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 18 cpu-arm'>
+<tr class='sign-s op-mul 18 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>mul</td>
@@ -29651,7 +29669,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 18 cpu-arm'>
+<tr class='sign-u op-mul 18 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>mul</td>
@@ -29684,7 +29702,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 19 cpu-arm'>
+<tr class='sign-s op-mul 19 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>mul</td>
@@ -29720,7 +29738,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 19 cpu-arm'>
+<tr class='sign-u op-mul 19 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>mul</td>
@@ -29753,7 +29771,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 20 cpu-arm'>
+<tr class='sign-s op-mul 20 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>mul</td>
@@ -29789,7 +29807,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 20 cpu-arm'>
+<tr class='sign-u op-mul 20 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>mul</td>
@@ -29822,7 +29840,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 21 cpu-arm'>
+<tr class='sign-s op-mul 21 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>mul</td>
@@ -29858,7 +29876,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 21 cpu-arm'>
+<tr class='sign-u op-mul 21 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>mul</td>
@@ -29891,7 +29909,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 22 cpu-arm'>
+<tr class='sign-s op-mul 22 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>mul</td>
@@ -29927,7 +29945,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 22 cpu-arm'>
+<tr class='sign-u op-mul 22 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>mul</td>
@@ -29960,7 +29978,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 23 cpu-arm'>
+<tr class='sign-s op-mul 23 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>mul</td>
@@ -29996,7 +30014,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 23 cpu-arm'>
+<tr class='sign-u op-mul 23 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>mul</td>
@@ -30029,7 +30047,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 24 cpu-arm'>
+<tr class='sign-s op-mul 24 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>mul</td>
@@ -30064,7 +30082,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 24 cpu-arm'>
+<tr class='sign-u op-mul 24 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>mul</td>
@@ -30094,7 +30112,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 25 cpu-arm'>
+<tr class='sign-s op-mul 25 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>mul</td>
@@ -30129,7 +30147,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 25 cpu-arm'>
+<tr class='sign-u op-mul 25 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>mul</td>
@@ -30159,7 +30177,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 26 cpu-arm'>
+<tr class='sign-s op-mul 26 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>mul</td>
@@ -30194,7 +30212,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 26 cpu-arm'>
+<tr class='sign-u op-mul 26 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>mul</td>
@@ -30224,7 +30242,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 27 cpu-arm'>
+<tr class='sign-s op-mul 27 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>mul</td>
@@ -30258,7 +30276,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 27 cpu-arm'>
+<tr class='sign-u op-mul 27 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>mul</td>
@@ -30288,7 +30306,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 28 cpu-arm'>
+<tr class='sign-s op-mul 28 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>mul</td>
@@ -30322,7 +30340,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 28 cpu-arm'>
+<tr class='sign-u op-mul 28 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>mul</td>
@@ -30352,7 +30370,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 29 cpu-arm'>
+<tr class='sign-s op-mul 29 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>mul</td>
@@ -30386,7 +30404,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 29 cpu-arm'>
+<tr class='sign-u op-mul 29 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>mul</td>
@@ -30416,7 +30434,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 30 cpu-arm'>
+<tr class='sign-s op-mul 30 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>mul</td>
@@ -30450,7 +30468,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 30 cpu-arm'>
+<tr class='sign-u op-mul 30 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>mul</td>
@@ -30480,7 +30498,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 31 cpu-arm'>
+<tr class='sign-s op-mul 31 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>mul</td>
@@ -30514,7 +30532,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 31 cpu-arm'>
+<tr class='sign-u op-mul 31 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>mul</td>
@@ -30544,7 +30562,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 32 cpu-arm'>
+<tr class='sign-s op-mul 32 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>mul</td>
@@ -30574,7 +30592,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 32 cpu-arm'>
+<tr class='sign-u op-mul 32 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>mul</td>
@@ -30604,7 +30622,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 33 cpu-arm'>
+<tr class='sign-s op-mul 33 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>mul</td>
@@ -30666,7 +30684,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 33 cpu-arm'>
+<tr class='sign-u op-mul 33 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>mul</td>
@@ -30717,7 +30735,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 34 cpu-arm'>
+<tr class='sign-s op-mul 34 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>mul</td>
@@ -30779,7 +30797,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 34 cpu-arm'>
+<tr class='sign-u op-mul 34 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>mul</td>
@@ -30830,7 +30848,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 35 cpu-arm'>
+<tr class='sign-s op-mul 35 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>mul</td>
@@ -30892,7 +30910,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 35 cpu-arm'>
+<tr class='sign-u op-mul 35 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>mul</td>
@@ -30943,7 +30961,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 36 cpu-arm'>
+<tr class='sign-s op-mul 36 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>mul</td>
@@ -31005,7 +31023,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 36 cpu-arm'>
+<tr class='sign-u op-mul 36 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>mul</td>
@@ -31056,7 +31074,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 37 cpu-arm'>
+<tr class='sign-s op-mul 37 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>mul</td>
@@ -31118,7 +31136,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 37 cpu-arm'>
+<tr class='sign-u op-mul 37 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>mul</td>
@@ -31169,7 +31187,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 38 cpu-arm'>
+<tr class='sign-s op-mul 38 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>mul</td>
@@ -31231,7 +31249,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 38 cpu-arm'>
+<tr class='sign-u op-mul 38 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>mul</td>
@@ -31282,7 +31300,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 39 cpu-arm'>
+<tr class='sign-s op-mul 39 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>mul</td>
@@ -31345,7 +31363,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 39 cpu-arm'>
+<tr class='sign-u op-mul 39 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>mul</td>
@@ -31396,7 +31414,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 40 cpu-arm'>
+<tr class='sign-s op-mul 40 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>mul</td>
@@ -31455,7 +31473,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 40 cpu-arm'>
+<tr class='sign-u op-mul 40 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>mul</td>
@@ -31506,7 +31524,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 41 cpu-arm'>
+<tr class='sign-s op-mul 41 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>mul</td>
@@ -31570,7 +31588,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 41 cpu-arm'>
+<tr class='sign-u op-mul 41 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>mul</td>
@@ -31622,7 +31640,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 42 cpu-arm'>
+<tr class='sign-s op-mul 42 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>mul</td>
@@ -31686,7 +31704,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 42 cpu-arm'>
+<tr class='sign-u op-mul 42 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>mul</td>
@@ -31738,7 +31756,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 43 cpu-arm'>
+<tr class='sign-s op-mul 43 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>mul</td>
@@ -31802,7 +31820,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 43 cpu-arm'>
+<tr class='sign-u op-mul 43 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>mul</td>
@@ -31854,7 +31872,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 44 cpu-arm'>
+<tr class='sign-s op-mul 44 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>mul</td>
@@ -31918,7 +31936,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 44 cpu-arm'>
+<tr class='sign-u op-mul 44 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>mul</td>
@@ -31970,7 +31988,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 45 cpu-arm'>
+<tr class='sign-s op-mul 45 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>mul</td>
@@ -32034,7 +32052,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 45 cpu-arm'>
+<tr class='sign-u op-mul 45 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>mul</td>
@@ -32086,7 +32104,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 46 cpu-arm'>
+<tr class='sign-s op-mul 46 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>mul</td>
@@ -32150,7 +32168,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 46 cpu-arm'>
+<tr class='sign-u op-mul 46 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>mul</td>
@@ -32202,7 +32220,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 47 cpu-arm'>
+<tr class='sign-s op-mul 47 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>mul</td>
@@ -32267,7 +32285,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 47 cpu-arm'>
+<tr class='sign-u op-mul 47 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>mul</td>
@@ -32319,7 +32337,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 48 cpu-arm'>
+<tr class='sign-s op-mul 48 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>mul</td>
@@ -32382,7 +32400,7 @@ LBB0_1:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 48 cpu-arm'>
+<tr class='sign-u op-mul 48 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>mul</td>
@@ -32434,7 +32452,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 49 cpu-arm'>
+<tr class='sign-s op-mul 49 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>mul</td>
@@ -32498,7 +32516,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 49 cpu-arm'>
+<tr class='sign-u op-mul 49 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>mul</td>
@@ -32550,7 +32568,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 50 cpu-arm'>
+<tr class='sign-s op-mul 50 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>mul</td>
@@ -32614,7 +32632,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 50 cpu-arm'>
+<tr class='sign-u op-mul 50 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>mul</td>
@@ -32666,7 +32684,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 51 cpu-arm'>
+<tr class='sign-s op-mul 51 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>mul</td>
@@ -32730,7 +32748,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 51 cpu-arm'>
+<tr class='sign-u op-mul 51 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>mul</td>
@@ -32782,7 +32800,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 52 cpu-arm'>
+<tr class='sign-s op-mul 52 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>mul</td>
@@ -32846,7 +32864,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 52 cpu-arm'>
+<tr class='sign-u op-mul 52 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>mul</td>
@@ -32898,7 +32916,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 53 cpu-arm'>
+<tr class='sign-s op-mul 53 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>mul</td>
@@ -32962,7 +32980,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 53 cpu-arm'>
+<tr class='sign-u op-mul 53 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>mul</td>
@@ -33014,7 +33032,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 54 cpu-arm'>
+<tr class='sign-s op-mul 54 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>mul</td>
@@ -33078,7 +33096,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 54 cpu-arm'>
+<tr class='sign-u op-mul 54 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>mul</td>
@@ -33130,7 +33148,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 55 cpu-arm'>
+<tr class='sign-s op-mul 55 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>mul</td>
@@ -33195,7 +33213,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 55 cpu-arm'>
+<tr class='sign-u op-mul 55 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>mul</td>
@@ -33247,7 +33265,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 56 cpu-arm'>
+<tr class='sign-s op-mul 56 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>mul</td>
@@ -33308,7 +33326,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 56 cpu-arm'>
+<tr class='sign-u op-mul 56 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>mul</td>
@@ -33359,7 +33377,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 57 cpu-arm'>
+<tr class='sign-s op-mul 57 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>mul</td>
@@ -33420,7 +33438,7 @@ LBB0_3:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 57 cpu-arm'>
+<tr class='sign-u op-mul 57 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>mul</td>
@@ -33471,7 +33489,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 58 cpu-arm'>
+<tr class='sign-s op-mul 58 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>mul</td>
@@ -33532,7 +33550,7 @@ LBB0_3:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 58 cpu-arm'>
+<tr class='sign-u op-mul 58 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>mul</td>
@@ -33583,7 +33601,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 59 cpu-arm'>
+<tr class='sign-s op-mul 59 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>mul</td>
@@ -33644,7 +33662,7 @@ LBB0_3:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 59 cpu-arm'>
+<tr class='sign-u op-mul 59 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>mul</td>
@@ -33695,7 +33713,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 60 cpu-arm'>
+<tr class='sign-s op-mul 60 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>mul</td>
@@ -33756,7 +33774,7 @@ LBB0_3:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 60 cpu-arm'>
+<tr class='sign-u op-mul 60 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>mul</td>
@@ -33807,7 +33825,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 61 cpu-arm'>
+<tr class='sign-s op-mul 61 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>mul</td>
@@ -33868,7 +33886,7 @@ LBB0_3:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 61 cpu-arm'>
+<tr class='sign-u op-mul 61 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>mul</td>
@@ -33919,7 +33937,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 62 cpu-arm'>
+<tr class='sign-s op-mul 62 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>mul</td>
@@ -33980,7 +33998,7 @@ LBB0_3:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 62 cpu-arm'>
+<tr class='sign-u op-mul 62 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>mul</td>
@@ -34031,7 +34049,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 63 cpu-arm'>
+<tr class='sign-s op-mul 63 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>mul</td>
@@ -34093,7 +34111,7 @@ LBB0_2:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 63 cpu-arm'>
+<tr class='sign-u op-mul 63 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>mul</td>
@@ -34144,7 +34162,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 64 cpu-arm'>
+<tr class='sign-s op-mul 64 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>mul</td>
@@ -34193,7 +34211,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 64 cpu-arm'>
+<tr class='sign-u op-mul 64 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>mul</td>
@@ -34238,7 +34256,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 4 cpu-arm'>
+<tr class='sign-s op-div 4 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
@@ -34273,7 +34291,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 4 cpu-arm'>
+<tr class='sign-u op-div 4 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
@@ -34301,7 +34319,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 5 cpu-arm'>
+<tr class='sign-s op-div 5 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>div</td>
@@ -34336,7 +34354,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 5 cpu-arm'>
+<tr class='sign-u op-div 5 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>div</td>
@@ -34364,7 +34382,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 6 cpu-arm'>
+<tr class='sign-s op-div 6 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>div</td>
@@ -34399,7 +34417,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 6 cpu-arm'>
+<tr class='sign-u op-div 6 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>div</td>
@@ -34427,7 +34445,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 7 cpu-arm'>
+<tr class='sign-s op-div 7 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>div</td>
@@ -34462,7 +34480,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 7 cpu-arm'>
+<tr class='sign-u op-div 7 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>div</td>
@@ -34490,7 +34508,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 8 cpu-arm'>
+<tr class='sign-s op-div 8 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>div</td>
@@ -34525,7 +34543,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 8 cpu-arm'>
+<tr class='sign-u op-div 8 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>div</td>
@@ -34553,7 +34571,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 9 cpu-arm'>
+<tr class='sign-s op-div 9 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>div</td>
@@ -34590,7 +34608,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 9 cpu-arm'>
+<tr class='sign-u op-div 9 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>div</td>
@@ -34618,7 +34636,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 10 cpu-arm'>
+<tr class='sign-s op-div 10 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>div</td>
@@ -34655,7 +34673,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 10 cpu-arm'>
+<tr class='sign-u op-div 10 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>div</td>
@@ -34683,7 +34701,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 11 cpu-arm'>
+<tr class='sign-s op-div 11 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>div</td>
@@ -34720,7 +34738,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 11 cpu-arm'>
+<tr class='sign-u op-div 11 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>div</td>
@@ -34748,7 +34766,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 12 cpu-arm'>
+<tr class='sign-s op-div 12 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>div</td>
@@ -34785,7 +34803,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 12 cpu-arm'>
+<tr class='sign-u op-div 12 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>div</td>
@@ -34813,7 +34831,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 13 cpu-arm'>
+<tr class='sign-s op-div 13 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>div</td>
@@ -34850,7 +34868,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 13 cpu-arm'>
+<tr class='sign-u op-div 13 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>div</td>
@@ -34878,7 +34896,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 14 cpu-arm'>
+<tr class='sign-s op-div 14 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>div</td>
@@ -34915,7 +34933,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 14 cpu-arm'>
+<tr class='sign-u op-div 14 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>div</td>
@@ -34943,7 +34961,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 15 cpu-arm'>
+<tr class='sign-s op-div 15 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>div</td>
@@ -34980,7 +34998,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 15 cpu-arm'>
+<tr class='sign-u op-div 15 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>div</td>
@@ -35008,7 +35026,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 16 cpu-arm'>
+<tr class='sign-s op-div 16 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>div</td>
@@ -35045,7 +35063,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 16 cpu-arm'>
+<tr class='sign-u op-div 16 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>div</td>
@@ -35073,7 +35091,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 17 cpu-arm'>
+<tr class='sign-s op-div 17 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>div</td>
@@ -35104,7 +35122,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 17 cpu-arm'>
+<tr class='sign-u op-div 17 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>div</td>
@@ -35128,7 +35146,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 18 cpu-arm'>
+<tr class='sign-s op-div 18 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>div</td>
@@ -35159,7 +35177,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 18 cpu-arm'>
+<tr class='sign-u op-div 18 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>div</td>
@@ -35183,7 +35201,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 19 cpu-arm'>
+<tr class='sign-s op-div 19 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>div</td>
@@ -35214,7 +35232,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 19 cpu-arm'>
+<tr class='sign-u op-div 19 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>div</td>
@@ -35238,7 +35256,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 20 cpu-arm'>
+<tr class='sign-s op-div 20 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>div</td>
@@ -35269,7 +35287,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 20 cpu-arm'>
+<tr class='sign-u op-div 20 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>div</td>
@@ -35293,7 +35311,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 21 cpu-arm'>
+<tr class='sign-s op-div 21 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>div</td>
@@ -35324,7 +35342,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 21 cpu-arm'>
+<tr class='sign-u op-div 21 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>div</td>
@@ -35348,7 +35366,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 22 cpu-arm'>
+<tr class='sign-s op-div 22 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>div</td>
@@ -35379,7 +35397,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 22 cpu-arm'>
+<tr class='sign-u op-div 22 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>div</td>
@@ -35403,7 +35421,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 23 cpu-arm'>
+<tr class='sign-s op-div 23 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>div</td>
@@ -35434,7 +35452,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 23 cpu-arm'>
+<tr class='sign-u op-div 23 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>div</td>
@@ -35458,7 +35476,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 24 cpu-arm'>
+<tr class='sign-s op-div 24 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>div</td>
@@ -35488,7 +35506,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 24 cpu-arm'>
+<tr class='sign-u op-div 24 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>div</td>
@@ -35512,7 +35530,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 25 cpu-arm'>
+<tr class='sign-s op-div 25 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>div</td>
@@ -35542,7 +35560,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 25 cpu-arm'>
+<tr class='sign-u op-div 25 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>div</td>
@@ -35566,7 +35584,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 26 cpu-arm'>
+<tr class='sign-s op-div 26 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>div</td>
@@ -35596,7 +35614,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 26 cpu-arm'>
+<tr class='sign-u op-div 26 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>div</td>
@@ -35620,7 +35638,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 27 cpu-arm'>
+<tr class='sign-s op-div 27 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>div</td>
@@ -35650,7 +35668,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 27 cpu-arm'>
+<tr class='sign-u op-div 27 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>div</td>
@@ -35674,7 +35692,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 28 cpu-arm'>
+<tr class='sign-s op-div 28 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>div</td>
@@ -35704,7 +35722,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 28 cpu-arm'>
+<tr class='sign-u op-div 28 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>div</td>
@@ -35728,7 +35746,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 29 cpu-arm'>
+<tr class='sign-s op-div 29 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>div</td>
@@ -35758,7 +35776,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 29 cpu-arm'>
+<tr class='sign-u op-div 29 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>div</td>
@@ -35782,7 +35800,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 30 cpu-arm'>
+<tr class='sign-s op-div 30 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>div</td>
@@ -35812,7 +35830,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 30 cpu-arm'>
+<tr class='sign-u op-div 30 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>div</td>
@@ -35836,7 +35854,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 31 cpu-arm'>
+<tr class='sign-s op-div 31 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>div</td>
@@ -35866,7 +35884,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 31 cpu-arm'>
+<tr class='sign-u op-div 31 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>div</td>
@@ -35890,7 +35908,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 32 cpu-arm'>
+<tr class='sign-s op-div 32 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>div</td>
@@ -35918,7 +35936,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 32 cpu-arm'>
+<tr class='sign-u op-div 32 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>div</td>
@@ -35942,7 +35960,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 33 cpu-arm'>
+<tr class='sign-s op-div 33 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>div</td>
@@ -35982,7 +36000,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 33 cpu-arm'>
+<tr class='sign-u op-div 33 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>div</td>
@@ -36010,7 +36028,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 34 cpu-arm'>
+<tr class='sign-s op-div 34 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>div</td>
@@ -36050,7 +36068,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 34 cpu-arm'>
+<tr class='sign-u op-div 34 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>div</td>
@@ -36078,7 +36096,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 35 cpu-arm'>
+<tr class='sign-s op-div 35 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>div</td>
@@ -36118,7 +36136,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 35 cpu-arm'>
+<tr class='sign-u op-div 35 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>div</td>
@@ -36146,7 +36164,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 36 cpu-arm'>
+<tr class='sign-s op-div 36 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>div</td>
@@ -36186,7 +36204,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 36 cpu-arm'>
+<tr class='sign-u op-div 36 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>div</td>
@@ -36214,7 +36232,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 37 cpu-arm'>
+<tr class='sign-s op-div 37 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>div</td>
@@ -36254,7 +36272,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 37 cpu-arm'>
+<tr class='sign-u op-div 37 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>div</td>
@@ -36282,7 +36300,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 38 cpu-arm'>
+<tr class='sign-s op-div 38 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>div</td>
@@ -36322,7 +36340,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 38 cpu-arm'>
+<tr class='sign-u op-div 38 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>div</td>
@@ -36350,7 +36368,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 39 cpu-arm'>
+<tr class='sign-s op-div 39 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>div</td>
@@ -36390,7 +36408,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 39 cpu-arm'>
+<tr class='sign-u op-div 39 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>div</td>
@@ -36418,7 +36436,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 40 cpu-arm'>
+<tr class='sign-s op-div 40 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>div</td>
@@ -36458,7 +36476,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 40 cpu-arm'>
+<tr class='sign-u op-div 40 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>div</td>
@@ -36486,7 +36504,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 41 cpu-arm'>
+<tr class='sign-s op-div 41 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>div</td>
@@ -36528,7 +36546,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 41 cpu-arm'>
+<tr class='sign-u op-div 41 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>div</td>
@@ -36556,7 +36574,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 42 cpu-arm'>
+<tr class='sign-s op-div 42 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>div</td>
@@ -36598,7 +36616,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 42 cpu-arm'>
+<tr class='sign-u op-div 42 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>div</td>
@@ -36626,7 +36644,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 43 cpu-arm'>
+<tr class='sign-s op-div 43 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>div</td>
@@ -36668,7 +36686,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 43 cpu-arm'>
+<tr class='sign-u op-div 43 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>div</td>
@@ -36696,7 +36714,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 44 cpu-arm'>
+<tr class='sign-s op-div 44 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>div</td>
@@ -36738,7 +36756,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 44 cpu-arm'>
+<tr class='sign-u op-div 44 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>div</td>
@@ -36766,7 +36784,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 45 cpu-arm'>
+<tr class='sign-s op-div 45 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>div</td>
@@ -36808,7 +36826,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 45 cpu-arm'>
+<tr class='sign-u op-div 45 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>div</td>
@@ -36836,7 +36854,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 46 cpu-arm'>
+<tr class='sign-s op-div 46 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>div</td>
@@ -36878,7 +36896,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 46 cpu-arm'>
+<tr class='sign-u op-div 46 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>div</td>
@@ -36906,7 +36924,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 47 cpu-arm'>
+<tr class='sign-s op-div 47 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>div</td>
@@ -36948,7 +36966,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 47 cpu-arm'>
+<tr class='sign-u op-div 47 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>div</td>
@@ -36976,7 +36994,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 48 cpu-arm'>
+<tr class='sign-s op-div 48 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>div</td>
@@ -37018,7 +37036,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 48 cpu-arm'>
+<tr class='sign-u op-div 48 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>div</td>
@@ -37046,7 +37064,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 49 cpu-arm'>
+<tr class='sign-s op-div 49 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>div</td>
@@ -37088,7 +37106,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 49 cpu-arm'>
+<tr class='sign-u op-div 49 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>div</td>
@@ -37116,7 +37134,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 50 cpu-arm'>
+<tr class='sign-s op-div 50 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>div</td>
@@ -37158,7 +37176,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 50 cpu-arm'>
+<tr class='sign-u op-div 50 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>div</td>
@@ -37186,7 +37204,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 51 cpu-arm'>
+<tr class='sign-s op-div 51 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>div</td>
@@ -37228,7 +37246,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 51 cpu-arm'>
+<tr class='sign-u op-div 51 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>div</td>
@@ -37256,7 +37274,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 52 cpu-arm'>
+<tr class='sign-s op-div 52 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>div</td>
@@ -37298,7 +37316,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 52 cpu-arm'>
+<tr class='sign-u op-div 52 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>div</td>
@@ -37326,7 +37344,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 53 cpu-arm'>
+<tr class='sign-s op-div 53 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>div</td>
@@ -37368,7 +37386,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 53 cpu-arm'>
+<tr class='sign-u op-div 53 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>div</td>
@@ -37396,7 +37414,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 54 cpu-arm'>
+<tr class='sign-s op-div 54 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>div</td>
@@ -37438,7 +37456,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 54 cpu-arm'>
+<tr class='sign-u op-div 54 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>div</td>
@@ -37466,7 +37484,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 55 cpu-arm'>
+<tr class='sign-s op-div 55 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>div</td>
@@ -37508,7 +37526,7 @@ LCPI0_0:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 55 cpu-arm'>
+<tr class='sign-u op-div 55 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>div</td>
@@ -37536,7 +37554,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 56 cpu-arm'>
+<tr class='sign-s op-div 56 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>div</td>
@@ -37576,7 +37594,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 56 cpu-arm'>
+<tr class='sign-u op-div 56 cpu-arm  bits-x4 bits-x8'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>div</td>
@@ -37604,7 +37622,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 57 cpu-arm'>
+<tr class='sign-s op-div 57 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>div</td>
@@ -37644,7 +37662,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 57 cpu-arm'>
+<tr class='sign-u op-div 57 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>div</td>
@@ -37672,7 +37690,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 58 cpu-arm'>
+<tr class='sign-s op-div 58 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>div</td>
@@ -37712,7 +37730,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 58 cpu-arm'>
+<tr class='sign-u op-div 58 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>div</td>
@@ -37740,7 +37758,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 59 cpu-arm'>
+<tr class='sign-s op-div 59 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>div</td>
@@ -37780,7 +37798,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 59 cpu-arm'>
+<tr class='sign-u op-div 59 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>div</td>
@@ -37808,7 +37826,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 60 cpu-arm'>
+<tr class='sign-s op-div 60 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>div</td>
@@ -37848,7 +37866,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 60 cpu-arm'>
+<tr class='sign-u op-div 60 cpu-arm  bits-x4'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>div</td>
@@ -37876,7 +37894,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 61 cpu-arm'>
+<tr class='sign-s op-div 61 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>div</td>
@@ -37916,7 +37934,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 61 cpu-arm'>
+<tr class='sign-u op-div 61 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>div</td>
@@ -37944,7 +37962,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 62 cpu-arm'>
+<tr class='sign-s op-div 62 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>div</td>
@@ -37984,7 +38002,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 62 cpu-arm'>
+<tr class='sign-u op-div 62 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>div</td>
@@ -38012,7 +38030,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 63 cpu-arm'>
+<tr class='sign-s op-div 63 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>div</td>
@@ -38052,7 +38070,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 63 cpu-arm'>
+<tr class='sign-u op-div 63 cpu-arm '>
 <td class='column-target'>arm</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>div</td>
@@ -38080,7 +38098,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 64 cpu-arm'>
+<tr class='sign-s op-div 64 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>div</td>
@@ -38119,7 +38137,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 64 cpu-arm'>
+<tr class='sign-u op-div 64 cpu-arm  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>div</td>
@@ -38147,7 +38165,7 @@ _f:
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 4 cpu-arm64'>
+<tr class='sign-s op-add 4 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
@@ -38182,7 +38200,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 4 cpu-arm64'>
+<tr class='sign-u op-add 4 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>add</td>
@@ -38213,7 +38231,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 5 cpu-arm64'>
+<tr class='sign-s op-add 5 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>add</td>
@@ -38248,7 +38266,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 5 cpu-arm64'>
+<tr class='sign-u op-add 5 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>add</td>
@@ -38279,7 +38297,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 6 cpu-arm64'>
+<tr class='sign-s op-add 6 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>add</td>
@@ -38314,7 +38332,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 6 cpu-arm64'>
+<tr class='sign-u op-add 6 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>add</td>
@@ -38345,7 +38363,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 7 cpu-arm64'>
+<tr class='sign-s op-add 7 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>add</td>
@@ -38380,7 +38398,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 7 cpu-arm64'>
+<tr class='sign-u op-add 7 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>add</td>
@@ -38412,7 +38430,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 8 cpu-arm64'>
+<tr class='sign-s op-add 8 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>add</td>
@@ -38446,7 +38464,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 8 cpu-arm64'>
+<tr class='sign-u op-add 8 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>add</td>
@@ -38474,7 +38492,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 9 cpu-arm64'>
+<tr class='sign-s op-add 9 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>add</td>
@@ -38510,7 +38528,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 9 cpu-arm64'>
+<tr class='sign-u op-add 9 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>add</td>
@@ -38541,7 +38559,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 10 cpu-arm64'>
+<tr class='sign-s op-add 10 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>add</td>
@@ -38577,7 +38595,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 10 cpu-arm64'>
+<tr class='sign-u op-add 10 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>add</td>
@@ -38608,7 +38626,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 11 cpu-arm64'>
+<tr class='sign-s op-add 11 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>add</td>
@@ -38644,7 +38662,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 11 cpu-arm64'>
+<tr class='sign-u op-add 11 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>add</td>
@@ -38675,7 +38693,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 12 cpu-arm64'>
+<tr class='sign-s op-add 12 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>add</td>
@@ -38711,7 +38729,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 12 cpu-arm64'>
+<tr class='sign-u op-add 12 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>add</td>
@@ -38742,7 +38760,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 13 cpu-arm64'>
+<tr class='sign-s op-add 13 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>add</td>
@@ -38778,7 +38796,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 13 cpu-arm64'>
+<tr class='sign-u op-add 13 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>add</td>
@@ -38810,7 +38828,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 14 cpu-arm64'>
+<tr class='sign-s op-add 14 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>add</td>
@@ -38846,7 +38864,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 14 cpu-arm64'>
+<tr class='sign-u op-add 14 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>add</td>
@@ -38878,7 +38896,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 15 cpu-arm64'>
+<tr class='sign-s op-add 15 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>add</td>
@@ -38914,7 +38932,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 15 cpu-arm64'>
+<tr class='sign-u op-add 15 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>add</td>
@@ -38946,7 +38964,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 16 cpu-arm64'>
+<tr class='sign-s op-add 16 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>add</td>
@@ -38981,7 +38999,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 16 cpu-arm64'>
+<tr class='sign-u op-add 16 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>add</td>
@@ -39009,7 +39027,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 17 cpu-arm64'>
+<tr class='sign-s op-add 17 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>add</td>
@@ -39045,7 +39063,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 17 cpu-arm64'>
+<tr class='sign-u op-add 17 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>add</td>
@@ -39079,7 +39097,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 18 cpu-arm64'>
+<tr class='sign-s op-add 18 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>add</td>
@@ -39115,7 +39133,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 18 cpu-arm64'>
+<tr class='sign-u op-add 18 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>add</td>
@@ -39149,7 +39167,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 19 cpu-arm64'>
+<tr class='sign-s op-add 19 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>add</td>
@@ -39185,7 +39203,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 19 cpu-arm64'>
+<tr class='sign-u op-add 19 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>add</td>
@@ -39219,7 +39237,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 20 cpu-arm64'>
+<tr class='sign-s op-add 20 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>add</td>
@@ -39255,7 +39273,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 20 cpu-arm64'>
+<tr class='sign-u op-add 20 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>add</td>
@@ -39289,7 +39307,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 21 cpu-arm64'>
+<tr class='sign-s op-add 21 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>add</td>
@@ -39325,7 +39343,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 21 cpu-arm64'>
+<tr class='sign-u op-add 21 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>add</td>
@@ -39359,7 +39377,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 22 cpu-arm64'>
+<tr class='sign-s op-add 22 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>add</td>
@@ -39395,7 +39413,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 22 cpu-arm64'>
+<tr class='sign-u op-add 22 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>add</td>
@@ -39429,7 +39447,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 23 cpu-arm64'>
+<tr class='sign-s op-add 23 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>add</td>
@@ -39465,7 +39483,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 23 cpu-arm64'>
+<tr class='sign-u op-add 23 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>add</td>
@@ -39499,7 +39517,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 24 cpu-arm64'>
+<tr class='sign-s op-add 24 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>add</td>
@@ -39535,7 +39553,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 24 cpu-arm64'>
+<tr class='sign-u op-add 24 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>add</td>
@@ -39569,7 +39587,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 25 cpu-arm64'>
+<tr class='sign-s op-add 25 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>add</td>
@@ -39605,7 +39623,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 25 cpu-arm64'>
+<tr class='sign-u op-add 25 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>add</td>
@@ -39639,7 +39657,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 26 cpu-arm64'>
+<tr class='sign-s op-add 26 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>add</td>
@@ -39675,7 +39693,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 26 cpu-arm64'>
+<tr class='sign-u op-add 26 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>add</td>
@@ -39709,7 +39727,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 27 cpu-arm64'>
+<tr class='sign-s op-add 27 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>add</td>
@@ -39745,7 +39763,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 27 cpu-arm64'>
+<tr class='sign-u op-add 27 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>add</td>
@@ -39779,7 +39797,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 28 cpu-arm64'>
+<tr class='sign-s op-add 28 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>add</td>
@@ -39815,7 +39833,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 28 cpu-arm64'>
+<tr class='sign-u op-add 28 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>add</td>
@@ -39849,7 +39867,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 29 cpu-arm64'>
+<tr class='sign-s op-add 29 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>add</td>
@@ -39885,7 +39903,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 29 cpu-arm64'>
+<tr class='sign-u op-add 29 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>add</td>
@@ -39919,7 +39937,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 30 cpu-arm64'>
+<tr class='sign-s op-add 30 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>add</td>
@@ -39955,7 +39973,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 30 cpu-arm64'>
+<tr class='sign-u op-add 30 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>add</td>
@@ -39989,7 +40007,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 31 cpu-arm64'>
+<tr class='sign-s op-add 31 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>add</td>
@@ -40025,7 +40043,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 31 cpu-arm64'>
+<tr class='sign-u op-add 31 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>add</td>
@@ -40055,7 +40073,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 32 cpu-arm64'>
+<tr class='sign-s op-add 32 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>add</td>
@@ -40087,7 +40105,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 32 cpu-arm64'>
+<tr class='sign-u op-add 32 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>add</td>
@@ -40113,7 +40131,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 33 cpu-arm64'>
+<tr class='sign-s op-add 33 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>add</td>
@@ -40149,7 +40167,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 33 cpu-arm64'>
+<tr class='sign-u op-add 33 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>add</td>
@@ -40183,7 +40201,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 34 cpu-arm64'>
+<tr class='sign-s op-add 34 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>add</td>
@@ -40219,7 +40237,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 34 cpu-arm64'>
+<tr class='sign-u op-add 34 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>add</td>
@@ -40253,7 +40271,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 35 cpu-arm64'>
+<tr class='sign-s op-add 35 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>add</td>
@@ -40289,7 +40307,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 35 cpu-arm64'>
+<tr class='sign-u op-add 35 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>add</td>
@@ -40323,7 +40341,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 36 cpu-arm64'>
+<tr class='sign-s op-add 36 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>add</td>
@@ -40359,7 +40377,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 36 cpu-arm64'>
+<tr class='sign-u op-add 36 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>add</td>
@@ -40393,7 +40411,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 37 cpu-arm64'>
+<tr class='sign-s op-add 37 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>add</td>
@@ -40429,7 +40447,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 37 cpu-arm64'>
+<tr class='sign-u op-add 37 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>add</td>
@@ -40463,7 +40481,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 38 cpu-arm64'>
+<tr class='sign-s op-add 38 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>add</td>
@@ -40499,7 +40517,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 38 cpu-arm64'>
+<tr class='sign-u op-add 38 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>add</td>
@@ -40533,7 +40551,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 39 cpu-arm64'>
+<tr class='sign-s op-add 39 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>add</td>
@@ -40569,7 +40587,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 39 cpu-arm64'>
+<tr class='sign-u op-add 39 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>add</td>
@@ -40603,7 +40621,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 40 cpu-arm64'>
+<tr class='sign-s op-add 40 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>add</td>
@@ -40639,7 +40657,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 40 cpu-arm64'>
+<tr class='sign-u op-add 40 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>add</td>
@@ -40673,7 +40691,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 41 cpu-arm64'>
+<tr class='sign-s op-add 41 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>add</td>
@@ -40709,7 +40727,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 41 cpu-arm64'>
+<tr class='sign-u op-add 41 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>add</td>
@@ -40743,7 +40761,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 42 cpu-arm64'>
+<tr class='sign-s op-add 42 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>add</td>
@@ -40779,7 +40797,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 42 cpu-arm64'>
+<tr class='sign-u op-add 42 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>add</td>
@@ -40813,7 +40831,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 43 cpu-arm64'>
+<tr class='sign-s op-add 43 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>add</td>
@@ -40849,7 +40867,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 43 cpu-arm64'>
+<tr class='sign-u op-add 43 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>add</td>
@@ -40883,7 +40901,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 44 cpu-arm64'>
+<tr class='sign-s op-add 44 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>add</td>
@@ -40919,7 +40937,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 44 cpu-arm64'>
+<tr class='sign-u op-add 44 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>add</td>
@@ -40953,7 +40971,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 45 cpu-arm64'>
+<tr class='sign-s op-add 45 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>add</td>
@@ -40989,7 +41007,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 45 cpu-arm64'>
+<tr class='sign-u op-add 45 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>add</td>
@@ -41023,7 +41041,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 46 cpu-arm64'>
+<tr class='sign-s op-add 46 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>add</td>
@@ -41059,7 +41077,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 46 cpu-arm64'>
+<tr class='sign-u op-add 46 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>add</td>
@@ -41093,7 +41111,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 47 cpu-arm64'>
+<tr class='sign-s op-add 47 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>add</td>
@@ -41129,7 +41147,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 47 cpu-arm64'>
+<tr class='sign-u op-add 47 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>add</td>
@@ -41163,7 +41181,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 48 cpu-arm64'>
+<tr class='sign-s op-add 48 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>add</td>
@@ -41199,7 +41217,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 48 cpu-arm64'>
+<tr class='sign-u op-add 48 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>add</td>
@@ -41233,7 +41251,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 49 cpu-arm64'>
+<tr class='sign-s op-add 49 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>add</td>
@@ -41269,7 +41287,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 49 cpu-arm64'>
+<tr class='sign-u op-add 49 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>add</td>
@@ -41303,7 +41321,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 50 cpu-arm64'>
+<tr class='sign-s op-add 50 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>add</td>
@@ -41339,7 +41357,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 50 cpu-arm64'>
+<tr class='sign-u op-add 50 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>add</td>
@@ -41373,7 +41391,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 51 cpu-arm64'>
+<tr class='sign-s op-add 51 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>add</td>
@@ -41409,7 +41427,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 51 cpu-arm64'>
+<tr class='sign-u op-add 51 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>add</td>
@@ -41443,7 +41461,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 52 cpu-arm64'>
+<tr class='sign-s op-add 52 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>add</td>
@@ -41479,7 +41497,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 52 cpu-arm64'>
+<tr class='sign-u op-add 52 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>add</td>
@@ -41513,7 +41531,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 53 cpu-arm64'>
+<tr class='sign-s op-add 53 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>add</td>
@@ -41549,7 +41567,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 53 cpu-arm64'>
+<tr class='sign-u op-add 53 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>add</td>
@@ -41583,7 +41601,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 54 cpu-arm64'>
+<tr class='sign-s op-add 54 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>add</td>
@@ -41619,7 +41637,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 54 cpu-arm64'>
+<tr class='sign-u op-add 54 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>add</td>
@@ -41653,7 +41671,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 55 cpu-arm64'>
+<tr class='sign-s op-add 55 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>add</td>
@@ -41689,7 +41707,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 55 cpu-arm64'>
+<tr class='sign-u op-add 55 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>add</td>
@@ -41723,7 +41741,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 56 cpu-arm64'>
+<tr class='sign-s op-add 56 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>add</td>
@@ -41759,7 +41777,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 56 cpu-arm64'>
+<tr class='sign-u op-add 56 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>add</td>
@@ -41793,7 +41811,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 57 cpu-arm64'>
+<tr class='sign-s op-add 57 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>add</td>
@@ -41829,7 +41847,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 57 cpu-arm64'>
+<tr class='sign-u op-add 57 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>add</td>
@@ -41863,7 +41881,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 58 cpu-arm64'>
+<tr class='sign-s op-add 58 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>add</td>
@@ -41899,7 +41917,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 58 cpu-arm64'>
+<tr class='sign-u op-add 58 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>add</td>
@@ -41933,7 +41951,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 59 cpu-arm64'>
+<tr class='sign-s op-add 59 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>add</td>
@@ -41969,7 +41987,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 59 cpu-arm64'>
+<tr class='sign-u op-add 59 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>add</td>
@@ -42003,7 +42021,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 60 cpu-arm64'>
+<tr class='sign-s op-add 60 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>add</td>
@@ -42039,7 +42057,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 60 cpu-arm64'>
+<tr class='sign-u op-add 60 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>add</td>
@@ -42073,7 +42091,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 61 cpu-arm64'>
+<tr class='sign-s op-add 61 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>add</td>
@@ -42109,7 +42127,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 61 cpu-arm64'>
+<tr class='sign-u op-add 61 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>add</td>
@@ -42143,7 +42161,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 62 cpu-arm64'>
+<tr class='sign-s op-add 62 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>add</td>
@@ -42179,7 +42197,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 62 cpu-arm64'>
+<tr class='sign-u op-add 62 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>add</td>
@@ -42213,7 +42231,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 63 cpu-arm64'>
+<tr class='sign-s op-add 63 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>add</td>
@@ -42249,7 +42267,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 63 cpu-arm64'>
+<tr class='sign-u op-add 63 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>add</td>
@@ -42279,7 +42297,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-add 64 cpu-arm64'>
+<tr class='sign-s op-add 64 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>add</td>
@@ -42311,7 +42329,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-add 64 cpu-arm64'>
+<tr class='sign-u op-add 64 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>add</td>
@@ -42337,7 +42355,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 4 cpu-arm64'>
+<tr class='sign-s op-sub 4 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
@@ -42370,7 +42388,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 4 cpu-arm64'>
+<tr class='sign-u op-sub 4 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>sub</td>
@@ -42397,7 +42415,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 5 cpu-arm64'>
+<tr class='sign-s op-sub 5 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>sub</td>
@@ -42430,7 +42448,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 5 cpu-arm64'>
+<tr class='sign-u op-sub 5 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>sub</td>
@@ -42457,7 +42475,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 6 cpu-arm64'>
+<tr class='sign-s op-sub 6 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>sub</td>
@@ -42490,7 +42508,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 6 cpu-arm64'>
+<tr class='sign-u op-sub 6 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>sub</td>
@@ -42517,7 +42535,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 7 cpu-arm64'>
+<tr class='sign-s op-sub 7 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>sub</td>
@@ -42550,7 +42568,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 7 cpu-arm64'>
+<tr class='sign-u op-sub 7 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>sub</td>
@@ -42577,7 +42595,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 8 cpu-arm64'>
+<tr class='sign-s op-sub 8 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>sub</td>
@@ -42611,7 +42629,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 8 cpu-arm64'>
+<tr class='sign-u op-sub 8 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>sub</td>
@@ -42637,7 +42655,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 9 cpu-arm64'>
+<tr class='sign-s op-sub 9 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>sub</td>
@@ -42670,7 +42688,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 9 cpu-arm64'>
+<tr class='sign-u op-sub 9 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>sub</td>
@@ -42697,7 +42715,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 10 cpu-arm64'>
+<tr class='sign-s op-sub 10 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>sub</td>
@@ -42730,7 +42748,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 10 cpu-arm64'>
+<tr class='sign-u op-sub 10 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>sub</td>
@@ -42757,7 +42775,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 11 cpu-arm64'>
+<tr class='sign-s op-sub 11 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>sub</td>
@@ -42790,7 +42808,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 11 cpu-arm64'>
+<tr class='sign-u op-sub 11 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>sub</td>
@@ -42817,7 +42835,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 12 cpu-arm64'>
+<tr class='sign-s op-sub 12 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>sub</td>
@@ -42850,7 +42868,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 12 cpu-arm64'>
+<tr class='sign-u op-sub 12 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>sub</td>
@@ -42877,7 +42895,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 13 cpu-arm64'>
+<tr class='sign-s op-sub 13 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>sub</td>
@@ -42910,7 +42928,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 13 cpu-arm64'>
+<tr class='sign-u op-sub 13 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>sub</td>
@@ -42937,7 +42955,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 14 cpu-arm64'>
+<tr class='sign-s op-sub 14 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>sub</td>
@@ -42971,7 +42989,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 14 cpu-arm64'>
+<tr class='sign-u op-sub 14 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>sub</td>
@@ -42998,7 +43016,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 15 cpu-arm64'>
+<tr class='sign-s op-sub 15 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>sub</td>
@@ -43032,7 +43050,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 15 cpu-arm64'>
+<tr class='sign-u op-sub 15 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>sub</td>
@@ -43059,7 +43077,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 16 cpu-arm64'>
+<tr class='sign-s op-sub 16 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>sub</td>
@@ -43094,7 +43112,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 16 cpu-arm64'>
+<tr class='sign-u op-sub 16 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>sub</td>
@@ -43120,7 +43138,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 17 cpu-arm64'>
+<tr class='sign-s op-sub 17 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>sub</td>
@@ -43156,7 +43174,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 17 cpu-arm64'>
+<tr class='sign-u op-sub 17 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>sub</td>
@@ -43183,7 +43201,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 18 cpu-arm64'>
+<tr class='sign-s op-sub 18 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>sub</td>
@@ -43219,7 +43237,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 18 cpu-arm64'>
+<tr class='sign-u op-sub 18 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>sub</td>
@@ -43246,7 +43264,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 19 cpu-arm64'>
+<tr class='sign-s op-sub 19 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>sub</td>
@@ -43282,7 +43300,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 19 cpu-arm64'>
+<tr class='sign-u op-sub 19 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>sub</td>
@@ -43309,7 +43327,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 20 cpu-arm64'>
+<tr class='sign-s op-sub 20 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>sub</td>
@@ -43345,7 +43363,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 20 cpu-arm64'>
+<tr class='sign-u op-sub 20 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>sub</td>
@@ -43372,7 +43390,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 21 cpu-arm64'>
+<tr class='sign-s op-sub 21 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>sub</td>
@@ -43408,7 +43426,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 21 cpu-arm64'>
+<tr class='sign-u op-sub 21 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>sub</td>
@@ -43435,7 +43453,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 22 cpu-arm64'>
+<tr class='sign-s op-sub 22 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>sub</td>
@@ -43471,7 +43489,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 22 cpu-arm64'>
+<tr class='sign-u op-sub 22 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>sub</td>
@@ -43498,7 +43516,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 23 cpu-arm64'>
+<tr class='sign-s op-sub 23 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>sub</td>
@@ -43534,7 +43552,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 23 cpu-arm64'>
+<tr class='sign-u op-sub 23 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>sub</td>
@@ -43561,7 +43579,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 24 cpu-arm64'>
+<tr class='sign-s op-sub 24 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>sub</td>
@@ -43597,7 +43615,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 24 cpu-arm64'>
+<tr class='sign-u op-sub 24 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>sub</td>
@@ -43624,7 +43642,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 25 cpu-arm64'>
+<tr class='sign-s op-sub 25 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>sub</td>
@@ -43658,7 +43676,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 25 cpu-arm64'>
+<tr class='sign-u op-sub 25 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>sub</td>
@@ -43685,7 +43703,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 26 cpu-arm64'>
+<tr class='sign-s op-sub 26 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>sub</td>
@@ -43719,7 +43737,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 26 cpu-arm64'>
+<tr class='sign-u op-sub 26 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>sub</td>
@@ -43746,7 +43764,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 27 cpu-arm64'>
+<tr class='sign-s op-sub 27 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>sub</td>
@@ -43780,7 +43798,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 27 cpu-arm64'>
+<tr class='sign-u op-sub 27 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>sub</td>
@@ -43807,7 +43825,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 28 cpu-arm64'>
+<tr class='sign-s op-sub 28 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>sub</td>
@@ -43841,7 +43859,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 28 cpu-arm64'>
+<tr class='sign-u op-sub 28 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>sub</td>
@@ -43868,7 +43886,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 29 cpu-arm64'>
+<tr class='sign-s op-sub 29 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>sub</td>
@@ -43902,7 +43920,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 29 cpu-arm64'>
+<tr class='sign-u op-sub 29 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>sub</td>
@@ -43929,7 +43947,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 30 cpu-arm64'>
+<tr class='sign-s op-sub 30 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>sub</td>
@@ -43963,7 +43981,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 30 cpu-arm64'>
+<tr class='sign-u op-sub 30 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>sub</td>
@@ -43990,7 +44008,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 31 cpu-arm64'>
+<tr class='sign-s op-sub 31 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>sub</td>
@@ -44024,7 +44042,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 31 cpu-arm64'>
+<tr class='sign-u op-sub 31 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>sub</td>
@@ -44051,7 +44069,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 32 cpu-arm64'>
+<tr class='sign-s op-sub 32 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>sub</td>
@@ -44082,7 +44100,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 32 cpu-arm64'>
+<tr class='sign-u op-sub 32 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>sub</td>
@@ -44108,7 +44126,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 33 cpu-arm64'>
+<tr class='sign-s op-sub 33 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>sub</td>
@@ -44144,7 +44162,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 33 cpu-arm64'>
+<tr class='sign-u op-sub 33 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>sub</td>
@@ -44171,7 +44189,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 34 cpu-arm64'>
+<tr class='sign-s op-sub 34 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>sub</td>
@@ -44207,7 +44225,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 34 cpu-arm64'>
+<tr class='sign-u op-sub 34 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>sub</td>
@@ -44234,7 +44252,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 35 cpu-arm64'>
+<tr class='sign-s op-sub 35 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>sub</td>
@@ -44270,7 +44288,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 35 cpu-arm64'>
+<tr class='sign-u op-sub 35 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>sub</td>
@@ -44297,7 +44315,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 36 cpu-arm64'>
+<tr class='sign-s op-sub 36 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>sub</td>
@@ -44333,7 +44351,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 36 cpu-arm64'>
+<tr class='sign-u op-sub 36 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>sub</td>
@@ -44360,7 +44378,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 37 cpu-arm64'>
+<tr class='sign-s op-sub 37 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>sub</td>
@@ -44396,7 +44414,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 37 cpu-arm64'>
+<tr class='sign-u op-sub 37 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>sub</td>
@@ -44423,7 +44441,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 38 cpu-arm64'>
+<tr class='sign-s op-sub 38 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>sub</td>
@@ -44459,7 +44477,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 38 cpu-arm64'>
+<tr class='sign-u op-sub 38 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>sub</td>
@@ -44486,7 +44504,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 39 cpu-arm64'>
+<tr class='sign-s op-sub 39 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>sub</td>
@@ -44522,7 +44540,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 39 cpu-arm64'>
+<tr class='sign-u op-sub 39 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>sub</td>
@@ -44549,7 +44567,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 40 cpu-arm64'>
+<tr class='sign-s op-sub 40 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>sub</td>
@@ -44585,7 +44603,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 40 cpu-arm64'>
+<tr class='sign-u op-sub 40 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>sub</td>
@@ -44612,7 +44630,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 41 cpu-arm64'>
+<tr class='sign-s op-sub 41 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>sub</td>
@@ -44648,7 +44666,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 41 cpu-arm64'>
+<tr class='sign-u op-sub 41 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>sub</td>
@@ -44675,7 +44693,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 42 cpu-arm64'>
+<tr class='sign-s op-sub 42 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>sub</td>
@@ -44711,7 +44729,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 42 cpu-arm64'>
+<tr class='sign-u op-sub 42 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>sub</td>
@@ -44738,7 +44756,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 43 cpu-arm64'>
+<tr class='sign-s op-sub 43 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>sub</td>
@@ -44774,7 +44792,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 43 cpu-arm64'>
+<tr class='sign-u op-sub 43 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>sub</td>
@@ -44801,7 +44819,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 44 cpu-arm64'>
+<tr class='sign-s op-sub 44 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>sub</td>
@@ -44837,7 +44855,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 44 cpu-arm64'>
+<tr class='sign-u op-sub 44 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>sub</td>
@@ -44864,7 +44882,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 45 cpu-arm64'>
+<tr class='sign-s op-sub 45 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>sub</td>
@@ -44900,7 +44918,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 45 cpu-arm64'>
+<tr class='sign-u op-sub 45 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>sub</td>
@@ -44927,7 +44945,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 46 cpu-arm64'>
+<tr class='sign-s op-sub 46 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>sub</td>
@@ -44963,7 +44981,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 46 cpu-arm64'>
+<tr class='sign-u op-sub 46 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>sub</td>
@@ -44990,7 +45008,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 47 cpu-arm64'>
+<tr class='sign-s op-sub 47 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>sub</td>
@@ -45026,7 +45044,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 47 cpu-arm64'>
+<tr class='sign-u op-sub 47 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>sub</td>
@@ -45053,7 +45071,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 48 cpu-arm64'>
+<tr class='sign-s op-sub 48 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>sub</td>
@@ -45089,7 +45107,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 48 cpu-arm64'>
+<tr class='sign-u op-sub 48 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>sub</td>
@@ -45116,7 +45134,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 49 cpu-arm64'>
+<tr class='sign-s op-sub 49 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>sub</td>
@@ -45152,7 +45170,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 49 cpu-arm64'>
+<tr class='sign-u op-sub 49 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>sub</td>
@@ -45179,7 +45197,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 50 cpu-arm64'>
+<tr class='sign-s op-sub 50 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>sub</td>
@@ -45215,7 +45233,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 50 cpu-arm64'>
+<tr class='sign-u op-sub 50 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>sub</td>
@@ -45242,7 +45260,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 51 cpu-arm64'>
+<tr class='sign-s op-sub 51 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>sub</td>
@@ -45278,7 +45296,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 51 cpu-arm64'>
+<tr class='sign-u op-sub 51 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>sub</td>
@@ -45305,7 +45323,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 52 cpu-arm64'>
+<tr class='sign-s op-sub 52 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>sub</td>
@@ -45341,7 +45359,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 52 cpu-arm64'>
+<tr class='sign-u op-sub 52 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>sub</td>
@@ -45368,7 +45386,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 53 cpu-arm64'>
+<tr class='sign-s op-sub 53 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>sub</td>
@@ -45404,7 +45422,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 53 cpu-arm64'>
+<tr class='sign-u op-sub 53 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>sub</td>
@@ -45431,7 +45449,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 54 cpu-arm64'>
+<tr class='sign-s op-sub 54 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>sub</td>
@@ -45467,7 +45485,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 54 cpu-arm64'>
+<tr class='sign-u op-sub 54 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>sub</td>
@@ -45494,7 +45512,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 55 cpu-arm64'>
+<tr class='sign-s op-sub 55 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>sub</td>
@@ -45530,7 +45548,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 55 cpu-arm64'>
+<tr class='sign-u op-sub 55 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>sub</td>
@@ -45557,7 +45575,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 56 cpu-arm64'>
+<tr class='sign-s op-sub 56 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>sub</td>
@@ -45593,7 +45611,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 56 cpu-arm64'>
+<tr class='sign-u op-sub 56 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>sub</td>
@@ -45620,7 +45638,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 57 cpu-arm64'>
+<tr class='sign-s op-sub 57 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>sub</td>
@@ -45654,7 +45672,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 57 cpu-arm64'>
+<tr class='sign-u op-sub 57 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>sub</td>
@@ -45681,7 +45699,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 58 cpu-arm64'>
+<tr class='sign-s op-sub 58 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>sub</td>
@@ -45715,7 +45733,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 58 cpu-arm64'>
+<tr class='sign-u op-sub 58 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>sub</td>
@@ -45742,7 +45760,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 59 cpu-arm64'>
+<tr class='sign-s op-sub 59 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>sub</td>
@@ -45776,7 +45794,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 59 cpu-arm64'>
+<tr class='sign-u op-sub 59 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>sub</td>
@@ -45803,7 +45821,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 60 cpu-arm64'>
+<tr class='sign-s op-sub 60 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>sub</td>
@@ -45837,7 +45855,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 60 cpu-arm64'>
+<tr class='sign-u op-sub 60 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>sub</td>
@@ -45864,7 +45882,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 61 cpu-arm64'>
+<tr class='sign-s op-sub 61 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>sub</td>
@@ -45898,7 +45916,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 61 cpu-arm64'>
+<tr class='sign-u op-sub 61 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>sub</td>
@@ -45925,7 +45943,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 62 cpu-arm64'>
+<tr class='sign-s op-sub 62 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>sub</td>
@@ -45959,7 +45977,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 62 cpu-arm64'>
+<tr class='sign-u op-sub 62 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>sub</td>
@@ -45986,7 +46004,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 63 cpu-arm64'>
+<tr class='sign-s op-sub 63 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>sub</td>
@@ -46020,7 +46038,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 63 cpu-arm64'>
+<tr class='sign-u op-sub 63 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>sub</td>
@@ -46047,7 +46065,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-sub 64 cpu-arm64'>
+<tr class='sign-s op-sub 64 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>sub</td>
@@ -46078,7 +46096,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-sub 64 cpu-arm64'>
+<tr class='sign-u op-sub 64 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>sub</td>
@@ -46104,7 +46122,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 4 cpu-arm64'>
+<tr class='sign-s op-mul 4 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
@@ -46140,7 +46158,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 4 cpu-arm64'>
+<tr class='sign-u op-mul 4 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>mul</td>
@@ -46169,7 +46187,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 5 cpu-arm64'>
+<tr class='sign-s op-mul 5 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>mul</td>
@@ -46205,7 +46223,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 5 cpu-arm64'>
+<tr class='sign-u op-mul 5 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>mul</td>
@@ -46234,7 +46252,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 6 cpu-arm64'>
+<tr class='sign-s op-mul 6 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>mul</td>
@@ -46270,7 +46288,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 6 cpu-arm64'>
+<tr class='sign-u op-mul 6 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>mul</td>
@@ -46299,7 +46317,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 7 cpu-arm64'>
+<tr class='sign-s op-mul 7 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>mul</td>
@@ -46335,7 +46353,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 7 cpu-arm64'>
+<tr class='sign-u op-mul 7 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>mul</td>
@@ -46364,7 +46382,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 8 cpu-arm64'>
+<tr class='sign-s op-mul 8 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>mul</td>
@@ -46400,7 +46418,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 8 cpu-arm64'>
+<tr class='sign-u op-mul 8 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>mul</td>
@@ -46429,7 +46447,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 9 cpu-arm64'>
+<tr class='sign-s op-mul 9 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>mul</td>
@@ -46466,7 +46484,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 9 cpu-arm64'>
+<tr class='sign-u op-mul 9 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>mul</td>
@@ -46495,7 +46513,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 10 cpu-arm64'>
+<tr class='sign-s op-mul 10 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>mul</td>
@@ -46532,7 +46550,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 10 cpu-arm64'>
+<tr class='sign-u op-mul 10 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>mul</td>
@@ -46561,7 +46579,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 11 cpu-arm64'>
+<tr class='sign-s op-mul 11 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>mul</td>
@@ -46598,7 +46616,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 11 cpu-arm64'>
+<tr class='sign-u op-mul 11 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>mul</td>
@@ -46627,7 +46645,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 12 cpu-arm64'>
+<tr class='sign-s op-mul 12 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>mul</td>
@@ -46664,7 +46682,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 12 cpu-arm64'>
+<tr class='sign-u op-mul 12 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>mul</td>
@@ -46693,7 +46711,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 13 cpu-arm64'>
+<tr class='sign-s op-mul 13 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>mul</td>
@@ -46730,7 +46748,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 13 cpu-arm64'>
+<tr class='sign-u op-mul 13 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>mul</td>
@@ -46759,7 +46777,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 14 cpu-arm64'>
+<tr class='sign-s op-mul 14 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>mul</td>
@@ -46796,7 +46814,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 14 cpu-arm64'>
+<tr class='sign-u op-mul 14 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>mul</td>
@@ -46825,7 +46843,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 15 cpu-arm64'>
+<tr class='sign-s op-mul 15 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>mul</td>
@@ -46862,7 +46880,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 15 cpu-arm64'>
+<tr class='sign-u op-mul 15 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>mul</td>
@@ -46891,7 +46909,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 16 cpu-arm64'>
+<tr class='sign-s op-mul 16 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>mul</td>
@@ -46927,7 +46945,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 16 cpu-arm64'>
+<tr class='sign-u op-mul 16 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>mul</td>
@@ -46957,7 +46975,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 17 cpu-arm64'>
+<tr class='sign-s op-mul 17 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>mul</td>
@@ -46991,7 +47009,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 17 cpu-arm64'>
+<tr class='sign-u op-mul 17 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>mul</td>
@@ -47020,7 +47038,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 18 cpu-arm64'>
+<tr class='sign-s op-mul 18 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>mul</td>
@@ -47054,7 +47072,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 18 cpu-arm64'>
+<tr class='sign-u op-mul 18 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>mul</td>
@@ -47083,7 +47101,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 19 cpu-arm64'>
+<tr class='sign-s op-mul 19 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>mul</td>
@@ -47117,7 +47135,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 19 cpu-arm64'>
+<tr class='sign-u op-mul 19 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>mul</td>
@@ -47146,7 +47164,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 20 cpu-arm64'>
+<tr class='sign-s op-mul 20 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>mul</td>
@@ -47180,7 +47198,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 20 cpu-arm64'>
+<tr class='sign-u op-mul 20 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>mul</td>
@@ -47209,7 +47227,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 21 cpu-arm64'>
+<tr class='sign-s op-mul 21 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>mul</td>
@@ -47243,7 +47261,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 21 cpu-arm64'>
+<tr class='sign-u op-mul 21 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>mul</td>
@@ -47272,7 +47290,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 22 cpu-arm64'>
+<tr class='sign-s op-mul 22 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>mul</td>
@@ -47306,7 +47324,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 22 cpu-arm64'>
+<tr class='sign-u op-mul 22 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>mul</td>
@@ -47335,7 +47353,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 23 cpu-arm64'>
+<tr class='sign-s op-mul 23 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>mul</td>
@@ -47369,7 +47387,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 23 cpu-arm64'>
+<tr class='sign-u op-mul 23 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>mul</td>
@@ -47398,7 +47416,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 24 cpu-arm64'>
+<tr class='sign-s op-mul 24 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>mul</td>
@@ -47432,7 +47450,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 24 cpu-arm64'>
+<tr class='sign-u op-mul 24 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>mul</td>
@@ -47461,7 +47479,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 25 cpu-arm64'>
+<tr class='sign-s op-mul 25 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>mul</td>
@@ -47495,7 +47513,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 25 cpu-arm64'>
+<tr class='sign-u op-mul 25 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>mul</td>
@@ -47524,7 +47542,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 26 cpu-arm64'>
+<tr class='sign-s op-mul 26 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>mul</td>
@@ -47558,7 +47576,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 26 cpu-arm64'>
+<tr class='sign-u op-mul 26 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>mul</td>
@@ -47587,7 +47605,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 27 cpu-arm64'>
+<tr class='sign-s op-mul 27 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>mul</td>
@@ -47621,7 +47639,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 27 cpu-arm64'>
+<tr class='sign-u op-mul 27 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>mul</td>
@@ -47650,7 +47668,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 28 cpu-arm64'>
+<tr class='sign-s op-mul 28 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>mul</td>
@@ -47684,7 +47702,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 28 cpu-arm64'>
+<tr class='sign-u op-mul 28 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>mul</td>
@@ -47713,7 +47731,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 29 cpu-arm64'>
+<tr class='sign-s op-mul 29 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>mul</td>
@@ -47747,7 +47765,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 29 cpu-arm64'>
+<tr class='sign-u op-mul 29 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>mul</td>
@@ -47776,7 +47794,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 30 cpu-arm64'>
+<tr class='sign-s op-mul 30 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>mul</td>
@@ -47810,7 +47828,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 30 cpu-arm64'>
+<tr class='sign-u op-mul 30 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>mul</td>
@@ -47839,7 +47857,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 31 cpu-arm64'>
+<tr class='sign-s op-mul 31 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>mul</td>
@@ -47873,7 +47891,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 31 cpu-arm64'>
+<tr class='sign-u op-mul 31 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>mul</td>
@@ -47902,7 +47920,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 32 cpu-arm64'>
+<tr class='sign-s op-mul 32 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>mul</td>
@@ -47934,7 +47952,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 32 cpu-arm64'>
+<tr class='sign-u op-mul 32 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>mul</td>
@@ -47963,7 +47981,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 33 cpu-arm64'>
+<tr class='sign-s op-mul 33 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>mul</td>
@@ -48011,7 +48029,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 33 cpu-arm64'>
+<tr class='sign-u op-mul 33 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>mul</td>
@@ -48054,7 +48072,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 34 cpu-arm64'>
+<tr class='sign-s op-mul 34 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>mul</td>
@@ -48102,7 +48120,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 34 cpu-arm64'>
+<tr class='sign-u op-mul 34 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>mul</td>
@@ -48145,7 +48163,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 35 cpu-arm64'>
+<tr class='sign-s op-mul 35 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>mul</td>
@@ -48193,7 +48211,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 35 cpu-arm64'>
+<tr class='sign-u op-mul 35 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>mul</td>
@@ -48236,7 +48254,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 36 cpu-arm64'>
+<tr class='sign-s op-mul 36 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>mul</td>
@@ -48284,7 +48302,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 36 cpu-arm64'>
+<tr class='sign-u op-mul 36 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>mul</td>
@@ -48327,7 +48345,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 37 cpu-arm64'>
+<tr class='sign-s op-mul 37 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>mul</td>
@@ -48375,7 +48393,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 37 cpu-arm64'>
+<tr class='sign-u op-mul 37 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>mul</td>
@@ -48418,7 +48436,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 38 cpu-arm64'>
+<tr class='sign-s op-mul 38 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>mul</td>
@@ -48466,7 +48484,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 38 cpu-arm64'>
+<tr class='sign-u op-mul 38 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>mul</td>
@@ -48509,7 +48527,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 39 cpu-arm64'>
+<tr class='sign-s op-mul 39 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>mul</td>
@@ -48557,7 +48575,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 39 cpu-arm64'>
+<tr class='sign-u op-mul 39 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>mul</td>
@@ -48600,7 +48618,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 40 cpu-arm64'>
+<tr class='sign-s op-mul 40 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>mul</td>
@@ -48648,7 +48666,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 40 cpu-arm64'>
+<tr class='sign-u op-mul 40 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>mul</td>
@@ -48691,7 +48709,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 41 cpu-arm64'>
+<tr class='sign-s op-mul 41 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>mul</td>
@@ -48739,7 +48757,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 41 cpu-arm64'>
+<tr class='sign-u op-mul 41 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>mul</td>
@@ -48782,7 +48800,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 42 cpu-arm64'>
+<tr class='sign-s op-mul 42 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>mul</td>
@@ -48830,7 +48848,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 42 cpu-arm64'>
+<tr class='sign-u op-mul 42 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>mul</td>
@@ -48873,7 +48891,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 43 cpu-arm64'>
+<tr class='sign-s op-mul 43 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>mul</td>
@@ -48921,7 +48939,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 43 cpu-arm64'>
+<tr class='sign-u op-mul 43 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>mul</td>
@@ -48964,7 +48982,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 44 cpu-arm64'>
+<tr class='sign-s op-mul 44 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>mul</td>
@@ -49012,7 +49030,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 44 cpu-arm64'>
+<tr class='sign-u op-mul 44 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>mul</td>
@@ -49055,7 +49073,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 45 cpu-arm64'>
+<tr class='sign-s op-mul 45 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>mul</td>
@@ -49103,7 +49121,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 45 cpu-arm64'>
+<tr class='sign-u op-mul 45 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>mul</td>
@@ -49146,7 +49164,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 46 cpu-arm64'>
+<tr class='sign-s op-mul 46 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>mul</td>
@@ -49194,7 +49212,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 46 cpu-arm64'>
+<tr class='sign-u op-mul 46 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>mul</td>
@@ -49237,7 +49255,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 47 cpu-arm64'>
+<tr class='sign-s op-mul 47 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>mul</td>
@@ -49285,7 +49303,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 47 cpu-arm64'>
+<tr class='sign-u op-mul 47 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>mul</td>
@@ -49328,7 +49346,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 48 cpu-arm64'>
+<tr class='sign-s op-mul 48 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>mul</td>
@@ -49376,7 +49394,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 48 cpu-arm64'>
+<tr class='sign-u op-mul 48 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>mul</td>
@@ -49419,7 +49437,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 49 cpu-arm64'>
+<tr class='sign-s op-mul 49 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>mul</td>
@@ -49467,7 +49485,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 49 cpu-arm64'>
+<tr class='sign-u op-mul 49 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>mul</td>
@@ -49510,7 +49528,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 50 cpu-arm64'>
+<tr class='sign-s op-mul 50 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>mul</td>
@@ -49558,7 +49576,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 50 cpu-arm64'>
+<tr class='sign-u op-mul 50 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>mul</td>
@@ -49601,7 +49619,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 51 cpu-arm64'>
+<tr class='sign-s op-mul 51 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>mul</td>
@@ -49649,7 +49667,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 51 cpu-arm64'>
+<tr class='sign-u op-mul 51 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>mul</td>
@@ -49692,7 +49710,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 52 cpu-arm64'>
+<tr class='sign-s op-mul 52 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>mul</td>
@@ -49740,7 +49758,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 52 cpu-arm64'>
+<tr class='sign-u op-mul 52 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>mul</td>
@@ -49783,7 +49801,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 53 cpu-arm64'>
+<tr class='sign-s op-mul 53 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>mul</td>
@@ -49831,7 +49849,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 53 cpu-arm64'>
+<tr class='sign-u op-mul 53 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>mul</td>
@@ -49874,7 +49892,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 54 cpu-arm64'>
+<tr class='sign-s op-mul 54 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>mul</td>
@@ -49922,7 +49940,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 54 cpu-arm64'>
+<tr class='sign-u op-mul 54 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>mul</td>
@@ -49965,7 +49983,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 55 cpu-arm64'>
+<tr class='sign-s op-mul 55 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>mul</td>
@@ -50013,7 +50031,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 55 cpu-arm64'>
+<tr class='sign-u op-mul 55 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>mul</td>
@@ -50056,7 +50074,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 56 cpu-arm64'>
+<tr class='sign-s op-mul 56 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>mul</td>
@@ -50104,7 +50122,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 56 cpu-arm64'>
+<tr class='sign-u op-mul 56 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>mul</td>
@@ -50147,7 +50165,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 57 cpu-arm64'>
+<tr class='sign-s op-mul 57 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>mul</td>
@@ -50195,7 +50213,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 57 cpu-arm64'>
+<tr class='sign-u op-mul 57 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>mul</td>
@@ -50238,7 +50256,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 58 cpu-arm64'>
+<tr class='sign-s op-mul 58 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>mul</td>
@@ -50286,7 +50304,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 58 cpu-arm64'>
+<tr class='sign-u op-mul 58 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>mul</td>
@@ -50329,7 +50347,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 59 cpu-arm64'>
+<tr class='sign-s op-mul 59 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>mul</td>
@@ -50377,7 +50395,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 59 cpu-arm64'>
+<tr class='sign-u op-mul 59 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>mul</td>
@@ -50420,7 +50438,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 60 cpu-arm64'>
+<tr class='sign-s op-mul 60 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>mul</td>
@@ -50468,7 +50486,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 60 cpu-arm64'>
+<tr class='sign-u op-mul 60 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>mul</td>
@@ -50511,7 +50529,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 61 cpu-arm64'>
+<tr class='sign-s op-mul 61 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>mul</td>
@@ -50559,7 +50577,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 61 cpu-arm64'>
+<tr class='sign-u op-mul 61 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>mul</td>
@@ -50602,7 +50620,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 62 cpu-arm64'>
+<tr class='sign-s op-mul 62 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>mul</td>
@@ -50650,7 +50668,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 62 cpu-arm64'>
+<tr class='sign-u op-mul 62 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>mul</td>
@@ -50693,7 +50711,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 63 cpu-arm64'>
+<tr class='sign-s op-mul 63 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>mul</td>
@@ -50741,7 +50759,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 63 cpu-arm64'>
+<tr class='sign-u op-mul 63 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>mul</td>
@@ -50784,7 +50802,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-mul 64 cpu-arm64'>
+<tr class='sign-s op-mul 64 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>mul</td>
@@ -50827,7 +50845,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-mul 64 cpu-arm64'>
+<tr class='sign-u op-mul 64 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>mul</td>
@@ -50865,7 +50883,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 4 cpu-arm64'>
+<tr class='sign-s op-div 4 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
@@ -50896,7 +50914,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 4 cpu-arm64'>
+<tr class='sign-u op-div 4 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>4</td>
 <td class='column-op'>div</td>
@@ -50921,7 +50939,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 5 cpu-arm64'>
+<tr class='sign-s op-div 5 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>div</td>
@@ -50952,7 +50970,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 5 cpu-arm64'>
+<tr class='sign-u op-div 5 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>5</td>
 <td class='column-op'>div</td>
@@ -50977,7 +50995,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 6 cpu-arm64'>
+<tr class='sign-s op-div 6 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>div</td>
@@ -51008,7 +51026,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 6 cpu-arm64'>
+<tr class='sign-u op-div 6 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>6</td>
 <td class='column-op'>div</td>
@@ -51033,7 +51051,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 7 cpu-arm64'>
+<tr class='sign-s op-div 7 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>div</td>
@@ -51064,7 +51082,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 7 cpu-arm64'>
+<tr class='sign-u op-div 7 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>7</td>
 <td class='column-op'>div</td>
@@ -51089,7 +51107,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 8 cpu-arm64'>
+<tr class='sign-s op-div 8 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>div</td>
@@ -51120,7 +51138,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 8 cpu-arm64'>
+<tr class='sign-u op-div 8 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>8</td>
 <td class='column-op'>div</td>
@@ -51145,7 +51163,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 9 cpu-arm64'>
+<tr class='sign-s op-div 9 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>div</td>
@@ -51176,7 +51194,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 9 cpu-arm64'>
+<tr class='sign-u op-div 9 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>9</td>
 <td class='column-op'>div</td>
@@ -51201,7 +51219,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 10 cpu-arm64'>
+<tr class='sign-s op-div 10 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>div</td>
@@ -51232,7 +51250,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 10 cpu-arm64'>
+<tr class='sign-u op-div 10 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>10</td>
 <td class='column-op'>div</td>
@@ -51257,7 +51275,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 11 cpu-arm64'>
+<tr class='sign-s op-div 11 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>div</td>
@@ -51288,7 +51306,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 11 cpu-arm64'>
+<tr class='sign-u op-div 11 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>11</td>
 <td class='column-op'>div</td>
@@ -51313,7 +51331,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 12 cpu-arm64'>
+<tr class='sign-s op-div 12 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>div</td>
@@ -51344,7 +51362,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 12 cpu-arm64'>
+<tr class='sign-u op-div 12 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>12</td>
 <td class='column-op'>div</td>
@@ -51369,7 +51387,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 13 cpu-arm64'>
+<tr class='sign-s op-div 13 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>div</td>
@@ -51400,7 +51418,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 13 cpu-arm64'>
+<tr class='sign-u op-div 13 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>13</td>
 <td class='column-op'>div</td>
@@ -51425,7 +51443,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 14 cpu-arm64'>
+<tr class='sign-s op-div 14 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>div</td>
@@ -51456,7 +51474,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 14 cpu-arm64'>
+<tr class='sign-u op-div 14 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>14</td>
 <td class='column-op'>div</td>
@@ -51481,7 +51499,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 15 cpu-arm64'>
+<tr class='sign-s op-div 15 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>div</td>
@@ -51512,7 +51530,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 15 cpu-arm64'>
+<tr class='sign-u op-div 15 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>15</td>
 <td class='column-op'>div</td>
@@ -51537,7 +51555,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 16 cpu-arm64'>
+<tr class='sign-s op-div 16 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>div</td>
@@ -51568,7 +51586,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 16 cpu-arm64'>
+<tr class='sign-u op-div 16 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>16</td>
 <td class='column-op'>div</td>
@@ -51593,7 +51611,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 17 cpu-arm64'>
+<tr class='sign-s op-div 17 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>div</td>
@@ -51623,7 +51641,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 17 cpu-arm64'>
+<tr class='sign-u op-div 17 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>17</td>
 <td class='column-op'>div</td>
@@ -51648,7 +51666,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 18 cpu-arm64'>
+<tr class='sign-s op-div 18 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>div</td>
@@ -51678,7 +51696,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 18 cpu-arm64'>
+<tr class='sign-u op-div 18 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>18</td>
 <td class='column-op'>div</td>
@@ -51703,7 +51721,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 19 cpu-arm64'>
+<tr class='sign-s op-div 19 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>div</td>
@@ -51733,7 +51751,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 19 cpu-arm64'>
+<tr class='sign-u op-div 19 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>19</td>
 <td class='column-op'>div</td>
@@ -51758,7 +51776,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 20 cpu-arm64'>
+<tr class='sign-s op-div 20 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>div</td>
@@ -51788,7 +51806,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 20 cpu-arm64'>
+<tr class='sign-u op-div 20 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>20</td>
 <td class='column-op'>div</td>
@@ -51813,7 +51831,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 21 cpu-arm64'>
+<tr class='sign-s op-div 21 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>div</td>
@@ -51843,7 +51861,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 21 cpu-arm64'>
+<tr class='sign-u op-div 21 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>21</td>
 <td class='column-op'>div</td>
@@ -51868,7 +51886,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 22 cpu-arm64'>
+<tr class='sign-s op-div 22 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>div</td>
@@ -51898,7 +51916,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 22 cpu-arm64'>
+<tr class='sign-u op-div 22 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>22</td>
 <td class='column-op'>div</td>
@@ -51923,7 +51941,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 23 cpu-arm64'>
+<tr class='sign-s op-div 23 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>div</td>
@@ -51953,7 +51971,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 23 cpu-arm64'>
+<tr class='sign-u op-div 23 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>23</td>
 <td class='column-op'>div</td>
@@ -51978,7 +51996,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 24 cpu-arm64'>
+<tr class='sign-s op-div 24 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>div</td>
@@ -52008,7 +52026,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 24 cpu-arm64'>
+<tr class='sign-u op-div 24 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>24</td>
 <td class='column-op'>div</td>
@@ -52033,7 +52051,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 25 cpu-arm64'>
+<tr class='sign-s op-div 25 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>div</td>
@@ -52064,7 +52082,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 25 cpu-arm64'>
+<tr class='sign-u op-div 25 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>25</td>
 <td class='column-op'>div</td>
@@ -52089,7 +52107,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 26 cpu-arm64'>
+<tr class='sign-s op-div 26 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>div</td>
@@ -52120,7 +52138,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 26 cpu-arm64'>
+<tr class='sign-u op-div 26 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>26</td>
 <td class='column-op'>div</td>
@@ -52145,7 +52163,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 27 cpu-arm64'>
+<tr class='sign-s op-div 27 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>div</td>
@@ -52176,7 +52194,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 27 cpu-arm64'>
+<tr class='sign-u op-div 27 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>27</td>
 <td class='column-op'>div</td>
@@ -52201,7 +52219,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 28 cpu-arm64'>
+<tr class='sign-s op-div 28 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>div</td>
@@ -52232,7 +52250,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 28 cpu-arm64'>
+<tr class='sign-u op-div 28 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>28</td>
 <td class='column-op'>div</td>
@@ -52257,7 +52275,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 29 cpu-arm64'>
+<tr class='sign-s op-div 29 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>div</td>
@@ -52288,7 +52306,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 29 cpu-arm64'>
+<tr class='sign-u op-div 29 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>29</td>
 <td class='column-op'>div</td>
@@ -52313,7 +52331,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 30 cpu-arm64'>
+<tr class='sign-s op-div 30 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>div</td>
@@ -52344,7 +52362,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 30 cpu-arm64'>
+<tr class='sign-u op-div 30 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>30</td>
 <td class='column-op'>div</td>
@@ -52369,7 +52387,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 31 cpu-arm64'>
+<tr class='sign-s op-div 31 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>div</td>
@@ -52400,7 +52418,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 31 cpu-arm64'>
+<tr class='sign-u op-div 31 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>31</td>
 <td class='column-op'>div</td>
@@ -52425,7 +52443,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 32 cpu-arm64'>
+<tr class='sign-s op-div 32 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>div</td>
@@ -52455,7 +52473,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 32 cpu-arm64'>
+<tr class='sign-u op-div 32 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>32</td>
 <td class='column-op'>div</td>
@@ -52480,7 +52498,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 33 cpu-arm64'>
+<tr class='sign-s op-div 33 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>div</td>
@@ -52511,7 +52529,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 33 cpu-arm64'>
+<tr class='sign-u op-div 33 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>33</td>
 <td class='column-op'>div</td>
@@ -52536,7 +52554,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 34 cpu-arm64'>
+<tr class='sign-s op-div 34 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>div</td>
@@ -52567,7 +52585,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 34 cpu-arm64'>
+<tr class='sign-u op-div 34 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>34</td>
 <td class='column-op'>div</td>
@@ -52592,7 +52610,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 35 cpu-arm64'>
+<tr class='sign-s op-div 35 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>div</td>
@@ -52623,7 +52641,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 35 cpu-arm64'>
+<tr class='sign-u op-div 35 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>35</td>
 <td class='column-op'>div</td>
@@ -52648,7 +52666,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 36 cpu-arm64'>
+<tr class='sign-s op-div 36 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>div</td>
@@ -52679,7 +52697,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 36 cpu-arm64'>
+<tr class='sign-u op-div 36 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>36</td>
 <td class='column-op'>div</td>
@@ -52704,7 +52722,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 37 cpu-arm64'>
+<tr class='sign-s op-div 37 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>div</td>
@@ -52735,7 +52753,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 37 cpu-arm64'>
+<tr class='sign-u op-div 37 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>37</td>
 <td class='column-op'>div</td>
@@ -52760,7 +52778,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 38 cpu-arm64'>
+<tr class='sign-s op-div 38 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>div</td>
@@ -52791,7 +52809,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 38 cpu-arm64'>
+<tr class='sign-u op-div 38 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>38</td>
 <td class='column-op'>div</td>
@@ -52816,7 +52834,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 39 cpu-arm64'>
+<tr class='sign-s op-div 39 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>div</td>
@@ -52847,7 +52865,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 39 cpu-arm64'>
+<tr class='sign-u op-div 39 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>39</td>
 <td class='column-op'>div</td>
@@ -52872,7 +52890,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 40 cpu-arm64'>
+<tr class='sign-s op-div 40 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>div</td>
@@ -52903,7 +52921,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 40 cpu-arm64'>
+<tr class='sign-u op-div 40 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>40</td>
 <td class='column-op'>div</td>
@@ -52928,7 +52946,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 41 cpu-arm64'>
+<tr class='sign-s op-div 41 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>div</td>
@@ -52959,7 +52977,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 41 cpu-arm64'>
+<tr class='sign-u op-div 41 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>41</td>
 <td class='column-op'>div</td>
@@ -52984,7 +53002,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 42 cpu-arm64'>
+<tr class='sign-s op-div 42 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>div</td>
@@ -53015,7 +53033,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 42 cpu-arm64'>
+<tr class='sign-u op-div 42 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>42</td>
 <td class='column-op'>div</td>
@@ -53040,7 +53058,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 43 cpu-arm64'>
+<tr class='sign-s op-div 43 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>div</td>
@@ -53071,7 +53089,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 43 cpu-arm64'>
+<tr class='sign-u op-div 43 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>43</td>
 <td class='column-op'>div</td>
@@ -53096,7 +53114,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 44 cpu-arm64'>
+<tr class='sign-s op-div 44 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>div</td>
@@ -53127,7 +53145,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 44 cpu-arm64'>
+<tr class='sign-u op-div 44 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>44</td>
 <td class='column-op'>div</td>
@@ -53152,7 +53170,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 45 cpu-arm64'>
+<tr class='sign-s op-div 45 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>div</td>
@@ -53183,7 +53201,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 45 cpu-arm64'>
+<tr class='sign-u op-div 45 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>45</td>
 <td class='column-op'>div</td>
@@ -53208,7 +53226,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 46 cpu-arm64'>
+<tr class='sign-s op-div 46 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>div</td>
@@ -53239,7 +53257,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 46 cpu-arm64'>
+<tr class='sign-u op-div 46 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>46</td>
 <td class='column-op'>div</td>
@@ -53264,7 +53282,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 47 cpu-arm64'>
+<tr class='sign-s op-div 47 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>div</td>
@@ -53295,7 +53313,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 47 cpu-arm64'>
+<tr class='sign-u op-div 47 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>47</td>
 <td class='column-op'>div</td>
@@ -53320,7 +53338,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 48 cpu-arm64'>
+<tr class='sign-s op-div 48 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>div</td>
@@ -53351,7 +53369,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 48 cpu-arm64'>
+<tr class='sign-u op-div 48 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>48</td>
 <td class='column-op'>div</td>
@@ -53376,7 +53394,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 49 cpu-arm64'>
+<tr class='sign-s op-div 49 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>div</td>
@@ -53407,7 +53425,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 49 cpu-arm64'>
+<tr class='sign-u op-div 49 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>49</td>
 <td class='column-op'>div</td>
@@ -53432,7 +53450,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 50 cpu-arm64'>
+<tr class='sign-s op-div 50 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>div</td>
@@ -53463,7 +53481,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 50 cpu-arm64'>
+<tr class='sign-u op-div 50 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>50</td>
 <td class='column-op'>div</td>
@@ -53488,7 +53506,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 51 cpu-arm64'>
+<tr class='sign-s op-div 51 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>div</td>
@@ -53519,7 +53537,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 51 cpu-arm64'>
+<tr class='sign-u op-div 51 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>51</td>
 <td class='column-op'>div</td>
@@ -53544,7 +53562,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 52 cpu-arm64'>
+<tr class='sign-s op-div 52 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>div</td>
@@ -53575,7 +53593,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 52 cpu-arm64'>
+<tr class='sign-u op-div 52 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>52</td>
 <td class='column-op'>div</td>
@@ -53600,7 +53618,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 53 cpu-arm64'>
+<tr class='sign-s op-div 53 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>div</td>
@@ -53631,7 +53649,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 53 cpu-arm64'>
+<tr class='sign-u op-div 53 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>53</td>
 <td class='column-op'>div</td>
@@ -53656,7 +53674,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 54 cpu-arm64'>
+<tr class='sign-s op-div 54 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>div</td>
@@ -53687,7 +53705,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 54 cpu-arm64'>
+<tr class='sign-u op-div 54 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>54</td>
 <td class='column-op'>div</td>
@@ -53712,7 +53730,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 55 cpu-arm64'>
+<tr class='sign-s op-div 55 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>div</td>
@@ -53743,7 +53761,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 55 cpu-arm64'>
+<tr class='sign-u op-div 55 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>55</td>
 <td class='column-op'>div</td>
@@ -53768,7 +53786,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 56 cpu-arm64'>
+<tr class='sign-s op-div 56 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>div</td>
@@ -53799,7 +53817,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 56 cpu-arm64'>
+<tr class='sign-u op-div 56 cpu-arm64  bits-x4 bits-x8'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>56</td>
 <td class='column-op'>div</td>
@@ -53824,7 +53842,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 57 cpu-arm64'>
+<tr class='sign-s op-div 57 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>div</td>
@@ -53855,7 +53873,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 57 cpu-arm64'>
+<tr class='sign-u op-div 57 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>57</td>
 <td class='column-op'>div</td>
@@ -53880,7 +53898,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 58 cpu-arm64'>
+<tr class='sign-s op-div 58 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>div</td>
@@ -53911,7 +53929,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 58 cpu-arm64'>
+<tr class='sign-u op-div 58 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>58</td>
 <td class='column-op'>div</td>
@@ -53936,7 +53954,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 59 cpu-arm64'>
+<tr class='sign-s op-div 59 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>div</td>
@@ -53967,7 +53985,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 59 cpu-arm64'>
+<tr class='sign-u op-div 59 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>59</td>
 <td class='column-op'>div</td>
@@ -53992,7 +54010,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 60 cpu-arm64'>
+<tr class='sign-s op-div 60 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>div</td>
@@ -54023,7 +54041,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 60 cpu-arm64'>
+<tr class='sign-u op-div 60 cpu-arm64  bits-x4'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>60</td>
 <td class='column-op'>div</td>
@@ -54048,7 +54066,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 61 cpu-arm64'>
+<tr class='sign-s op-div 61 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>div</td>
@@ -54079,7 +54097,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 61 cpu-arm64'>
+<tr class='sign-u op-div 61 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>61</td>
 <td class='column-op'>div</td>
@@ -54104,7 +54122,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 62 cpu-arm64'>
+<tr class='sign-s op-div 62 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>div</td>
@@ -54135,7 +54153,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 62 cpu-arm64'>
+<tr class='sign-u op-div 62 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>62</td>
 <td class='column-op'>div</td>
@@ -54160,7 +54178,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 63 cpu-arm64'>
+<tr class='sign-s op-div 63 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>div</td>
@@ -54191,7 +54209,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 63 cpu-arm64'>
+<tr class='sign-u op-div 63 cpu-arm64 '>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>63</td>
 <td class='column-op'>div</td>
@@ -54216,7 +54234,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-s op-div 64 cpu-arm64'>
+<tr class='sign-s op-div 64 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>div</td>
@@ -54246,7 +54264,7 @@ _f:                                     ; @f
 {% endhighlight %}
 </td>
 </tr>
-<tr class='sign-u op-div 64 cpu-arm64'>
+<tr class='sign-u op-div 64 cpu-arm64  bits-x4 bits-x8 bits-p2'>
 <td class='column-target'>arm64</td>
 <td class='column-bits'>64</td>
 <td class='column-op'>div</td>
