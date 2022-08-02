@@ -48,15 +48,13 @@ window.onload = () => {
   showHideColumn('#show-asm', '.column-asm')
 
   const menus =
-      ['#sign-select', '#bits-select', '#targets-select', '#op-select']
-          .map(id => {
-            const el = document.querySelector(id)
-            if (el === null) {
-              console.error(`${id} was not found`)
-            }
-            return el
-          })
-          .filter(el => el !== null)
+    ['#sign-select', '#bits-select', '#targets-select', '#op-select'].map(id => {
+      const el = document.querySelector(id)
+      if (el === null) {
+        console.error(`${id} was not found`)
+      }
+      return el
+    }).filter(el => el !== null)
   const body = document.querySelector('tbody')
   const change = () => {
     // Show just the selected rows.
@@ -66,8 +64,9 @@ window.onload = () => {
     // Hide all of rows.
     body.querySelectorAll('tr').forEach(el => el.setAttribute('style', 'display:none;'))
     // Show the selected ones.
-    body.querySelectorAll(`tr${dot}${selector}`)
-        .forEach(el => el.setAttribute('style', 'display:table-row;'))
-  } menus.forEach(el => el.addEventListener('change', change))
+    body.querySelectorAll(`tr${dot}${selector}`).forEach(el => el.setAttribute('style', 'display:table-row;'))
+  }
+
+  menus.forEach(el => el.addEventListener('change', change))
   change() // make the correct table rows visible
 }
