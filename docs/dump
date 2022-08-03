@@ -10,7 +10,7 @@ title: Saturation
 ---
 
 <!-- <link rel="stylesheet" href="./foo.css"> -->
-<script src="./foo.js"></script>
+<script src="./table.js"></script>
 
 <fieldset>
   <legend>Columns</legend>
