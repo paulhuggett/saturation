@@ -31,8 +31,7 @@
     tableBodyEl.querySelectorAll(`tr${dot}${selector}`).forEach(el => el.setAttribute('style', 'display:table-row;'))
   }
 
-  window.onload = () => {
-    'use strict'
+  window.addEventListener('DOMContentLoaded', event => {
     showHideColumn('#show-target', '.column-target')
     showHideColumn('#show-cpp', '.column-cpp')
     showHideColumn('#show-op', '.column-op')
@@ -50,5 +49,5 @@
 
     menus.forEach(el => el.addEventListener('change', event => showSelectedRows(body, menus)))
     showSelectedRows(body, menus) // make the correct table rows visible
-  }
+  })
 }())
