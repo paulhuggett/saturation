@@ -14,41 +14,49 @@ title: Saturation
 
 <fieldset>
   <legend>Columns</legend>
-  <input type="checkbox" id="show-target"><label for="show-target">Show Target</label>
-  <input type="checkbox" id="show-op"><label for="show-op">Show Op</label>
-  <input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label>
-  <input type="checkbox" id="show-asm" checked><label for="show-asm">Show Compiler Output</label>
+  <div style="display:inline-flex;"><input type="checkbox" id="show-target"><label for="show-target">Show Target</label></div>
+  <div style="display:inline-flex;"><input type="checkbox" id="show-op"><label for="show-op">Show Op</label></div>
+  <div style="display:inline-flex;"><input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label></div>
+  <div style="display:inline-flex;"><input type="checkbox" id="show-asm" checked><label for="show-asm">Show Compiler Output</label></div>
 </fieldset>
 <fieldset>
   <legend>Filter</legend>
-  <label for="sign-select">Sign:</label>
-  <select name="sign" id="sign-select">
-    <option value="">Show All</option>
-    <option value="sign-u">Unsigned</option>
-    <option value="sign-s">Signed</option>
-  </select>
-  <label for="bits-select">Bits:</label>
-  <select name="bits" id="bits-select">
-    <option value="">Show All</option>
-    <option value="bits-x4">Multiples of 4</option>
-    <option value="bits-x8">Multiples of 8</option>
-    <option value="bits-p2">Register Widths</option>
-  </select>
-  <label for="targets-select">Target:</label>
-  <select name="targets" id="targets-select">
-    <option value="">Show All</option>
-    <option value="cpu-x86_64">x86-64</option>
-    <option value="cpu-arm">ARM</option>
-    <option value="cpu-arm64">ARM64</option>
-  </select>
-  <label for="op-select">Operation:</label>
-  <select name="op" id="op-select">
-    <option value="">Show All</option>
-    <option value="op-add">add</option>
-    <option value="op-sub">subtract</option>
-    <option value="op-mul">multiply</option>
-    <option value="op-div">divide</option>
-  </select>
+  <div style="display:inline-flex;">
+    <label for="sign-select">Sign:</label>
+    <select name="sign" id="sign-select">
+      <option value="">Show All</option>
+      <option value="sign-u">Unsigned</option>
+      <option value="sign-s">Signed</option>
+    </select>
+  </div>
+  <div style="display:inline-flex;">
+    <label for="bits-select">Bits:</label>
+    <select name="bits" id="bits-select">
+      <option value="">Show All</option>
+      <option value="bits-x4">Multiples of 4</option>
+      <option value="bits-x8">Multiples of 8</option>
+      <option value="bits-p2">Register Widths</option>
+    </select>
+  </div>
+  <div style="display:inline-flex;">
+    <label for="targets-select">Target:</label>
+    <select name="targets" id="targets-select">
+      <option value="">Show All</option>
+      <option value="cpu-x86_64">x86-64</option>
+      <option value="cpu-arm">ARM</option>
+      <option value="cpu-arm64">ARM64</option>
+    </select>
+  </div>
+  <div style="display:inline-flex;">
+    <label for="op-select">Operation:</label>
+    <select name="op" id="op-select">
+      <option value="">Show All</option>
+      <option value="op-add">add</option>
+      <option value="op-sub">subtract</option>
+      <option value="op-mul">multiply</option>
+      <option value="op-div">divide</option>
+    </select>
+  </div>
 </fieldset>
 
 <table>
