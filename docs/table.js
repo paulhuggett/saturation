@@ -1,3 +1,4 @@
+/* global sorttable */
 (function () {
   'use strict'
 
@@ -19,6 +20,16 @@
     update() // set initial state
   }
 
+  function findMenuElements (menuIDs) {
+    return menuIDs.map(id => {
+      const el = document.querySelector(id)
+      if (el === null) {
+        console.error(`${id} was not found`)
+      }
+      return el
+    }).filter(el => el !== null)
+  }
+
   // Show just the selected rows.
   function showSelectedRows (tableBodyEl, menus) {
     // Turn the menu selections into a CSS selector.
@@ -38,16 +49,9 @@
     showHideColumn('#show-asm', '.column-asm')
 
     const body = document.querySelector('tbody')
-    const menus =
-      ['#sign-select', '#bits-select', '#targets-select', '#op-select'].map(id => {
-        const el = document.querySelector(id)
-        if (el === null) {
-          console.error(`${id} was not found`)
-        }
-        return el
-      }).filter(el => el !== null)
-
+    const menus = findMenuElements(['#sign-select', '#bits-select', '#targets-select', '#op-select'])
     menus.forEach(el => el.addEventListener('change', event => showSelectedRows(body, menus)))
+    sorttable.makeSortable(document.getElementById('out-table'))
     showSelectedRows(body, menus) // make the correct table rows visible
   })
 }())

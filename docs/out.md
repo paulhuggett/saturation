@@ -3,6 +3,7 @@ title: Saturation
 ---
 
 <!-- <link rel="stylesheet" href="./foo.css"> -->
+<script src="./sorttable.js"></script>
 <script src="./table.js"></script>
 
 <fieldset>
@@ -51,16 +52,16 @@ title: Saturation
     </select>
   </div>
 </fieldset>
-
-<table>
+<p>Note: You can sort by each column by clicking on the column header.</p>
+<table id="out-table">
 <thead>
 <tr>
 <th class="column-target">Target</th>
 <th class="column-bits">Bits</th>
 <th class="column-op">Op</th>
 <th class="column-sign">Signed</th>
-<th class="column-cpp">C++ Code</th>
-<th class="column-asm">Compiler Output</th>
+<th class="column-cpp sorttable_nosort">C++ Code</th>
+<th class="column-asm sorttable_nosort">Compiler Output</th>
 </tr>
 </thead>
 <tbody>
