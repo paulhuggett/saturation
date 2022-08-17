@@ -9,16 +9,27 @@ cat <<EOF1
 title: Saturation
 ---
 
-<!-- <link rel="stylesheet" href="./foo.css"> -->
+<link rel="stylesheet" href="./foo.css">
 <script src="./sorttable.js"></script>
 <script src="./table.js"></script>
 
 <fieldset>
   <legend>Columns</legend>
-  <div style="display:inline-flex;"><input type="checkbox" id="show-target"><label for="show-target">Show Target</label></div>
-  <div style="display:inline-flex;"><input type="checkbox" id="show-op"><label for="show-op">Show Op</label></div>
-  <div style="display:inline-flex;"><input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label></div>
-  <div style="display:inline-flex;"><input type="checkbox" id="show-asm" checked><label for="show-asm">Show Compiler Output</label></div>
+  <div style="display:inline-flex;">
+    <input type="checkbox" id="show-target">
+    <label for="show-target">Show Target</label></div>
+  <div style="display:inline-flex;">
+    <input type="checkbox" id="show-op">
+    <label for="show-op">Show Op</label>
+  </div>
+  <div style="display:inline-flex;">
+    <input type="checkbox" id="show-cpp">
+    <label for="show-cpp">Show C++ Code</label>
+  </div>
+  <div style="display:inline-flex;">
+    <input type="checkbox" id="show-asm" checked>
+    <label for="show-asm">Show Compiler Output</label>
+  </div>
 </fieldset>
 <fieldset>
   <legend>Filter</legend>
@@ -61,16 +72,16 @@ title: Saturation
 </fieldset>
 <p>Note: You can sort by each column by clicking on the column header.</p>
 <table id="out-table">
-<thead>
-<tr>
-<th class="column-target">Target</th>
-<th class="column-bits">Bits</th>
-<th class="column-op">Op</th>
-<th class="column-sign">Signed</th>
-<th class="column-cpp sorttable_nosort">C++ Code</th>
-<th class="column-asm sorttable_nosort">Compiler Output</th>
-</tr>
-</thead>
+  <thead>
+    <tr>
+      <th class="column-target">Target</th>
+      <th class="column-bits">Bits</th>
+      <th class="column-op">Op</th>
+      <th class="column-sign">Signed</th>
+      <th class="column-cpp sorttable_nosort">C++ Code</th>
+      <th class="column-asm sorttable_nosort">Compiler Output</th>
+    </tr>
+  </thead>
 <tbody>
 
 EOF1

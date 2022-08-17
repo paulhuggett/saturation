@@ -2,16 +2,27 @@
 title: Saturation
 ---
 
-<!-- <link rel="stylesheet" href="./foo.css"> -->
+<link rel="stylesheet" href="./foo.css">
 <script src="./sorttable.js"></script>
 <script src="./table.js"></script>
 
 <fieldset>
   <legend>Columns</legend>
-  <div style="display:inline-flex;"><input type="checkbox" id="show-target"><label for="show-target">Show Target</label></div>
-  <div style="display:inline-flex;"><input type="checkbox" id="show-op"><label for="show-op">Show Op</label></div>
-  <div style="display:inline-flex;"><input type="checkbox" id="show-cpp"><label for="show-cpp">Show C++ Code</label></div>
-  <div style="display:inline-flex;"><input type="checkbox" id="show-asm" checked><label for="show-asm">Show Compiler Output</label></div>
+  <div style="display:inline-flex;">
+    <input type="checkbox" id="show-target">
+    <label for="show-target">Show Target</label></div>
+  <div style="display:inline-flex;">
+    <input type="checkbox" id="show-op">
+    <label for="show-op">Show Op</label>
+  </div>
+  <div style="display:inline-flex;">
+    <input type="checkbox" id="show-cpp">
+    <label for="show-cpp">Show C++ Code</label>
+  </div>
+  <div style="display:inline-flex;">
+    <input type="checkbox" id="show-asm" checked>
+    <label for="show-asm">Show Compiler Output</label>
+  </div>
 </fieldset>
 <fieldset>
   <legend>Filter</legend>
@@ -54,16 +65,16 @@ title: Saturation
 </fieldset>
 <p>Note: You can sort by each column by clicking on the column header.</p>
 <table id="out-table">
-<thead>
-<tr>
-<th class="column-target">Target</th>
-<th class="column-bits">Bits</th>
-<th class="column-op">Op</th>
-<th class="column-sign">Signed</th>
-<th class="column-cpp sorttable_nosort">C++ Code</th>
-<th class="column-asm sorttable_nosort">Compiler Output</th>
-</tr>
-</thead>
+  <thead>
+    <tr>
+      <th class="column-target">Target</th>
+      <th class="column-bits">Bits</th>
+      <th class="column-op">Op</th>
+      <th class="column-sign">Signed</th>
+      <th class="column-cpp sorttable_nosort">C++ Code</th>
+      <th class="column-asm sorttable_nosort">Compiler Output</th>
+    </tr>
+  </thead>
 <tbody>
 
 <tr class='sign-s op-add 4 cpu-x86_64  bits-x4'>
@@ -445,11 +456,14 @@ f (uinteger_t<8> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	addb	%sil, %dil
-	movzbl	%dil, %eax
-	movl	$255, %ecx
-	cmovael	%eax, %ecx
-	movzbl	%cl, %eax
+	pushq	%rbx
+	movl	%edi, %eax
+	addb	%sil, %al
+	sbbb	%bl, %bl
+	orb	%bl, %al
+
+	movzbl	%al, %eax
+	popq	%rbx
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -1032,17 +1046,13 @@ f (sinteger_t<16> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movzwl	%di, %eax
-	addl	%esi, %edi
-	shrl	$15, %eax
-	addl	$32767, %eax                    ## imm = 0x7FFF
-	movl	%eax, %ecx
-	xorl	%esi, %ecx
-	xorl	%edi, %esi
-	notl	%esi
-	orw	%cx, %si
-	cmovsl	%edi, %eax
-	cwtl
+	movl	%edi, %eax
+	shrw	$15, %ax
+	addw	$32767, %ax                     ## imm = 0x7FFF
+	addw	%si, %di
+	cmovow	%ax, %di
+
+	movswl	%di, %eax
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -1070,10 +1080,14 @@ f (uinteger_t<16> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	addw	%si, %di
-	movl	$65535, %eax                    ## imm = 0xFFFF
-	cmovael	%edi, %eax
+	pushq	%rbx
+	movl	%edi, %eax
+	addw	%si, %ax
+	sbbw	%bx, %bx
+	orw	%bx, %ax
+
 	movzwl	%ax, %eax
+	popq	%rbx
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -2242,15 +2256,13 @@ f (sinteger_t<32> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	leal	(%rsi,%rdi), %eax
-	shrl	$31, %edi
-	addl	$2147483647, %edi               ## imm = 0x7FFFFFFF
+	movl	%edi, %eax
 	movl	%edi, %ecx
-	xorl	%esi, %ecx
-	xorl	%eax, %esi
-	notl	%esi
-	orl	%ecx, %esi
-	cmovnsl	%edi, %eax
+	shrl	$31, %ecx
+	addl	$2147483647, %ecx               ## imm = 0x7FFFFFFF
+	addl	%esi, %eax
+	cmovol	%ecx, %eax
+
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -2278,9 +2290,13 @@ f (uinteger_t<32> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	addl	%esi, %edi
-	movl	$-1, %eax
-	cmovael	%edi, %eax
+	pushq	%rbx
+	movl	%edi, %eax
+	addl	%esi, %eax
+	sbbl	%ebx, %ebx
+	orl	%ebx, %eax
+
+	popq	%rbx
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -4727,16 +4743,14 @@ f (sinteger_t<64> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	leaq	(%rsi,%rdi), %rcx
-	shrq	$63, %rdi
-	movabsq	$9223372036854775807, %rax      ## imm = 0x7FFFFFFFFFFFFFFF
-	addq	%rdi, %rax
-	movq	%rax, %rdx
-	xorq	%rsi, %rdx
-	xorq	%rcx, %rsi
-	notq	%rsi
-	orq	%rdx, %rsi
-	cmovsq	%rcx, %rax
+	movq	%rdi, %rax
+	movabsq	$9223372036854775807, %rcx      ## imm = 0x7FFFFFFFFFFFFFFF
+	movq	%rdi, %rdx
+	shrq	$63, %rdx
+	addq	%rcx, %rdx
+	addq	%rsi, %rax
+	cmovoq	%rdx, %rax
+
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -4764,9 +4778,13 @@ f (uinteger_t<64> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	addq	%rsi, %rdi
-	movq	$-1, %rax
-	cmovaeq	%rdi, %rax
+	pushq	%rbx
+	movq	%rdi, %rax
+	addq	%rsi, %rax
+	sbbq	%rbx, %rbx
+	orq	%rbx, %rax
+
+	popq	%rbx
 	popq	%rbp
 	retq
 {% endhighlight %}
