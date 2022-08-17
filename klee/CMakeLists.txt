@@ -63,7 +63,7 @@ function (add_klee_target)
     
   add_library (${bitcode_target} OBJECT ${sources})
   setup_klee_target (${bitcode_target})
-  target_compile_definitions (${bitcode_target} PRIVATE NDEBUG)
+  target_compile_definitions (${bitcode_target} PRIVATE NDEBUG NO_INLINE_ASM)
   target_compile_options (${bitcode_target} PRIVATE -emit-llvm)
 
   # Executable Target

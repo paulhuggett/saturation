@@ -232,6 +232,64 @@ constexpr uinteger_t<N> addu (uinteger_t<N> const x, uinteger_t<N> const y) {
   res |= -((res < x) | (res > maxu));
   return res & maxu;
 }
+
+#ifndef NO_INLINE_ASM
+#if defined(__GNUC__) && defined(__x86_64__)
+template <>
+inline uinteger_t<8> addu<8, std::enable_if_t<true>> (uinteger_t<8> x,
+                                                      uinteger_t<8> y) {
+  __asm__(
+      "add %[y], %[x]\n\t"
+      "sbb %%bl, %%bl\n\t"  // t=t-C where C is the carry from the add.
+      "or %%bl, %[x]\n\t"
+      : [x] "+a"(x)  // output
+      : [y] "r"(y)   // input
+      : "bl"         // clobbers
+  );
+  return x;
+}
+template <>
+inline uinteger_t<16> addu<16, std::enable_if_t<true>> (uinteger_t<16> x,
+                                                        uinteger_t<16> y) {
+  __asm__(
+      "add %[y], %[x]\n\t"
+      "sbb %%bx, %%bx\n\t"
+      "or %%bx, %[x]\n\t"
+      : [x] "+a"(x)  // output
+      : [y] "r"(y)   // input
+      : "bx"         // clobbers
+  );
+  return x;
+}
+template <>
+inline uinteger_t<32> addu<32, std::enable_if_t<true>> (uinteger_t<32> x,
+                                                        uinteger_t<32> y) {
+  __asm__(
+      "add %[y], %[x]\n\t"
+      "sbb %%ebx, %%ebx\n\t"
+      "or %%ebx, %[x]\n\t"
+      : [x] "+a"(x)  // output
+      : [y] "r"(y)   // input
+      : "ebx"        // clobbers
+  );
+  return x;
+}
+template <>
+inline uinteger_t<64> addu<64, std::enable_if_t<true>> (uinteger_t<64> x,
+                                                        uinteger_t<64> y) {
+  __asm__(
+      "add %[y], %[x]\n\t"
+      "sbb %%rbx, %%rbx\n\t"
+      "or %%rbx, %[x]\n\t"
+      : [x] "+a"(x)  // output
+      : [y] "r"(y)   // input
+      : "rbx"        // clobbers
+  );
+  return x;
+}
+#endif  // __GNUC__ && __x86_64__
+#endif  // NO_INLINE_ASM
+
 /// \brief Adds two unsigned 32 bit values.
 ///
 /// Returns \f$ 2^{32}-1 \f$ if the result cannot be represented in 32 bits.
@@ -241,7 +299,7 @@ constexpr uinteger_t<N> addu (uinteger_t<N> const x, uinteger_t<N> const y) {
 /// \result  \p x + \p y or \f$ 2^{32}-1 \f$
 ///   (`std::numeric_limits<uint32_t>::max()`) if the result cannot be
 ///   represented in 32 bits.
-constexpr uint32_t addu32 (uint32_t const x, uint32_t const y) {
+inline uint32_t addu32 (uint32_t const x, uint32_t const y) {
   return addu<32> (x, y);
 }
 /// \brief Adds two unsigned 16 bit values.
@@ -253,7 +311,7 @@ constexpr uint32_t addu32 (uint32_t const x, uint32_t const y) {
 /// \result  \p x + \p y or \f$ 2^{16}-1 \f$
 ///   (`std::numeric_limits<uint16_t>::max()`) if the result cannot be
 ///   represented in 16 bits.
-constexpr uint16_t addu16 (uint16_t const x, uint16_t const y) {
+inline uint16_t addu16 (uint16_t const x, uint16_t const y) {
   return addu<16> (x, y);
 }
 /// \brief Adds two unsigned 8 bit values.
@@ -265,7 +323,7 @@ constexpr uint16_t addu16 (uint16_t const x, uint16_t const y) {
 /// \result  \p x + \p y or \f$ 2^8-1 \f$
 ///   (`std::numeric_limits<uint8_t>::max()`). if the result cannot be
 ///   represented in 8 bits.
-constexpr uint8_t addu8 (uint8_t const x, uint8_t const y) {
+inline uint8_t addu8 (uint8_t const x, uint8_t const y) {
   return addu<8> (x, y);
 }
 /// @}
@@ -597,6 +655,56 @@ constexpr sinteger_t<N> adds (sinteger_t<N> const x, sinteger_t<N> const y) {
   // There was no overflow: return the proper result.
   return sbits{static_cast<sint> (res)};
 }
+
+#ifndef NO_INLINE_ASM
+#if defined(__GNUC__) && defined(__x86_64__)
+template <>
+inline sinteger_t<16> adds<16, std::enable_if_t<true>> (
+    sinteger_t<16> x, sinteger_t<16> const y) {
+  auto t = x;
+  __asm__(
+      "shr $15, %[t]\n\t"
+      "add $0x7fff, %[t]\n\t"
+      "add %[y], %[x]\n\t"
+      "cmovo %[t], %[x]\n\t"
+      : [x] "+r"(x), [t] "+r"(t)  // output
+      : [y] "r"(y)                // input
+  );
+
+  return x;
+}
+template <>
+inline sinteger_t<32> adds<32, std::enable_if_t<true>> (
+    sinteger_t<32> x, sinteger_t<32> const y) {
+  auto t = x;
+  __asm__(
+      "shr $31, %[t]\n\t"
+      "add $0x7fffffff, %[t]\n\t"
+      "add %[y], %[x]\n\t"
+      "cmovo %[t], %[x]\n\t"
+      : [x] "+r"(x), [t] "+r"(t)  // output
+      : [y] "r"(y)                // input
+  );
+  return x;
+}
+template <>
+inline sinteger_t<64> adds<64, std::enable_if_t<true>> (
+    sinteger_t<64> x, sinteger_t<64> const y) {
+  static constexpr auto max = limits<64>::max ();
+  auto t = x;
+  __asm__(
+      "shr $63, %[t]\n\t"
+      "add %[max], %[t]\n\t"
+      "add %[y], %[x]\n\t"
+      "cmovo %[t], %[x]\n\t"
+      : [x] "+r"(x), [t] "+r"(t)    // output
+      : [y] "r"(y), [max] "r"(max)  // input
+  );
+  return x;
+}
+#endif  // __GNUC__ && __x86_64__
+#endif  // NO_INLINE_ASM
+
 /// \brief Adds two signed 32 bit values.
 ///
 /// Returns \f$ 2^{31}-1 \f$ or \f$ -2^{31} \f$ if the result cannot be
@@ -607,7 +715,7 @@ constexpr sinteger_t<N> adds (sinteger_t<N> const x, sinteger_t<N> const y) {
 /// \result  \p x + \p y or \f$ 2^{31}-1 \f$ if the result is positive but
 ///   cannot be represented in 32 bits; \f$ -2{31} \f$ if the result is
 ///   negative but cannot be represented in 32 bits.
-constexpr int32_t adds32 (int32_t const x, int32_t const y) {
+inline int32_t adds32 (int32_t const x, int32_t const y) {
   return adds<32> (x, y);
 }
 /// \brief Adds two signed 16 bit values.
@@ -620,7 +728,7 @@ constexpr int32_t adds32 (int32_t const x, int32_t const y) {
 /// \result  \p x + \p y or \f$ 2^{15}-1 \f$ if the result is positive but
 ///   cannot be represented in 16 bits; \f$ -2{15} \f$ if the result is
 ///   negative but cannot be represented in 16 bits.
-constexpr int16_t adds16 (int16_t const x, int16_t const y) {
+inline int16_t adds16 (int16_t const x, int16_t const y) {
   return adds<16> (x, y);
 }
 /// \brief Adds two signed 8 bit values.
