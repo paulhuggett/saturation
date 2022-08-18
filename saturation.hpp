@@ -274,7 +274,7 @@ inline uinteger_t<N> addu_asm (uinteger_t<N> x, uinteger_t<N> y) {
   uinteger_t<N> t;
   __asm__(
       "add %[y], %[x]\n\t"        // x += y (sets carry C on overflow)
-      "sbb %[t], %[t]\n\t"        // t = t - t + C (t will become 0 or ~0).
+      "sbb %[t], %[t]\n\t"        // t -= t - C (t will become 0 or ~0).
       "or %[t], %[x]\n\t"         // x |= t
       : [x] "+r"(x), [t] "=r"(t)  // output
       : [y] "r"(y)                // input

@@ -351,6 +351,8 @@ protected:
 TEST_F (Saturation32, SignedAdd) {
   EXPECT_EQ (adds32 (0, 0), 0);
   EXPECT_EQ (adds32 (3, 5), 8);
+  EXPECT_EQ (adds32 (min, 1), min + 1);
+  EXPECT_EQ (adds32 (min, -1), min);
   EXPECT_EQ (adds32 (min, min), min);
   EXPECT_EQ (adds32 (max, max), max);
   EXPECT_EQ (adds32 (16777216, 2130706432), max);
@@ -359,6 +361,7 @@ TEST_F (Saturation32, SignedSubtract) {
   EXPECT_EQ (subs32 (0, 0), 0);
   EXPECT_EQ (subs32 (0, 1), -1);
   EXPECT_EQ (subs32 (min, 1), min);
+  EXPECT_EQ (subs32 (min, -1), min + 1);
   EXPECT_EQ (subs32 (0, min), max);
   EXPECT_EQ (subs32 (max, 0), max);
   EXPECT_EQ (subs32 (max, max), 0);
