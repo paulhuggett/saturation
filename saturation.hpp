@@ -171,6 +171,27 @@ struct ulimits {
   static constexpr type min () { return 0U; }
 };
 
+namespace details {
+
+/// Counts the number of set bits in a value. This version is sometimes
+/// preferred to the compiler intrinsic because not all compilers define the
+/// intrinsic as constexpr.
+///
+/// \tparam T  An unsigned integer type.
+/// \param x  A value whose population count is to be returned.
+/// \return  The population count of \p x.
+template <typename T,
+          typename = typename std::enable_if_t<std::is_unsigned_v<T>>>
+constexpr unsigned pop_count (T const x) noexcept {
+  return x == 0U ? 0U : (x & 1U) + pop_count (x >> 1U);
+}
+
+/// Returns true if \p n plausibly matches the number of bits in a target
+/// machine register.
+constexpr bool is_register_width (size_t const n) {
+  return n % 8 == 0 && pop_count (n) == 1U;
+}
+
 /// \brief Holds a value of \p N bits which may be signed or unsigned.
 ///
 /// \tparam N The number of bits that the type should hold.
@@ -201,6 +222,8 @@ public:
 private:
   type x_ : N;
 };
+
+}  // end namespace details
 
 // *******************
 // unsigned arithmetic
@@ -235,57 +258,51 @@ constexpr uinteger_t<N> addu (uinteger_t<N> const x, uinteger_t<N> const y) {
 
 #ifndef NO_INLINE_ASM
 #if defined(__GNUC__) && defined(__x86_64__)
-template <>
-inline uinteger_t<8> addu<8, std::enable_if_t<true>> (uinteger_t<8> x,
-                                                      uinteger_t<8> y) {
+namespace details {
+
+/// An x86-only implementation of saturating unsigned add which is suitable for
+/// register-sized values of \p N.
+///
+/// \tparam N  The number of bits for the unsigned arguments and result. Must be
+///   plausibly the size of a target processor register.
+/// \param x  The first of the two unsigned values to be added.
+/// \param y  The second of the two unsigned values to be added.
+/// \result  \p x + \p y or \f$ 2^N-1 \f$ if the result cannot be represented
+///   in \p N bits.
+template <size_t N, typename = typename std::enable_if_t<is_register_width (N)>>
+inline uinteger_t<N> addu_asm (uinteger_t<N> x, uinteger_t<N> y) {
+  uinteger_t<N> t;
   __asm__(
-      "add %[y], %[x]\n\t"
-      "sbb %%bl, %%bl\n\t"  // t=t-C where C is the carry from the add.
-      "or %%bl, %[x]\n\t"
-      : [x] "+a"(x)  // output
-      : [y] "r"(y)   // input
-      : "bl"         // clobbers
+      "add %[y], %[x]\n\t"        // x += y (sets carry C on overflow)
+      "sbb %[t], %[t]\n\t"        // t = t - t + C (t will become 0 or ~0).
+      "or %[t], %[x]\n\t"         // x |= t
+      : [x] "+r"(x), [t] "=r"(t)  // output
+      : [y] "r"(y)                // input
   );
   return x;
 }
+
+}  // end namespace details
+
 template <>
-inline uinteger_t<16> addu<16, std::enable_if_t<true>> (uinteger_t<16> x,
-                                                        uinteger_t<16> y) {
-  __asm__(
-      "add %[y], %[x]\n\t"
-      "sbb %%bx, %%bx\n\t"
-      "or %%bx, %[x]\n\t"
-      : [x] "+a"(x)  // output
-      : [y] "r"(y)   // input
-      : "bx"         // clobbers
-  );
-  return x;
+inline uinteger_t<8> addu<8, std::enable_if_t<true>> (uinteger_t<8> const x,
+                                                      uinteger_t<8> const y) {
+  return details::addu_asm<8> (x, y);
 }
 template <>
-inline uinteger_t<32> addu<32, std::enable_if_t<true>> (uinteger_t<32> x,
-                                                        uinteger_t<32> y) {
-  __asm__(
-      "add %[y], %[x]\n\t"
-      "sbb %%ebx, %%ebx\n\t"
-      "or %%ebx, %[x]\n\t"
-      : [x] "+a"(x)  // output
-      : [y] "r"(y)   // input
-      : "ebx"        // clobbers
-  );
-  return x;
+inline uinteger_t<16> addu<16, std::enable_if_t<true>> (
+    uinteger_t<16> const x, uinteger_t<16> const y) {
+  return details::addu_asm<16> (x, y);
 }
 template <>
-inline uinteger_t<64> addu<64, std::enable_if_t<true>> (uinteger_t<64> x,
-                                                        uinteger_t<64> y) {
-  __asm__(
-      "add %[y], %[x]\n\t"
-      "sbb %%rbx, %%rbx\n\t"
-      "or %%rbx, %[x]\n\t"
-      : [x] "+a"(x)  // output
-      : [y] "r"(y)   // input
-      : "rbx"        // clobbers
-  );
-  return x;
+inline uinteger_t<32> addu<32, std::enable_if_t<true>> (
+    uinteger_t<32> const x, uinteger_t<32> const y) {
+  return details::addu_asm<32> (x, y);
+}
+template <>
+inline uinteger_t<64> addu<64, std::enable_if_t<true>> (
+    uinteger_t<64> const x, uinteger_t<64> const y) {
+  return details::addu_asm<64> (x, y);
 }
 #endif  // __GNUC__ && __x86_64__
 #endif  // NO_INLINE_ASM
@@ -634,8 +651,8 @@ constexpr sinteger_t<N> adds (sinteger_t<N> const x, sinteger_t<N> const y) {
           "adds<> y value out of range");
   using uint = uinteger_t<N>;
   using sint = sinteger_t<N>;
-  using ubits = nbit_scalar<N, true>;
-  using sbits = nbit_scalar<N, false>;
+  using ubits = details::nbit_scalar<N, true>;
+  using sbits = details::nbit_scalar<N, false>;
   // unsigned versions of x and y.
   auto const ux = ubits{static_cast<uint> (x)};
   auto const uy = ubits{static_cast<uint> (y)};
@@ -658,49 +675,49 @@ constexpr sinteger_t<N> adds (sinteger_t<N> const x, sinteger_t<N> const y) {
 
 #ifndef NO_INLINE_ASM
 #if defined(__GNUC__) && defined(__x86_64__)
-template <>
-inline sinteger_t<16> adds<16, std::enable_if_t<true>> (
-    sinteger_t<16> x, sinteger_t<16> const y) {
-  auto t = x;
-  __asm__(
-      "shr $15, %[t]\n\t"
-      "add $0x7fff, %[t]\n\t"
-      "add %[y], %[x]\n\t"
-      "cmovo %[t], %[x]\n\t"
-      : [x] "+r"(x), [t] "+r"(t)  // output
-      : [y] "r"(y)                // input
-  );
+namespace details {
 
-  return x;
-}
-template <>
-inline sinteger_t<32> adds<32, std::enable_if_t<true>> (
-    sinteger_t<32> x, sinteger_t<32> const y) {
+/// An x86-only implementation of saturating signed add which is suitable for
+/// register-sized values of \p N.
+///
+/// \tparam N  The number of bits for the unsigned arguments and result. May
+///   be in the range \f$ [4, 64] \f$.
+/// \param x  The first of the two values to be added.
+/// \param y  The second of the two values to be added.
+/// \result  \p x + \p y or \f$ 2^{N-1}-1 \f$ if the result is positive but
+///   cannot be represented in \p N bits; \f$ -2{N-1} \f$ if the result is
+///   negative but cannot be represented in \p N bits.
+template <size_t N, typename = typename std::enable_if_t<is_register_width (N)>>
+inline sinteger_t<N> adds_asm (sinteger_t<N> x, sinteger_t<N> y) {
+  static constexpr auto max = limits<N>::max ();
   auto t = x;
   __asm__(
-      "shr $31, %[t]\n\t"
-      "add $0x7fffffff, %[t]\n\t"
-      "add %[y], %[x]\n\t"
-      "cmovo %[t], %[x]\n\t"
-      : [x] "+r"(x), [t] "+r"(t)  // output
-      : [y] "r"(y)                // input
-  );
-  return x;
-}
-template <>
-inline sinteger_t<64> adds<64, std::enable_if_t<true>> (
-    sinteger_t<64> x, sinteger_t<64> const y) {
-  static constexpr auto max = limits<64>::max ();
-  auto t = x;
-  __asm__(
-      "shr $63, %[t]\n\t"
+      "shr %[shift], %[t]\n\t"
       "add %[max], %[t]\n\t"
       "add %[y], %[x]\n\t"
       "cmovo %[t], %[x]\n\t"
-      : [x] "+r"(x), [t] "+r"(t)    // output
-      : [y] "r"(y), [max] "r"(max)  // input
+      : [x] "+r"(x), [t] "+r"(t)                         // output
+      : [y] "r"(y), [max] "r"(max), [shift] "i"(N - 1U)  // input
   );
   return x;
+}
+
+}  // end namespace details
+
+template <>
+inline sinteger_t<16> adds<16, std::enable_if_t<true>> (
+    sinteger_t<16> const x, sinteger_t<16> const y) {
+  return details::adds_asm<16> (x, y);
+}
+template <>
+inline sinteger_t<32> adds<32, std::enable_if_t<true>> (
+    sinteger_t<32> const x, sinteger_t<32> const y) {
+  return details::adds_asm<32> (x, y);
+}
+template <>
+inline sinteger_t<64> adds<64, std::enable_if_t<true>> (
+    sinteger_t<64> const x, sinteger_t<64> const y) {
+  return details::adds_asm<64> (x, y);
 }
 #endif  // __GNUC__ && __x86_64__
 #endif  // NO_INLINE_ASM
@@ -774,8 +791,8 @@ constexpr sinteger_t<N> subs (sinteger_t<N> const x, sinteger_t<N> const y) {
           "subs<> y value out of range");
   using uint = uinteger_t<N>;
   using sint = sinteger_t<N>;
-  using ubits = nbit_scalar<N, true>;
-  using sbits = nbit_scalar<N, false>;
+  using ubits = details::nbit_scalar<N, true>;
+  using sbits = details::nbit_scalar<N, false>;
 
   // unsigned versions of x and y.
   auto const ux = ubits{static_cast<uint> (x)};
@@ -866,7 +883,7 @@ constexpr sinteger_t<N> divs (sinteger_t<N> const x, sinteger_t<N> const y) {
   assert (y >= limits<N>::min () && y <= limits<N>::max () &&
           "divs<> y value out of range");
   using uint = uinteger_t<N>;
-  using ubits = nbit_scalar<N, true>;
+  using ubits = details::nbit_scalar<N, true>;
   return (x +
           !(ubits{static_cast<uint> (y + 1)} |
             ubits{static_cast<uint> (static_cast<uint> (x) +
@@ -941,12 +958,12 @@ constexpr sinteger_t<N> muls (sinteger_t<N> const x, sinteger_t<N> const y) {
   assert (y >= limits<N>::min () && y <= limits<N>::max () &&
           "muls<> y value out of range");
 
-  using sbits = nbit_scalar<N, false>;
+  using sbits = details::nbit_scalar<N, false>;
   using sint = typename sbits::type;
 
   auto const [hi, lo] = details::multiplier<N, false>{}(x, y);
   if (hi != lo >> (N - 1)) {
-    using ubits = nbit_scalar<N, true>;
+    using ubits = details::nbit_scalar<N, true>;
     using uint = typename ubits::type;
 
     auto const v = sbits{static_cast<sint> (ubits{static_cast<uint> (
