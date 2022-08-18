@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['operator_20type_0',['operator type',['../classsaturation_1_1nbit__scalar.html#abf9a8d537ece1e2282c67cbf53c84903',1,'saturation::nbit_scalar']]],
-  ['operator_3d_1',['operator=',['../classsaturation_1_1nbit__scalar.html#ae539bb961a544346658efa813b448553',1,'saturation::nbit_scalar::operator=(type const x)'],['../classsaturation_1_1nbit__scalar.html#a758917b4a97322428ac470e13fd819f5',1,'saturation::nbit_scalar::operator=(nbit_scalar const &amp;)=default']]]
+  ['nbit_5fscalar_0',['nbit_scalar',['../classsaturation_1_1details_1_1nbit__scalar.html#a8f41f4c0f33c2b3f72bc05df6a298c3d',1,'saturation::details::nbit_scalar::nbit_scalar(type const x)'],['../classsaturation_1_1details_1_1nbit__scalar.html#a0ebec2a096b9f1839ece4dc8d4b373ce',1,'saturation::details::nbit_scalar::nbit_scalar(nbit_scalar const &amp;)=default'],['../classsaturation_1_1details_1_1nbit__scalar.html',1,'saturation::details::nbit_scalar&lt; N, IsUnsigned &gt;']]]
 ];

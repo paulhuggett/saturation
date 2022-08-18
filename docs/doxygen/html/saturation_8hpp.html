@@ -71,7 +71,9 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">saturation.hpp File Reference</div></div>
 </div><!--header-->
@@ -80,10 +82,12 @@ $(function() {
 <p>A collection of functions which provide saturating arithmetic (addition, subtraction, multiplication, and division) for signed and unsigned integer types.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cassert&gt;</code><br />
+<code>#include &lt;climits&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;cstdlib&gt;</code><br />
 <code>#include &lt;limits&gt;</code><br />
 <code>#include &lt;type_traits&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
 </div>
 <p><a href="saturation_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -93,31 +97,37 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields the smallest signed integral type with at least <code>N</code> bits.  <a href="structsaturation_1_1sinteger.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1sinteger_3_018_01_4.html">saturation::sinteger&lt; 8 &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields a signed integral type of 8 bits.  <a href="structsaturation_1_1sinteger_3_018_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields a signed integral type of 8 bits or more.  <a href="structsaturation_1_1sinteger_3_018_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1sinteger_3_0116_01_4.html">saturation::sinteger&lt; 16 &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields a signed integral type of 16 bits.  <a href="structsaturation_1_1sinteger_3_0116_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields a signed integral type of 16 bits or more.  <a href="structsaturation_1_1sinteger_3_0116_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1sinteger_3_0132_01_4.html">saturation::sinteger&lt; 32 &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields a signed integral type of 32 bits.  <a href="structsaturation_1_1sinteger_3_0132_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields a signed integral type of 32 bits or more.  <a href="structsaturation_1_1sinteger_3_0132_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1sinteger_3_0164_01_4.html">saturation::sinteger&lt; 64 &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields a signed integral type of 64 bits.  <a href="structsaturation_1_1sinteger_3_0164_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields a signed integral type of 64 bits or more.  <a href="structsaturation_1_1sinteger_3_0164_01_4.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1sinteger_3_01128_01_4.html">saturation::sinteger&lt; 128 &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields no type when the compiler does not support 128 bit integers.  <a href="structsaturation_1_1sinteger_3_01128_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1uinteger.html">saturation::uinteger&lt; N, typename &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields the smallest unsigned integral type with at least <code>N</code> bits.  <a href="structsaturation_1_1uinteger.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1uinteger_3_018_01_4.html">saturation::uinteger&lt; 8 &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields an unsigned integral type of 8 bits.  <a href="structsaturation_1_1uinteger_3_018_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields an unsigned integral type of 8 bits or more.  <a href="structsaturation_1_1uinteger_3_018_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1uinteger_3_0116_01_4.html">saturation::uinteger&lt; 16 &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields an unsigned integral type of 16 bits.  <a href="structsaturation_1_1uinteger_3_0116_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields an unsigned integral type of 16 bits or more.  <a href="structsaturation_1_1uinteger_3_0116_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1uinteger_3_0132_01_4.html">saturation::uinteger&lt; 32 &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields an unsigned integral type of 32 bits.  <a href="structsaturation_1_1uinteger_3_0132_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields an unsigned integral type of 32 bits or more.  <a href="structsaturation_1_1uinteger_3_0132_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1uinteger_3_0164_01_4.html">saturation::uinteger&lt; 64 &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields an unsigned integral type of 64 bits.  <a href="structsaturation_1_1uinteger_3_0164_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields an unsigned integral type of 64 bits or more.  <a href="structsaturation_1_1uinteger_3_0164_01_4.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1uinteger_3_01128_01_4.html">saturation::uinteger&lt; 128 &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields no type when the compiler does not support 128 bit integers.  <a href="structsaturation_1_1uinteger_3_01128_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1mask.html">saturation::mask&lt; N, typename &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equivalent to (T{1}&lt;&lt;N)-T{1} where T is an unsigned integral type.  <a href="structsaturation_1_1mask.html#details">More...</a><br /></td></tr>
@@ -131,9 +141,17 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1ulimits.html">saturation::ulimits&lt; N &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a way to query the maximum and minimum values that an unsigned integer type of width <code>N</code> can hold.  <a href="structsaturation_1_1ulimits.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsaturation_1_1nbit__scalar.html">saturation::nbit_scalar&lt; N, IsUnsigned &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds a value of <code>N</code> bits which may be signed or unsigned.  <a href="classsaturation_1_1nbit__scalar.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsaturation_1_1details_1_1nbit__scalar.html">saturation::details::nbit_scalar&lt; N, IsUnsigned &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds a value of <code>N</code> bits which may be signed or unsigned.  <a href="classsaturation_1_1details_1_1nbit__scalar.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1details_1_1multiplier.html">saturation::details::multiplier&lt; N, IsUnsigned &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aa23e51f9faef750c6ac3da5a6ecc4c9a"><td class="memItemLeft" align="right" valign="top"><a id="aa23e51f9faef750c6ac3da5a6ecc4c9a" name="aa23e51f9faef750c6ac3da5a6ecc4c9a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HAVE_INT128</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:aa23e51f9faef750c6ac3da5a6ecc4c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -150,6 +168,15 @@ template&lt;size_t N&gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:acaf663943d4f2e7336618547e6a075c1"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = typename std::enable_if_t&lt;std::is_unsigned_v&lt;T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:acaf663943d4f2e7336618547e6a075c1"><td class="memTemplItemLeft" align="right" valign="top">constexpr unsigned&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#acaf663943d4f2e7336618547e6a075c1">saturation::details::pop_count</a> (T const x) noexcept</td></tr>
+<tr class="separator:acaf663943d4f2e7336618547e6a075c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a661ac7ac63cd6d873a306e1da34524"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a7a661ac7ac63cd6d873a306e1da34524">saturation::details::is_register_width</a> (size_t const n)</td></tr>
+<tr class="separator:a7a661ac7ac63cd6d873a306e1da34524"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5f2bfe9df27fe8047c3eedfc5403d33"><td class="memTemplParams" colspan="2"><a id="ae5f2bfe9df27fe8047c3eedfc5403d33" name="ae5f2bfe9df27fe8047c3eedfc5403d33"></a>
+template&lt;typename T , typename  = typename std::enable_if_t&lt;std::is_integral_v&lt;T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:ae5f2bfe9df27fe8047c3eedfc5403d33"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::pair&lt; T, T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>saturation::details::multiply</b> (T const u, T const v)</td></tr>
+<tr class="separator:ae5f2bfe9df27fe8047c3eedfc5403d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Unsigned Addition</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating addition of unsigned integral quantities from 4 to 64 bits. </p>
 </div></td></tr>
@@ -157,15 +184,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a3679bc95b3ff1b910027aecdbc786fdc"><td class="memTemplItemLeft" align="right" valign="top">constexpr uinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a3679bc95b3ff1b910027aecdbc786fdc">saturation::addu</a> (uinteger_t&lt; N &gt; const x, uinteger_t&lt; N &gt; const y)</td></tr>
 <tr class="memdesc:a3679bc95b3ff1b910027aecdbc786fdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned values each <code>N</code> bits wide.  <a href="saturation_8hpp.html#a3679bc95b3ff1b910027aecdbc786fdc">More...</a><br /></td></tr>
 <tr class="separator:a3679bc95b3ff1b910027aecdbc786fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2edb59acff23537f60d203db87f49e22"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a2edb59acff23537f60d203db87f49e22">saturation::addu32</a> (uint32_t const x, uint32_t const y)</td></tr>
-<tr class="memdesc:a2edb59acff23537f60d203db87f49e22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned 32 bit values.  <a href="saturation_8hpp.html#a2edb59acff23537f60d203db87f49e22">More...</a><br /></td></tr>
-<tr class="separator:a2edb59acff23537f60d203db87f49e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6bdf02a502d211a8f2187f509bbcf98"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ac6bdf02a502d211a8f2187f509bbcf98">saturation::addu16</a> (uint16_t const x, uint16_t const y)</td></tr>
-<tr class="memdesc:ac6bdf02a502d211a8f2187f509bbcf98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned 16 bit values.  <a href="saturation_8hpp.html#ac6bdf02a502d211a8f2187f509bbcf98">More...</a><br /></td></tr>
-<tr class="separator:ac6bdf02a502d211a8f2187f509bbcf98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3d2a1f2a949d740acf9076485c70a29"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#af3d2a1f2a949d740acf9076485c70a29">saturation::addu8</a> (uint8_t const x, uint8_t const y)</td></tr>
-<tr class="memdesc:af3d2a1f2a949d740acf9076485c70a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned 8 bit values.  <a href="saturation_8hpp.html#af3d2a1f2a949d740acf9076485c70a29">More...</a><br /></td></tr>
-<tr class="separator:af3d2a1f2a949d740acf9076485c70a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab61c3e15c060fd3b77bfcf3613f0cfc4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ab61c3e15c060fd3b77bfcf3613f0cfc4">saturation::addu32</a> (uint32_t const x, uint32_t const y)</td></tr>
+<tr class="memdesc:ab61c3e15c060fd3b77bfcf3613f0cfc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned 32 bit values.  <a href="saturation_8hpp.html#ab61c3e15c060fd3b77bfcf3613f0cfc4">More...</a><br /></td></tr>
+<tr class="separator:ab61c3e15c060fd3b77bfcf3613f0cfc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac56e96c2c069716c31864af8c9a72d3b"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ac56e96c2c069716c31864af8c9a72d3b">saturation::addu16</a> (uint16_t const x, uint16_t const y)</td></tr>
+<tr class="memdesc:ac56e96c2c069716c31864af8c9a72d3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned 16 bit values.  <a href="saturation_8hpp.html#ac56e96c2c069716c31864af8c9a72d3b">More...</a><br /></td></tr>
+<tr class="separator:ac56e96c2c069716c31864af8c9a72d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04881d1c98a9bd523e7d76ef04f42300"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a04881d1c98a9bd523e7d76ef04f42300">saturation::addu8</a> (uint8_t const x, uint8_t const y)</td></tr>
+<tr class="memdesc:a04881d1c98a9bd523e7d76ef04f42300"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two unsigned 8 bit values.  <a href="saturation_8hpp.html#a04881d1c98a9bd523e7d76ef04f42300">More...</a><br /></td></tr>
+<tr class="separator:a04881d1c98a9bd523e7d76ef04f42300"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Unsigned Subtraction</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating subtraction of unsigned integral quantities from 4 to 64 bits. </p>
 </div></td></tr>
@@ -198,9 +225,9 @@ Functions</h2></td></tr>
 <tr class="memdesc:aab65049549d121c66491f57558679150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the unsigned result of <code>x</code> / <code>y</code>.  <a href="saturation_8hpp.html#aab65049549d121c66491f57558679150">More...</a><br /></td></tr>
 <tr class="separator:aab65049549d121c66491f57558679150"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Unsigned Multiplication</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating multiplication of unsigned integral quantities from 4 to 32 bits. </p>
+<tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating multiplication of unsigned integral quantities from 4 to 64 bits. </p>
 </div></td></tr>
-<tr class="memitem:ae8ee4b4520de406361fb5149cba9e48e"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 32)&gt;&gt; </td></tr>
+<tr class="memitem:ae8ee4b4520de406361fb5149cba9e48e"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
 <tr class="memitem:ae8ee4b4520de406361fb5149cba9e48e"><td class="memTemplItemLeft" align="right" valign="top">constexpr uinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ae8ee4b4520de406361fb5149cba9e48e">saturation::mulu</a> (uinteger_t&lt; N &gt; const x, uinteger_t&lt; N &gt; const y)</td></tr>
 <tr class="memdesc:ae8ee4b4520de406361fb5149cba9e48e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the value of <code>x</code> &times; <code>y</code>.  <a href="saturation_8hpp.html#ae8ee4b4520de406361fb5149cba9e48e">More...</a><br /></td></tr>
 <tr class="separator:ae8ee4b4520de406361fb5149cba9e48e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -220,12 +247,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a5b51c37abde06fbcaeadc24041dc3640"><td class="memTemplItemLeft" align="right" valign="top">constexpr sinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a5b51c37abde06fbcaeadc24041dc3640">saturation::adds</a> (sinteger_t&lt; N &gt; const x, sinteger_t&lt; N &gt; const y)</td></tr>
 <tr class="memdesc:a5b51c37abde06fbcaeadc24041dc3640"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed values each <code>N</code> bits wide.  <a href="saturation_8hpp.html#a5b51c37abde06fbcaeadc24041dc3640">More...</a><br /></td></tr>
 <tr class="separator:a5b51c37abde06fbcaeadc24041dc3640"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58b632592b3c743780b19bdbc3d20000"><td class="memItemLeft" align="right" valign="top">constexpr int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a58b632592b3c743780b19bdbc3d20000">saturation::adds32</a> (int32_t const x, int32_t const y)</td></tr>
-<tr class="memdesc:a58b632592b3c743780b19bdbc3d20000"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed 32 bit values.  <a href="saturation_8hpp.html#a58b632592b3c743780b19bdbc3d20000">More...</a><br /></td></tr>
-<tr class="separator:a58b632592b3c743780b19bdbc3d20000"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4239169a29842e126180788f0edb165"><td class="memItemLeft" align="right" valign="top">constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ab4239169a29842e126180788f0edb165">saturation::adds16</a> (int16_t const x, int16_t const y)</td></tr>
-<tr class="memdesc:ab4239169a29842e126180788f0edb165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed 16 bit values.  <a href="saturation_8hpp.html#ab4239169a29842e126180788f0edb165">More...</a><br /></td></tr>
-<tr class="separator:ab4239169a29842e126180788f0edb165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae08718a5cb06020e6e101274e8e5b116"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#ae08718a5cb06020e6e101274e8e5b116">saturation::adds32</a> (int32_t const x, int32_t const y)</td></tr>
+<tr class="memdesc:ae08718a5cb06020e6e101274e8e5b116"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed 32 bit values.  <a href="saturation_8hpp.html#ae08718a5cb06020e6e101274e8e5b116">More...</a><br /></td></tr>
+<tr class="separator:ae08718a5cb06020e6e101274e8e5b116"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1facea21560e571012446dcdcd7abb36"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a1facea21560e571012446dcdcd7abb36">saturation::adds16</a> (int16_t const x, int16_t const y)</td></tr>
+<tr class="memdesc:a1facea21560e571012446dcdcd7abb36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed 16 bit values.  <a href="saturation_8hpp.html#a1facea21560e571012446dcdcd7abb36">More...</a><br /></td></tr>
+<tr class="separator:a1facea21560e571012446dcdcd7abb36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b82d56fdb2f5f069be97276e997b277"><td class="memItemLeft" align="right" valign="top">constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a2b82d56fdb2f5f069be97276e997b277">saturation::adds8</a> (int8_t const x, int8_t const y)</td></tr>
 <tr class="memdesc:a2b82d56fdb2f5f069be97276e997b277"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two signed 8 bit values.  <a href="saturation_8hpp.html#a2b82d56fdb2f5f069be97276e997b277">More...</a><br /></td></tr>
 <tr class="separator:a2b82d56fdb2f5f069be97276e997b277"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -262,9 +289,9 @@ Functions</h2></td></tr>
 <tr class="memdesc:a27eea6afc962651b475458a8c28082b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 8 bit signed result of <code>x</code> / <code>y</code>.  <a href="saturation_8hpp.html#a27eea6afc962651b475458a8c28082b1">More...</a><br /></td></tr>
 <tr class="separator:a27eea6afc962651b475458a8c28082b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Signed Multiplication</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating multiplication of signed integral quantities from 4 to 32 bits. </p>
+<tr><td colspan="2"><div class="groupText"><p >Functions that perform saturating multiplication of signed integral quantities from 4 to 64 bits. </p>
 </div></td></tr>
-<tr class="memitem:a27552aac61d63ad3e86613c11e67038e"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 32)&gt;&gt; </td></tr>
+<tr class="memitem:a27552aac61d63ad3e86613c11e67038e"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </td></tr>
 <tr class="memitem:a27552aac61d63ad3e86613c11e67038e"><td class="memTemplItemLeft" align="right" valign="top">constexpr sinteger_t&lt; N &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="saturation_8hpp.html#a27552aac61d63ad3e86613c11e67038e">saturation::muls</a> (sinteger_t&lt; N &gt; const x, sinteger_t&lt; N &gt; const y)</td></tr>
 <tr class="memdesc:a27552aac61d63ad3e86613c11e67038e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the signed result of multiplying <code>x</code> by <code>y</code>.  <a href="saturation_8hpp.html#a27552aac61d63ad3e86613c11e67038e">More...</a><br /></td></tr>
 <tr class="separator:a27552aac61d63ad3e86613c11e67038e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -288,7 +315,7 @@ template&lt;size_t N&gt; </td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A collection of functions which provide saturating arithmetic (addition, subtraction, multiplication, and division) for signed and unsigned integer types. </p>
-<p >Types can range from 4 to 64 bits for addition, subtraction, and division, and from 4 to 32 bits for multiplication. Operations using integers of width matching target registers are likely to be branchless. </p>
+<p >Types can range from 4 to 64 bits. Operations using integers of width matching target registers are likely to be branchless. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a5b51c37abde06fbcaeadc24041dc3640" name="a5b51c37abde06fbcaeadc24041dc3640"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b51c37abde06fbcaeadc24041dc3640">&#9670;&nbsp;</a></span>adds()</h2>
@@ -345,8 +372,8 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
 
 </div>
 </div>
-<a id="ab4239169a29842e126180788f0edb165" name="ab4239169a29842e126180788f0edb165"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4239169a29842e126180788f0edb165">&#9670;&nbsp;</a></span>adds16()</h2>
+<a id="a1facea21560e571012446dcdcd7abb36" name="a1facea21560e571012446dcdcd7abb36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1facea21560e571012446dcdcd7abb36">&#9670;&nbsp;</a></span>adds16()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -355,7 +382,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr int16_t saturation::adds16 </td>
+          <td class="memname">int16_t saturation::adds16 </td>
           <td>(</td>
           <td class="paramtype">int16_t const&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -374,7 +401,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -392,8 +419,8 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
 
 </div>
 </div>
-<a id="a58b632592b3c743780b19bdbc3d20000" name="a58b632592b3c743780b19bdbc3d20000"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58b632592b3c743780b19bdbc3d20000">&#9670;&nbsp;</a></span>adds32()</h2>
+<a id="ae08718a5cb06020e6e101274e8e5b116" name="ae08718a5cb06020e6e101274e8e5b116"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae08718a5cb06020e6e101274e8e5b116">&#9670;&nbsp;</a></span>adds32()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -402,7 +429,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr int32_t saturation::adds32 </td>
+          <td class="memname">int32_t saturation::adds32 </td>
           <td>(</td>
           <td class="paramtype">int32_t const&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -421,7 +448,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -541,8 +568,8 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
 
 </div>
 </div>
-<a id="ac6bdf02a502d211a8f2187f509bbcf98" name="ac6bdf02a502d211a8f2187f509bbcf98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6bdf02a502d211a8f2187f509bbcf98">&#9670;&nbsp;</a></span>addu16()</h2>
+<a id="ac56e96c2c069716c31864af8c9a72d3b" name="ac56e96c2c069716c31864af8c9a72d3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac56e96c2c069716c31864af8c9a72d3b">&#9670;&nbsp;</a></span>addu16()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -551,7 +578,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint16_t saturation::addu16 </td>
+          <td class="memname">uint16_t saturation::addu16 </td>
           <td>(</td>
           <td class="paramtype">uint16_t const&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -570,7 +597,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -588,8 +615,8 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
 
 </div>
 </div>
-<a id="a2edb59acff23537f60d203db87f49e22" name="a2edb59acff23537f60d203db87f49e22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2edb59acff23537f60d203db87f49e22">&#9670;&nbsp;</a></span>addu32()</h2>
+<a id="ab61c3e15c060fd3b77bfcf3613f0cfc4" name="ab61c3e15c060fd3b77bfcf3613f0cfc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab61c3e15c060fd3b77bfcf3613f0cfc4">&#9670;&nbsp;</a></span>addu32()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -598,7 +625,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint32_t saturation::addu32 </td>
+          <td class="memname">uint32_t saturation::addu32 </td>
           <td>(</td>
           <td class="paramtype">uint32_t const&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -617,7 +644,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -635,8 +662,8 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
 
 </div>
 </div>
-<a id="af3d2a1f2a949d740acf9076485c70a29" name="af3d2a1f2a949d740acf9076485c70a29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3d2a1f2a949d740acf9076485c70a29">&#9670;&nbsp;</a></span>addu8()</h2>
+<a id="a04881d1c98a9bd523e7d76ef04f42300" name="a04881d1c98a9bd523e7d76ef04f42300"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04881d1c98a9bd523e7d76ef04f42300">&#9670;&nbsp;</a></span>addu8()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -645,7 +672,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t saturation::addu8 </td>
+          <td class="memname">uint8_t saturation::addu8 </td>
           <td>(</td>
           <td class="paramtype">uint8_t const&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -664,7 +691,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1074,13 +1101,40 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
 
 </div>
 </div>
+<a id="a7a661ac7ac63cd6d873a306e1da34524" name="a7a661ac7ac63cd6d873a306e1da34524"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a661ac7ac63cd6d873a306e1da34524">&#9670;&nbsp;</a></span>is_register_width()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool saturation::details::is_register_width </td>
+          <td>(</td>
+          <td class="paramtype">size_t const&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Returns true if <code>n</code> plausibly matches the number of bits in a target machine register. </p>
+
+</div>
+</div>
 <a id="a27552aac61d63ad3e86613c11e67038e" name="a27552aac61d63ad3e86613c11e67038e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27552aac61d63ad3e86613c11e67038e">&#9670;&nbsp;</a></span>muls()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 32)&gt;&gt; </div>
+template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1272,7 +1326,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 32)&gt;&gt; </div>
+template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&amp; N &lt;= 64)&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1459,6 +1513,48 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large, \( 2^{8}-1 \) (<code>std::numeric_limits&lt;uint8_t&gt;::max()</code>). </dd></dl>
+
+</div>
+</div>
+<a id="acaf663943d4f2e7336618547e6a075c1" name="acaf663943d4f2e7336618547e6a075c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaf663943d4f2e7336618547e6a075c1">&#9670;&nbsp;</a></span>pop_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename  = typename std::enable_if_t&lt;std::is_unsigned_v&lt;T&gt;&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned saturation::details::pop_count </td>
+          <td>(</td>
+          <td class="paramtype">T const&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Counts the number of set bits in a value. This version is sometimes preferred to the compiler intrinsic because not all compilers define the intrinsic as constexpr.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>An unsigned integer type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>A value whose population count is to be returned. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The population count of <code>x</code>. </dd></dl>
 
 </div>
 </div>
