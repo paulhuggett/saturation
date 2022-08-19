@@ -470,6 +470,14 @@ constexpr uint8_t divu8 (uint8_t const x, uint8_t const y) {
 
 namespace details {
 
+/// Multiplies two values in cases where the result type is too large for the
+/// target.
+///
+/// \tparam T  An integral type.
+/// \param u  The first of the two values to be multiplied.
+/// \param v  The second of the two values to be multiplied.
+/// \return  A pair consisting of the high and low-order parts respectively
+///   of the result of multiplying \p u and \p v.
 template <typename T,
           typename = typename std::enable_if_t<std::is_integral_v<T>>>
 constexpr std::pair<T, T> multiply (T const u, T const v) {
@@ -503,10 +511,19 @@ constexpr std::pair<T, T> multiply (T const u, T const v) {
   return std::make_pair (hi, lo);
 }
 
+/// \tparam N The number of bits that the type should hold.
+/// \tparam IsUnsigned  True if the value is unsigned; false otherwise.
 template <size_t N, bool IsUnsigned>
 struct multiplier {
+  /// The type being multiplied.
   using arg_type = std::conditional_t<IsUnsigned, uinteger_t<N>, sinteger_t<N>>;
 
+  /// Multiplies the arguments \p x and \p y returning the result.
+  ///
+  /// \param x  The first of the two values to be multiplied.
+  /// \param y  The second of the two values to be multiplied.
+  /// \return  A pair consisting of the high and low-order parts respectively
+  ///   of the result of multiplying \p x and \p y.
   constexpr std::pair<arg_type, arg_type> operator() (arg_type const x,
                                                       arg_type const y) const {
     if constexpr (N <= narrow_multiply_max) {

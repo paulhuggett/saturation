@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sinteger_5ft_0',['sinteger_t',['../saturation_8hpp.html#a15483fcb0b3f2248d8d858163ab505aa',1,'saturation']]]
+  ['arg_5ftype_0',['arg_type',['../structsaturation_1_1details_1_1multiplier.html#a8aa5f29ccb2968d2d3fe3f7788357786',1,'saturation::details::multiplier']]]
 ];

@@ -80,19 +80,78 @@ $(function() {
   <div class="headertitle"><div class="title">saturation::details::multiplier&lt; N, IsUnsigned &gt; Struct Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="saturation_8hpp_source.html">saturation.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a8aa5f29ccb2968d2d3fe3f7788357786"><td class="memItemLeft" align="right" valign="top"><a id="a8aa5f29ccb2968d2d3fe3f7788357786" name="a8aa5f29ccb2968d2d3fe3f7788357786"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>arg_type</b> = std::conditional_t&lt; IsUnsigned, <a class="el" href="saturation_8hpp.html#a9b1646f9c84af944a40963d416567a34">uinteger_t</a>&lt; N &gt;, <a class="el" href="saturation_8hpp.html#a15483fcb0b3f2248d8d858163ab505aa">sinteger_t</a>&lt; N &gt; &gt;</td></tr>
+<tr class="memdesc:a8aa5f29ccb2968d2d3fe3f7788357786"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type being multiplied. <br /></td></tr>
 <tr class="separator:a8aa5f29ccb2968d2d3fe3f7788357786"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0c092df71c5884d8e5bd7560d09e5656"><td class="memItemLeft" align="right" valign="top"><a id="a0c092df71c5884d8e5bd7560d09e5656" name="a0c092df71c5884d8e5bd7560d09e5656"></a>
-constexpr std::pair&lt; arg_type, arg_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (arg_type const x, arg_type const y) const</td></tr>
+<tr class="memitem:a0c092df71c5884d8e5bd7560d09e5656"><td class="memItemLeft" align="right" valign="top">constexpr std::pair&lt; <a class="el" href="structsaturation_1_1details_1_1multiplier.html#a8aa5f29ccb2968d2d3fe3f7788357786">arg_type</a>, <a class="el" href="structsaturation_1_1details_1_1multiplier.html#a8aa5f29ccb2968d2d3fe3f7788357786">arg_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1details_1_1multiplier.html#a0c092df71c5884d8e5bd7560d09e5656">operator()</a> (<a class="el" href="structsaturation_1_1details_1_1multiplier.html#a8aa5f29ccb2968d2d3fe3f7788357786">arg_type</a> const x, <a class="el" href="structsaturation_1_1details_1_1multiplier.html#a8aa5f29ccb2968d2d3fe3f7788357786">arg_type</a> const y) const</td></tr>
 <tr class="separator:a0c092df71c5884d8e5bd7560d09e5656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;size_t N, bool IsUnsigned&gt;<br />
+struct saturation::details::multiplier&lt; N, IsUnsigned &gt;</div><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">N</td><td>The number of bits that the type should hold. </td></tr>
+    <tr><td class="paramname">IsUnsigned</td><td>True if the value is unsigned; false otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0c092df71c5884d8e5bd7560d09e5656" name="a0c092df71c5884d8e5bd7560d09e5656"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c092df71c5884d8e5bd7560d09e5656">&#9670;&nbsp;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t N, bool IsUnsigned&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::pair&lt; <a class="el" href="structsaturation_1_1details_1_1multiplier.html#a8aa5f29ccb2968d2d3fe3f7788357786">arg_type</a>, <a class="el" href="structsaturation_1_1details_1_1multiplier.html#a8aa5f29ccb2968d2d3fe3f7788357786">arg_type</a> &gt; <a class="el" href="structsaturation_1_1details_1_1multiplier.html">saturation::details::multiplier</a>&lt; N, IsUnsigned &gt;::operator() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsaturation_1_1details_1_1multiplier.html#a8aa5f29ccb2968d2d3fe3f7788357786">arg_type</a> const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsaturation_1_1details_1_1multiplier.html#a8aa5f29ccb2968d2d3fe3f7788357786">arg_type</a> const&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Multiplies the arguments <code>x</code> and <code>y</code> returning the result.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first of the two values to be multiplied. </td></tr>
+    <tr><td class="paramname">y</td><td>The second of the two values to be multiplied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pair consisting of the high and low-order parts respectively of the result of multiplying <code>x</code> and <code>y</code>. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="saturation_8hpp_source.html">saturation.hpp</a></li>
 </ul>

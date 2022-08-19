@@ -10,8 +10,9 @@ var searchData=
   ['muls32_7',['muls32',['../saturation_8hpp.html#a08a083d8f9e4da67e02f6dcb93b28e52',1,'saturation']]],
   ['muls8_8',['muls8',['../saturation_8hpp.html#a57a69f571a148dfdb3acff8114e8051a',1,'saturation']]],
   ['multiplier_9',['multiplier',['../structsaturation_1_1details_1_1multiplier.html',1,'saturation::details']]],
-  ['mulu_10',['mulu',['../saturation_8hpp.html#ae8ee4b4520de406361fb5149cba9e48e',1,'saturation']]],
-  ['mulu16_11',['mulu16',['../saturation_8hpp.html#a09d07c000f05690fd75704a6b94007e5',1,'saturation']]],
-  ['mulu32_12',['mulu32',['../saturation_8hpp.html#a13c3bb333e3131b1497ac713d84a996d',1,'saturation']]],
-  ['mulu8_13',['mulu8',['../saturation_8hpp.html#a8f71756c557d5153d18b03cc90ea13f1',1,'saturation']]]
+  ['multiply_10',['multiply',['../saturation_8hpp.html#ae5f2bfe9df27fe8047c3eedfc5403d33',1,'saturation::details']]],
+  ['mulu_11',['mulu',['../saturation_8hpp.html#ae8ee4b4520de406361fb5149cba9e48e',1,'saturation']]],
+  ['mulu16_12',['mulu16',['../saturation_8hpp.html#a09d07c000f05690fd75704a6b94007e5',1,'saturation']]],
+  ['mulu32_13',['mulu32',['../saturation_8hpp.html#a13c3bb333e3131b1497ac713d84a996d',1,'saturation']]],
+  ['mulu8_14',['mulu8',['../saturation_8hpp.html#a8f71756c557d5153d18b03cc90ea13f1',1,'saturation']]]
 ];
