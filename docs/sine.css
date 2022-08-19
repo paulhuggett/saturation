@@ -1,0 +1,9 @@
+.run {
+  display:inline-flex;
+}
+.num {
+  width: 3em;
+}
+.axis path {
+  stroke: #B8B8B8;
+}

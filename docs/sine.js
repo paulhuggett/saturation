@@ -3,8 +3,14 @@ import * as d3 from 'https://cdn.skypack.dev/d3@7'
 const width = 360
 const margin = { top: 12, left: 40, bottom: 12, right: 10 }
 const internalWidth = width - margin.left - margin.right
+let clipNum = 1
 
-function sine (id, height, title, data) {
+function getYDomain (data) {
+  const yMax = Math.ceil(d3.max(data, d => Math.abs(d[1])))
+  return [-yMax, yMax]
+}
+
+function sine (id, height, title, showOverflow, data) {
   const internalHeight = height - margin.top - margin.bottom
 
   d3.select(id).selectChildren().remove()
@@ -13,13 +19,29 @@ function sine (id, height, title, data) {
     .attr('width', width)
     .attr('height', height)
 
-  const xScale = d3.scaleLinear().range([0, internalWidth]).domain(d3.extent(data, d => d[0]))
-  const yMax = Math.ceil(d3.max(data, d => Math.abs(d[1])))
-  const yScale = d3.scaleLinear().range([internalHeight, 0]).domain([-yMax, yMax])
+  const xDomain = d3.extent(data, d => d[0])
+  const yDomain = getYDomain(data)
+
+  const xScale = d3.scaleLinear().range([0, internalWidth]).domain(xDomain)
+  const yScale = d3.scaleLinear().range([internalHeight, 0]).domain(yDomain)
   const xAxis = d3.axisBottom().scale(xScale).tickValues([1, 2, 3, 4, 5, 6])
   const yAxis = d3.axisLeft().scale(yScale).ticks(3)
 
   const line = d3.line().x(d => xScale(d[0])).y(d => yScale(d[1]))
+
+  const clipId = 'clip' + clipNum++
+  const clipGt1 = svg.append('clipPath')
+    .attr('id', clipId)
+  clipGt1.append('rect')
+    .attr('x', xScale(0))
+    .attr('y', yScale(yDomain[1]))
+    .attr('width', xScale(xDomain[1]) - xScale(0))
+    .attr('height', yScale(1) - yScale(yDomain[1]))
+  clipGt1.append('rect')
+    .attr('x', xScale(0))
+    .attr('y', yScale(-1))
+    .attr('width', xScale(xDomain[1]) - xScale(0))
+    .attr('height', yScale(yDomain[0]) - yScale(-1))
 
   if (title !== null) {
     svg.append('text')
@@ -32,11 +54,34 @@ function sine (id, height, title, data) {
   }
   const g = svg.append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+  if (showOverflow) {
+    g.append('path')
+      .datum(data)
+      .attr('d', line)
+      .attr('stroke-width', 0)
+      .attr('fill', 'red')
+      .attr('clip-path', 'url(#' + clipId + ')')
+
+    g.append('line')
+      .attr('x1', xScale(xDomain[0]))
+      .attr('y1', yScale(1))
+      .attr('x2', xScale(xDomain[1]))
+      .attr('y2', yScale(1))
+      .attr('stroke', 'red')
+      .attr('stroke-dasharray', 4)
+    g.append('line')
+      .attr('x1', xScale(xDomain[0]))
+      .attr('y1', yScale(-1))
+      .attr('x2', xScale(xDomain[1]))
+      .attr('y2', yScale(-1))
+      .attr('stroke', 'red')
+      .attr('stroke-dasharray', 4)
+  }
   g.append('path')
     .datum(data)
     .attr('d', line)
     .attr('stroke', 'black')
-    .attr('stroke-width', 1)
+    .attr('stroke-width', 1.5)
     .attr('fill', 'none')
   g.append('g')
     .classed('axis', true)
@@ -74,12 +119,12 @@ export function mixerPage () {
     freqvalue2.innerText = frequency2.value
     ampvalue2.innerText = amplitude2.value
 
-    sine('#graph1', 100, null, makeXArray().map(makePoints(c1)))
-    sine('#graph2', 100, null, makeXArray().map(makePoints(c2)))
+    sine('#graph1', 100, null, false, makeXArray().map(makePoints(c1)))
+    sine('#graph2', 100, null, false, makeXArray().map(makePoints(c2)))
 
-    sine('#graphSum', height * 1.25, 'True Output', makeXArray().map(x => [x, c1(x) + c2(x)]))
-    sine('#graphSatSum', height, 'Saturating Addition', makeXArray().map(x => [x, Math.max(Math.min(c1(x) + c2(x), 1), -1)]))
-    sine('#graphModSum', height, 'Modulo Addition', makeXArray().map(x => [x, (c1(x) + c2(x)) % 1.0]))
+    sine('#graphSum', height * 1.25, 'True Output', true, makeXArray().map(x => [x, c1(x) + c2(x)]))
+    sine('#graphSatSum', height, 'Saturating Addition', false, makeXArray().map(x => [x, Math.max(Math.min(c1(x) + c2(x), 1), -1)]))
+    sine('#graphModSum', height, 'Modulo Addition', false, makeXArray().map(x => [x, (c1(x) + c2(x)) % 1.0]))
   }
 
   [frequency1, amplitude1, frequency2, amplitude2].forEach(el => el.addEventListener('input', update))
