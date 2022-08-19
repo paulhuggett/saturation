@@ -142,7 +142,7 @@ inline constexpr auto mask_v = mask<N>::value;
 ///
 /// \tparam N  The width in bits of the signed integer type to be queried.
 template <size_t N>
-struct limits {
+struct slimits {
   /// The type of a signed integer of at least \p N bits.
   using type = sinteger_t<N>;
   /// Returns the maximum finite value representable by a signed integer type of
@@ -571,7 +571,7 @@ private:
 /// \param x  The first value to be multiplied.
 /// \param y  The second value to be multiplied.
 /// \returns  \p x &times; \p y. If the result would be too large,
-///   \f$ 2^N-1 \f$ (saturation::limits<N>::max()).
+///   \f$ 2^N-1 \f$ (saturation::slimits<N>::max()).
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr uinteger_t<N> mulu (uinteger_t<N> const x, uinteger_t<N> const y) {
   assert (x <= ulimits<N>::max () && "mulu<> x value out of range");
@@ -645,9 +645,9 @@ constexpr uint8_t mulu8 (uint8_t const x, uint8_t const y) {
 ///   negative but cannot be represented in \p N bits.
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr sinteger_t<N> adds (sinteger_t<N> const x, sinteger_t<N> const y) {
-  assert (x >= limits<N>::min () && x <= limits<N>::max () &&
+  assert (x >= slimits<N>::min () && x <= slimits<N>::max () &&
           "adds<> x value out of range");
-  assert (y >= limits<N>::min () && y <= limits<N>::max () &&
+  assert (y >= slimits<N>::min () && y <= slimits<N>::max () &&
           "adds<> y value out of range");
   using uint = uinteger_t<N>;
   using sint = sinteger_t<N>;
@@ -661,8 +661,8 @@ constexpr sinteger_t<N> adds (sinteger_t<N> const x, sinteger_t<N> const y) {
 
   // Calculate the overflowed result as max or min depending on the sign of ux.
   auto const v = sbits{static_cast<sint> (
-      ubits{static_cast<uint> ((ux >> (N - 1U)) + limits<N>::max ())})};
-  assert (v == (x < sint{0} ? limits<N>::min () : limits<N>::max ()));
+      ubits{static_cast<uint> ((ux >> (N - 1U)) + slimits<N>::max ())})};
+  assert (v == (x < sint{0} ? slimits<N>::min () : slimits<N>::max ()));
 
   // Check for overflow.
   if (sbits{static_cast<sint> ((static_cast<uint> (v) ^ uy) | ~(uy ^ res))} >=
@@ -689,7 +689,7 @@ namespace details {
 ///   negative but cannot be represented in \p N bits.
 template <size_t N, typename = typename std::enable_if_t<is_register_width (N)>>
 inline sinteger_t<N> adds_asm (sinteger_t<N> x, sinteger_t<N> y) {
-  static constexpr auto max = limits<N>::max ();
+  static constexpr auto max = slimits<N>::max ();
   auto t = x;
   __asm__(
       "shr %[shift], %[t]\n\t"
@@ -781,13 +781,13 @@ constexpr int16_t adds8 (int8_t const x, int8_t const y) {
 /// \param x  The value from which \p y is deducted.
 /// \param y  The value deducted from \p x.
 /// \returns  \p x - \p y. If the result would be too small, \f$ -2^{N-1} \f$
-///   (saturation::limits<N>::min()); if the result would be too large,
-///   \f$ 2^{N-1}-1 \f$ (saturation::limits<N>::max()).
+///   (saturation::slimits<N>::min()); if the result would be too large,
+///   \f$ 2^{N-1}-1 \f$ (saturation::slimits<N>::max()).
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr sinteger_t<N> subs (sinteger_t<N> const x, sinteger_t<N> const y) {
-  assert (x >= limits<N>::min () && x <= limits<N>::max () &&
+  assert (x >= slimits<N>::min () && x <= slimits<N>::max () &&
           "subs<> x value out of range");
-  assert (y >= limits<N>::min () && y <= limits<N>::max () &&
+  assert (y >= slimits<N>::min () && y <= slimits<N>::max () &&
           "subs<> y value out of range");
   using uint = uinteger_t<N>;
   using sint = sinteger_t<N>;
@@ -804,8 +804,8 @@ constexpr sinteger_t<N> subs (sinteger_t<N> const x, sinteger_t<N> const y) {
     // Calculate the overflowed result as max or min depending on the sign of
     // ux.
     auto const v = sbits{static_cast<sint> (
-        ubits{static_cast<uint> ((ux >> (N - 1U)) + limits<N>::max ())})};
-    assert (v == (x < sint{0} ? limits<N>::min () : limits<N>::max ()));
+        ubits{static_cast<uint> ((ux >> (N - 1U)) + slimits<N>::max ())})};
+    assert (v == (x < sint{0} ? slimits<N>::min () : slimits<N>::max ()));
     return v;
   }
   // There was no overflow: return the proper result.
@@ -873,21 +873,21 @@ constexpr int8_t subs8 (int8_t const x, int8_t const y) {
 /// \param x  The signed dividend.
 /// \param y  The signed divisor.
 /// \returns  \p x / \p y. If the result would be too large and positive,
-///   \f$ 2^{N-1}-1 \f$ (saturation::limits<N>::max()); if the result
+///   \f$ 2^{N-1}-1 \f$ (saturation::slimits<N>::max()); if the result
 ///   would be too large and negative, \f$ -2^{N-1} \f$
-///   (saturation::limits<N>::min()).
+///   (saturation::slimits<N>::min()).
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr sinteger_t<N> divs (sinteger_t<N> const x, sinteger_t<N> const y) {
-  assert (x >= limits<N>::min () && x <= limits<N>::max () &&
+  assert (x >= slimits<N>::min () && x <= slimits<N>::max () &&
           "divs<> x value out of range");
-  assert (y >= limits<N>::min () && y <= limits<N>::max () &&
+  assert (y >= slimits<N>::min () && y <= slimits<N>::max () &&
           "divs<> y value out of range");
   using uint = uinteger_t<N>;
   using ubits = details::nbit_scalar<N, true>;
-  return (x +
-          !(ubits{static_cast<uint> (y + 1)} |
-            ubits{static_cast<uint> (static_cast<uint> (x) +
-                                     static_cast<uint> (limits<N>::min ()))})) /
+  return (x + !(ubits{static_cast<uint> (y + 1)} |
+                ubits{static_cast<uint> (
+                    static_cast<uint> (x) +
+                    static_cast<uint> (slimits<N>::min ()))})) /
          y;
 }
 /// \brief Computes the 32 bit signed result of \p x / \p y.
@@ -948,14 +948,14 @@ constexpr int8_t divs8 (int8_t const x, int8_t const y) {
 /// \param x  The first value to be multiplied.
 /// \param y  The second value to be multiplied.
 /// \returns  \p x &times; \p y. If the result would be too large and positive,
-///   \f$ 2^{N-1}-1 \f$ (saturation::limits<N>::max()); if the result
+///   \f$ 2^{N-1}-1 \f$ (saturation::slimits<N>::max()); if the result
 ///   would be too large and negative, \f$ -2^{N-1} \f$
-///   (saturation::limits<N>::min()).
+///   (saturation::slimits<N>::min()).
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr sinteger_t<N> muls (sinteger_t<N> const x, sinteger_t<N> const y) {
-  assert (x >= limits<N>::min () && x <= limits<N>::max () &&
+  assert (x >= slimits<N>::min () && x <= slimits<N>::max () &&
           "muls<> x value out of range");
-  assert (y >= limits<N>::min () && y <= limits<N>::max () &&
+  assert (y >= slimits<N>::min () && y <= slimits<N>::max () &&
           "muls<> y value out of range");
 
   using sbits = details::nbit_scalar<N, false>;
@@ -968,8 +968,8 @@ constexpr sinteger_t<N> muls (sinteger_t<N> const x, sinteger_t<N> const y) {
 
     auto const v = sbits{static_cast<sint> (ubits{static_cast<uint> (
         static_cast<uint> (ubits{static_cast<uint> (x ^ y)} >> (N - 1U)) +
-        static_cast<uint> (limits<N>::max ()))})};
-    assert (v == (hi < 0 ? limits<N>::min () : limits<N>::max ()));
+        static_cast<uint> (slimits<N>::max ()))})};
+    assert (v == (hi < 0 ? slimits<N>::min () : slimits<N>::max ()));
     return v;
   }
   return static_cast<sint> (lo);

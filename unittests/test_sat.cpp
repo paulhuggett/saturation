@@ -21,12 +21,12 @@ static_assert (mask<33>::value == 0x1ffffffff);
 static_assert (mask<63>::value == 0x7fffffffffffffff);
 static_assert (mask<64>::value == std::numeric_limits<uint64_t>::max ());
 
-static_assert (limits<8>::min () == std::numeric_limits<int8_t>::min ());
-static_assert (limits<8>::max () == std::numeric_limits<int8_t>::max ());
-static_assert (limits<16>::min () == std::numeric_limits<int16_t>::min ());
-static_assert (limits<16>::max () == std::numeric_limits<int16_t>::max ());
-static_assert (limits<32>::min () == std::numeric_limits<int32_t>::min ());
-static_assert (limits<32>::max () == std::numeric_limits<int32_t>::max ());
+static_assert (slimits<8>::min () == std::numeric_limits<int8_t>::min ());
+static_assert (slimits<8>::max () == std::numeric_limits<int8_t>::max ());
+static_assert (slimits<16>::min () == std::numeric_limits<int16_t>::min ());
+static_assert (slimits<16>::max () == std::numeric_limits<int16_t>::max ());
+static_assert (slimits<32>::min () == std::numeric_limits<int32_t>::min ());
+static_assert (slimits<32>::max () == std::numeric_limits<int32_t>::max ());
 
 static_assert (ulimits<8>::min () == std::numeric_limits<uint8_t>::min ());
 static_assert (ulimits<8>::max () == std::numeric_limits<uint8_t>::max ());
@@ -528,8 +528,8 @@ TYPED_TEST_P (Saturation, UnsignedAdd) {
 TYPED_TEST_P (Saturation, SignedAdd) {
   constexpr auto bits = TypeParam::value;
   using sint_type = sinteger_t<bits>;
-  constexpr auto max = limits<bits>::max ();
-  constexpr auto min = limits<bits>::min ();
+  constexpr auto max = slimits<bits>::max ();
+  constexpr auto min = slimits<bits>::min ();
   EXPECT_EQ (adds<bits> (sint_type{0}, sint_type{0}), sint_type{0});
   EXPECT_EQ (adds<bits> (sint_type{1}, sint_type{3}), sint_type{4});
   EXPECT_EQ (adds<bits> (min, min), min);
@@ -549,8 +549,8 @@ TYPED_TEST_P (Saturation, UnsignedSubtract) {
 TYPED_TEST_P (Saturation, SignedSubtract) {
   constexpr auto bits = TypeParam::value;
   using sint_type = sinteger_t<bits>;
-  constexpr auto max = limits<bits>::max ();
-  constexpr auto min = limits<bits>::min ();
+  constexpr auto max = slimits<bits>::max ();
+  constexpr auto min = slimits<bits>::min ();
   EXPECT_EQ (subs<bits> (sint_type{0}, sint_type{0}), sint_type{0});
   EXPECT_EQ (subs<bits> (sint_type{0}, sint_type{1}), sint_type{-1});
   EXPECT_EQ (subs<bits> (min, sint_type{1}), min);
@@ -570,8 +570,8 @@ TYPED_TEST_P (Saturation, UnsignedDivide) {
 TYPED_TEST_P (Saturation, SignedDivide) {
   constexpr auto bits = TypeParam::value;
   using sint_type = sinteger_t<bits>;
-  constexpr auto max = limits<bits>::max ();
-  constexpr auto min = limits<bits>::min ();
+  constexpr auto max = slimits<bits>::max ();
+  constexpr auto min = slimits<bits>::min ();
   EXPECT_EQ (divs<bits> (sint_type{0}, sint_type{1}), sint_type{0});
   EXPECT_EQ (divs<bits> (sint_type{4}, sint_type{2}), sint_type{2});
   EXPECT_EQ (divs<bits> (max, sint_type{2}), sint_type{max / 2});
@@ -591,8 +591,8 @@ TYPED_TEST_P (Saturation, UnsignedMultiply) {
 TYPED_TEST_P (Saturation, SignedMultiply) {
   constexpr auto bits = TypeParam::value;
   using sint_type = sinteger_t<bits>;
-  constexpr auto max = limits<bits>::max ();
-  constexpr auto min = limits<bits>::min ();
+  constexpr auto max = slimits<bits>::max ();
+  constexpr auto min = slimits<bits>::min ();
   EXPECT_EQ (muls<bits> (sint_type{0}, sint_type{0}), sint_type{0});
   EXPECT_EQ (muls<bits> (sint_type{-1}, sint_type{-1}), sint_type{1});
   EXPECT_EQ (muls<bits> (sint_type{1}, sint_type{-1}), sint_type{-1});

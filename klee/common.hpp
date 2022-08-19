@@ -54,8 +54,8 @@ namespace details {
 template <size_t Bits, bool IsUnsigned>
 struct ar {
   static inline void assume (test_type<Bits, IsUnsigned> x) {
-    klee_assume (x >= saturation::limits<Bits>::min ());
-    klee_assume (x <= saturation::limits<Bits>::max ());
+    klee_assume (x >= saturation::slimits<Bits>::min ());
+    klee_assume (x <= saturation::slimits<Bits>::max ());
   }
 };
 

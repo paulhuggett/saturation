@@ -22,8 +22,8 @@ void do_test () {
         return saturation::muls<N> (x, y);
       },
       [] (sinteger x, sinteger y) {
-        constexpr auto min = saturation::limits<N>::min ();
-        constexpr auto max = saturation::limits<N>::max ();
+        constexpr auto min = saturation::slimits<N>::min ();
+        constexpr auto max = saturation::slimits<N>::max ();
         auto z = static_cast<saturation::sinteger_t<N * 2>> (x) * y;
         if (z > max) {
           z = max;
