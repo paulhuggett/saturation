@@ -49,8 +49,7 @@ function sine (id, height, title, showOverflow, data) {
       .attr('x', (width / 2))
       .attr('y', 17)
       .attr('text-anchor', 'middle')
-      .style('font-size', '16px')
-      .style('text-decoration', 'underline')
+      .classed('graph-title', true)
   }
   const g = svg.append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
@@ -106,6 +105,7 @@ export function mixerPage () {
   const ampvalue2 = document.querySelector('#ampvalue2')
 
   const height = 150
+  const smallHeight = height * 0.6
   const points = internalWidth / 2
   const makeXArray = () => d3.range(0, points).map(k => k / (points - 1) * Math.PI * 2)
   const makePoints = f => x => [x, f(x)]
@@ -119,10 +119,10 @@ export function mixerPage () {
     freqvalue2.innerText = frequency2.value
     ampvalue2.innerText = amplitude2.value
 
-    sine('#graph1', 100, null, false, makeXArray().map(makePoints(c1)))
-    sine('#graph2', 100, null, false, makeXArray().map(makePoints(c2)))
+    sine('#graph1', smallHeight, null, false, makeXArray().map(makePoints(c1)))
+    sine('#graph2', smallHeight, null, false, makeXArray().map(makePoints(c2)))
 
-    sine('#graphSum', height * 1.25, 'True Output', true, makeXArray().map(x => [x, c1(x) + c2(x)]))
+    sine('#graphSum', height, 'True Output', true, makeXArray().map(x => [x, c1(x) + c2(x)]))
     sine('#graphSatSum', height, 'Saturating Addition', false, makeXArray().map(x => [x, Math.max(Math.min(c1(x) + c2(x), 1), -1)]))
     sine('#graphModSum', height, 'Modulo Addition', false, makeXArray().map(x => [x, (c1(x) + c2(x)) % 1.0]))
   }
