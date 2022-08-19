@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['max_0',['max',['../structsaturation_1_1limits.html#a2f8f91afe4b74da175e8bde1281597d2',1,'saturation::limits::max()'],['../structsaturation_1_1ulimits.html#a3868af3fc8f0b9a448239365f82fbe57',1,'saturation::ulimits::max()']]],
-  ['min_1',['min',['../structsaturation_1_1limits.html#a06f1b78fecb9d8e8b3090da471e7722c',1,'saturation::limits::min()'],['../structsaturation_1_1ulimits.html#aef402625ce36ea64855cef1cdc1bc4bb',1,'saturation::ulimits::min()']]],
+  ['max_0',['max',['../structsaturation_1_1slimits.html#ad64780027e7a2544d0a454ef0df1fe7d',1,'saturation::slimits::max()'],['../structsaturation_1_1ulimits.html#a3868af3fc8f0b9a448239365f82fbe57',1,'saturation::ulimits::max()']]],
+  ['min_1',['min',['../structsaturation_1_1slimits.html#a7d881b1aff4b3f24eb4459a93c8c12ae',1,'saturation::slimits::min()'],['../structsaturation_1_1ulimits.html#aef402625ce36ea64855cef1cdc1bc4bb',1,'saturation::ulimits::min()']]],
   ['muls_2',['muls',['../saturation_8hpp.html#a27552aac61d63ad3e86613c11e67038e',1,'saturation']]],
   ['muls16_3',['muls16',['../saturation_8hpp.html#a8bb04e9ac8eef8189544a331c81566de',1,'saturation']]],
   ['muls32_4',['muls32',['../saturation_8hpp.html#a08a083d8f9e4da67e02f6dcb93b28e52',1,'saturation']]],

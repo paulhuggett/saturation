@@ -135,8 +135,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1mask_3_010_u_01_4.html">saturation::mask&lt; 0U &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">mask&lt;0&gt; is defined to be 0.  <a href="structsaturation_1_1mask_3_010_u_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1limits.html">saturation::limits&lt; N &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a way to query the maximum and minimum values that a signed integer type of width <code>N</code> can hold.  <a href="structsaturation_1_1limits.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1slimits.html">saturation::slimits&lt; N &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a way to query the maximum and minimum values that a signed integer type of width <code>N</code> can hold.  <a href="structsaturation_1_1slimits.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsaturation_1_1ulimits.html">saturation::ulimits&lt; N &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a way to query the maximum and minimum values that an unsigned integer type of width <code>N</code> can hold.  <a href="structsaturation_1_1ulimits.html#details">More...</a><br /></td></tr>
@@ -760,7 +760,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>x</code> / <code>y</code>. If the result would be too large and positive, \( 2^{N-1}-1 \) (<a class="el" href="structsaturation_1_1limits.html#a2f8f91afe4b74da175e8bde1281597d2">saturation::limits&lt;N&gt;::max()</a>); if the result would be too large and negative, \( -2^{N-1} \) (<a class="el" href="structsaturation_1_1limits.html#a06f1b78fecb9d8e8b3090da471e7722c">saturation::limits&lt;N&gt;::min()</a>). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> / <code>y</code>. If the result would be too large and positive, \( 2^{N-1}-1 \) (<a class="el" href="structsaturation_1_1slimits.html#ad64780027e7a2544d0a454ef0df1fe7d">saturation::slimits&lt;N&gt;::max()</a>); if the result would be too large and negative, \( -2^{N-1} \) (<a class="el" href="structsaturation_1_1slimits.html#a7d881b1aff4b3f24eb4459a93c8c12ae">saturation::slimits&lt;N&gt;::min()</a>). </dd></dl>
 
 </div>
 </div>
@@ -1178,7 +1178,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large and positive, \( 2^{N-1}-1 \) (<a class="el" href="structsaturation_1_1limits.html#a2f8f91afe4b74da175e8bde1281597d2">saturation::limits&lt;N&gt;::max()</a>); if the result would be too large and negative, \( -2^{N-1} \) (<a class="el" href="structsaturation_1_1limits.html#a06f1b78fecb9d8e8b3090da471e7722c">saturation::limits&lt;N&gt;::min()</a>). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large and positive, \( 2^{N-1}-1 \) (<a class="el" href="structsaturation_1_1slimits.html#ad64780027e7a2544d0a454ef0df1fe7d">saturation::slimits&lt;N&gt;::max()</a>); if the result would be too large and negative, \( -2^{N-1} \) (<a class="el" href="structsaturation_1_1slimits.html#a7d881b1aff4b3f24eb4459a93c8c12ae">saturation::slimits&lt;N&gt;::min()</a>). </dd></dl>
 
 </div>
 </div>
@@ -1371,7 +1371,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large, \( 2^N-1 \) (<a class="el" href="structsaturation_1_1limits.html#a2f8f91afe4b74da175e8bde1281597d2">saturation::limits&lt;N&gt;::max()</a>). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> &times; <code>y</code>. If the result would be too large, \( 2^N-1 \) (<a class="el" href="structsaturation_1_1slimits.html#ad64780027e7a2544d0a454ef0df1fe7d">saturation::slimits&lt;N&gt;::max()</a>). </dd></dl>
 
 </div>
 </div>
@@ -1609,7 +1609,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>x</code> - <code>y</code>. If the result would be too small, \( -2^{N-1} \) (<a class="el" href="structsaturation_1_1limits.html#a06f1b78fecb9d8e8b3090da471e7722c">saturation::limits&lt;N&gt;::min()</a>); if the result would be too large, \( 2^{N-1}-1 \) (<a class="el" href="structsaturation_1_1limits.html#a2f8f91afe4b74da175e8bde1281597d2">saturation::limits&lt;N&gt;::max()</a>). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> - <code>y</code>. If the result would be too small, \( -2^{N-1} \) (<a class="el" href="structsaturation_1_1slimits.html#a7d881b1aff4b3f24eb4459a93c8c12ae">saturation::slimits&lt;N&gt;::min()</a>); if the result would be too large, \( 2^{N-1}-1 \) (<a class="el" href="structsaturation_1_1slimits.html#ad64780027e7a2544d0a454ef0df1fe7d">saturation::slimits&lt;N&gt;::max()</a>). </dd></dl>
 
 </div>
 </div>
@@ -1803,7 +1803,7 @@ template&lt;size_t N, typename  = typename std::enable_if_t&lt;(N &gt;= 4 &amp;&
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>x</code> - <code>y</code>. If the result would be too large, \( 2^N-1 \) (<a class="el" href="structsaturation_1_1limits.html#a2f8f91afe4b74da175e8bde1281597d2">saturation::limits&lt;N&gt;::max()</a>). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>x</code> - <code>y</code>. If the result would be too large, \( 2^N-1 \) (saturation::limits&lt;N&gt;::max()). </dd></dl>
 
 </div>
 </div>
