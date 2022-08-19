@@ -10,7 +10,7 @@ function getYDomain (data) {
   return [-yMax, yMax]
 }
 
-function sine (id, height, title, showOverflow, data) {
+function sine (id, height, title, data) {
   const internalHeight = height - margin.top - margin.bottom
 
   d3.select(id).selectChildren().remove()
@@ -27,7 +27,9 @@ function sine (id, height, title, showOverflow, data) {
   const xAxis = d3.axisBottom().scale(xScale).tickValues([1, 2, 3, 4, 5, 6])
   const yAxis = d3.axisLeft().scale(yScale).ticks(3)
 
-  const line = d3.line().x(d => xScale(d[0])).y(d => yScale(d[1]))
+  const line = d3.line()
+    .x(d => xScale(d[0]))
+    .y(d => yScale(d[1]))
 
   const clipId = 'clip' + clipNum++
   const clipGt1 = svg.append('clipPath')
@@ -53,7 +55,8 @@ function sine (id, height, title, showOverflow, data) {
   }
   const g = svg.append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-  if (showOverflow) {
+  // Are we showing clipped output?
+  if (yDomain[0] < -1.0 || yDomain[1] > 1.0) {
     // Create a copy of the line data and add a single data point at which
     // forces the y value to 0 and will enable the path to be safely filled.
     const areaData = data.slice()
@@ -123,12 +126,12 @@ export function mixerPage () {
     freqvalue2.innerText = frequency2.value
     ampvalue2.innerText = amplitude2.value
 
-    sine('#graph1', smallHeight, null, false, makeXArray().map(makePoints(c1)))
-    sine('#graph2', smallHeight, null, false, makeXArray().map(makePoints(c2)))
+    sine('#graph1', smallHeight, null, makeXArray().map(makePoints(c1)))
+    sine('#graph2', smallHeight, null, makeXArray().map(makePoints(c2)))
 
-    sine('#graphSum', height, 'True Output', true, makeXArray().map(x => [x, c1(x) + c2(x)]))
-    sine('#graphSatSum', height, 'Saturating Addition', false, makeXArray().map(x => [x, Math.max(Math.min(c1(x) + c2(x), 1), -1)]))
-    sine('#graphModSum', height, 'Modulo Addition', false, makeXArray().map(x => [x, (c1(x) + c2(x)) % 1.0]))
+    sine('#graphSum', height, 'True Output', makeXArray().map(x => [x, c1(x) + c2(x)]))
+    sine('#graphSatSum', height, 'Saturating Addition', makeXArray().map(x => [x, Math.max(Math.min(c1(x) + c2(x), 1), -1)]))
+    sine('#graphModSum', height, 'Modulo Addition', makeXArray().map(x => [x, (c1(x) + c2(x)) % 1.0]))
   }
 
   [frequency1, amplitude1, frequency2, amplitude2].forEach(el => el.addEventListener('input', update))

@@ -13,8 +13,12 @@ title: A Simple Mixer
 
 To show how useful a saturating addition function can be, we can look
 at a simple DSP signal mixer. This takes two input signals and combines 
-them to produce a single output. The range of the range of amplitudes
-our system can reproduce is [-1.0, 1.0].
+them to produce a single output. It’s common for DSP systems to use
+[fixed-point integers](https://en.wikipedia.org/wiki/Fixed-point_arithmetic)
+to represent amplitudes. The choices made in the formatting of these values
+imposes a strict limit on the range of number that can be represented. The
+hypothetical system described here can reproduce values in the range
+[-1.0, 1.0].
 
 The “inputs” section below shows two input sinusoids. You can experiment with
 changing the frequency and amplitude of each.
@@ -40,7 +44,7 @@ waveform that is much closer to the ideal.
 
 ## Example
 
-### Inputs
+### Mixer Inputs
 
 Changing the frequency and amplitude sliders for either of the two input
 waveforms will cause the three [output](#output) charts below to be updated.
@@ -105,15 +109,18 @@ waveforms will cause the three [output](#output) charts below to be updated.
   <div id="graph2"></div>
 </fieldset>
 
-### Output
+### Mixer Output
 
 <div id="graphSum"></div>
 
-Areas shown in red cannot be represented and will be distorted in the output.
+Areas shown in red lies outside the range [-1.0,1.0] so cannot be represented
+and will be distorted in the output.
 
 <div class="run">
   <div id="graphSatSum"></div>
   <div id="graphModSum"></div>
 </div>
 
-Compare the results when using [saturating addition](#graphSatSum) to the chart produced by using [modulo addition](#graphModSum)) to the [desired (true) output above](#graphSum).
+Compare the results when using [saturating addition](#graphSatSum) or
+[modulo addition](#graphModSum) to the
+[desired (true) output above](#graphSum).
