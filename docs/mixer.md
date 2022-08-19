@@ -4,10 +4,10 @@ title: A Simple Mixer
 
 # {{ page.title }}
 
-<link href="sine.css" rel="stylesheet">
+<link href="mixer.css" rel="stylesheet">
 
 <script type="module">
-  import { mixerPage } from './sine.js'
+  import { mixerPage } from './mixer.js'
   document.addEventListener('DOMContentLoaded', mixerPage)
 </script>
 
