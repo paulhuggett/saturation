@@ -54,8 +54,12 @@ function sine (id, height, title, showOverflow, data) {
   const g = svg.append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
   if (showOverflow) {
+    // Create a copy of the line data and add a single data point at which
+    // forces the y value to 0 and will enable the path to be safely filled.
+    const areaData = data.slice()
+    areaData.push([xDomain[1], 0.0])
     g.append('path')
-      .datum(data)
+      .datum(areaData)
       .attr('d', line)
       .attr('stroke-width', 0)
       .attr('fill', 'red')
