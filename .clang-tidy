@@ -2,6 +2,7 @@
 Checks:            |-
   *,
   -altera-struct-pack-align,
+  -hicpp-no-assembler,
   -llvmlibc-*,
   -modernize-use-trailing-return-type,
   -readability-identifier-length
