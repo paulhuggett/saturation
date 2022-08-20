@@ -206,15 +206,18 @@ public:
   constexpr nbit_scalar () : x_{0} {}
   /// Casts from a standard integer type to nbit_scalar.
   explicit constexpr nbit_scalar (type const x) : x_{x} {}
-  /// Copy constructor.
   constexpr nbit_scalar (nbit_scalar const&) = default;
+  constexpr nbit_scalar (nbit_scalar&&) = default;
+
+  ~nbit_scalar () noexcept = default;
+
   /// Assignment from the interlying standard integer type.
   nbit_scalar& operator= (type const x) {
     x_ = x;
     return *this;
   }
-  /// Assignment.
   nbit_scalar& operator= (nbit_scalar const&) = default;
+  nbit_scalar& operator= (nbit_scalar&&) = default;
 
   /// Casts the stored value to a standard integer type.
   constexpr operator type () const { return x_; }
