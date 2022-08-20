@@ -55,15 +55,15 @@ jobs:
         run: |
           COMMIT=$(git rev-parse HEAD)
           # Send the results to Codacy
-          curl -XPOST                                           \
-               -L                                               \
-               -H "project-token: ${{ secrets.PROJECT_TOKEN }}" \
-               -H "Content-type: application/json"              \
-               -d "@${{ env.CCT_OUT }}"                         \
-               "${{ env.CODACY_URL }}/2.0/commit/$COMMIT/issuesRemoteResults"
+          curl -XPOST                                                  \
+               -L                                                      \
+               -H "project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}" \
+               -H "Content-type: application/json"                     \
+               -d "@${{ env.CCT_OUT }}"                                \
+               "${{ env.CODACY_URL }}/2.0/commit/${COMMIT}/issuesRemoteResults"
           # Signal that Codacy can use the sent results and start a new analysis
-          curl -XPOST                                                 \
-               -L                                                     \
-               -H "project-token: ${{ secrets.PROJECT_TOKEN }}"       \
-               -H "Content-type: application/json"                    \
-               "${{ env.CODACY_URL }}/2.0/commit/$COMMIT/resultsFinal"
+          curl -XPOST                                                  \
+               -L                                                      \
+               -H "project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}" \
+               -H "Content-type: application/json"                     \
+               "${{ env.CODACY_URL }}/2.0/commit/${COMMIT}/resultsFinal"
