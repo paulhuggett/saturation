@@ -15,7 +15,7 @@ jobs:
       CODACY_URL: https://api.codacy.com
       # The path for clang-tidy output.
       CLANG_TIDY_OUT: /tmp/clang-tidy-out
-      # The path to for codacy-clang-tidy output.
+      # The path for codacy-clang-tidy output.
       CCT_OUT: /tmp/cct-out
 
     steps:
@@ -33,25 +33,25 @@ jobs:
 
       - name: Configure
         run: |
-          cmake -S . \
-                -B build \
+          cmake -S .                                 \
+                -B build                             \
                 -D CMAKE_EXPORT_COMPILE_COMMANDS=Yes \
-                -D CMAKE_C_COMPILER=clang-12 \
+                -D CMAKE_C_COMPILER=clang-12         \
                 -D CMAKE_CXX_COMPILER=clang++-12
 
       - name: Run clang-tidy
         run: |
-          clang-tidy-12 -extra-arg=-std=c++17 \
+          clang-tidy-12 -extra-arg=-std=c++17          \
                         -p=build/compile_commands.json \
-                        ./*.?pp \
+                        ./*.?pp                        \
                         > "${{ env.CLANG_TIDY_OUT }}"
 
       # Convert the clang-tidy output to a format that the Codacy API accepts
-      - name: codacy-clang-tidy
+      - name: Run codacy-clang-tidy
         run: |
           "$HOME/cct/${{ env.CCT }}" < "${{ env.CLANG_TIDY_OUT }}" > "${{ env.CCT_OUT }}"
 
-      - name: upload
+      - name: Upload to the Codacy server
         run: |
           COMMIT=$(git rev-parse HEAD)
           # Send the results to Codacy
