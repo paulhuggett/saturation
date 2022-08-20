@@ -97,7 +97,8 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;size_t N, bool IsUnsigned&gt;<br />
-struct saturation::details::multiplier&lt; N, IsUnsigned &gt;</div><dl class="tparams"><dt>Template Parameters</dt><dd>
+struct saturation::details::multiplier&lt; N, IsUnsigned &gt;</div><p >A function object which multiplies two values returning the result as pair holding the high- and low-order parts respectively.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">N</td><td>The number of bits that the type should hold. </td></tr>
     <tr><td class="paramname">IsUnsigned</td><td>True if the value is unsigned; false otherwise. </td></tr>
@@ -140,7 +141,7 @@ template&lt;size_t N, bool IsUnsigned&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Multiplies the arguments <code>x</code> and <code>y</code> returning the result.</p>
+<p >Multiplies the arguments <code>x</code> and <code>y</code> returning a pair of values containing the high- and low-order parts of the result respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">x</td><td>The first of the two values to be multiplied. </td></tr>

@@ -511,6 +511,9 @@ constexpr std::pair<T, T> multiply (T const u, T const v) {
   return std::make_pair (hi, lo);
 }
 
+/// A function object which multiplies two values returning the result as pair
+/// holding the high- and low-order parts respectively.
+///
 /// \tparam N The number of bits that the type should hold.
 /// \tparam IsUnsigned  True if the value is unsigned; false otherwise.
 template <size_t N, bool IsUnsigned>
@@ -518,7 +521,8 @@ struct multiplier {
   /// The type being multiplied.
   using arg_type = std::conditional_t<IsUnsigned, uinteger_t<N>, sinteger_t<N>>;
 
-  /// Multiplies the arguments \p x and \p y returning the result.
+  /// Multiplies the arguments \p x and \p y returning a pair of values
+  /// containing the high- and low-order parts of the result respectively.
   ///
   /// \param x  The first of the two values to be multiplied.
   /// \param y  The second of the two values to be multiplied.
@@ -539,10 +543,17 @@ struct multiplier {
   }
 
 private:
+  /// The largest value for N which the comiler can natively perform
+  /// multiplication which having to resort to using the multiply()
+  /// function.
   static constexpr auto narrow_multiply_max = size_t{32};
+  /// The number of bits in arg_type.
   static constexpr auto shift = sizeof (arg_type) * CHAR_BIT - N;
   using unsigned_type = std::make_unsigned_t<arg_type>;
 
+  /// multiply() returns a pair which uses all of the bits of both members to
+  /// express the result. This function adjusts those values so that they
+  /// consume only N bits each.
   static constexpr std::pair<arg_type, arg_type> adjust (
       std::pair<arg_type, arg_type>&& wide_res) {
     if constexpr (shift == 0) {
