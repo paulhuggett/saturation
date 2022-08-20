@@ -42,6 +42,7 @@ jobs:
       - name: Run clang-tidy
         run: |
           clang-tidy-12 -extra-arg=-std=c++17          \
+                        -extra-arg=-DNDEBUG            \
                         -p=build/compile_commands.json \
                         ./*.?pp                        \
                         > "${{ env.CLANG_TIDY_OUT }}"
