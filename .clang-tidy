@@ -3,8 +3,8 @@ Checks:            |-
   *,
   -altera-struct-pack-align,
   -llvmlibc-*,
-  -modernize-use-trailing-return-type
-  -readability-identifier-length,
+  -modernize-use-trailing-return-type,
+  -readability-identifier-length
 WarningsAsErrors:  ''
 HeaderFilterRegex: ''
 FormatStyle:       file
