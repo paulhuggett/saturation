@@ -569,14 +569,16 @@ private:
           static_cast<arg_type> (static_cast<unsigned_type> (wide_res.second)
                                  << shift) >>
           shift;
-      assert (((wide_res.first >> N) == 0 ||
-               (!IsUnsigned &&
-                (wide_res.first >> N) == static_cast<arg_type> (-1))) &&
-              "multiplier<>-wide low result is out of range");
-      assert (((wide_res.second >> N) == 0 ||
-               (!IsUnsigned &&
-                (wide_res.second >> N) == static_cast<arg_type> (-1))) &&
-              "multiplier<>-wide high result is out of range");
+      assert ((wide_res.first >> N) == 0 ||
+              (!IsUnsigned &&
+               (wide_res.first >> N) ==
+                   static_cast<arg_type> (
+                       -1)));  // multiplier<>-wide low result is out of range
+      assert ((wide_res.second >> N) == 0 ||
+              (!IsUnsigned &&
+               (wide_res.second >> N) ==
+                   static_cast<arg_type> (
+                       -1)));  // multiplier<>-wide high result is out of range
       return std::move (wide_res);
     }
   }
@@ -676,10 +678,10 @@ constexpr uint8_t mulu8 (uint8_t const x, uint8_t const y) {
 ///   negative but cannot be represented in \p N bits.
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr sinteger_t<N> adds (sinteger_t<N> const x, sinteger_t<N> const y) {
-  assert (x >= slimits<N>::min () && x <= slimits<N>::max () &&
-          "adds<> x value out of range");
-  assert (y >= slimits<N>::min () && y <= slimits<N>::max () &&
-          "adds<> y value out of range");
+  assert (x >= slimits<N>::min () &&
+          x <= slimits<N>::max ());  // adds<> x value out of range
+  assert (y >= slimits<N>::min () &&
+          y <= slimits<N>::max ());  // adds<> y value out of range
   using uint = uinteger_t<N>;
   using sint = sinteger_t<N>;
   using ubits = details::nbit_scalar<N, true>;
@@ -816,10 +818,10 @@ constexpr int16_t adds8 (int8_t const x, int8_t const y) {
 ///   \f$ 2^{N-1}-1 \f$ (saturation::slimits<N>::max()).
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr sinteger_t<N> subs (sinteger_t<N> const x, sinteger_t<N> const y) {
-  assert (x >= slimits<N>::min () && x <= slimits<N>::max () &&
-          "subs<> x value out of range");
-  assert (y >= slimits<N>::min () && y <= slimits<N>::max () &&
-          "subs<> y value out of range");
+  assert (x >= slimits<N>::min () &&
+          x <= slimits<N>::max ());  // subs<> x value out of range
+  assert (y >= slimits<N>::min () &&
+          y <= slimits<N>::max ());  // subs<> y value out of range
   using uint = uinteger_t<N>;
   using sint = sinteger_t<N>;
   using ubits = details::nbit_scalar<N, true>;
@@ -909,10 +911,10 @@ constexpr int8_t subs8 (int8_t const x, int8_t const y) {
 ///   (saturation::slimits<N>::min()).
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr sinteger_t<N> divs (sinteger_t<N> const x, sinteger_t<N> const y) {
-  assert (x >= slimits<N>::min () && x <= slimits<N>::max () &&
-          "divs<> x value out of range");
-  assert (y >= slimits<N>::min () && y <= slimits<N>::max () &&
-          "divs<> y value out of range");
+  assert (x >= slimits<N>::min () &&
+          x <= slimits<N>::max ());  // divs<> x value out of range
+  assert (y >= slimits<N>::min () &&
+          y <= slimits<N>::max ());  // divs<> y value out of range
   using uint = uinteger_t<N>;
   using ubits = details::nbit_scalar<N, true>;
   return (x + !(ubits{static_cast<uint> (y + 1)} |
@@ -984,10 +986,10 @@ constexpr int8_t divs8 (int8_t const x, int8_t const y) {
 ///   (saturation::slimits<N>::min()).
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr sinteger_t<N> muls (sinteger_t<N> const x, sinteger_t<N> const y) {
-  assert (x >= slimits<N>::min () && x <= slimits<N>::max () &&
-          "muls<> x value out of range");
-  assert (y >= slimits<N>::min () && y <= slimits<N>::max () &&
-          "muls<> y value out of range");
+  assert (x >= slimits<N>::min () &&
+          x <= slimits<N>::max ());  // muls<> x value out of range
+  assert (y >= slimits<N>::min () &&
+          y <= slimits<N>::max ());  // muls<> y value out of range
 
   using sbits = details::nbit_scalar<N, false>;
   using sint = typename sbits::type;
