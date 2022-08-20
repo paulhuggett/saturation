@@ -207,7 +207,7 @@ public:
   /// Casts from a standard integer type to nbit_scalar.
   explicit constexpr nbit_scalar (type const x) : x_{x} {}
   constexpr nbit_scalar (nbit_scalar const&) = default;
-  constexpr nbit_scalar (nbit_scalar&&) = default;
+  constexpr nbit_scalar (nbit_scalar&&) noexcept = default;
 
   ~nbit_scalar () noexcept = default;
 
@@ -217,7 +217,7 @@ public:
     return *this;
   }
   nbit_scalar& operator= (nbit_scalar const&) = default;
-  nbit_scalar& operator= (nbit_scalar&&) = default;
+  nbit_scalar& operator= (nbit_scalar&&) noexcept = default;
 
   /// Casts the stored value to a standard integer type.
   constexpr operator type () const { return x_; }
@@ -251,8 +251,8 @@ private:
 ///   represented in \p N bits.
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr uinteger_t<N> addu (uinteger_t<N> const x, uinteger_t<N> const y) {
-  assert (x <= ulimits<N>::max () && "addu<> x value out of range");
-  assert (y <= ulimits<N>::max () && "addu<> y value out of range");
+  assert (x <= ulimits<N>::max ());  // addu<> x value out of range
+  assert (y <= ulimits<N>::max ());  // addu<> y value out of range
   constexpr auto maxu = mask_v<N>;
   uinteger_t<N> res = x + y;
   res |= -((res < x) | (res > maxu));
@@ -367,8 +367,8 @@ inline uint8_t addu8 (uint8_t const x, uint8_t const y) {
 ///   \f$ 2^N-1 \f$ (saturation::limits<N>::max()).
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr uinteger_t<N> subu (uinteger_t<N> const x, uinteger_t<N> const y) {
-  assert (x <= ulimits<N>::max () && "subu<> x value out of range");
-  assert (y <= ulimits<N>::max () && "subu<> y value out of range");
+  assert (x <= ulimits<N>::max ());  // subu<> x value out of range
+  assert (y <= ulimits<N>::max ());  // subu<> y value out of range
   constexpr auto maxu = mask_v<N>;
   uinteger_t<N> res = x - y;
   res &= -(res <= x);
@@ -432,8 +432,8 @@ constexpr uint8_t subu8 (uint8_t const x, uint8_t const y) {
 /// \returns  \p x / \p y.
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr uinteger_t<N> divu (uinteger_t<N> const x, uinteger_t<N> const y) {
-  assert (x <= ulimits<N>::max () && "divu<> x value out of range");
-  assert (y <= ulimits<N>::max () && "divu<> y value out of range");
+  assert (x <= ulimits<N>::max ());  // divu<> x value out of range
+  assert (y <= ulimits<N>::max ());  // divu<> y value out of range
   return x / y;
 }
 /// \brief Computes the unsigned result of \p x / \p y.
@@ -605,8 +605,8 @@ private:
 ///   \f$ 2^N-1 \f$ (saturation::slimits<N>::max()).
 template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
 constexpr uinteger_t<N> mulu (uinteger_t<N> const x, uinteger_t<N> const y) {
-  assert (x <= ulimits<N>::max () && "mulu<> x value out of range");
-  assert (y <= ulimits<N>::max () && "mulu<> y value out of range");
+  assert (x <= ulimits<N>::max ());  // mulu<> x value out of range
+  assert (y <= ulimits<N>::max ());  // mulu<> y value out of range
   auto const [hi, lo] = details::multiplier<N, true>{}(x, y);
   return (lo | -!!hi) & mask_v<N>;
 }
