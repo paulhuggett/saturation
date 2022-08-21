@@ -34,8 +34,9 @@ two input signals.
   when they overflow.
 
 It should be clear that neither saturating nor modulo addition will be able to
-produce the desired output but that using saturating arithmetic yields a
-waveform that is much closer to the ideal.
+produce the desired output — there will be distortion of some kind regardless
+of our choice — but that using saturating arithmetic yields a waveform that is
+much closer to the ideal.
 
 ## Example
 
