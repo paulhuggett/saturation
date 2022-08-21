@@ -18,7 +18,7 @@
 #include <utility>
 
 #ifndef HAVE_INT128
-#define HAVE_INT128  0
+#define HAVE_INT128 0
 #endif
 
 namespace saturation {

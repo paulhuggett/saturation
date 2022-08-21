@@ -1,3 +1,3 @@
-add_executable (unittests test_sat.cpp ../saturation.hpp)
+add_executable (unittests test_sat.cpp)
 setup_target (unittests)
-target_link_libraries (unittests PRIVATE gmock_main)
+target_link_libraries (unittests PRIVATE saturation gmock_main)

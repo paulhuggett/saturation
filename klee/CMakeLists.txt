@@ -65,6 +65,7 @@ function (add_klee_target)
   setup_klee_target (${bitcode_target})
   target_compile_definitions (${bitcode_target} PRIVATE NDEBUG NO_INLINE_ASM)
   target_compile_options (${bitcode_target} PRIVATE -emit-llvm)
+  target_link_libraries (${bitcode_target} PRIVATE saturation)
 
   # Executable Target
    
@@ -75,6 +76,7 @@ function (add_klee_target)
   target_link_options (${exe_target} PRIVATE -fsanitize=undefined --rtlib=compiler-rt -lgcc_s)
   target_link_libraries (${exe_target} PRIVATE /home/klee/klee_build/lib/libkleeRuntest.so)
   target_link_libraries (${exe_target} PRIVATE ${depends})
+  target_link_libraries (${exe_target} PRIVATE saturation)
 
   # Run Target
     
