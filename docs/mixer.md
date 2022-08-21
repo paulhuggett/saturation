@@ -43,7 +43,7 @@ much closer to the ideal.
 ### Mixer Inputs
 
 Changing the frequency and amplitude sliders for either of the two input
-waveforms will cause the three [output](#output) charts below to be updated.
+waveforms will cause the three [output](#mixer-output) charts below to be updated.
 
 <fieldset>
   <legend>Input 1</legend>
