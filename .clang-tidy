@@ -16,4 +16,6 @@ CheckOptions:
     value: true
   - key:   readability-magic-numbers.IgnorePowersOf2IntegerValues
     value: true
+  - key:   hicpp-signed-bitwise.IgnorePositiveIntegerLiterals
+    value: true
 ...
