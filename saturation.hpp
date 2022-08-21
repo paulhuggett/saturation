@@ -1001,7 +1001,9 @@ constexpr sinteger_t<N> muls (sinteger_t<N> const x, sinteger_t<N> const y) {
     using uint = typename ubits::type;
 
     auto const v = sbits{static_cast<sint> (ubits{static_cast<uint> (
-        static_cast<uint> (ubits{static_cast<uint> (x ^ y)} >> (N - 1U)) +
+        static_cast<uint> (ubits{static_cast<uint> (static_cast<uint> (x) ^
+                                                    static_cast<uint> (y))} >>
+                           (N - 1U)) +
         static_cast<uint> (slimits<N>::max ()))})};
     assert (v == (hi < 0 ? slimits<N>::min () : slimits<N>::max ()));
     return v;
