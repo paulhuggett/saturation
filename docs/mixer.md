@@ -28,13 +28,13 @@ two input signals.
 - The [second chart (“Saturating Addition”)](#graphSatSum) shows the result of
   using saturating addition. Where the output would exceed the maximum or
   minimum amplitude values, the result is clamped to that range.
-- The [third chart (”Modulo Addition”)](#graphModSum) shows the use of
+- The [third chart (“Modulo Addition”)](#graphModSum) shows the use of
   conventional modulo arithmetic. Here calculations that overflow result in
-  dramatic discontinuities in the output waveform as the values ”wrap around”
+  dramatic discontinuities in the output waveform as the values “wrap around”
   when they overflow.
 
 It should be clear that neither saturating nor modulo addition will be able to
-produce the desired output — there will be distortion of some kind regardless
+produce the desired output — there will be distortion of some kind regardless
 of our choice — but that using saturating arithmetic yields a waveform that is
 much closer to the ideal.
 
