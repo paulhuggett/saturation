@@ -125,7 +125,8 @@ template <size_t N, typename = typename std::enable_if_t<(N <= 64)>>
 struct mask {
   /// Static constant of type uinteger_t<N> with value \f$ 2^N-1 \f$.
   static constexpr uinteger_t<N> value =
-      uinteger_t<N>{mask<N - 1U>::value} << 1U | uinteger_t<N>{1};
+      static_cast<uinteger_t<N>> (uinteger_t<N>{mask<N - 1U>::value} << 1U) |
+      uinteger_t<N>{1};
 };
 /// \brief mask<0> is defined to be 0.
 template <>
