@@ -42,18 +42,18 @@ jobs:
         env:
           SONAR_SCANNER_DOWNLOAD_URL: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${{ env.SONAR_SCANNER_VERSION }}-macosx.zip
         run: |
-          mkdir -p $HOME/.sonar
-          curl -sSLo $HOME/.sonar/sonar-scanner.zip ${{ env.SONAR_SCANNER_DOWNLOAD_URL }}
-          unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
-          echo "$HOME/.sonar/sonar-scanner-${{ env.SONAR_SCANNER_VERSION }}-macosx/bin" >> $GITHUB_PATH
+          mkdir -p "$HOME/.sonar"
+          curl -sSLo "$HOME/.sonar/sonar-scanner.zip" "${{ env.SONAR_SCANNER_DOWNLOAD_URL }}"
+          unzip -o "$HOME/.sonar/sonar-scanner.zip" -d "$HOME/.sonar/"
+          echo "$HOME/.sonar/sonar-scanner-${{ env.SONAR_SCANNER_VERSION }}-macosx/bin" >> "$GITHUB_PATH"
 
       - name: Download and set up build-wrapper
         env:
           BUILD_WRAPPER_DOWNLOAD_URL: ${{ env.SONAR_SERVER_URL }}/static/cpp/build-wrapper-macosx-x86.zip
         run: |
-          curl -sSLo $HOME/.sonar/build-wrapper-macosx-x86.zip ${{ env.BUILD_WRAPPER_DOWNLOAD_URL }}
-          unzip -o $HOME/.sonar/build-wrapper-macosx-x86.zip -d $HOME/.sonar/
-          echo "$HOME/.sonar/build-wrapper-macosx-x86" >> $GITHUB_PATH
+          curl -sSLo "$HOME/.sonar/build-wrapper-macosx-x86.zip" "${{ env.BUILD_WRAPPER_DOWNLOAD_URL }}"
+          unzip -o "$HOME/.sonar/build-wrapper-macosx-x86.zip" -d "$HOME/.sonar/"
+          echo "$HOME/.sonar/build-wrapper-macosx-x86" >> "$GITHUB_PATH"
 
       - name: Run build-wrapper
         run: |
@@ -71,7 +71,7 @@ jobs:
                         --define sonar.cfamily.cache.enabled=true                                      \
                         --define sonar.cfamily.cache.path="${{ env.SONAR_CACHE_DIR }}"                 \
                         --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}" \
-                        --define sonar.projectVersion=`git rev-parse HEAD`                             \
+                        --define sonar.projectVersion="$(git rev-parse HEAD)"                          \
                         --define sonar.organization=paulhuggett-github                                 \
                         --define sonar.sourceEncoding=UTF-8                                            \
                         --define sonar.exclusions='build/**/*','docs/**/*'
