@@ -6,11 +6,6 @@ title: A Simple Mixer
 
 <link href="mixer.css" rel="stylesheet">
 
-<script type="module">
-  import { mixerPage } from './mixer.js'
-  document.addEventListener('DOMContentLoaded', mixerPage)
-</script>
-
 To show how useful a saturating addition function can be, we can look
 at a simple DSP signal mixer. This takes two input signals and combines 
 them to produce a single output. It’s common for DSP systems to use
@@ -76,7 +71,11 @@ waveforms will cause the three [output](#output) charts below to be updated.
       </datalist>
       <div id="ampvalue1" class="num small-text"></div>
     </div>
-    <div id="graph1"></div>
+    <div id="graph1">
+      <svg width="360" height="90" viewBox="0 0 360 90">
+        <rect width="100%" height="100%" fill="lightgray"></rect>
+      </svg>
+    </div>
 </fieldset>
 
 <fieldset>
@@ -106,7 +105,11 @@ waveforms will cause the three [output](#output) charts below to be updated.
     </datalist>
     <div id="ampvalue2" class="num small-text"></div>
   </div>
-  <div id="graph2"></div>
+  <div id="graph2">
+      <svg width="360" height="90" viewBox="0 0 360 90">
+        <rect width="100%" height="100%" fill="lightgray"></rect>
+      </svg>
+  </div>
 </fieldset>
 
 ### Mixer Output
@@ -117,10 +120,24 @@ Areas shown in red lies outside the range [-1.0,1.0] so cannot be represented
 and will be distorted in the output.
 
 <div class="run">
-  <div id="graphSatSum"></div>
-  <div id="graphModSum"></div>
+  <div id="graphSatSum">
+    <svg width="360" height="150" viewBox="0 0 360 150">
+      <rect width="100%" height="100%" fill="lightgray"></rect>
+    </svg>
+  </div>
+  <div id="graphModSum">
+    <svg width="360" height="150" viewBox="0 0 360 150">
+      <rect width="100%" height="100%" fill="lightgray"></rect>
+    </svg>
+  </div>
 </div>
 
 Compare the results when using [saturating addition](#graphSatSum) or
 [modulo addition](#graphModSum) to the
-[desired (true) output above](#graphSum).
+[desired (true) output above](#graphSum). Saturating addition has produced
+output which is much closer to the ideal output.
+
+<script type="module">
+  import { mixerPage } from './mixer.js'
+  document.addEventListener('DOMContentLoaded', mixerPage)
+</script>
