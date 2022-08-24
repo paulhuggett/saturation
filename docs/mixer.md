@@ -2,6 +2,8 @@
 title: A Simple Mixer
 ---
 
+{% assign mask_counter=0 %}
+
 # {{ page.title }}
 
 <link href="mixer.css" rel="stylesheet">
@@ -45,6 +47,8 @@ much closer to the ideal.
 Changing the frequency and amplitude sliders for either of the two input
 waveforms will cause the three [output](#mixer-output) charts below to be updated.
 
+{% assign height=90 %}
+
 <div class="run">
   <div>
     <div>Input 1</div>
@@ -74,9 +78,7 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
       <div id="ampvalue1" class="num small-text"></div>
     </div>
     <div id="graph1">
-      <svg width="325" height="90" viewBox="0 0 325 90">
-        <rect width="100%" height="100%" fill="lightgray"></rect>
-      </svg>
+{% include mixer_skeleton.liquid %}
     </div>
   </div>
 
@@ -108,8 +110,7 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
       <div id="ampvalue2" class="num small-text"></div>
     </div>
     <div id="graph2">
-      <svg width="325" height="90" viewBox="0 0 325 90">
-        <rect width="100%" height="100%" fill="lightgray"></rect>
+{% include mixer_skeleton.liquid %}
       </svg>
     </div>
   </div>
@@ -117,7 +118,11 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
 
 ### Mixer Output
 
-<div id="graphSum"></div>
+{% assign height=150 %}
+
+<div id="graphSum">
+{% include mixer_skeleton.liquid %}
+</div>
 
 Areas shown in red lies outside the range [-1.0,1.0] so cannot be represented
 and will be distorted in the output.
@@ -126,17 +131,13 @@ and will be distorted in the output.
   <div>
     <div>Saturating Addition</div>
     <div id="graphSatSum">
-      <svg width="325" height="150" viewBox="0 0 325 150">
-        <rect width="100%" height="100%" fill="lightgray"></rect>
-      </svg>
+{% include mixer_skeleton.liquid %}
     </div>
   </div>
   <div>
     <div>Modulo Addition</div>
     <div id="graphModSum">
-      <svg width="325" height="150" viewBox="0 0 325 150">
-        <rect width="100%" height="100%" fill="lightgray"></rect>
-      </svg>
+{% include mixer_skeleton.liquid %}
     </div>
   </div>
 </div>

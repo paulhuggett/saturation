@@ -22,3 +22,10 @@
   fill: gray;
   text-decoration: underline;
 }
+.maskr2 {
+  animation: mask 1s ease infinite;
+}
+@keyframes mask {
+  from {transform: translateX(0)}
+  to {transform: translateX(325px)}
+}
