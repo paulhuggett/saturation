@@ -82,31 +82,31 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
 
   <div>
     <div>Input 2</div>
-      <div class="keep-together">
-        <label for="frequency2" class="small-text">Frequency:</label>
-        <input type="range" class="small-text" list="ticksfrequency2" min="0.1" max="4.0" value="3.2" step="0.05" id="frequency2">
-        <datalist id="ticksfrequency2">
-          <option value="0.1"></option>
-          <option value="1.0"></option>
-          <option value="2.0"></option>
-          <option value="3.0"></option>
-          <option value="4.0"></option>
-        </datalist>
-        <div id="freqvalue2" class="num small-text"></div>
-      </div>
-      <div class="keep-together">
-        <label for="amplitude2" class="small-text">Amplitude:</label>
-        <input type="range" class="small-text" list="ticksamplitude2" min="0.0" max="1.0" value="0.9" step="0.01" id="amplitude2">
-        <datalist id="ticksamplitude2">
-          <option value="0"></option>
-          <option value="0.2"></option>
-          <option value="0.4"></option>
-          <option value="0.6"></option>
-          <option value="0.8"></option>
-          <option value="1.0"></option>
-        </datalist>
-        <div id="ampvalue2" class="num small-text"></div>
-      </div>
+    <div class="keep-together">
+      <label for="frequency2" class="small-text">Frequency:</label>
+      <input type="range" class="small-text" list="ticksfrequency2" min="0.1" max="4.0" value="3.2" step="0.05" id="frequency2">
+      <datalist id="ticksfrequency2">
+        <option value="0.1"></option>
+        <option value="1.0"></option>
+        <option value="2.0"></option>
+        <option value="3.0"></option>
+        <option value="4.0"></option>
+      </datalist>
+      <div id="freqvalue2" class="num small-text"></div>
+    </div>
+    <div class="keep-together">
+      <label for="amplitude2" class="small-text">Amplitude:</label>
+      <input type="range" class="small-text" list="ticksamplitude2" min="0.0" max="1.0" value="0.9" step="0.01" id="amplitude2">
+      <datalist id="ticksamplitude2">
+        <option value="0"></option>
+        <option value="0.2"></option>
+        <option value="0.4"></option>
+        <option value="0.6"></option>
+        <option value="0.8"></option>
+        <option value="1.0"></option>
+      </datalist>
+      <div id="ampvalue2" class="num small-text"></div>
+    </div>
     <div id="graph2">
       <svg width="325" height="90" viewBox="0 0 325 90">
         <rect width="100%" height="100%" fill="lightgray"></rect>
@@ -123,15 +123,21 @@ Areas shown in red lies outside the range [-1.0,1.0] so cannot be represented
 and will be distorted in the output.
 
 <div class="run">
-  <div id="graphSatSum">
-    <svg width="325" height="150" viewBox="0 0 325 150">
-      <rect width="100%" height="100%" fill="lightgray"></rect>
-    </svg>
+  <div>
+    <div>Saturating Addition</div>
+    <div id="graphSatSum">
+      <svg width="325" height="150" viewBox="0 0 325 150">
+        <rect width="100%" height="100%" fill="lightgray"></rect>
+      </svg>
+    </div>
   </div>
-  <div id="graphModSum">
-    <svg width="325" height="150" viewBox="0 0 325 150">
-      <rect width="100%" height="100%" fill="lightgray"></rect>
-    </svg>
+  <div>
+    <div>Modulo Addition</div>
+    <div id="graphModSum">
+      <svg width="325" height="150" viewBox="0 0 325 150">
+        <rect width="100%" height="100%" fill="lightgray"></rect>
+      </svg>
+    </div>
   </div>
 </div>
 

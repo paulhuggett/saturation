@@ -10,7 +10,7 @@ function getYDomain (data) {
   return [-yMax, yMax]
 }
 
-function sine (id, height, title, data) {
+function sine (id, height, data) {
   const internalHeight = height - margin.top - margin.bottom
 
   d3.select(id).selectChildren().remove()
@@ -45,14 +45,6 @@ function sine (id, height, title, data) {
     .attr('width', xScale(xDomain[1]) - xScale(0))
     .attr('height', yScale(yDomain[0]) - yScale(-1))
 
-  if (title !== null) {
-    svg.append('text')
-      .text(title)
-      .attr('x', (width / 2))
-      .attr('y', 17)
-      .attr('text-anchor', 'middle')
-      .classed('graph-title', true)
-  }
   const g = svg.append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
   // Are we showing clipped output?
@@ -126,12 +118,12 @@ export function mixerPage () {
     freqvalue2.innerText = frequency2.value
     ampvalue2.innerText = amplitude2.value
 
-    sine('#graph1', smallHeight, null, makeXArray().map(makePoints(c1)))
-    sine('#graph2', smallHeight, null, makeXArray().map(makePoints(c2)))
+    sine('#graph1', smallHeight, makeXArray().map(makePoints(c1)))
+    sine('#graph2', smallHeight, makeXArray().map(makePoints(c2)))
 
-    sine('#graphSum', height, 'True Output', makeXArray().map(x => [x, c1(x) + c2(x)]))
-    sine('#graphSatSum', height, 'Saturating Addition', makeXArray().map(x => [x, Math.max(Math.min(c1(x) + c2(x), 1), -1)]))
-    sine('#graphModSum', height, 'Modulo Addition', makeXArray().map(x => [x, (c1(x) + c2(x)) % 1.0]))
+    sine('#graphSum', height, makeXArray().map(x => [x, c1(x) + c2(x)]))
+    sine('#graphSatSum', height, makeXArray().map(x => [x, Math.max(Math.min(c1(x) + c2(x), 1), -1)]))
+    sine('#graphModSum', height, makeXArray().map(x => [x, (c1(x) + c2(x)) % 1.0]))
   }
 
   [frequency1, amplitude1, frequency2, amplitude2].forEach(el => el.addEventListener('input', update))
