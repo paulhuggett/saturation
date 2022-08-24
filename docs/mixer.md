@@ -52,6 +52,7 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
 {% assign input=1 %}
 {% include mixer_controls.liquid %}
     <div id="graph1">
+{% assign maskid=1 %}
 {% assign height=90 %}
 {% include mixer_skeleton.liquid %}
     </div>
@@ -61,6 +62,7 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
 {% assign input=2 %}
 {% include mixer_controls.liquid %}
     <div id="graph2">
+{% assign maskid=2 %}
 {% assign height=90 %}
 {% include mixer_skeleton.liquid %}
     </div>
@@ -80,6 +82,7 @@ and will be distorted in the output.
   <div>
     <div>Saturating Addition</div>
     <div id="graphSatSum">
+{% assign maskid=3 %}
 {% assign height=150 %}
 {% include mixer_skeleton.liquid %}
     </div>
@@ -87,6 +90,7 @@ and will be distorted in the output.
   <div>
     <div>Modulo Addition</div>
     <div id="graphModSum">
+{% assign maskid=4 %}
 {% assign height=150 %}
 {% include mixer_skeleton.liquid %}
     </div>
