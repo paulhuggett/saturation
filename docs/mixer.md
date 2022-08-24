@@ -47,78 +47,27 @@ much closer to the ideal.
 Changing the frequency and amplitude sliders for either of the two input
 waveforms will cause the three [output](#mixer-output) charts below to be updated.
 
-{% assign height=90 %}
-
 <div class="run">
   <div>
-    <div>Input 1</div>
-    <div class="keep-together">
-      <label for="frequency1" class="small-text">Frequency:</label>
-      <input type="range" class="small-text" list="ticksfrequency1" min="0.1" max="4.0" value="2.0" step="0.05" id="frequency1">
-      <datalist id="ticksfrequency1">
-        <option value="0.1"></option>
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option value="4"></option>
-      </datalist>
-      <div id="freqvalue1" class="num small-text"></div>
-    </div>
-    <div class="keep-together">
-      <label for="amplitude1" class="small-text">Amplitude:</label>
-      <input type="range" class="small-text" list="ticksamplitude1" min="0.0" max="1.0" value="0.9" step="0.01" id="amplitude1">
-      <datalist id="ticksamplitude1">
-        <option value="0"></option>
-        <option value="0.2"></option>
-        <option value="0.4"></option>
-        <option value="0.6"></option>
-        <option value="0.8"></option>
-        <option value="1.0"></option>
-      </datalist>
-      <div id="ampvalue1" class="num small-text"></div>
-    </div>
+{% assign input=1 %}
+{% include mixer_controls.liquid %}
     <div id="graph1">
+{% assign height=90 %}
 {% include mixer_skeleton.liquid %}
     </div>
   </div>
 
   <div>
-    <div>Input 2</div>
-    <div class="keep-together">
-      <label for="frequency2" class="small-text">Frequency:</label>
-      <input type="range" class="small-text" list="ticksfrequency2" min="0.1" max="4.0" value="3.2" step="0.05" id="frequency2">
-      <datalist id="ticksfrequency2">
-        <option value="0.1"></option>
-        <option value="1.0"></option>
-        <option value="2.0"></option>
-        <option value="3.0"></option>
-        <option value="4.0"></option>
-      </datalist>
-      <div id="freqvalue2" class="num small-text"></div>
-    </div>
-    <div class="keep-together">
-      <label for="amplitude2" class="small-text">Amplitude:</label>
-      <input type="range" class="small-text" list="ticksamplitude2" min="0.0" max="1.0" value="0.9" step="0.01" id="amplitude2">
-      <datalist id="ticksamplitude2">
-        <option value="0"></option>
-        <option value="0.2"></option>
-        <option value="0.4"></option>
-        <option value="0.6"></option>
-        <option value="0.8"></option>
-        <option value="1.0"></option>
-      </datalist>
-      <div id="ampvalue2" class="num small-text"></div>
-    </div>
+{% assign input=2 %}
+{% include mixer_controls.liquid %}
     <div id="graph2">
+{% assign height=90 %}
 {% include mixer_skeleton.liquid %}
-      </svg>
     </div>
   </div>
 </div>
 
 ### Mixer Output
-
-{% assign height=150 %}
 
 <div id="graphSum">
 {% include mixer_skeleton.liquid %}
@@ -131,12 +80,14 @@ and will be distorted in the output.
   <div>
     <div>Saturating Addition</div>
     <div id="graphSatSum">
+{% assign height=150 %}
 {% include mixer_skeleton.liquid %}
     </div>
   </div>
   <div>
     <div>Modulo Addition</div>
     <div id="graphModSum">
+{% assign height=150 %}
 {% include mixer_skeleton.liquid %}
     </div>
   </div>
