@@ -49,22 +49,16 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
 
 <div class="run">
   <div>
-{% assign input=1 %}
-{% include mixer_controls.liquid %}
+{% include mixer_controls.liquid input=1 %}
     <div id="graph1">
-{% assign maskid=1 %}
-{% assign height=90 %}
-{% include mixer_skeleton.liquid %}
+{% include mixer_skeleton.liquid maskid=1 height=90 %}
     </div>
   </div>
 
   <div>
-{% assign input=2 %}
-{% include mixer_controls.liquid %}
+{% include mixer_controls.liquid input=2 %}
     <div id="graph2">
-{% assign maskid=2 %}
-{% assign height=90 %}
-{% include mixer_skeleton.liquid %}
+{% include mixer_skeleton.liquid maskid=2 height=90 %}
     </div>
   </div>
 </div>
@@ -72,7 +66,7 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
 ### Mixer Output
 
 <div id="graphSum">
-{% include mixer_skeleton.liquid %}
+{% include mixer_skeleton.liquid maskid=3 height=150 %}
 </div>
 
 Areas shown in red lies outside the range [-1.0,1.0] so cannot be represented
@@ -82,17 +76,13 @@ and will be distorted in the output.
   <div>
     <div>Saturating Addition</div>
     <div id="graphSatSum">
-{% assign maskid=3 %}
-{% assign height=150 %}
-{% include mixer_skeleton.liquid %}
+{% include mixer_skeleton.liquid maskid=4 height=150 %}
     </div>
   </div>
   <div>
     <div>Modulo Addition</div>
     <div id="graphModSum">
-{% assign maskid=4 %}
-{% assign height=150 %}
-{% include mixer_skeleton.liquid %}
+{% include mixer_skeleton.liquid maskid=5 height=150 %}
     </div>
   </div>
 </div>
