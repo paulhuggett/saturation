@@ -117,7 +117,6 @@ TEST (Multiply, Unsigned64) {
                                 std::numeric_limits<uint64_t>::max ()),
              (u64pair{0xfffffffffffffffe, 0x1}))
       << "big*big";
-  // TODO: too few the tests stray into the upper 64 bits!
 }
 
 TEST (Multiply, Signed32) {
