@@ -42,27 +42,28 @@ function (setup_target target)
   )
 endfunction (setup_target)
 
-
-add_subdirectory (klee)
-
-# Tell gtest to link against the "Multi-threaded Debug DLL runtime library" on Windows.
-set (gtest_force_shared_crt ON CACHE BOOL "Always use msvcrt.dll")
-# Don't install either gtest or gmock.
-set (INSTALL_GTEST Off CACHE BOOL "disable gtest install")
-set (INSTALL_GMOCK Off CACHE BOOL "disable gmock install")
-add_subdirectory (googletest)
-
-
+# The "library" itself.
 
 add_library (saturation INTERFACE include/saturation/saturation.hpp)
 target_include_directories (saturation INTERFACE ./include)
 
-add_subdirectory (unittests)
+# Tiny demo program.
 
 add_executable (demo main.cpp)
 setup_target (demo)
 target_link_libraries (demo PUBLIC saturation)
 add_custom_command (TARGET demo
-                    PRE_LINK
-                    COMMAND unittests
-                    COMMENT Running unit tests)
+  PRE_LINK
+  COMMAND unittests
+  COMMENT Running unit tests
+)
+
+# Test targets.
+
+set (gtest_force_shared_crt ON CACHE BOOL "Always use msvcrt.dll")
+set (INSTALL_GTEST Off CACHE BOOL "Disable gtest install")
+set (INSTALL_GMOCK Off CACHE BOOL "Disable gmock install")
+add_subdirectory (googletest)
+
+add_subdirectory (unittests)
+add_subdirectory (klee)
