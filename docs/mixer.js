@@ -1,7 +1,7 @@
 import * as d3 from 'https://cdn.skypack.dev/d3@7'
 
-const width = 360
-const margin = { top: 12, left: 40, bottom: 12, right: 10 }
+const width = 650 / 2
+const margin = { top: 12, left: 30, bottom: 12, right: 4 }
 const internalWidth = width - margin.left - margin.right
 let clipNum = 1
 

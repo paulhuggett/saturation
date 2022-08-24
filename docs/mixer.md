@@ -15,8 +15,8 @@ imposes a strict limit on the range of number that can be represented. The
 hypothetical system described here can reproduce values in the range
 [-1.0, 1.0].
 
-The “inputs” section below shows two input sinusoids. You can experiment with
-changing the frequency and amplitude of each.
+The “mixer inputs” section below shows two input sinusoids. You can experiment
+with changing the frequency and amplitude of each.
 
 The “outputs” section contains three charts which show the result of mixing the
 two input signals.
@@ -45,8 +45,9 @@ much closer to the ideal.
 Changing the frequency and amplitude sliders for either of the two input
 waveforms will cause the three [output](#mixer-output) charts below to be updated.
 
-<fieldset>
-  <legend>Input 1</legend>
+<div class="run">
+  <div>
+    <div>Input 1</div>
     <div class="keep-together">
       <label for="frequency1" class="small-text">Frequency:</label>
       <input type="range" class="small-text" list="ticksfrequency1" min="0.1" max="4.0" value="2.0" step="0.05" id="frequency1">
@@ -62,7 +63,7 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
     <div class="keep-together">
       <label for="amplitude1" class="small-text">Amplitude:</label>
       <input type="range" class="small-text" list="ticksamplitude1" min="0.0" max="1.0" value="0.9" step="0.01" id="amplitude1">
-        <datalist id="ticksamplitude1">
+      <datalist id="ticksamplitude1">
         <option value="0"></option>
         <option value="0.2"></option>
         <option value="0.4"></option>
@@ -73,45 +74,46 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
       <div id="ampvalue1" class="num small-text"></div>
     </div>
     <div id="graph1">
-      <svg width="360" height="90" viewBox="0 0 360 90">
+      <svg width="325" height="90" viewBox="0 0 325 90">
         <rect width="100%" height="100%" fill="lightgray"></rect>
       </svg>
     </div>
-</fieldset>
+  </div>
 
-<fieldset>
-  <legend>Input 2</legend>
-  <div class="keep-together">
-    <label for="frequency2" class="small-text">Frequency:</label>
-    <input type="range" class="small-text" list="ticksfrequency2" min="0.1" max="4.0" value="3.0" step="0.05" id="frequency2">
-    <datalist id="ticksfrequency2">
-      <option value="0.1"></option>
-      <option value="1.0"></option>
-      <option value="2.0"></option>
-      <option value="3.0"></option>
-      <option value="4.0"></option>
-    </datalist>
-    <div id="freqvalue2" class="num small-text"></div>
-  </div>
-  <div class="keep-together">
-    <label for="amplitude2" class="small-text">Amplitude:</label>
-    <input type="range" class="small-text" list="ticksamplitude2" min="0.0" max="1.0" value="0.9" step="0.01" id="amplitude2">
-    <datalist id="ticksamplitude2">
-      <option value="0"></option>
-      <option value="0.2"></option>
-      <option value="0.4"></option>
-      <option value="0.6"></option>
-      <option value="0.8"></option>
-      <option value="1.0"></option>
-    </datalist>
-    <div id="ampvalue2" class="num small-text"></div>
-  </div>
-  <div id="graph2">
-      <svg width="360" height="90" viewBox="0 0 360 90">
+  <div>
+    <div>Input 2</div>
+      <div class="keep-together">
+        <label for="frequency2" class="small-text">Frequency:</label>
+        <input type="range" class="small-text" list="ticksfrequency2" min="0.1" max="4.0" value="3.2" step="0.05" id="frequency2">
+        <datalist id="ticksfrequency2">
+          <option value="0.1"></option>
+          <option value="1.0"></option>
+          <option value="2.0"></option>
+          <option value="3.0"></option>
+          <option value="4.0"></option>
+        </datalist>
+        <div id="freqvalue2" class="num small-text"></div>
+      </div>
+      <div class="keep-together">
+        <label for="amplitude2" class="small-text">Amplitude:</label>
+        <input type="range" class="small-text" list="ticksamplitude2" min="0.0" max="1.0" value="0.9" step="0.01" id="amplitude2">
+        <datalist id="ticksamplitude2">
+          <option value="0"></option>
+          <option value="0.2"></option>
+          <option value="0.4"></option>
+          <option value="0.6"></option>
+          <option value="0.8"></option>
+          <option value="1.0"></option>
+        </datalist>
+        <div id="ampvalue2" class="num small-text"></div>
+      </div>
+    <div id="graph2">
+      <svg width="325" height="90" viewBox="0 0 325 90">
         <rect width="100%" height="100%" fill="lightgray"></rect>
       </svg>
+    </div>
   </div>
-</fieldset>
+</div>
 
 ### Mixer Output
 
@@ -122,12 +124,12 @@ and will be distorted in the output.
 
 <div class="run">
   <div id="graphSatSum">
-    <svg width="360" height="150" viewBox="0 0 360 150">
+    <svg width="325" height="150" viewBox="0 0 325 150">
       <rect width="100%" height="100%" fill="lightgray"></rect>
     </svg>
   </div>
   <div id="graphModSum">
-    <svg width="360" height="150" viewBox="0 0 360 150">
+    <svg width="325" height="150" viewBox="0 0 325 150">
       <rect width="100%" height="100%" fill="lightgray"></rect>
     </svg>
   </div>
