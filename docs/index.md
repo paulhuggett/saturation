@@ -1,37 +1,13 @@
-## Welcome to GitHub Pages
+# Saturation
 
-You can use the [editor on GitHub](https://github.com/paulhuggett/saturation/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+“Saturation” is a C++, dependency free, header-only library of functions that perform (usually) branchless saturation arithmetic. It supports addition, subtraction, multiplication, and division of signed and unsigned values anywhere from 4 to 64 bits wide. That’s a total of 480 functions!
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Functions are templated according the number of bits they use and named after their operation (`add`, `sub`, `mul`, `div`) their sign (either `s` or `u` for signed or unsigned respectively). For example:
 
-### Markdown
+    subs<24>(x, y)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+This is a function that subtracts two signed 24 bit numbers in `x` and `y` returning a 24 bit result.
 
-```markdown
-Syntax highlighted code block
+## Why is this Useful?
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/paulhuggett/saturation/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Saturating arithmetic is useful in digital signal processing algorithms such as a mixer which consumes two or more input signals and adds them to produce a single output. See [this example mixer](mixer.html) for more information.
