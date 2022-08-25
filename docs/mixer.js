@@ -53,6 +53,7 @@ function sine (id, data) {
     // Create a copy of the line data and add a single data point at which
     // forces the y value to 0 and will enable the path to be safely filled.
     const areaData = data.slice()
+    areaData.unshift([xDomain[0], 0.0])
     areaData.push([xDomain[1], 0.0])
     g.append('path')
       .datum(areaData)
@@ -91,40 +92,51 @@ function sine (id, data) {
     .call(yAxis)
 }
 
+function setValues (input) {
+  input.frequency.value.innerText = input.frequency.range.value
+  input.amplitude.value.innerText = input.amplitude.range.value
+  input.phase.value.innerText = input.phase.range.value
+}
+
 export function mixerPage () {
-  const frequency1 = document.querySelector('#frequency1')
-  const freqvalue1 = document.querySelector('#freqvalue1')
-
-  const amplitude1 = document.querySelector('#amplitude1')
-  const ampvalue1 = document.querySelector('#ampvalue1')
-
-  const frequency2 = document.querySelector('#frequency2')
-  const freqvalue2 = document.querySelector('#freqvalue2')
-
-  const amplitude2 = document.querySelector('#amplitude2')
-  const ampvalue2 = document.querySelector('#ampvalue2')
+  const input1 = {
+    frequency: { range: document.querySelector('#frequency1'), value: document.querySelector('#freqvalue1') },
+    amplitude: { range: document.querySelector('#amplitude1'), value: document.querySelector('#ampvalue1') },
+    phase: { range: document.querySelector('#phase1'), value: document.querySelector('#phasevalue1') }
+  }
+  const input2 = {
+    frequency: { range: document.querySelector('#frequency2'), value: document.querySelector('#freqvalue2') },
+    amplitude: { range: document.querySelector('#amplitude2'), value: document.querySelector('#ampvalue2') },
+    phase: { range: document.querySelector('#phase2'), value: document.querySelector('#phasevalue2') }
+  }
 
   const points = internalWidth / 2
   const makeXArray = () => d3.range(0, points).map(k => k / (points - 1) * Math.PI * 2)
+  const yValue = input => x => Math.sin((x + parseFloat(input.phase.range.value)) * parseFloat(input.frequency.range.value)) * parseFloat(input.amplitude.range.value)
   const makePoints = f => x => [x, f(x)]
 
   const update = () => {
-    const c1 = x => Math.sin(x * frequency1.value) * amplitude1.value
-    const c2 = x => Math.sin(x * frequency2.value) * amplitude2.value
+    setValues(input1)
+    setValues(input2)
 
-    freqvalue1.innerText = frequency1.value
-    ampvalue1.innerText = amplitude1.value
-    freqvalue2.innerText = frequency2.value
-    ampvalue2.innerText = amplitude2.value
+    const c1 = yValue(input1)
+    const c2 = yValue(input2)
 
     sine('#graph1', makeXArray().map(makePoints(c1)))
     sine('#graph2', makeXArray().map(makePoints(c2)))
 
     sine('#graphSum', makeXArray().map(x => [x, c1(x) + c2(x)]))
-    sine('#graphSatSum', makeXArray().map(x => [x, Math.max(Math.min(c1(x) + c2(x), 1), -1)]))
+    sine('#graphSatSum', makeXArray().map(x => [x, Math.max(Math.min(c1(x) + c2(x), 1.0), -1.0)]))
     sine('#graphModSum', makeXArray().map(x => [x, (c1(x) + c2(x)) % 1.0]))
   }
 
-  [frequency1, amplitude1, frequency2, amplitude2].forEach(el => el.addEventListener('input', update))
+  [
+    input1.frequency.range,
+    input1.amplitude.range,
+    input1.phase.range,
+    input2.frequency.range,
+    input2.amplitude.range,
+    input2.phase.range
+  ].forEach(el => el.addEventListener('input', update))
   update()
 }

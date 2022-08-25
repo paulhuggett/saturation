@@ -1,5 +1,7 @@
 ---
 title: A Simple Mixer
+graphHeight : 150
+smallGraphHeight : 90
 ---
 
 {% assign mask_counter=0 %}
@@ -40,9 +42,7 @@ produce the desired output — there will be distortion of some kind regardless
 of our choice — but that using saturating arithmetic yields a waveform that is
 much closer to the ideal.
 
-## Example
-
-### Mixer Inputs
+## Mixer Inputs
 
 Changing the frequency and amplitude sliders for either of the two input
 waveforms will cause the three [output](#mixer-output) charts below to be updated.
@@ -51,40 +51,43 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
   <div>
 {% include mixer_controls.liquid input=1 %}
     <div id="graph1">
-{% include mixer_skeleton.liquid maskid=1 height=90 %}
+{% include mixer_skeleton.liquid maskid=1 height=page.smallGraphHeight %}
     </div>
   </div>
 
   <div>
 {% include mixer_controls.liquid input=2 %}
     <div id="graph2">
-{% include mixer_skeleton.liquid maskid=2 height=90 %}
+{% include mixer_skeleton.liquid maskid=2 height=page.smallGraphHeight %}
     </div>
   </div>
 </div>
 
-### Mixer Output
+## Mixer Output
 
-<div id="graphSum">
-{% include mixer_skeleton.liquid maskid=3 height=150 %}
-</div>
+<figure>
+   <figcaption>True Output</figcaption>
+  <div id="graphSum">
+{% include mixer_skeleton.liquid maskid=3 height=page.graphHeight %}
+  </div>
+</figure>
 
 Areas shown in red lies outside the range [-1.0,1.0] so cannot be represented
 and will be distorted in the output.
 
 <div class="run">
-  <div>
-    <div>Saturating Addition</div>
+  <figure>
+    <figcaption>Saturating Addition</figcaption>
     <div id="graphSatSum">
-{% include mixer_skeleton.liquid maskid=4 height=150 %}
+{% include mixer_skeleton.liquid maskid=4 height=page.graphHeight %}
     </div>
-  </div>
-  <div>
-    <div>Modulo Addition</div>
+  </figure>
+  <figure>
+    <figcaption>Modulo Addition</figcaption>
     <div id="graphModSum">
-{% include mixer_skeleton.liquid maskid=5 height=150 %}
+{% include mixer_skeleton.liquid maskid=5 height=page.graphHeight %}
     </div>
-  </div>
+  </figure>
 </div>
 
 Compare the results when using [saturating addition](#graphSatSum) or

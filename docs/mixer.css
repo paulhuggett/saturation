@@ -29,3 +29,7 @@
   from {transform: translateX(0)}
   to {transform: translateX(325px)}
 }
+.details-indent {
+  padding-left: 1em;
+  width: 9ch;
+}

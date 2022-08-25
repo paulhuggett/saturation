@@ -1,30 +1,55 @@
 <div>Input {{ include.input }}</div>
-<div class="keep-together">
-  <label for="frequency{{ include.input }}" class="small-text">Frequency:</label>
-  <input type="range" class="small-text" list="ticksfrequency{{ include.input }}"
-         min="0.1" max="4.0" value="2.0" step="0.05"
-         id="frequency{{ include.input }}">
-  <datalist id="ticksfrequency{{ include.input }}">
-    <option value="0.1"></option>
-    <option value="1"></option>
-    <option value="2"></option>
-    <option value="3"></option>
-    <option value="4"></option>
-  </datalist>
-  <div id="freqvalue{{ include.input }}" class="num small-text"></div>
-</div>
-<div class="keep-together">
-  <label for="amplitude{{ include.input }}" class="small-text">Amplitude:</label>
-  <input type="range" class="small-text" list="ticksamplitude{{ include.input }}"
-         min="0.0" max="1.0" value="0.9" step="0.01"
-         id="amplitude{{ include.input }}">
-  <datalist id="ticksamplitude{{ include.input }}">
-    <option value="0"></option>
-    <option value="0.2"></option>
-    <option value="0.4"></option>
-    <option value="0.6"></option>
-    <option value="0.8"></option>
-    <option value="1.0"></option>
-  </datalist>
-  <div id="ampvalue{{ include.input }}" class="num small-text"></div>
-</div>
+<details>
+  <summary>
+    <div class="keep-together">
+      <label for="frequency{{ include.input }}" class="small-text">Frequency:</label>
+      <input type="range" class="small-text" list="ticksfrequency{{ include.input }}"
+              min="0.1" max="4.0" value="2.0" step="0.05"
+              id="frequency{{ include.input }}">
+      <datalist id="ticksfrequency{{ include.input }}">
+        <option value="0.1"></option>
+        <option value="1.0"></option>
+        <option value="2.0"></option>
+        <option value="3.0"></option>
+        <option value="4.0"></option>
+      </datalist>
+      <div id="freqvalue{{ include.input }}" class="num small-text"></div>
+    </div>
+  </summary>
+
+  <!-- Amplitude Control -->
+
+  <div class="keep-together">
+    <label for="amplitude{{ include.input }}" class=" details-indent small-text">Amplitude:</label>
+    <input type="range" class="small-text" list="ticksamplitude{{ include.input }}"
+          min="0.0" max="1.0" value="1.0" step="0.01"
+          id="amplitude{{ include.input }}">
+    <datalist id="ticksamplitude{{ include.input }}">
+      <option value="0.0"></option>
+      <option value="0.2"></option>
+      <option value="0.4"></option>
+      <option value="0.6"></option>
+      <option value="0.8"></option>
+      <option value="1.0"></option>
+    </datalist>
+    <div id="ampvalue{{ include.input }}" class="num small-text"></div>
+  </div>
+
+  <!-- Phase Control -->
+
+  <div class="keep-together">
+    <label for="phase{{ include.input }}" class="details-indent small-text">Phase:</label>
+    <input type="range" class="small-text" list="ticksphase{{ include.input }}"
+          min="0.0" max="6.28" value="0.0" step="0.01"
+          id="phase{{ include.input }}">
+    <datalist id="ticksphase{{ include.input }}">
+      <option value="0.00"></option>
+      <option value="1.51"></option>
+      <option value="3.14"></option>
+      <option value="4.71"></option>
+      <option value="6.28"></option>
+    </datalist>
+    <div id="phasevalue{{ include.input }}" class="num small-text"></div>
+  </div>
+</details>
+
