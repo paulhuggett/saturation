@@ -19,11 +19,9 @@ imposes a strict limit on the range of number that can be represented. The
 hypothetical system described here can reproduce values in the range
 [-1.0, 1.0].
 
-The “mixer inputs” section below shows two input sinusoids. You can experiment
-with changing the frequency and amplitude of each.
-
-The “outputs” section contains three charts which show the result of mixing the
-two input signals.
+The first two charts below show two input sinusoids. You can experiment
+with changing the frequency, amplitude, and phase of each. The next three
+charts show the result of mixing the two input signals.
 
 - The [first (titled “True Output”)](#graphSum) shows the mixer’s mathematically
   correct output. Where there is constructive interference between the two input
@@ -42,10 +40,10 @@ produce the desired output — there will be distortion of some kind regardless
 of our choice — but that using saturating arithmetic yields a waveform that is
 much closer to the ideal.
 
-## Mixer Inputs
+## Example Mixer
 
-Changing the frequency and amplitude sliders for either of the two input
-waveforms will cause the three [output](#mixer-output) charts below to be updated.
+Changes to either of the two input waveforms will cause the three output charts
+below to be updated.
 
 <div class="run">
   <div>
@@ -63,7 +61,10 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
   </div>
 </div>
 
-## Mixer Output
+You can see the mixer’s output below. The “true output” chart shows the
+mathematically correct result. Areas shown in red lies outside the range
+[-1.0,1.0] so cannot be represented in our number system and will therefore be
+distorted in the output.
 
 <figure>
    <figcaption>True Output</figcaption>
@@ -72,8 +73,10 @@ waveforms will cause the three [output](#mixer-output) charts below to be update
   </div>
 </figure>
 
-Areas shown in red lies outside the range [-1.0,1.0] so cannot be represented
-and will be distorted in the output.
+Compare the results when using [saturating addition](#graphSatSum) or
+[modulo addition](#graphModSum) to the
+[desired (true) output above](#graphSum). Saturating addition has produced
+output which is much closer to the ideal output.
 
 <div class="run">
   <figure>
@@ -89,11 +92,6 @@ and will be distorted in the output.
     </div>
   </figure>
 </div>
-
-Compare the results when using [saturating addition](#graphSatSum) or
-[modulo addition](#graphModSum) to the
-[desired (true) output above](#graphSum). Saturating addition has produced
-output which is much closer to the ideal output.
 
 <script type="module">
   import { mixerPage } from './mixer.js'
