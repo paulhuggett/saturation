@@ -25,8 +25,9 @@ charts show the result of mixing the two input signals.
 
 - The [first (titled “True Output”)](#graphSum) shows the mixer’s mathematically
   correct output. Where there is constructive interference between the two input
-  waveforms, values may lie outside the [-1.0,1.0] range and a real-world
-  implementation will distort this part of the output waveform.
+  waveforms, values may lie outside the [-1.0,1.0] range — these are show in red
+  — and a real-world implementation will distort this part of the output
+  waveform.
 - The [second chart (“Saturating Addition”)](#graphSatSum) shows the result of
   using saturating addition. Where the output would exceed the maximum or
   minimum amplitude values, the result is clamped to that range.
@@ -39,11 +40,6 @@ It should be clear that neither saturating nor modulo addition will be able to
 produce the desired output — there will be distortion of some kind regardless
 of our choice — but that using saturating arithmetic yields a waveform that is
 much closer to the ideal.
-
-## Example Mixer
-
-Changes to either of the two input waveforms will cause the three output charts
-below to be updated.
 
 <div class="run">
   <div>
@@ -60,11 +56,6 @@ below to be updated.
     </div>
   </div>
 </div>
-
-You can see the mixer’s output below. The “true output” chart shows the
-mathematically correct result. Areas shown in red lies outside the range
-[-1.0,1.0] so cannot be represented in our number system and will therefore be
-distorted in the output.
 
 <figure>
    <figcaption>True Output</figcaption>
