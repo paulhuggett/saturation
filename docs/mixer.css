@@ -32,8 +32,8 @@
 }
 
 @keyframes mask {
-  from { transform: translateX(0) };
-  to { transform: translateX(325px) };
+  from { transform: translateX(0); }
+  to { transform: translateX(325px); }
 }
 
 .details-indent {
