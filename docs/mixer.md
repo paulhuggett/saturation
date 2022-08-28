@@ -64,11 +64,6 @@ much closer to the ideal.
   </div>
 </figure>
 
-Compare the results when using [saturating addition](#graphSatSum) or
-[modulo addition](#graphModSum) to the
-[desired (true) output above](#graphSum). Saturating addition has produced
-output which is much closer to the ideal output.
-
 <div class="run">
   <figure>
     <figcaption>Saturating Addition</figcaption>
@@ -83,6 +78,11 @@ output which is much closer to the ideal output.
     </div>
   </figure>
 </div>
+
+Compare the results when using [saturating addition](#graphSatSum) or
+[modulo addition](#graphModSum) to the
+[desired (true) output](#graphSum). Saturating addition has produced
+output which is much closer to the ideal output.
 
 <script type="module">
   import { mixerPage } from './mixer.js'
