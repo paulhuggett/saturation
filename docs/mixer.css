@@ -33,3 +33,6 @@
   padding-left: 1em;
   width: 9ch;
 }
+.fill {  stroke-width: 0; fill: red; }
+.limit-line { stroke: red; stroke-dasharray: 4; }
+.line { stroke: black; stroke-width: 1.5; fill: none; }
