@@ -1,5 +1,5 @@
 .keep-together {
-  display:inline-flex;
+  display: inline-flex;
 }
 
 @media screen and (min-width: 750px) {
@@ -7,32 +7,52 @@
     display:inline-flex;
   }
 }
+
 .small-text {
   font-size: smaller;
   vertical-align: middle;
 }
+
 .num {
   width: 3em;
 }
+
 .axis path {
   stroke: #B8B8B8;
 }
+
 .graph-title {
   font-size: 16px;
   fill: gray;
   text-decoration: underline;
 }
+
 .maskr2 {
   animation: mask 1s ease infinite;
 }
+
 @keyframes mask {
-  from {transform: translateX(0)}
-  to {transform: translateX(325px)}
+  from { transform: translateX(0) };
+  to { transform: translateX(325px) };
 }
+
 .details-indent {
   padding-left: 1em;
   width: 9ch;
 }
-.fill {  stroke-width: 0; fill: red; }
-.limit-line { stroke: red; stroke-dasharray: 4; }
-.line { stroke: black; stroke-width: 1.5; fill: none; }
+
+.fill {
+  stroke-width: 0;
+  fill: red;
+}
+
+.limit-line {
+  stroke: red;
+  stroke-dasharray: 4;
+}
+
+.line {
+  stroke: black;
+  stroke-width: 1.5;
+  fill: none;
+}
