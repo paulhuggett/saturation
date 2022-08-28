@@ -94,36 +94,34 @@ export function mixerPage () {
 
   const points = internalWidth / 2
   const makeXArray = () => d3.range(0, points).map(k => k / (points - 1) * Math.PI * 2)
-  const yValue = input => x => Math.sin((x + parseFloat(input.phase.range.value)) * parseFloat(input.frequency.range.value)) * parseFloat(input.amplitude.range.value)
+  const yValue = input => x => Math.sin((x + +input.phase.range.value) * +input.frequency.range.value) * +input.amplitude.range.value
   const makePoints = f => x => [x, f(x)]
 
   const c1 = yValue(input[0])
   const c2 = yValue(input[1])
 
-  const g1 = sine('#graph1', 1)
-  const g2 = sine('#graph2', 2)
+  const input1Graph = sine('#graph1', 1)
+  const input2Graph = sine('#graph2', 2)
 
-  const g3 = sine('#graphSum', 3)
-  const g4 = sine('#graphSatSum', 4)
-  const g5 = sine('#graphModSum', 5)
+  const trueGraph = sine('#graphSum', 3)
+  const satMathGraph = sine('#graphSatSum', 4)
+  const moduloMathGraph = sine('#graphModSum', 5)
 
   const update = () => {
     setValues(input[0])
     setValues(input[1])
-    g1(makeXArray().map(makePoints(yValue(input[0]))))
-    g2(makeXArray().map(makePoints(yValue(input[1]))))
-    g3(makeXArray().map(x => [x, c1(x) + c2(x)]))
-    g4(makeXArray().map(x => [x, Math.max(Math.min(c1(x) + c2(x), 1.0), -1.0)]))
-    g5(makeXArray().map(x => [x, (c1(x) + c2(x)) % 1.0]))
+
+    input1Graph(makeXArray().map(makePoints(yValue(input[0]))))
+    input2Graph(makeXArray().map(makePoints(yValue(input[1]))))
+
+    trueGraph(makeXArray().map(x => [x, c1(x) + c2(x)]))
+    satMathGraph(makeXArray().map(x => [x, Math.max(Math.min(c1(x) + c2(x), 1.0), -1.0)]))
+    moduloMathGraph(makeXArray().map(x => [x, (c1(x) + c2(x)) % 1.0]))
   }
 
   [
-    input[0].frequency.range,
-    input[0].amplitude.range,
-    input[0].phase.range,
-    input[1].frequency.range,
-    input[1].amplitude.range,
-    input[1].phase.range
+    input[0].frequency.range, input[0].amplitude.range, input[0].phase.range,
+    input[1].frequency.range, input[1].amplitude.range, input[1].phase.range
   ].forEach(el => el.addEventListener('input', update))
   update()
 }
