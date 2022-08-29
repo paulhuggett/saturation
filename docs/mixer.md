@@ -1,10 +1,8 @@
 ---
 title: A Simple Mixer
-graphHeight : 150
-smallGraphHeight : 90
+graphHeight : 100
+smallGraphHeight : 70
 ---
-
-{% assign mask_counter=0 %}
 
 # {{ page.title }}
 
@@ -17,7 +15,7 @@ them to produce a single output. It’s common for DSP systems to use
 to represent amplitudes. The choices made in the formatting of these values
 imposes a strict limit on the range of number that can be represented. The
 hypothetical system described here can reproduce values in the range
-[-1.0, 1.0].
+\[-1.0, 1.0\].
 
 The first two charts below show two input sinusoids. You can experiment
 with changing the frequency, amplitude, and phase of each. The next three
@@ -25,7 +23,7 @@ charts show the result of mixing the two input signals.
 
 - The [first (titled “True Output”)](#graphSum) shows the mixer’s mathematically
   correct output. Where there is constructive interference between the two input
-  waveforms, values may lie outside the [-1.0,1.0] range — these are show in red
+  waveforms, values may lie outside the \[-1.0,1.0\] range — these are show in red
   — and a real-world implementation will distort this part of the output
   waveform.
 - The [second chart (“Saturating Addition”)](#graphSatSum) shows the result of
