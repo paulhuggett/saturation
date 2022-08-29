@@ -40,7 +40,7 @@ function showSelectedRows (tableBodyEl, menus) {
   tableBodyEl.querySelectorAll(`tr${dot}${selector}`).forEach(el => el.setAttribute('style', 'display:table-row;'))
 }
 
-window.addEventListener('DOMContentLoaded', event => {
+window.addEventListener('DOMContentLoaded', _ => {
   showHideColumn('#show-target', '.column-target')
   showHideColumn('#show-cpp', '.column-cpp')
   showHideColumn('#show-op', '.column-op')
@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
   const body = document.querySelector('tbody')
   const menus = findMenuElements(['#sign-select', '#bits-select', '#targets-select', '#op-select'])
-  menus.forEach(el => el.addEventListener('change', event => showSelectedRows(body, menus)))
+  menus.forEach(el => el.addEventListener('change', _ => showSelectedRows(body, menus)))
   sortable.makeSortable(document.getElementById('out-table'))
   showSelectedRows(body, menus) // make the correct table rows visible
 })

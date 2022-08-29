@@ -1,5 +1,3 @@
-/* global Node */
-
 // This code is derived from SortTable version 2 by Stuart Langridge. It has
 // been heavily revised to use “modern” language and browser features as well
 // as to remove functionality that I don’t need.
@@ -61,7 +59,7 @@ function guessType (table, column) {
   const collator = new Intl.Collator('en').compare
   const numberParser = new NumberParser('en')
 
-  const sortNop = (a, b) => 0
+  const sortNop = () => 0
   const sortAlpha = (a, b) => collator(a[0], b[0])
   const sortNumeric = (a, b) => {
     const aa = numberParser.parse(a[0])
