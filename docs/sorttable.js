@@ -67,18 +67,15 @@ function guessType (table, column) {
     return (isNaN(aa) ? 0 : aa) - (isNaN(bb) ? 0 : bb)
   }
 
-  return Array.from(table.tBodies[0].rows).map(el => {
+  for (const row of table.tBodies[0].rows) {
     // Pick a suitable sorting function for this cell.
-    const text = getInnerText(el.cells[column])
-    if (text.length === 0) {
-      return sortNop // No text, keep looking.
+    const text = getInnerText(row.cells[column])
+    if (text.length !== 0) {
+      // Choose the sort based on the contents of this cell.
+      return isNaN(numberParser.parse(text)) ? sortAlpha : sortNumeric
     }
-    // Choose the sort based on the contents of this cell.
-    return isNaN(numberParser.parse(text)) ? sortAlpha : sortNumeric
-  }).reduce((acc, el) => {
-    // If we've guessed something already, just return it.
-    return acc !== sortNop ? acc : el
-  }, sortNop)
+  }
+  return sortNop
 }
 
 function createIndicator (indicator) {
