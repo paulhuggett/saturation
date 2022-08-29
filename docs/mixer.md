@@ -21,18 +21,18 @@ The first two charts below show two input sinusoids. You can experiment
 with changing the frequency, amplitude, and phase of each. The next three
 charts show the result of mixing the two input signals.
 
-- The [first (titled “True Output”)](#graphSum) shows the mixer’s mathematically
-  correct output. Where there is constructive interference between the two input
-  waveforms, values may lie outside the \[-1.0,1.0\] range — these are show in red
-  — and a real-world implementation will distort this part of the output
-  waveform.
-- The [second chart (“Saturating Addition”)](#graphSatSum) shows the result of
-  using saturating addition. Where the output would exceed the maximum or
-  minimum amplitude values, the result is clamped to that range.
-- The [third chart (“Modulo Addition”)](#graphModSum) shows the use of
-  conventional modulo arithmetic. Here calculations that overflow result in
-  dramatic discontinuities in the output waveform as the values “wrap around”
-  when they overflow.
+-   The [first (titled “True Output”)](#graphSum) shows the mixer’s mathematically
+    correct output. Where there is constructive interference between the two input
+    waveforms, values may lie outside the \[-1.0,1.0\] range — these are shown in red
+    — and a real-world implementation will distort this part of the output
+    waveform.
+-   The [second chart (“Saturating Addition”)](#graphSatSum) shows the result of
+    using saturating addition. Where the output would exceed the maximum or
+    minimum amplitude values, the result is clamped to that range.
+-   The [third chart (“Modulo Addition”)](#graphModSum) shows the use of
+    conventional modulo arithmetic. Here calculations that overflow result in
+    dramatic discontinuities in the output waveform as the values “wrap around”
+    when they overflow.
 
 It should be clear that neither saturating nor modulo addition will be able to
 produce the desired output — there will be distortion of some kind regardless
