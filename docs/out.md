@@ -2,9 +2,8 @@
 title: Saturation
 ---
 
-<link rel="stylesheet" href="./foo.css">
-<script src="./sorttable.js"></script>
-<script src="./table.js"></script>
+<script src="./sorttable.js" type="module"></script>
+<script src="./table.js" type="module"></script>
 
 <fieldset>
   <legend>Columns</legend>
@@ -84,7 +83,7 @@ title: Saturation
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<4>
 f (sinteger_t<4> a,
@@ -127,7 +126,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<4>
 f (uinteger_t<4> a,
@@ -164,7 +163,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<5>
 f (sinteger_t<5> a,
@@ -207,7 +206,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<5>
 f (uinteger_t<5> a,
@@ -244,7 +243,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<6>
 f (sinteger_t<6> a,
@@ -287,7 +286,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<6>
 f (uinteger_t<6> a,
@@ -324,7 +323,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<7>
 f (sinteger_t<7> a,
@@ -367,7 +366,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<7>
 f (uinteger_t<7> a,
@@ -403,7 +402,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<8>
 f (sinteger_t<8> a,
@@ -441,7 +440,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<8>
 f (uinteger_t<8> a,
@@ -456,14 +455,11 @@ f (uinteger_t<8> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	pushq	%rbx
-	movl	%edi, %eax
-	addb	%sil, %al
-	sbbb	%bl, %bl
-	orb	%bl, %al
+	addb	%sil, %dil
+	sbbb	%al, %al
+	orb	%al, %dil
 
-	movzbl	%al, %eax
-	popq	%rbx
+	movzbl	%dil, %eax
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -476,7 +472,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<9>
 f (sinteger_t<9> a,
@@ -520,7 +516,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<9>
 f (uinteger_t<9> a,
@@ -555,7 +551,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<10>
 f (sinteger_t<10> a,
@@ -599,7 +595,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<10>
 f (uinteger_t<10> a,
@@ -634,7 +630,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<11>
 f (sinteger_t<11> a,
@@ -678,7 +674,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<11>
 f (uinteger_t<11> a,
@@ -713,7 +709,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<12>
 f (sinteger_t<12> a,
@@ -757,7 +753,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<12>
 f (uinteger_t<12> a,
@@ -792,7 +788,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<13>
 f (sinteger_t<13> a,
@@ -836,7 +832,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<13>
 f (uinteger_t<13> a,
@@ -871,7 +867,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<14>
 f (sinteger_t<14> a,
@@ -915,7 +911,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<14>
 f (uinteger_t<14> a,
@@ -950,7 +946,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<15>
 f (sinteger_t<15> a,
@@ -994,7 +990,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<15>
 f (uinteger_t<15> a,
@@ -1031,7 +1027,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<16>
 f (sinteger_t<16> a,
@@ -1046,11 +1042,12 @@ f (sinteger_t<16> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %eax
-	shrw	$15, %ax
-	addw	$32767, %ax                     ## imm = 0x7FFF
+	movw	$32767, %ax                     ## imm = 0x7FFF
+	movl	%edi, %ecx
+	shrw	$15, %cx
+	addw	%ax, %cx
 	addw	%si, %di
-	cmovow	%ax, %di
+	cmovow	%cx, %di
 
 	movswl	%di, %eax
 	popq	%rbp
@@ -1065,7 +1062,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<16>
 f (uinteger_t<16> a,
@@ -1080,14 +1077,11 @@ f (uinteger_t<16> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	pushq	%rbx
-	movl	%edi, %eax
-	addw	%si, %ax
-	sbbw	%bx, %bx
-	orw	%bx, %ax
+	addw	%si, %di
+	sbbw	%ax, %ax
+	orw	%ax, %di
 
-	movzwl	%ax, %eax
-	popq	%rbx
+	movzwl	%di, %eax
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -1100,7 +1094,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<17>
 f (sinteger_t<17> a,
@@ -1141,7 +1135,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<17>
 f (uinteger_t<17> a,
@@ -1176,7 +1170,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<18>
 f (sinteger_t<18> a,
@@ -1217,7 +1211,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<18>
 f (uinteger_t<18> a,
@@ -1252,7 +1246,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<19>
 f (sinteger_t<19> a,
@@ -1293,7 +1287,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<19>
 f (uinteger_t<19> a,
@@ -1328,7 +1322,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<20>
 f (sinteger_t<20> a,
@@ -1369,7 +1363,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<20>
 f (uinteger_t<20> a,
@@ -1404,7 +1398,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<21>
 f (sinteger_t<21> a,
@@ -1445,7 +1439,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<21>
 f (uinteger_t<21> a,
@@ -1480,7 +1474,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<22>
 f (sinteger_t<22> a,
@@ -1521,7 +1515,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<22>
 f (uinteger_t<22> a,
@@ -1556,7 +1550,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<23>
 f (sinteger_t<23> a,
@@ -1597,7 +1591,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<23>
 f (uinteger_t<23> a,
@@ -1632,7 +1626,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<24>
 f (sinteger_t<24> a,
@@ -1673,7 +1667,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<24>
 f (uinteger_t<24> a,
@@ -1708,7 +1702,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<25>
 f (sinteger_t<25> a,
@@ -1749,7 +1743,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<25>
 f (uinteger_t<25> a,
@@ -1784,7 +1778,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<26>
 f (sinteger_t<26> a,
@@ -1825,7 +1819,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<26>
 f (uinteger_t<26> a,
@@ -1860,7 +1854,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<27>
 f (sinteger_t<27> a,
@@ -1901,7 +1895,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<27>
 f (uinteger_t<27> a,
@@ -1936,7 +1930,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<28>
 f (sinteger_t<28> a,
@@ -1977,7 +1971,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<28>
 f (uinteger_t<28> a,
@@ -2012,7 +2006,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<29>
 f (sinteger_t<29> a,
@@ -2053,7 +2047,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<29>
 f (uinteger_t<29> a,
@@ -2088,7 +2082,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<30>
 f (sinteger_t<30> a,
@@ -2129,7 +2123,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<30>
 f (uinteger_t<30> a,
@@ -2164,7 +2158,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<31>
 f (sinteger_t<31> a,
@@ -2205,7 +2199,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<31>
 f (uinteger_t<31> a,
@@ -2241,7 +2235,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<32>
 f (sinteger_t<32> a,
@@ -2257,11 +2251,12 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%edi, %eax
-	movl	%edi, %ecx
-	shrl	$31, %ecx
-	addl	$2147483647, %ecx               ## imm = 0x7FFFFFFF
+	movl	$2147483647, %ecx               ## imm = 0x7FFFFFFF
+	movl	%edi, %edx
+	shrl	$31, %edx
+	addl	%ecx, %edx
 	addl	%esi, %eax
-	cmovol	%ecx, %eax
+	cmovol	%edx, %eax
 
 	popq	%rbp
 	retq
@@ -2275,7 +2270,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<32>
 f (uinteger_t<32> a,
@@ -2290,13 +2285,11 @@ f (uinteger_t<32> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	pushq	%rbx
 	movl	%edi, %eax
 	addl	%esi, %eax
-	sbbl	%ebx, %ebx
-	orl	%ebx, %eax
+	sbbl	%ecx, %ecx
+	orl	%ecx, %eax
 
-	popq	%rbx
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -2309,7 +2302,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<33>
 f (sinteger_t<33> a,
@@ -2351,7 +2344,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<33>
 f (uinteger_t<33> a,
@@ -2387,7 +2380,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<34>
 f (sinteger_t<34> a,
@@ -2429,7 +2422,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<34>
 f (uinteger_t<34> a,
@@ -2465,7 +2458,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<35>
 f (sinteger_t<35> a,
@@ -2507,7 +2500,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<35>
 f (uinteger_t<35> a,
@@ -2543,7 +2536,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<36>
 f (sinteger_t<36> a,
@@ -2585,7 +2578,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<36>
 f (uinteger_t<36> a,
@@ -2621,7 +2614,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<37>
 f (sinteger_t<37> a,
@@ -2663,7 +2656,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<37>
 f (uinteger_t<37> a,
@@ -2699,7 +2692,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<38>
 f (sinteger_t<38> a,
@@ -2741,7 +2734,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<38>
 f (uinteger_t<38> a,
@@ -2777,7 +2770,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<39>
 f (sinteger_t<39> a,
@@ -2819,7 +2812,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<39>
 f (uinteger_t<39> a,
@@ -2855,7 +2848,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<40>
 f (sinteger_t<40> a,
@@ -2897,7 +2890,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<40>
 f (uinteger_t<40> a,
@@ -2933,7 +2926,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<41>
 f (sinteger_t<41> a,
@@ -2975,7 +2968,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<41>
 f (uinteger_t<41> a,
@@ -3011,7 +3004,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<42>
 f (sinteger_t<42> a,
@@ -3053,7 +3046,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<42>
 f (uinteger_t<42> a,
@@ -3089,7 +3082,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<43>
 f (sinteger_t<43> a,
@@ -3131,7 +3124,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<43>
 f (uinteger_t<43> a,
@@ -3167,7 +3160,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<44>
 f (sinteger_t<44> a,
@@ -3209,7 +3202,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<44>
 f (uinteger_t<44> a,
@@ -3245,7 +3238,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<45>
 f (sinteger_t<45> a,
@@ -3287,7 +3280,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<45>
 f (uinteger_t<45> a,
@@ -3323,7 +3316,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<46>
 f (sinteger_t<46> a,
@@ -3365,7 +3358,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<46>
 f (uinteger_t<46> a,
@@ -3401,7 +3394,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<47>
 f (sinteger_t<47> a,
@@ -3443,7 +3436,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<47>
 f (uinteger_t<47> a,
@@ -3479,7 +3472,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<48>
 f (sinteger_t<48> a,
@@ -3521,7 +3514,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<48>
 f (uinteger_t<48> a,
@@ -3557,7 +3550,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<49>
 f (sinteger_t<49> a,
@@ -3599,7 +3592,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<49>
 f (uinteger_t<49> a,
@@ -3635,7 +3628,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<50>
 f (sinteger_t<50> a,
@@ -3677,7 +3670,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<50>
 f (uinteger_t<50> a,
@@ -3713,7 +3706,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<51>
 f (sinteger_t<51> a,
@@ -3755,7 +3748,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<51>
 f (uinteger_t<51> a,
@@ -3791,7 +3784,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<52>
 f (sinteger_t<52> a,
@@ -3833,7 +3826,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<52>
 f (uinteger_t<52> a,
@@ -3869,7 +3862,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<53>
 f (sinteger_t<53> a,
@@ -3911,7 +3904,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<53>
 f (uinteger_t<53> a,
@@ -3947,7 +3940,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<54>
 f (sinteger_t<54> a,
@@ -3989,7 +3982,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<54>
 f (uinteger_t<54> a,
@@ -4025,7 +4018,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<55>
 f (sinteger_t<55> a,
@@ -4067,7 +4060,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<55>
 f (uinteger_t<55> a,
@@ -4103,7 +4096,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<56>
 f (sinteger_t<56> a,
@@ -4145,7 +4138,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<56>
 f (uinteger_t<56> a,
@@ -4181,7 +4174,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<57>
 f (sinteger_t<57> a,
@@ -4223,7 +4216,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<57>
 f (uinteger_t<57> a,
@@ -4259,7 +4252,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<58>
 f (sinteger_t<58> a,
@@ -4301,7 +4294,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<58>
 f (uinteger_t<58> a,
@@ -4337,7 +4330,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<59>
 f (sinteger_t<59> a,
@@ -4379,7 +4372,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<59>
 f (uinteger_t<59> a,
@@ -4415,7 +4408,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<60>
 f (sinteger_t<60> a,
@@ -4457,7 +4450,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<60>
 f (uinteger_t<60> a,
@@ -4493,7 +4486,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<61>
 f (sinteger_t<61> a,
@@ -4535,7 +4528,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<61>
 f (uinteger_t<61> a,
@@ -4571,7 +4564,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<62>
 f (sinteger_t<62> a,
@@ -4613,7 +4606,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<62>
 f (uinteger_t<62> a,
@@ -4649,7 +4642,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<63>
 f (sinteger_t<63> a,
@@ -4691,7 +4684,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<63>
 f (uinteger_t<63> a,
@@ -4728,7 +4721,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<64>
 f (sinteger_t<64> a,
@@ -4763,7 +4756,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<64>
 f (uinteger_t<64> a,
@@ -4778,13 +4771,11 @@ f (uinteger_t<64> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	pushq	%rbx
 	movq	%rdi, %rax
 	addq	%rsi, %rax
-	sbbq	%rbx, %rbx
-	orq	%rbx, %rax
+	sbbq	%rcx, %rcx
+	orq	%rcx, %rax
 
-	popq	%rbx
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -4797,7 +4788,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<4>
 f (sinteger_t<4> a,
@@ -4839,7 +4830,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<4>
 f (uinteger_t<4> a,
@@ -4871,7 +4862,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<5>
 f (sinteger_t<5> a,
@@ -4913,7 +4904,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<5>
 f (uinteger_t<5> a,
@@ -4945,7 +4936,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<6>
 f (sinteger_t<6> a,
@@ -4987,7 +4978,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<6>
 f (uinteger_t<6> a,
@@ -5019,7 +5010,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<7>
 f (sinteger_t<7> a,
@@ -5061,7 +5052,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<7>
 f (uinteger_t<7> a,
@@ -5093,7 +5084,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<8>
 f (sinteger_t<8> a,
@@ -5131,7 +5122,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<8>
 f (uinteger_t<8> a,
@@ -5163,7 +5154,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<9>
 f (sinteger_t<9> a,
@@ -5204,7 +5195,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<9>
 f (uinteger_t<9> a,
@@ -5235,7 +5226,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<10>
 f (sinteger_t<10> a,
@@ -5276,7 +5267,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<10>
 f (uinteger_t<10> a,
@@ -5307,7 +5298,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<11>
 f (sinteger_t<11> a,
@@ -5348,7 +5339,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<11>
 f (uinteger_t<11> a,
@@ -5379,7 +5370,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<12>
 f (sinteger_t<12> a,
@@ -5420,7 +5411,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<12>
 f (uinteger_t<12> a,
@@ -5451,7 +5442,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<13>
 f (sinteger_t<13> a,
@@ -5492,7 +5483,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<13>
 f (uinteger_t<13> a,
@@ -5523,7 +5514,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<14>
 f (sinteger_t<14> a,
@@ -5564,7 +5555,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<14>
 f (uinteger_t<14> a,
@@ -5595,7 +5586,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<15>
 f (sinteger_t<15> a,
@@ -5636,7 +5627,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<15>
 f (uinteger_t<15> a,
@@ -5667,7 +5658,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<16>
 f (sinteger_t<16> a,
@@ -5704,7 +5695,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<16>
 f (uinteger_t<16> a,
@@ -5735,7 +5726,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<17>
 f (sinteger_t<17> a,
@@ -5775,7 +5766,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<17>
 f (uinteger_t<17> a,
@@ -5806,7 +5797,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<18>
 f (sinteger_t<18> a,
@@ -5846,7 +5837,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<18>
 f (uinteger_t<18> a,
@@ -5877,7 +5868,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<19>
 f (sinteger_t<19> a,
@@ -5917,7 +5908,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<19>
 f (uinteger_t<19> a,
@@ -5948,7 +5939,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<20>
 f (sinteger_t<20> a,
@@ -5988,7 +5979,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<20>
 f (uinteger_t<20> a,
@@ -6019,7 +6010,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<21>
 f (sinteger_t<21> a,
@@ -6059,7 +6050,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<21>
 f (uinteger_t<21> a,
@@ -6090,7 +6081,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<22>
 f (sinteger_t<22> a,
@@ -6130,7 +6121,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<22>
 f (uinteger_t<22> a,
@@ -6161,7 +6152,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<23>
 f (sinteger_t<23> a,
@@ -6201,7 +6192,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<23>
 f (uinteger_t<23> a,
@@ -6232,7 +6223,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<24>
 f (sinteger_t<24> a,
@@ -6272,7 +6263,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<24>
 f (uinteger_t<24> a,
@@ -6303,7 +6294,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<25>
 f (sinteger_t<25> a,
@@ -6343,7 +6334,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<25>
 f (uinteger_t<25> a,
@@ -6374,7 +6365,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<26>
 f (sinteger_t<26> a,
@@ -6414,7 +6405,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<26>
 f (uinteger_t<26> a,
@@ -6445,7 +6436,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<27>
 f (sinteger_t<27> a,
@@ -6485,7 +6476,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<27>
 f (uinteger_t<27> a,
@@ -6516,7 +6507,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<28>
 f (sinteger_t<28> a,
@@ -6556,7 +6547,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<28>
 f (uinteger_t<28> a,
@@ -6587,7 +6578,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<29>
 f (sinteger_t<29> a,
@@ -6627,7 +6618,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<29>
 f (uinteger_t<29> a,
@@ -6658,7 +6649,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<30>
 f (sinteger_t<30> a,
@@ -6698,7 +6689,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<30>
 f (uinteger_t<30> a,
@@ -6729,7 +6720,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<31>
 f (sinteger_t<31> a,
@@ -6769,7 +6760,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<31>
 f (uinteger_t<31> a,
@@ -6800,7 +6791,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<32>
 f (sinteger_t<32> a,
@@ -6837,7 +6828,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<32>
 f (uinteger_t<32> a,
@@ -6867,7 +6858,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<33>
 f (sinteger_t<33> a,
@@ -6908,7 +6899,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<33>
 f (uinteger_t<33> a,
@@ -6940,7 +6931,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<34>
 f (sinteger_t<34> a,
@@ -6981,7 +6972,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<34>
 f (uinteger_t<34> a,
@@ -7013,7 +7004,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<35>
 f (sinteger_t<35> a,
@@ -7054,7 +7045,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<35>
 f (uinteger_t<35> a,
@@ -7086,7 +7077,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<36>
 f (sinteger_t<36> a,
@@ -7127,7 +7118,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<36>
 f (uinteger_t<36> a,
@@ -7159,7 +7150,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<37>
 f (sinteger_t<37> a,
@@ -7200,7 +7191,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<37>
 f (uinteger_t<37> a,
@@ -7232,7 +7223,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<38>
 f (sinteger_t<38> a,
@@ -7273,7 +7264,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<38>
 f (uinteger_t<38> a,
@@ -7305,7 +7296,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<39>
 f (sinteger_t<39> a,
@@ -7346,7 +7337,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<39>
 f (uinteger_t<39> a,
@@ -7378,7 +7369,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<40>
 f (sinteger_t<40> a,
@@ -7419,7 +7410,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<40>
 f (uinteger_t<40> a,
@@ -7451,7 +7442,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<41>
 f (sinteger_t<41> a,
@@ -7492,7 +7483,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<41>
 f (uinteger_t<41> a,
@@ -7524,7 +7515,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<42>
 f (sinteger_t<42> a,
@@ -7565,7 +7556,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<42>
 f (uinteger_t<42> a,
@@ -7597,7 +7588,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<43>
 f (sinteger_t<43> a,
@@ -7638,7 +7629,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<43>
 f (uinteger_t<43> a,
@@ -7670,7 +7661,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<44>
 f (sinteger_t<44> a,
@@ -7711,7 +7702,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<44>
 f (uinteger_t<44> a,
@@ -7743,7 +7734,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<45>
 f (sinteger_t<45> a,
@@ -7784,7 +7775,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<45>
 f (uinteger_t<45> a,
@@ -7816,7 +7807,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<46>
 f (sinteger_t<46> a,
@@ -7857,7 +7848,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<46>
 f (uinteger_t<46> a,
@@ -7889,7 +7880,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<47>
 f (sinteger_t<47> a,
@@ -7930,7 +7921,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<47>
 f (uinteger_t<47> a,
@@ -7962,7 +7953,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<48>
 f (sinteger_t<48> a,
@@ -8003,7 +7994,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<48>
 f (uinteger_t<48> a,
@@ -8035,7 +8026,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<49>
 f (sinteger_t<49> a,
@@ -8076,7 +8067,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<49>
 f (uinteger_t<49> a,
@@ -8108,7 +8099,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<50>
 f (sinteger_t<50> a,
@@ -8149,7 +8140,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<50>
 f (uinteger_t<50> a,
@@ -8181,7 +8172,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<51>
 f (sinteger_t<51> a,
@@ -8222,7 +8213,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<51>
 f (uinteger_t<51> a,
@@ -8254,7 +8245,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<52>
 f (sinteger_t<52> a,
@@ -8295,7 +8286,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<52>
 f (uinteger_t<52> a,
@@ -8327,7 +8318,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<53>
 f (sinteger_t<53> a,
@@ -8368,7 +8359,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<53>
 f (uinteger_t<53> a,
@@ -8400,7 +8391,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<54>
 f (sinteger_t<54> a,
@@ -8441,7 +8432,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<54>
 f (uinteger_t<54> a,
@@ -8473,7 +8464,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<55>
 f (sinteger_t<55> a,
@@ -8514,7 +8505,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<55>
 f (uinteger_t<55> a,
@@ -8546,7 +8537,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<56>
 f (sinteger_t<56> a,
@@ -8587,7 +8578,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<56>
 f (uinteger_t<56> a,
@@ -8619,7 +8610,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<57>
 f (sinteger_t<57> a,
@@ -8661,7 +8652,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<57>
 f (uinteger_t<57> a,
@@ -8693,7 +8684,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<58>
 f (sinteger_t<58> a,
@@ -8735,7 +8726,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<58>
 f (uinteger_t<58> a,
@@ -8767,7 +8758,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<59>
 f (sinteger_t<59> a,
@@ -8809,7 +8800,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<59>
 f (uinteger_t<59> a,
@@ -8841,7 +8832,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<60>
 f (sinteger_t<60> a,
@@ -8883,7 +8874,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<60>
 f (uinteger_t<60> a,
@@ -8915,7 +8906,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<61>
 f (sinteger_t<61> a,
@@ -8957,7 +8948,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<61>
 f (uinteger_t<61> a,
@@ -8989,7 +8980,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<62>
 f (sinteger_t<62> a,
@@ -9031,7 +9022,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<62>
 f (uinteger_t<62> a,
@@ -9063,7 +9054,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<63>
 f (sinteger_t<63> a,
@@ -9105,7 +9096,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<63>
 f (uinteger_t<63> a,
@@ -9137,7 +9128,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<64>
 f (sinteger_t<64> a,
@@ -9174,7 +9165,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<64>
 f (uinteger_t<64> a,
@@ -9204,7 +9195,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<4>
 f (sinteger_t<4> a,
@@ -9247,7 +9238,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<4>
 f (uinteger_t<4> a,
@@ -9282,7 +9273,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<5>
 f (sinteger_t<5> a,
@@ -9325,7 +9316,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<5>
 f (uinteger_t<5> a,
@@ -9360,7 +9351,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<6>
 f (sinteger_t<6> a,
@@ -9403,7 +9394,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<6>
 f (uinteger_t<6> a,
@@ -9438,7 +9429,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<7>
 f (sinteger_t<7> a,
@@ -9481,7 +9472,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<7>
 f (uinteger_t<7> a,
@@ -9516,7 +9507,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<8>
 f (sinteger_t<8> a,
@@ -9558,7 +9549,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<8>
 f (uinteger_t<8> a,
@@ -9591,7 +9582,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<9>
 f (sinteger_t<9> a,
@@ -9634,7 +9625,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<9>
 f (uinteger_t<9> a,
@@ -9667,7 +9658,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<10>
 f (sinteger_t<10> a,
@@ -9710,7 +9701,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<10>
 f (uinteger_t<10> a,
@@ -9743,7 +9734,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<11>
 f (sinteger_t<11> a,
@@ -9786,7 +9777,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<11>
 f (uinteger_t<11> a,
@@ -9819,7 +9810,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<12>
 f (sinteger_t<12> a,
@@ -9862,7 +9853,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<12>
 f (uinteger_t<12> a,
@@ -9895,7 +9886,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<13>
 f (sinteger_t<13> a,
@@ -9938,7 +9929,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<13>
 f (uinteger_t<13> a,
@@ -9971,7 +9962,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<14>
 f (sinteger_t<14> a,
@@ -10014,7 +10005,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<14>
 f (uinteger_t<14> a,
@@ -10047,7 +10038,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<15>
 f (sinteger_t<15> a,
@@ -10090,7 +10081,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<15>
 f (uinteger_t<15> a,
@@ -10123,7 +10114,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<16>
 f (sinteger_t<16> a,
@@ -10164,7 +10155,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<16>
 f (uinteger_t<16> a,
@@ -10201,7 +10192,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<17>
 f (sinteger_t<17> a,
@@ -10244,7 +10235,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<17>
 f (uinteger_t<17> a,
@@ -10280,7 +10271,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<18>
 f (sinteger_t<18> a,
@@ -10323,7 +10314,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<18>
 f (uinteger_t<18> a,
@@ -10359,7 +10350,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<19>
 f (sinteger_t<19> a,
@@ -10402,7 +10393,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<19>
 f (uinteger_t<19> a,
@@ -10438,7 +10429,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<20>
 f (sinteger_t<20> a,
@@ -10481,7 +10472,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<20>
 f (uinteger_t<20> a,
@@ -10517,7 +10508,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<21>
 f (sinteger_t<21> a,
@@ -10560,7 +10551,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<21>
 f (uinteger_t<21> a,
@@ -10596,7 +10587,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<22>
 f (sinteger_t<22> a,
@@ -10639,7 +10630,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<22>
 f (uinteger_t<22> a,
@@ -10675,7 +10666,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<23>
 f (sinteger_t<23> a,
@@ -10718,7 +10709,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<23>
 f (uinteger_t<23> a,
@@ -10754,7 +10745,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<24>
 f (sinteger_t<24> a,
@@ -10797,7 +10788,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<24>
 f (uinteger_t<24> a,
@@ -10833,7 +10824,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<25>
 f (sinteger_t<25> a,
@@ -10876,7 +10867,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<25>
 f (uinteger_t<25> a,
@@ -10912,7 +10903,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<26>
 f (sinteger_t<26> a,
@@ -10955,7 +10946,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<26>
 f (uinteger_t<26> a,
@@ -10991,7 +10982,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<27>
 f (sinteger_t<27> a,
@@ -11034,7 +11025,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<27>
 f (uinteger_t<27> a,
@@ -11070,7 +11061,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<28>
 f (sinteger_t<28> a,
@@ -11113,7 +11104,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<28>
 f (uinteger_t<28> a,
@@ -11149,7 +11140,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<29>
 f (sinteger_t<29> a,
@@ -11192,7 +11183,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<29>
 f (uinteger_t<29> a,
@@ -11228,7 +11219,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<30>
 f (sinteger_t<30> a,
@@ -11271,7 +11262,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<30>
 f (uinteger_t<30> a,
@@ -11307,7 +11298,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<31>
 f (sinteger_t<31> a,
@@ -11350,7 +11341,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<31>
 f (uinteger_t<31> a,
@@ -11386,7 +11377,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<32>
 f (sinteger_t<32> a,
@@ -11427,7 +11418,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<32>
 f (uinteger_t<32> a,
@@ -11465,7 +11456,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<33>
 f (sinteger_t<33> a,
@@ -11526,7 +11517,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<33>
 f (uinteger_t<33> a,
@@ -11580,7 +11571,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<34>
 f (sinteger_t<34> a,
@@ -11641,7 +11632,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<34>
 f (uinteger_t<34> a,
@@ -11695,7 +11686,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<35>
 f (sinteger_t<35> a,
@@ -11756,7 +11747,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<35>
 f (uinteger_t<35> a,
@@ -11810,7 +11801,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<36>
 f (sinteger_t<36> a,
@@ -11871,7 +11862,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<36>
 f (uinteger_t<36> a,
@@ -11925,7 +11916,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<37>
 f (sinteger_t<37> a,
@@ -11986,7 +11977,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<37>
 f (uinteger_t<37> a,
@@ -12040,7 +12031,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<38>
 f (sinteger_t<38> a,
@@ -12101,7 +12092,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<38>
 f (uinteger_t<38> a,
@@ -12155,7 +12146,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<39>
 f (sinteger_t<39> a,
@@ -12216,7 +12207,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<39>
 f (uinteger_t<39> a,
@@ -12270,7 +12261,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<40>
 f (sinteger_t<40> a,
@@ -12331,7 +12322,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<40>
 f (uinteger_t<40> a,
@@ -12385,7 +12376,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<41>
 f (sinteger_t<41> a,
@@ -12446,7 +12437,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<41>
 f (uinteger_t<41> a,
@@ -12500,7 +12491,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<42>
 f (sinteger_t<42> a,
@@ -12561,7 +12552,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<42>
 f (uinteger_t<42> a,
@@ -12615,7 +12606,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<43>
 f (sinteger_t<43> a,
@@ -12676,7 +12667,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<43>
 f (uinteger_t<43> a,
@@ -12730,7 +12721,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<44>
 f (sinteger_t<44> a,
@@ -12791,7 +12782,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<44>
 f (uinteger_t<44> a,
@@ -12845,7 +12836,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<45>
 f (sinteger_t<45> a,
@@ -12906,7 +12897,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<45>
 f (uinteger_t<45> a,
@@ -12960,7 +12951,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<46>
 f (sinteger_t<46> a,
@@ -13021,7 +13012,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<46>
 f (uinteger_t<46> a,
@@ -13075,7 +13066,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<47>
 f (sinteger_t<47> a,
@@ -13136,7 +13127,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<47>
 f (uinteger_t<47> a,
@@ -13190,7 +13181,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<48>
 f (sinteger_t<48> a,
@@ -13251,7 +13242,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<48>
 f (uinteger_t<48> a,
@@ -13305,7 +13296,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<49>
 f (sinteger_t<49> a,
@@ -13366,7 +13357,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<49>
 f (uinteger_t<49> a,
@@ -13420,7 +13411,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<50>
 f (sinteger_t<50> a,
@@ -13481,7 +13472,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<50>
 f (uinteger_t<50> a,
@@ -13535,7 +13526,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<51>
 f (sinteger_t<51> a,
@@ -13596,7 +13587,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<51>
 f (uinteger_t<51> a,
@@ -13650,7 +13641,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<52>
 f (sinteger_t<52> a,
@@ -13711,7 +13702,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<52>
 f (uinteger_t<52> a,
@@ -13765,7 +13756,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<53>
 f (sinteger_t<53> a,
@@ -13826,7 +13817,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<53>
 f (uinteger_t<53> a,
@@ -13880,7 +13871,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<54>
 f (sinteger_t<54> a,
@@ -13941,7 +13932,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<54>
 f (uinteger_t<54> a,
@@ -13995,7 +13986,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<55>
 f (sinteger_t<55> a,
@@ -14056,7 +14047,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<55>
 f (uinteger_t<55> a,
@@ -14110,7 +14101,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<56>
 f (sinteger_t<56> a,
@@ -14171,7 +14162,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<56>
 f (uinteger_t<56> a,
@@ -14225,7 +14216,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<57>
 f (sinteger_t<57> a,
@@ -14286,7 +14277,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<57>
 f (uinteger_t<57> a,
@@ -14340,7 +14331,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<58>
 f (sinteger_t<58> a,
@@ -14401,7 +14392,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<58>
 f (uinteger_t<58> a,
@@ -14455,7 +14446,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<59>
 f (sinteger_t<59> a,
@@ -14516,7 +14507,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<59>
 f (uinteger_t<59> a,
@@ -14570,7 +14561,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<60>
 f (sinteger_t<60> a,
@@ -14631,7 +14622,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<60>
 f (uinteger_t<60> a,
@@ -14685,7 +14676,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<61>
 f (sinteger_t<61> a,
@@ -14746,7 +14737,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<61>
 f (uinteger_t<61> a,
@@ -14800,7 +14791,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<62>
 f (sinteger_t<62> a,
@@ -14861,7 +14852,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<62>
 f (uinteger_t<62> a,
@@ -14915,7 +14906,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<63>
 f (sinteger_t<63> a,
@@ -14976,7 +14967,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<63>
 f (uinteger_t<63> a,
@@ -15030,7 +15021,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<64>
 f (sinteger_t<64> a,
@@ -15086,7 +15077,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<64>
 f (uinteger_t<64> a,
@@ -15136,7 +15127,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<4>
 f (sinteger_t<4> a,
@@ -15173,7 +15164,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<4>
 f (uinteger_t<4> a,
@@ -15203,7 +15194,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<5>
 f (sinteger_t<5> a,
@@ -15240,7 +15231,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<5>
 f (uinteger_t<5> a,
@@ -15270,7 +15261,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<6>
 f (sinteger_t<6> a,
@@ -15307,7 +15298,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<6>
 f (uinteger_t<6> a,
@@ -15337,7 +15328,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<7>
 f (sinteger_t<7> a,
@@ -15374,7 +15365,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<7>
 f (uinteger_t<7> a,
@@ -15404,7 +15395,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<8>
 f (sinteger_t<8> a,
@@ -15441,7 +15432,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<8>
 f (uinteger_t<8> a,
@@ -15471,7 +15462,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<9>
 f (sinteger_t<9> a,
@@ -15508,7 +15499,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<9>
 f (uinteger_t<9> a,
@@ -15539,7 +15530,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<10>
 f (sinteger_t<10> a,
@@ -15576,7 +15567,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<10>
 f (uinteger_t<10> a,
@@ -15607,7 +15598,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<11>
 f (sinteger_t<11> a,
@@ -15644,7 +15635,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<11>
 f (uinteger_t<11> a,
@@ -15675,7 +15666,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<12>
 f (sinteger_t<12> a,
@@ -15712,7 +15703,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<12>
 f (uinteger_t<12> a,
@@ -15743,7 +15734,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<13>
 f (sinteger_t<13> a,
@@ -15780,7 +15771,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<13>
 f (uinteger_t<13> a,
@@ -15811,7 +15802,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<14>
 f (sinteger_t<14> a,
@@ -15848,7 +15839,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<14>
 f (uinteger_t<14> a,
@@ -15879,7 +15870,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<15>
 f (sinteger_t<15> a,
@@ -15916,7 +15907,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<15>
 f (uinteger_t<15> a,
@@ -15947,7 +15938,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<16>
 f (sinteger_t<16> a,
@@ -15984,7 +15975,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<16>
 f (uinteger_t<16> a,
@@ -16015,7 +16006,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<17>
 f (sinteger_t<17> a,
@@ -16051,7 +16042,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<17>
 f (uinteger_t<17> a,
@@ -16081,7 +16072,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<18>
 f (sinteger_t<18> a,
@@ -16117,7 +16108,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<18>
 f (uinteger_t<18> a,
@@ -16147,7 +16138,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<19>
 f (sinteger_t<19> a,
@@ -16183,7 +16174,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<19>
 f (uinteger_t<19> a,
@@ -16213,7 +16204,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<20>
 f (sinteger_t<20> a,
@@ -16249,7 +16240,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<20>
 f (uinteger_t<20> a,
@@ -16279,7 +16270,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<21>
 f (sinteger_t<21> a,
@@ -16315,7 +16306,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<21>
 f (uinteger_t<21> a,
@@ -16345,7 +16336,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<22>
 f (sinteger_t<22> a,
@@ -16381,7 +16372,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<22>
 f (uinteger_t<22> a,
@@ -16411,7 +16402,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<23>
 f (sinteger_t<23> a,
@@ -16447,7 +16438,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<23>
 f (uinteger_t<23> a,
@@ -16477,7 +16468,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<24>
 f (sinteger_t<24> a,
@@ -16513,7 +16504,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<24>
 f (uinteger_t<24> a,
@@ -16543,7 +16534,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<25>
 f (sinteger_t<25> a,
@@ -16579,7 +16570,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<25>
 f (uinteger_t<25> a,
@@ -16609,7 +16600,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<26>
 f (sinteger_t<26> a,
@@ -16645,7 +16636,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<26>
 f (uinteger_t<26> a,
@@ -16675,7 +16666,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<27>
 f (sinteger_t<27> a,
@@ -16711,7 +16702,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<27>
 f (uinteger_t<27> a,
@@ -16741,7 +16732,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<28>
 f (sinteger_t<28> a,
@@ -16777,7 +16768,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<28>
 f (uinteger_t<28> a,
@@ -16807,7 +16798,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<29>
 f (sinteger_t<29> a,
@@ -16843,7 +16834,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<29>
 f (uinteger_t<29> a,
@@ -16873,7 +16864,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<30>
 f (sinteger_t<30> a,
@@ -16909,7 +16900,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<30>
 f (uinteger_t<30> a,
@@ -16939,7 +16930,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<31>
 f (sinteger_t<31> a,
@@ -16975,7 +16966,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<31>
 f (uinteger_t<31> a,
@@ -17005,7 +16996,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<32>
 f (sinteger_t<32> a,
@@ -17041,7 +17032,7 @@ _f:                                     ## @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<32>
 f (uinteger_t<32> a,
@@ -17071,7 +17062,7 @@ _f:                                     ## @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<33>
 f (sinteger_t<33> a,
@@ -17118,7 +17109,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<33>
 f (uinteger_t<33> a,
@@ -17157,7 +17148,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<34>
 f (sinteger_t<34> a,
@@ -17204,7 +17195,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<34>
 f (uinteger_t<34> a,
@@ -17243,7 +17234,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<35>
 f (sinteger_t<35> a,
@@ -17290,7 +17281,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<35>
 f (uinteger_t<35> a,
@@ -17329,7 +17320,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<36>
 f (sinteger_t<36> a,
@@ -17376,7 +17367,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<36>
 f (uinteger_t<36> a,
@@ -17415,7 +17406,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<37>
 f (sinteger_t<37> a,
@@ -17462,7 +17453,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<37>
 f (uinteger_t<37> a,
@@ -17501,7 +17492,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<38>
 f (sinteger_t<38> a,
@@ -17548,7 +17539,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<38>
 f (uinteger_t<38> a,
@@ -17587,7 +17578,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<39>
 f (sinteger_t<39> a,
@@ -17634,7 +17625,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<39>
 f (uinteger_t<39> a,
@@ -17673,7 +17664,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<40>
 f (sinteger_t<40> a,
@@ -17720,7 +17711,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<40>
 f (uinteger_t<40> a,
@@ -17759,7 +17750,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<41>
 f (sinteger_t<41> a,
@@ -17806,7 +17797,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<41>
 f (uinteger_t<41> a,
@@ -17845,7 +17836,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<42>
 f (sinteger_t<42> a,
@@ -17892,7 +17883,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<42>
 f (uinteger_t<42> a,
@@ -17931,7 +17922,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<43>
 f (sinteger_t<43> a,
@@ -17978,7 +17969,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<43>
 f (uinteger_t<43> a,
@@ -18017,7 +18008,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<44>
 f (sinteger_t<44> a,
@@ -18064,7 +18055,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<44>
 f (uinteger_t<44> a,
@@ -18103,7 +18094,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<45>
 f (sinteger_t<45> a,
@@ -18150,7 +18141,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<45>
 f (uinteger_t<45> a,
@@ -18189,7 +18180,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<46>
 f (sinteger_t<46> a,
@@ -18236,7 +18227,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<46>
 f (uinteger_t<46> a,
@@ -18275,7 +18266,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<47>
 f (sinteger_t<47> a,
@@ -18322,7 +18313,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<47>
 f (uinteger_t<47> a,
@@ -18361,7 +18352,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<48>
 f (sinteger_t<48> a,
@@ -18408,7 +18399,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<48>
 f (uinteger_t<48> a,
@@ -18447,7 +18438,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<49>
 f (sinteger_t<49> a,
@@ -18494,7 +18485,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<49>
 f (uinteger_t<49> a,
@@ -18533,7 +18524,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<50>
 f (sinteger_t<50> a,
@@ -18580,7 +18571,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<50>
 f (uinteger_t<50> a,
@@ -18619,7 +18610,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<51>
 f (sinteger_t<51> a,
@@ -18666,7 +18657,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<51>
 f (uinteger_t<51> a,
@@ -18705,7 +18696,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<52>
 f (sinteger_t<52> a,
@@ -18752,7 +18743,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<52>
 f (uinteger_t<52> a,
@@ -18791,7 +18782,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<53>
 f (sinteger_t<53> a,
@@ -18838,7 +18829,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<53>
 f (uinteger_t<53> a,
@@ -18877,7 +18868,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<54>
 f (sinteger_t<54> a,
@@ -18924,7 +18915,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<54>
 f (uinteger_t<54> a,
@@ -18963,7 +18954,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<55>
 f (sinteger_t<55> a,
@@ -19010,7 +19001,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<55>
 f (uinteger_t<55> a,
@@ -19049,7 +19040,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<56>
 f (sinteger_t<56> a,
@@ -19096,7 +19087,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<56>
 f (uinteger_t<56> a,
@@ -19135,7 +19126,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<57>
 f (sinteger_t<57> a,
@@ -19182,7 +19173,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<57>
 f (uinteger_t<57> a,
@@ -19221,7 +19212,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<58>
 f (sinteger_t<58> a,
@@ -19268,7 +19259,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<58>
 f (uinteger_t<58> a,
@@ -19307,7 +19298,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<59>
 f (sinteger_t<59> a,
@@ -19354,7 +19345,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<59>
 f (uinteger_t<59> a,
@@ -19393,7 +19384,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<60>
 f (sinteger_t<60> a,
@@ -19440,7 +19431,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<60>
 f (uinteger_t<60> a,
@@ -19479,7 +19470,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<61>
 f (sinteger_t<61> a,
@@ -19526,7 +19517,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<61>
 f (uinteger_t<61> a,
@@ -19565,7 +19556,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<62>
 f (sinteger_t<62> a,
@@ -19612,7 +19603,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<62>
 f (uinteger_t<62> a,
@@ -19651,7 +19642,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<63>
 f (sinteger_t<63> a,
@@ -19698,7 +19689,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<63>
 f (uinteger_t<63> a,
@@ -19737,7 +19728,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<64>
 f (sinteger_t<64> a,
@@ -19782,7 +19773,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<64>
 f (uinteger_t<64> a,
@@ -19821,7 +19812,7 @@ LBB0_1:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<4>
 f (sinteger_t<4> a,
@@ -19858,7 +19849,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<4>
 f (uinteger_t<4> a,
@@ -19889,7 +19880,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<5>
 f (sinteger_t<5> a,
@@ -19926,7 +19917,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<5>
 f (uinteger_t<5> a,
@@ -19957,7 +19948,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<6>
 f (sinteger_t<6> a,
@@ -19994,7 +19985,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<6>
 f (uinteger_t<6> a,
@@ -20025,7 +20016,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<7>
 f (sinteger_t<7> a,
@@ -20062,7 +20053,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<7>
 f (uinteger_t<7> a,
@@ -20094,7 +20085,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<8>
 f (sinteger_t<8> a,
@@ -20132,7 +20123,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<8>
 f (uinteger_t<8> a,
@@ -20159,7 +20150,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<9>
 f (sinteger_t<9> a,
@@ -20197,7 +20188,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<9>
 f (uinteger_t<9> a,
@@ -20233,7 +20224,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<10>
 f (sinteger_t<10> a,
@@ -20271,7 +20262,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<10>
 f (uinteger_t<10> a,
@@ -20307,7 +20298,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<11>
 f (sinteger_t<11> a,
@@ -20345,7 +20336,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<11>
 f (uinteger_t<11> a,
@@ -20381,7 +20372,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<12>
 f (sinteger_t<12> a,
@@ -20419,7 +20410,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<12>
 f (uinteger_t<12> a,
@@ -20455,7 +20446,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<13>
 f (sinteger_t<13> a,
@@ -20493,7 +20484,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<13>
 f (uinteger_t<13> a,
@@ -20529,7 +20520,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<14>
 f (sinteger_t<14> a,
@@ -20567,7 +20558,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<14>
 f (uinteger_t<14> a,
@@ -20603,7 +20594,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<15>
 f (sinteger_t<15> a,
@@ -20641,7 +20632,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<15>
 f (uinteger_t<15> a,
@@ -20677,7 +20668,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<16>
 f (sinteger_t<16> a,
@@ -20718,7 +20709,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<16>
 f (uinteger_t<16> a,
@@ -20747,7 +20738,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<17>
 f (sinteger_t<17> a,
@@ -20785,7 +20776,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<17>
 f (uinteger_t<17> a,
@@ -20818,7 +20809,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<18>
 f (sinteger_t<18> a,
@@ -20856,7 +20847,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<18>
 f (uinteger_t<18> a,
@@ -20889,7 +20880,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<19>
 f (sinteger_t<19> a,
@@ -20927,7 +20918,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<19>
 f (uinteger_t<19> a,
@@ -20960,7 +20951,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<20>
 f (sinteger_t<20> a,
@@ -20998,7 +20989,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<20>
 f (uinteger_t<20> a,
@@ -21031,7 +21022,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<21>
 f (sinteger_t<21> a,
@@ -21069,7 +21060,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<21>
 f (uinteger_t<21> a,
@@ -21102,7 +21093,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<22>
 f (sinteger_t<22> a,
@@ -21140,7 +21131,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<22>
 f (uinteger_t<22> a,
@@ -21173,7 +21164,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<23>
 f (sinteger_t<23> a,
@@ -21211,7 +21202,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<23>
 f (uinteger_t<23> a,
@@ -21244,7 +21235,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<24>
 f (sinteger_t<24> a,
@@ -21281,7 +21272,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<24>
 f (uinteger_t<24> a,
@@ -21312,7 +21303,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<25>
 f (sinteger_t<25> a,
@@ -21349,7 +21340,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<25>
 f (uinteger_t<25> a,
@@ -21380,7 +21371,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<26>
 f (sinteger_t<26> a,
@@ -21417,7 +21408,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<26>
 f (uinteger_t<26> a,
@@ -21447,7 +21438,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<27>
 f (sinteger_t<27> a,
@@ -21483,7 +21474,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<27>
 f (uinteger_t<27> a,
@@ -21513,7 +21504,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<28>
 f (sinteger_t<28> a,
@@ -21549,7 +21540,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<28>
 f (uinteger_t<28> a,
@@ -21579,7 +21570,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<29>
 f (sinteger_t<29> a,
@@ -21615,7 +21606,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<29>
 f (uinteger_t<29> a,
@@ -21645,7 +21636,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<30>
 f (sinteger_t<30> a,
@@ -21681,7 +21672,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<30>
 f (uinteger_t<30> a,
@@ -21711,7 +21702,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<31>
 f (sinteger_t<31> a,
@@ -21747,7 +21738,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<31>
 f (uinteger_t<31> a,
@@ -21778,7 +21769,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<32>
 f (sinteger_t<32> a,
@@ -21811,7 +21802,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<32>
 f (uinteger_t<32> a,
@@ -21837,7 +21828,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<33>
 f (sinteger_t<33> a,
@@ -21883,7 +21874,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<33>
 f (uinteger_t<33> a,
@@ -21917,7 +21908,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<34>
 f (sinteger_t<34> a,
@@ -21963,7 +21954,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<34>
 f (uinteger_t<34> a,
@@ -21997,7 +21988,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<35>
 f (sinteger_t<35> a,
@@ -22043,7 +22034,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<35>
 f (uinteger_t<35> a,
@@ -22077,7 +22068,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<36>
 f (sinteger_t<36> a,
@@ -22123,7 +22114,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<36>
 f (uinteger_t<36> a,
@@ -22157,7 +22148,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<37>
 f (sinteger_t<37> a,
@@ -22203,7 +22194,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<37>
 f (uinteger_t<37> a,
@@ -22237,7 +22228,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<38>
 f (sinteger_t<38> a,
@@ -22283,7 +22274,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<38>
 f (uinteger_t<38> a,
@@ -22317,7 +22308,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<39>
 f (sinteger_t<39> a,
@@ -22365,7 +22356,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<39>
 f (uinteger_t<39> a,
@@ -22399,7 +22390,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<40>
 f (sinteger_t<40> a,
@@ -22444,7 +22435,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<40>
 f (uinteger_t<40> a,
@@ -22478,7 +22469,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<41>
 f (sinteger_t<41> a,
@@ -22526,7 +22517,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<41>
 f (uinteger_t<41> a,
@@ -22562,7 +22553,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<42>
 f (sinteger_t<42> a,
@@ -22610,7 +22601,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<42>
 f (uinteger_t<42> a,
@@ -22646,7 +22637,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<43>
 f (sinteger_t<43> a,
@@ -22694,7 +22685,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<43>
 f (uinteger_t<43> a,
@@ -22730,7 +22721,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<44>
 f (sinteger_t<44> a,
@@ -22778,7 +22769,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<44>
 f (uinteger_t<44> a,
@@ -22814,7 +22805,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<45>
 f (sinteger_t<45> a,
@@ -22862,7 +22853,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<45>
 f (uinteger_t<45> a,
@@ -22898,7 +22889,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<46>
 f (sinteger_t<46> a,
@@ -22946,7 +22937,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<46>
 f (uinteger_t<46> a,
@@ -22982,7 +22973,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<47>
 f (sinteger_t<47> a,
@@ -23032,7 +23023,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<47>
 f (uinteger_t<47> a,
@@ -23068,7 +23059,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<48>
 f (sinteger_t<48> a,
@@ -23117,7 +23108,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<48>
 f (uinteger_t<48> a,
@@ -23153,7 +23144,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<49>
 f (sinteger_t<49> a,
@@ -23201,7 +23192,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<49>
 f (uinteger_t<49> a,
@@ -23237,7 +23228,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<50>
 f (sinteger_t<50> a,
@@ -23285,7 +23276,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<50>
 f (uinteger_t<50> a,
@@ -23321,7 +23312,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<51>
 f (sinteger_t<51> a,
@@ -23369,7 +23360,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<51>
 f (uinteger_t<51> a,
@@ -23405,7 +23396,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<52>
 f (sinteger_t<52> a,
@@ -23453,7 +23444,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<52>
 f (uinteger_t<52> a,
@@ -23489,7 +23480,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<53>
 f (sinteger_t<53> a,
@@ -23537,7 +23528,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<53>
 f (uinteger_t<53> a,
@@ -23573,7 +23564,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<54>
 f (sinteger_t<54> a,
@@ -23621,7 +23612,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<54>
 f (uinteger_t<54> a,
@@ -23657,7 +23648,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<55>
 f (sinteger_t<55> a,
@@ -23707,7 +23698,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<55>
 f (uinteger_t<55> a,
@@ -23743,7 +23734,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<56>
 f (sinteger_t<56> a,
@@ -23790,7 +23781,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<56>
 f (uinteger_t<56> a,
@@ -23825,7 +23816,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<57>
 f (sinteger_t<57> a,
@@ -23869,7 +23860,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<57>
 f (uinteger_t<57> a,
@@ -23904,7 +23895,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<58>
 f (sinteger_t<58> a,
@@ -23948,7 +23939,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<58>
 f (uinteger_t<58> a,
@@ -23982,7 +23973,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<59>
 f (sinteger_t<59> a,
@@ -24026,7 +24017,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<59>
 f (uinteger_t<59> a,
@@ -24060,7 +24051,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<60>
 f (sinteger_t<60> a,
@@ -24104,7 +24095,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<60>
 f (uinteger_t<60> a,
@@ -24138,7 +24129,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<61>
 f (sinteger_t<61> a,
@@ -24182,7 +24173,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<61>
 f (uinteger_t<61> a,
@@ -24216,7 +24207,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<62>
 f (sinteger_t<62> a,
@@ -24260,7 +24251,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<62>
 f (uinteger_t<62> a,
@@ -24294,7 +24285,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<63>
 f (sinteger_t<63> a,
@@ -24339,7 +24330,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<63>
 f (uinteger_t<63> a,
@@ -24372,7 +24363,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<64>
 f (sinteger_t<64> a,
@@ -24412,7 +24403,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<64>
 f (uinteger_t<64> a,
@@ -24442,7 +24433,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<4>
 f (sinteger_t<4> a,
@@ -24476,7 +24467,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<4>
 f (uinteger_t<4> a,
@@ -24503,7 +24494,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<5>
 f (sinteger_t<5> a,
@@ -24537,7 +24528,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<5>
 f (uinteger_t<5> a,
@@ -24564,7 +24555,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<6>
 f (sinteger_t<6> a,
@@ -24598,7 +24589,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<6>
 f (uinteger_t<6> a,
@@ -24625,7 +24616,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<7>
 f (sinteger_t<7> a,
@@ -24659,7 +24650,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<7>
 f (uinteger_t<7> a,
@@ -24686,7 +24677,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<8>
 f (sinteger_t<8> a,
@@ -24722,7 +24713,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<8>
 f (uinteger_t<8> a,
@@ -24748,7 +24739,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<9>
 f (sinteger_t<9> a,
@@ -24782,7 +24773,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<9>
 f (uinteger_t<9> a,
@@ -24811,7 +24802,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<10>
 f (sinteger_t<10> a,
@@ -24846,7 +24837,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<10>
 f (uinteger_t<10> a,
@@ -24875,7 +24866,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<11>
 f (sinteger_t<11> a,
@@ -24910,7 +24901,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<11>
 f (uinteger_t<11> a,
@@ -24939,7 +24930,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<12>
 f (sinteger_t<12> a,
@@ -24974,7 +24965,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<12>
 f (uinteger_t<12> a,
@@ -25003,7 +24994,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<13>
 f (sinteger_t<13> a,
@@ -25038,7 +25029,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<13>
 f (uinteger_t<13> a,
@@ -25067,7 +25058,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<14>
 f (sinteger_t<14> a,
@@ -25102,7 +25093,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<14>
 f (uinteger_t<14> a,
@@ -25131,7 +25122,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<15>
 f (sinteger_t<15> a,
@@ -25166,7 +25157,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<15>
 f (uinteger_t<15> a,
@@ -25195,7 +25186,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<16>
 f (sinteger_t<16> a,
@@ -25234,7 +25225,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<16>
 f (uinteger_t<16> a,
@@ -25260,7 +25251,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<17>
 f (sinteger_t<17> a,
@@ -25296,7 +25287,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<17>
 f (uinteger_t<17> a,
@@ -25325,7 +25316,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<18>
 f (sinteger_t<18> a,
@@ -25361,7 +25352,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<18>
 f (uinteger_t<18> a,
@@ -25390,7 +25381,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<19>
 f (sinteger_t<19> a,
@@ -25426,7 +25417,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<19>
 f (uinteger_t<19> a,
@@ -25455,7 +25446,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<20>
 f (sinteger_t<20> a,
@@ -25491,7 +25482,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<20>
 f (uinteger_t<20> a,
@@ -25520,7 +25511,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<21>
 f (sinteger_t<21> a,
@@ -25556,7 +25547,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<21>
 f (uinteger_t<21> a,
@@ -25585,7 +25576,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<22>
 f (sinteger_t<22> a,
@@ -25621,7 +25612,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<22>
 f (uinteger_t<22> a,
@@ -25650,7 +25641,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<23>
 f (sinteger_t<23> a,
@@ -25686,7 +25677,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<23>
 f (uinteger_t<23> a,
@@ -25715,7 +25706,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<24>
 f (sinteger_t<24> a,
@@ -25750,7 +25741,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<24>
 f (uinteger_t<24> a,
@@ -25777,7 +25768,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<25>
 f (sinteger_t<25> a,
@@ -25812,7 +25803,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<25>
 f (uinteger_t<25> a,
@@ -25839,7 +25830,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<26>
 f (sinteger_t<26> a,
@@ -25874,7 +25865,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<26>
 f (uinteger_t<26> a,
@@ -25901,7 +25892,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<27>
 f (sinteger_t<27> a,
@@ -25935,7 +25926,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<27>
 f (uinteger_t<27> a,
@@ -25962,7 +25953,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<28>
 f (sinteger_t<28> a,
@@ -25996,7 +25987,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<28>
 f (uinteger_t<28> a,
@@ -26023,7 +26014,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<29>
 f (sinteger_t<29> a,
@@ -26057,7 +26048,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<29>
 f (uinteger_t<29> a,
@@ -26084,7 +26075,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<30>
 f (sinteger_t<30> a,
@@ -26118,7 +26109,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<30>
 f (uinteger_t<30> a,
@@ -26145,7 +26136,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<31>
 f (sinteger_t<31> a,
@@ -26179,7 +26170,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<31>
 f (uinteger_t<31> a,
@@ -26206,7 +26197,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<32>
 f (sinteger_t<32> a,
@@ -26237,7 +26228,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<32>
 f (uinteger_t<32> a,
@@ -26263,7 +26254,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<33>
 f (sinteger_t<33> a,
@@ -26301,7 +26292,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<33>
 f (uinteger_t<33> a,
@@ -26333,7 +26324,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<34>
 f (sinteger_t<34> a,
@@ -26372,7 +26363,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<34>
 f (uinteger_t<34> a,
@@ -26404,7 +26395,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<35>
 f (sinteger_t<35> a,
@@ -26443,7 +26434,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<35>
 f (uinteger_t<35> a,
@@ -26475,7 +26466,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<36>
 f (sinteger_t<36> a,
@@ -26514,7 +26505,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<36>
 f (uinteger_t<36> a,
@@ -26546,7 +26537,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<37>
 f (sinteger_t<37> a,
@@ -26585,7 +26576,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<37>
 f (uinteger_t<37> a,
@@ -26617,7 +26608,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<38>
 f (sinteger_t<38> a,
@@ -26656,7 +26647,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<38>
 f (uinteger_t<38> a,
@@ -26688,7 +26679,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<39>
 f (sinteger_t<39> a,
@@ -26727,7 +26718,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<39>
 f (uinteger_t<39> a,
@@ -26759,7 +26750,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<40>
 f (sinteger_t<40> a,
@@ -26803,7 +26794,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<40>
 f (uinteger_t<40> a,
@@ -26835,7 +26826,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<41>
 f (sinteger_t<41> a,
@@ -26874,7 +26865,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<41>
 f (uinteger_t<41> a,
@@ -26908,7 +26899,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<42>
 f (sinteger_t<42> a,
@@ -26949,7 +26940,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<42>
 f (uinteger_t<42> a,
@@ -26983,7 +26974,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<43>
 f (sinteger_t<43> a,
@@ -27024,7 +27015,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<43>
 f (uinteger_t<43> a,
@@ -27058,7 +27049,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<44>
 f (sinteger_t<44> a,
@@ -27099,7 +27090,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<44>
 f (uinteger_t<44> a,
@@ -27133,7 +27124,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<45>
 f (sinteger_t<45> a,
@@ -27174,7 +27165,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<45>
 f (uinteger_t<45> a,
@@ -27208,7 +27199,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<46>
 f (sinteger_t<46> a,
@@ -27249,7 +27240,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<46>
 f (uinteger_t<46> a,
@@ -27283,7 +27274,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<47>
 f (sinteger_t<47> a,
@@ -27324,7 +27315,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<47>
 f (uinteger_t<47> a,
@@ -27358,7 +27349,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<48>
 f (sinteger_t<48> a,
@@ -27406,7 +27397,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<48>
 f (uinteger_t<48> a,
@@ -27440,7 +27431,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<49>
 f (sinteger_t<49> a,
@@ -27481,7 +27472,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<49>
 f (uinteger_t<49> a,
@@ -27515,7 +27506,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<50>
 f (sinteger_t<50> a,
@@ -27556,7 +27547,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<50>
 f (uinteger_t<50> a,
@@ -27590,7 +27581,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<51>
 f (sinteger_t<51> a,
@@ -27631,7 +27622,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<51>
 f (uinteger_t<51> a,
@@ -27665,7 +27656,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<52>
 f (sinteger_t<52> a,
@@ -27706,7 +27697,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<52>
 f (uinteger_t<52> a,
@@ -27740,7 +27731,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<53>
 f (sinteger_t<53> a,
@@ -27781,7 +27772,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<53>
 f (uinteger_t<53> a,
@@ -27815,7 +27806,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<54>
 f (sinteger_t<54> a,
@@ -27856,7 +27847,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<54>
 f (uinteger_t<54> a,
@@ -27890,7 +27881,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<55>
 f (sinteger_t<55> a,
@@ -27931,7 +27922,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<55>
 f (uinteger_t<55> a,
@@ -27965,7 +27956,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<56>
 f (sinteger_t<56> a,
@@ -28011,7 +28002,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<56>
 f (uinteger_t<56> a,
@@ -28043,7 +28034,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<57>
 f (sinteger_t<57> a,
@@ -28086,7 +28077,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<57>
 f (uinteger_t<57> a,
@@ -28118,7 +28109,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<58>
 f (sinteger_t<58> a,
@@ -28161,7 +28152,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<58>
 f (uinteger_t<58> a,
@@ -28193,7 +28184,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<59>
 f (sinteger_t<59> a,
@@ -28236,7 +28227,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<59>
 f (uinteger_t<59> a,
@@ -28268,7 +28259,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<60>
 f (sinteger_t<60> a,
@@ -28311,7 +28302,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<60>
 f (uinteger_t<60> a,
@@ -28343,7 +28334,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<61>
 f (sinteger_t<61> a,
@@ -28386,7 +28377,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<61>
 f (uinteger_t<61> a,
@@ -28418,7 +28409,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<62>
 f (sinteger_t<62> a,
@@ -28461,7 +28452,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<62>
 f (uinteger_t<62> a,
@@ -28493,7 +28484,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<63>
 f (sinteger_t<63> a,
@@ -28536,7 +28527,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<63>
 f (uinteger_t<63> a,
@@ -28568,7 +28559,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<64>
 f (sinteger_t<64> a,
@@ -28607,7 +28598,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<64>
 f (uinteger_t<64> a,
@@ -28638,7 +28629,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<4>
 f (sinteger_t<4> a,
@@ -28681,7 +28672,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<4>
 f (uinteger_t<4> a,
@@ -28709,7 +28700,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<5>
 f (sinteger_t<5> a,
@@ -28752,7 +28743,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<5>
 f (uinteger_t<5> a,
@@ -28782,7 +28773,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<6>
 f (sinteger_t<6> a,
@@ -28825,7 +28816,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<6>
 f (uinteger_t<6> a,
@@ -28853,7 +28844,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<7>
 f (sinteger_t<7> a,
@@ -28896,7 +28887,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<7>
 f (uinteger_t<7> a,
@@ -28926,7 +28917,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<8>
 f (sinteger_t<8> a,
@@ -28966,7 +28957,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<8>
 f (uinteger_t<8> a,
@@ -28995,7 +28986,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<9>
 f (sinteger_t<9> a,
@@ -29040,7 +29031,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<9>
 f (uinteger_t<9> a,
@@ -29071,7 +29062,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<10>
 f (sinteger_t<10> a,
@@ -29116,7 +29107,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<10>
 f (uinteger_t<10> a,
@@ -29147,7 +29138,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<11>
 f (sinteger_t<11> a,
@@ -29192,7 +29183,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<11>
 f (uinteger_t<11> a,
@@ -29223,7 +29214,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<12>
 f (sinteger_t<12> a,
@@ -29268,7 +29259,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<12>
 f (uinteger_t<12> a,
@@ -29299,7 +29290,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<13>
 f (sinteger_t<13> a,
@@ -29344,7 +29335,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<13>
 f (uinteger_t<13> a,
@@ -29375,7 +29366,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<14>
 f (sinteger_t<14> a,
@@ -29420,7 +29411,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<14>
 f (uinteger_t<14> a,
@@ -29451,7 +29442,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<15>
 f (sinteger_t<15> a,
@@ -29496,7 +29487,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<15>
 f (uinteger_t<15> a,
@@ -29527,7 +29518,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<16>
 f (sinteger_t<16> a,
@@ -29568,7 +29559,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<16>
 f (uinteger_t<16> a,
@@ -29598,7 +29589,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<17>
 f (sinteger_t<17> a,
@@ -29634,7 +29625,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<17>
 f (uinteger_t<17> a,
@@ -29667,7 +29658,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<18>
 f (sinteger_t<18> a,
@@ -29703,7 +29694,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<18>
 f (uinteger_t<18> a,
@@ -29736,7 +29727,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<19>
 f (sinteger_t<19> a,
@@ -29772,7 +29763,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<19>
 f (uinteger_t<19> a,
@@ -29805,7 +29796,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<20>
 f (sinteger_t<20> a,
@@ -29841,7 +29832,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<20>
 f (uinteger_t<20> a,
@@ -29874,7 +29865,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<21>
 f (sinteger_t<21> a,
@@ -29910,7 +29901,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<21>
 f (uinteger_t<21> a,
@@ -29943,7 +29934,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<22>
 f (sinteger_t<22> a,
@@ -29979,7 +29970,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<22>
 f (uinteger_t<22> a,
@@ -30012,7 +30003,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<23>
 f (sinteger_t<23> a,
@@ -30048,7 +30039,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<23>
 f (uinteger_t<23> a,
@@ -30081,7 +30072,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<24>
 f (sinteger_t<24> a,
@@ -30116,7 +30107,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<24>
 f (uinteger_t<24> a,
@@ -30146,7 +30137,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<25>
 f (sinteger_t<25> a,
@@ -30181,7 +30172,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<25>
 f (uinteger_t<25> a,
@@ -30211,7 +30202,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<26>
 f (sinteger_t<26> a,
@@ -30246,7 +30237,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<26>
 f (uinteger_t<26> a,
@@ -30276,7 +30267,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<27>
 f (sinteger_t<27> a,
@@ -30310,7 +30301,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<27>
 f (uinteger_t<27> a,
@@ -30340,7 +30331,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<28>
 f (sinteger_t<28> a,
@@ -30374,7 +30365,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<28>
 f (uinteger_t<28> a,
@@ -30404,7 +30395,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<29>
 f (sinteger_t<29> a,
@@ -30438,7 +30429,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<29>
 f (uinteger_t<29> a,
@@ -30468,7 +30459,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<30>
 f (sinteger_t<30> a,
@@ -30502,7 +30493,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<30>
 f (uinteger_t<30> a,
@@ -30532,7 +30523,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<31>
 f (sinteger_t<31> a,
@@ -30566,7 +30557,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<31>
 f (uinteger_t<31> a,
@@ -30596,7 +30587,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<32>
 f (sinteger_t<32> a,
@@ -30626,7 +30617,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<32>
 f (uinteger_t<32> a,
@@ -30656,7 +30647,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<33>
 f (sinteger_t<33> a,
@@ -30718,7 +30709,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<33>
 f (uinteger_t<33> a,
@@ -30769,7 +30760,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<34>
 f (sinteger_t<34> a,
@@ -30831,7 +30822,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<34>
 f (uinteger_t<34> a,
@@ -30882,7 +30873,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<35>
 f (sinteger_t<35> a,
@@ -30944,7 +30935,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<35>
 f (uinteger_t<35> a,
@@ -30995,7 +30986,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<36>
 f (sinteger_t<36> a,
@@ -31057,7 +31048,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<36>
 f (uinteger_t<36> a,
@@ -31108,7 +31099,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<37>
 f (sinteger_t<37> a,
@@ -31170,7 +31161,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<37>
 f (uinteger_t<37> a,
@@ -31221,7 +31212,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<38>
 f (sinteger_t<38> a,
@@ -31283,7 +31274,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<38>
 f (uinteger_t<38> a,
@@ -31334,7 +31325,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<39>
 f (sinteger_t<39> a,
@@ -31397,7 +31388,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<39>
 f (uinteger_t<39> a,
@@ -31448,7 +31439,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<40>
 f (sinteger_t<40> a,
@@ -31507,7 +31498,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<40>
 f (uinteger_t<40> a,
@@ -31558,7 +31549,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<41>
 f (sinteger_t<41> a,
@@ -31622,7 +31613,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<41>
 f (uinteger_t<41> a,
@@ -31674,7 +31665,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<42>
 f (sinteger_t<42> a,
@@ -31738,7 +31729,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<42>
 f (uinteger_t<42> a,
@@ -31790,7 +31781,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<43>
 f (sinteger_t<43> a,
@@ -31854,7 +31845,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<43>
 f (uinteger_t<43> a,
@@ -31906,7 +31897,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<44>
 f (sinteger_t<44> a,
@@ -31970,7 +31961,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<44>
 f (uinteger_t<44> a,
@@ -32022,7 +32013,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<45>
 f (sinteger_t<45> a,
@@ -32086,7 +32077,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<45>
 f (uinteger_t<45> a,
@@ -32138,7 +32129,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<46>
 f (sinteger_t<46> a,
@@ -32202,7 +32193,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<46>
 f (uinteger_t<46> a,
@@ -32254,7 +32245,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<47>
 f (sinteger_t<47> a,
@@ -32319,7 +32310,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<47>
 f (uinteger_t<47> a,
@@ -32371,7 +32362,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<48>
 f (sinteger_t<48> a,
@@ -32434,7 +32425,7 @@ LBB0_1:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<48>
 f (uinteger_t<48> a,
@@ -32486,7 +32477,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<49>
 f (sinteger_t<49> a,
@@ -32550,7 +32541,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<49>
 f (uinteger_t<49> a,
@@ -32602,7 +32593,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<50>
 f (sinteger_t<50> a,
@@ -32666,7 +32657,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<50>
 f (uinteger_t<50> a,
@@ -32718,7 +32709,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<51>
 f (sinteger_t<51> a,
@@ -32782,7 +32773,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<51>
 f (uinteger_t<51> a,
@@ -32834,7 +32825,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<52>
 f (sinteger_t<52> a,
@@ -32898,7 +32889,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<52>
 f (uinteger_t<52> a,
@@ -32950,7 +32941,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<53>
 f (sinteger_t<53> a,
@@ -33014,7 +33005,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<53>
 f (uinteger_t<53> a,
@@ -33066,7 +33057,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<54>
 f (sinteger_t<54> a,
@@ -33130,7 +33121,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<54>
 f (uinteger_t<54> a,
@@ -33182,7 +33173,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<55>
 f (sinteger_t<55> a,
@@ -33247,7 +33238,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<55>
 f (uinteger_t<55> a,
@@ -33299,7 +33290,7 @@ LCPI0_0:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<56>
 f (sinteger_t<56> a,
@@ -33360,7 +33351,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<56>
 f (uinteger_t<56> a,
@@ -33411,7 +33402,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<57>
 f (sinteger_t<57> a,
@@ -33472,7 +33463,7 @@ LBB0_3:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<57>
 f (uinteger_t<57> a,
@@ -33523,7 +33514,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<58>
 f (sinteger_t<58> a,
@@ -33584,7 +33575,7 @@ LBB0_3:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<58>
 f (uinteger_t<58> a,
@@ -33635,7 +33626,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<59>
 f (sinteger_t<59> a,
@@ -33696,7 +33687,7 @@ LBB0_3:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<59>
 f (uinteger_t<59> a,
@@ -33747,7 +33738,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<60>
 f (sinteger_t<60> a,
@@ -33808,7 +33799,7 @@ LBB0_3:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<60>
 f (uinteger_t<60> a,
@@ -33859,7 +33850,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<61>
 f (sinteger_t<61> a,
@@ -33920,7 +33911,7 @@ LBB0_3:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<61>
 f (uinteger_t<61> a,
@@ -33971,7 +33962,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<62>
 f (sinteger_t<62> a,
@@ -34032,7 +34023,7 @@ LBB0_3:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<62>
 f (uinteger_t<62> a,
@@ -34083,7 +34074,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<63>
 f (sinteger_t<63> a,
@@ -34145,7 +34136,7 @@ LBB0_2:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<63>
 f (uinteger_t<63> a,
@@ -34196,7 +34187,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<64>
 f (sinteger_t<64> a,
@@ -34245,7 +34236,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<64>
 f (uinteger_t<64> a,
@@ -34290,7 +34281,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<4>
 f (sinteger_t<4> a,
@@ -34325,7 +34316,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<4>
 f (uinteger_t<4> a,
@@ -34353,7 +34344,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<5>
 f (sinteger_t<5> a,
@@ -34388,7 +34379,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<5>
 f (uinteger_t<5> a,
@@ -34416,7 +34407,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<6>
 f (sinteger_t<6> a,
@@ -34451,7 +34442,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<6>
 f (uinteger_t<6> a,
@@ -34479,7 +34470,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<7>
 f (sinteger_t<7> a,
@@ -34514,7 +34505,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<7>
 f (uinteger_t<7> a,
@@ -34542,7 +34533,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<8>
 f (sinteger_t<8> a,
@@ -34577,7 +34568,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<8>
 f (uinteger_t<8> a,
@@ -34605,7 +34596,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<9>
 f (sinteger_t<9> a,
@@ -34642,7 +34633,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<9>
 f (uinteger_t<9> a,
@@ -34670,7 +34661,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<10>
 f (sinteger_t<10> a,
@@ -34707,7 +34698,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<10>
 f (uinteger_t<10> a,
@@ -34735,7 +34726,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<11>
 f (sinteger_t<11> a,
@@ -34772,7 +34763,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<11>
 f (uinteger_t<11> a,
@@ -34800,7 +34791,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<12>
 f (sinteger_t<12> a,
@@ -34837,7 +34828,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<12>
 f (uinteger_t<12> a,
@@ -34865,7 +34856,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<13>
 f (sinteger_t<13> a,
@@ -34902,7 +34893,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<13>
 f (uinteger_t<13> a,
@@ -34930,7 +34921,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<14>
 f (sinteger_t<14> a,
@@ -34967,7 +34958,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<14>
 f (uinteger_t<14> a,
@@ -34995,7 +34986,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<15>
 f (sinteger_t<15> a,
@@ -35032,7 +35023,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<15>
 f (uinteger_t<15> a,
@@ -35060,7 +35051,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<16>
 f (sinteger_t<16> a,
@@ -35097,7 +35088,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<16>
 f (uinteger_t<16> a,
@@ -35125,7 +35116,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<17>
 f (sinteger_t<17> a,
@@ -35156,7 +35147,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<17>
 f (uinteger_t<17> a,
@@ -35180,7 +35171,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<18>
 f (sinteger_t<18> a,
@@ -35211,7 +35202,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<18>
 f (uinteger_t<18> a,
@@ -35235,7 +35226,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<19>
 f (sinteger_t<19> a,
@@ -35266,7 +35257,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<19>
 f (uinteger_t<19> a,
@@ -35290,7 +35281,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<20>
 f (sinteger_t<20> a,
@@ -35321,7 +35312,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<20>
 f (uinteger_t<20> a,
@@ -35345,7 +35336,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<21>
 f (sinteger_t<21> a,
@@ -35376,7 +35367,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<21>
 f (uinteger_t<21> a,
@@ -35400,7 +35391,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<22>
 f (sinteger_t<22> a,
@@ -35431,7 +35422,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<22>
 f (uinteger_t<22> a,
@@ -35455,7 +35446,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<23>
 f (sinteger_t<23> a,
@@ -35486,7 +35477,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<23>
 f (uinteger_t<23> a,
@@ -35510,7 +35501,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<24>
 f (sinteger_t<24> a,
@@ -35540,7 +35531,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<24>
 f (uinteger_t<24> a,
@@ -35564,7 +35555,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<25>
 f (sinteger_t<25> a,
@@ -35594,7 +35585,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<25>
 f (uinteger_t<25> a,
@@ -35618,7 +35609,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<26>
 f (sinteger_t<26> a,
@@ -35648,7 +35639,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<26>
 f (uinteger_t<26> a,
@@ -35672,7 +35663,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<27>
 f (sinteger_t<27> a,
@@ -35702,7 +35693,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<27>
 f (uinteger_t<27> a,
@@ -35726,7 +35717,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<28>
 f (sinteger_t<28> a,
@@ -35756,7 +35747,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<28>
 f (uinteger_t<28> a,
@@ -35780,7 +35771,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<29>
 f (sinteger_t<29> a,
@@ -35810,7 +35801,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<29>
 f (uinteger_t<29> a,
@@ -35834,7 +35825,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<30>
 f (sinteger_t<30> a,
@@ -35864,7 +35855,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<30>
 f (uinteger_t<30> a,
@@ -35888,7 +35879,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<31>
 f (sinteger_t<31> a,
@@ -35918,7 +35909,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<31>
 f (uinteger_t<31> a,
@@ -35942,7 +35933,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<32>
 f (sinteger_t<32> a,
@@ -35970,7 +35961,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<32>
 f (uinteger_t<32> a,
@@ -35994,7 +35985,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<33>
 f (sinteger_t<33> a,
@@ -36034,7 +36025,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<33>
 f (uinteger_t<33> a,
@@ -36062,7 +36053,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<34>
 f (sinteger_t<34> a,
@@ -36102,7 +36093,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<34>
 f (uinteger_t<34> a,
@@ -36130,7 +36121,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<35>
 f (sinteger_t<35> a,
@@ -36170,7 +36161,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<35>
 f (uinteger_t<35> a,
@@ -36198,7 +36189,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<36>
 f (sinteger_t<36> a,
@@ -36238,7 +36229,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<36>
 f (uinteger_t<36> a,
@@ -36266,7 +36257,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<37>
 f (sinteger_t<37> a,
@@ -36306,7 +36297,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<37>
 f (uinteger_t<37> a,
@@ -36334,7 +36325,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<38>
 f (sinteger_t<38> a,
@@ -36374,7 +36365,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<38>
 f (uinteger_t<38> a,
@@ -36402,7 +36393,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<39>
 f (sinteger_t<39> a,
@@ -36442,7 +36433,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<39>
 f (uinteger_t<39> a,
@@ -36470,7 +36461,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<40>
 f (sinteger_t<40> a,
@@ -36510,7 +36501,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<40>
 f (uinteger_t<40> a,
@@ -36538,7 +36529,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<41>
 f (sinteger_t<41> a,
@@ -36580,7 +36571,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<41>
 f (uinteger_t<41> a,
@@ -36608,7 +36599,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<42>
 f (sinteger_t<42> a,
@@ -36650,7 +36641,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<42>
 f (uinteger_t<42> a,
@@ -36678,7 +36669,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<43>
 f (sinteger_t<43> a,
@@ -36720,7 +36711,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<43>
 f (uinteger_t<43> a,
@@ -36748,7 +36739,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<44>
 f (sinteger_t<44> a,
@@ -36790,7 +36781,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<44>
 f (uinteger_t<44> a,
@@ -36818,7 +36809,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<45>
 f (sinteger_t<45> a,
@@ -36860,7 +36851,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<45>
 f (uinteger_t<45> a,
@@ -36888,7 +36879,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<46>
 f (sinteger_t<46> a,
@@ -36930,7 +36921,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<46>
 f (uinteger_t<46> a,
@@ -36958,7 +36949,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<47>
 f (sinteger_t<47> a,
@@ -37000,7 +36991,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<47>
 f (uinteger_t<47> a,
@@ -37028,7 +37019,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<48>
 f (sinteger_t<48> a,
@@ -37070,7 +37061,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<48>
 f (uinteger_t<48> a,
@@ -37098,7 +37089,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<49>
 f (sinteger_t<49> a,
@@ -37140,7 +37131,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<49>
 f (uinteger_t<49> a,
@@ -37168,7 +37159,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<50>
 f (sinteger_t<50> a,
@@ -37210,7 +37201,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<50>
 f (uinteger_t<50> a,
@@ -37238,7 +37229,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<51>
 f (sinteger_t<51> a,
@@ -37280,7 +37271,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<51>
 f (uinteger_t<51> a,
@@ -37308,7 +37299,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<52>
 f (sinteger_t<52> a,
@@ -37350,7 +37341,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<52>
 f (uinteger_t<52> a,
@@ -37378,7 +37369,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<53>
 f (sinteger_t<53> a,
@@ -37420,7 +37411,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<53>
 f (uinteger_t<53> a,
@@ -37448,7 +37439,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<54>
 f (sinteger_t<54> a,
@@ -37490,7 +37481,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<54>
 f (uinteger_t<54> a,
@@ -37518,7 +37509,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<55>
 f (sinteger_t<55> a,
@@ -37560,7 +37551,7 @@ LCPI0_0:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<55>
 f (uinteger_t<55> a,
@@ -37588,7 +37579,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<56>
 f (sinteger_t<56> a,
@@ -37628,7 +37619,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<56>
 f (uinteger_t<56> a,
@@ -37656,7 +37647,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<57>
 f (sinteger_t<57> a,
@@ -37696,7 +37687,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<57>
 f (uinteger_t<57> a,
@@ -37724,7 +37715,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<58>
 f (sinteger_t<58> a,
@@ -37764,7 +37755,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<58>
 f (uinteger_t<58> a,
@@ -37792,7 +37783,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<59>
 f (sinteger_t<59> a,
@@ -37832,7 +37823,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<59>
 f (uinteger_t<59> a,
@@ -37860,7 +37851,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<60>
 f (sinteger_t<60> a,
@@ -37900,7 +37891,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<60>
 f (uinteger_t<60> a,
@@ -37928,7 +37919,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<61>
 f (sinteger_t<61> a,
@@ -37968,7 +37959,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<61>
 f (uinteger_t<61> a,
@@ -37996,7 +37987,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<62>
 f (sinteger_t<62> a,
@@ -38036,7 +38027,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<62>
 f (uinteger_t<62> a,
@@ -38064,7 +38055,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<63>
 f (sinteger_t<63> a,
@@ -38104,7 +38095,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<63>
 f (uinteger_t<63> a,
@@ -38132,7 +38123,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<64>
 f (sinteger_t<64> a,
@@ -38171,7 +38162,7 @@ _f:
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<64>
 f (uinteger_t<64> a,
@@ -38199,7 +38190,7 @@ _f:
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<4>
 f (sinteger_t<4> a,
@@ -38234,7 +38225,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<4>
 f (uinteger_t<4> a,
@@ -38265,7 +38256,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<5>
 f (sinteger_t<5> a,
@@ -38300,7 +38291,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<5>
 f (uinteger_t<5> a,
@@ -38331,7 +38322,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<6>
 f (sinteger_t<6> a,
@@ -38366,7 +38357,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<6>
 f (uinteger_t<6> a,
@@ -38397,7 +38388,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<7>
 f (sinteger_t<7> a,
@@ -38432,7 +38423,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<7>
 f (uinteger_t<7> a,
@@ -38464,7 +38455,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<8>
 f (sinteger_t<8> a,
@@ -38498,7 +38489,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<8>
 f (uinteger_t<8> a,
@@ -38526,7 +38517,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<9>
 f (sinteger_t<9> a,
@@ -38562,7 +38553,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<9>
 f (uinteger_t<9> a,
@@ -38593,7 +38584,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<10>
 f (sinteger_t<10> a,
@@ -38629,7 +38620,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<10>
 f (uinteger_t<10> a,
@@ -38660,7 +38651,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<11>
 f (sinteger_t<11> a,
@@ -38696,7 +38687,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<11>
 f (uinteger_t<11> a,
@@ -38727,7 +38718,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<12>
 f (sinteger_t<12> a,
@@ -38763,7 +38754,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<12>
 f (uinteger_t<12> a,
@@ -38794,7 +38785,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<13>
 f (sinteger_t<13> a,
@@ -38830,7 +38821,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<13>
 f (uinteger_t<13> a,
@@ -38862,7 +38853,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<14>
 f (sinteger_t<14> a,
@@ -38898,7 +38889,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<14>
 f (uinteger_t<14> a,
@@ -38930,7 +38921,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<15>
 f (sinteger_t<15> a,
@@ -38966,7 +38957,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<15>
 f (uinteger_t<15> a,
@@ -38998,7 +38989,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<16>
 f (sinteger_t<16> a,
@@ -39033,7 +39024,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<16>
 f (uinteger_t<16> a,
@@ -39061,7 +39052,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<17>
 f (sinteger_t<17> a,
@@ -39097,7 +39088,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<17>
 f (uinteger_t<17> a,
@@ -39131,7 +39122,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<18>
 f (sinteger_t<18> a,
@@ -39167,7 +39158,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<18>
 f (uinteger_t<18> a,
@@ -39201,7 +39192,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<19>
 f (sinteger_t<19> a,
@@ -39237,7 +39228,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<19>
 f (uinteger_t<19> a,
@@ -39271,7 +39262,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<20>
 f (sinteger_t<20> a,
@@ -39307,7 +39298,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<20>
 f (uinteger_t<20> a,
@@ -39341,7 +39332,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<21>
 f (sinteger_t<21> a,
@@ -39377,7 +39368,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<21>
 f (uinteger_t<21> a,
@@ -39411,7 +39402,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<22>
 f (sinteger_t<22> a,
@@ -39447,7 +39438,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<22>
 f (uinteger_t<22> a,
@@ -39481,7 +39472,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<23>
 f (sinteger_t<23> a,
@@ -39517,7 +39508,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<23>
 f (uinteger_t<23> a,
@@ -39551,7 +39542,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<24>
 f (sinteger_t<24> a,
@@ -39587,7 +39578,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<24>
 f (uinteger_t<24> a,
@@ -39621,7 +39612,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<25>
 f (sinteger_t<25> a,
@@ -39657,7 +39648,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<25>
 f (uinteger_t<25> a,
@@ -39691,7 +39682,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<26>
 f (sinteger_t<26> a,
@@ -39727,7 +39718,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<26>
 f (uinteger_t<26> a,
@@ -39761,7 +39752,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<27>
 f (sinteger_t<27> a,
@@ -39797,7 +39788,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<27>
 f (uinteger_t<27> a,
@@ -39831,7 +39822,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<28>
 f (sinteger_t<28> a,
@@ -39867,7 +39858,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<28>
 f (uinteger_t<28> a,
@@ -39901,7 +39892,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<29>
 f (sinteger_t<29> a,
@@ -39937,7 +39928,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<29>
 f (uinteger_t<29> a,
@@ -39971,7 +39962,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<30>
 f (sinteger_t<30> a,
@@ -40007,7 +39998,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<30>
 f (uinteger_t<30> a,
@@ -40041,7 +40032,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<31>
 f (sinteger_t<31> a,
@@ -40077,7 +40068,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<31>
 f (uinteger_t<31> a,
@@ -40107,7 +40098,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<32>
 f (sinteger_t<32> a,
@@ -40139,7 +40130,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<32>
 f (uinteger_t<32> a,
@@ -40165,7 +40156,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<33>
 f (sinteger_t<33> a,
@@ -40201,7 +40192,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<33>
 f (uinteger_t<33> a,
@@ -40235,7 +40226,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<34>
 f (sinteger_t<34> a,
@@ -40271,7 +40262,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<34>
 f (uinteger_t<34> a,
@@ -40305,7 +40296,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<35>
 f (sinteger_t<35> a,
@@ -40341,7 +40332,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<35>
 f (uinteger_t<35> a,
@@ -40375,7 +40366,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<36>
 f (sinteger_t<36> a,
@@ -40411,7 +40402,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<36>
 f (uinteger_t<36> a,
@@ -40445,7 +40436,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<37>
 f (sinteger_t<37> a,
@@ -40481,7 +40472,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<37>
 f (uinteger_t<37> a,
@@ -40515,7 +40506,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<38>
 f (sinteger_t<38> a,
@@ -40551,7 +40542,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<38>
 f (uinteger_t<38> a,
@@ -40585,7 +40576,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<39>
 f (sinteger_t<39> a,
@@ -40621,7 +40612,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<39>
 f (uinteger_t<39> a,
@@ -40655,7 +40646,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<40>
 f (sinteger_t<40> a,
@@ -40691,7 +40682,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<40>
 f (uinteger_t<40> a,
@@ -40725,7 +40716,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<41>
 f (sinteger_t<41> a,
@@ -40761,7 +40752,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<41>
 f (uinteger_t<41> a,
@@ -40795,7 +40786,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<42>
 f (sinteger_t<42> a,
@@ -40831,7 +40822,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<42>
 f (uinteger_t<42> a,
@@ -40865,7 +40856,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<43>
 f (sinteger_t<43> a,
@@ -40901,7 +40892,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<43>
 f (uinteger_t<43> a,
@@ -40935,7 +40926,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<44>
 f (sinteger_t<44> a,
@@ -40971,7 +40962,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<44>
 f (uinteger_t<44> a,
@@ -41005,7 +40996,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<45>
 f (sinteger_t<45> a,
@@ -41041,7 +41032,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<45>
 f (uinteger_t<45> a,
@@ -41075,7 +41066,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<46>
 f (sinteger_t<46> a,
@@ -41111,7 +41102,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<46>
 f (uinteger_t<46> a,
@@ -41145,7 +41136,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<47>
 f (sinteger_t<47> a,
@@ -41181,7 +41172,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<47>
 f (uinteger_t<47> a,
@@ -41215,7 +41206,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<48>
 f (sinteger_t<48> a,
@@ -41251,7 +41242,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<48>
 f (uinteger_t<48> a,
@@ -41285,7 +41276,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<49>
 f (sinteger_t<49> a,
@@ -41321,7 +41312,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<49>
 f (uinteger_t<49> a,
@@ -41355,7 +41346,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<50>
 f (sinteger_t<50> a,
@@ -41391,7 +41382,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<50>
 f (uinteger_t<50> a,
@@ -41425,7 +41416,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<51>
 f (sinteger_t<51> a,
@@ -41461,7 +41452,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<51>
 f (uinteger_t<51> a,
@@ -41495,7 +41486,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<52>
 f (sinteger_t<52> a,
@@ -41531,7 +41522,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<52>
 f (uinteger_t<52> a,
@@ -41565,7 +41556,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<53>
 f (sinteger_t<53> a,
@@ -41601,7 +41592,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<53>
 f (uinteger_t<53> a,
@@ -41635,7 +41626,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<54>
 f (sinteger_t<54> a,
@@ -41671,7 +41662,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<54>
 f (uinteger_t<54> a,
@@ -41705,7 +41696,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<55>
 f (sinteger_t<55> a,
@@ -41741,7 +41732,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<55>
 f (uinteger_t<55> a,
@@ -41775,7 +41766,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<56>
 f (sinteger_t<56> a,
@@ -41811,7 +41802,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<56>
 f (uinteger_t<56> a,
@@ -41845,7 +41836,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<57>
 f (sinteger_t<57> a,
@@ -41881,7 +41872,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<57>
 f (uinteger_t<57> a,
@@ -41915,7 +41906,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<58>
 f (sinteger_t<58> a,
@@ -41951,7 +41942,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<58>
 f (uinteger_t<58> a,
@@ -41985,7 +41976,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<59>
 f (sinteger_t<59> a,
@@ -42021,7 +42012,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<59>
 f (uinteger_t<59> a,
@@ -42055,7 +42046,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<60>
 f (sinteger_t<60> a,
@@ -42091,7 +42082,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<60>
 f (uinteger_t<60> a,
@@ -42125,7 +42116,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<61>
 f (sinteger_t<61> a,
@@ -42161,7 +42152,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<61>
 f (uinteger_t<61> a,
@@ -42195,7 +42186,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<62>
 f (sinteger_t<62> a,
@@ -42231,7 +42222,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<62>
 f (uinteger_t<62> a,
@@ -42265,7 +42256,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<63>
 f (sinteger_t<63> a,
@@ -42301,7 +42292,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<63>
 f (uinteger_t<63> a,
@@ -42331,7 +42322,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<64>
 f (sinteger_t<64> a,
@@ -42363,7 +42354,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<64>
 f (uinteger_t<64> a,
@@ -42389,7 +42380,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<4>
 f (sinteger_t<4> a,
@@ -42422,7 +42413,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<4>
 f (uinteger_t<4> a,
@@ -42449,7 +42440,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<5>
 f (sinteger_t<5> a,
@@ -42482,7 +42473,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<5>
 f (uinteger_t<5> a,
@@ -42509,7 +42500,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<6>
 f (sinteger_t<6> a,
@@ -42542,7 +42533,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<6>
 f (uinteger_t<6> a,
@@ -42569,7 +42560,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<7>
 f (sinteger_t<7> a,
@@ -42602,7 +42593,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<7>
 f (uinteger_t<7> a,
@@ -42629,7 +42620,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<8>
 f (sinteger_t<8> a,
@@ -42663,7 +42654,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<8>
 f (uinteger_t<8> a,
@@ -42689,7 +42680,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<9>
 f (sinteger_t<9> a,
@@ -42722,7 +42713,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<9>
 f (uinteger_t<9> a,
@@ -42749,7 +42740,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<10>
 f (sinteger_t<10> a,
@@ -42782,7 +42773,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<10>
 f (uinteger_t<10> a,
@@ -42809,7 +42800,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<11>
 f (sinteger_t<11> a,
@@ -42842,7 +42833,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<11>
 f (uinteger_t<11> a,
@@ -42869,7 +42860,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<12>
 f (sinteger_t<12> a,
@@ -42902,7 +42893,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<12>
 f (uinteger_t<12> a,
@@ -42929,7 +42920,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<13>
 f (sinteger_t<13> a,
@@ -42962,7 +42953,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<13>
 f (uinteger_t<13> a,
@@ -42989,7 +42980,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<14>
 f (sinteger_t<14> a,
@@ -43023,7 +43014,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<14>
 f (uinteger_t<14> a,
@@ -43050,7 +43041,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<15>
 f (sinteger_t<15> a,
@@ -43084,7 +43075,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<15>
 f (uinteger_t<15> a,
@@ -43111,7 +43102,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<16>
 f (sinteger_t<16> a,
@@ -43146,7 +43137,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<16>
 f (uinteger_t<16> a,
@@ -43172,7 +43163,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<17>
 f (sinteger_t<17> a,
@@ -43208,7 +43199,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<17>
 f (uinteger_t<17> a,
@@ -43235,7 +43226,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<18>
 f (sinteger_t<18> a,
@@ -43271,7 +43262,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<18>
 f (uinteger_t<18> a,
@@ -43298,7 +43289,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<19>
 f (sinteger_t<19> a,
@@ -43334,7 +43325,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<19>
 f (uinteger_t<19> a,
@@ -43361,7 +43352,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<20>
 f (sinteger_t<20> a,
@@ -43397,7 +43388,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<20>
 f (uinteger_t<20> a,
@@ -43424,7 +43415,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<21>
 f (sinteger_t<21> a,
@@ -43460,7 +43451,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<21>
 f (uinteger_t<21> a,
@@ -43487,7 +43478,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<22>
 f (sinteger_t<22> a,
@@ -43523,7 +43514,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<22>
 f (uinteger_t<22> a,
@@ -43550,7 +43541,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<23>
 f (sinteger_t<23> a,
@@ -43586,7 +43577,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<23>
 f (uinteger_t<23> a,
@@ -43613,7 +43604,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<24>
 f (sinteger_t<24> a,
@@ -43649,7 +43640,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<24>
 f (uinteger_t<24> a,
@@ -43676,7 +43667,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<25>
 f (sinteger_t<25> a,
@@ -43710,7 +43701,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<25>
 f (uinteger_t<25> a,
@@ -43737,7 +43728,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<26>
 f (sinteger_t<26> a,
@@ -43771,7 +43762,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<26>
 f (uinteger_t<26> a,
@@ -43798,7 +43789,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<27>
 f (sinteger_t<27> a,
@@ -43832,7 +43823,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<27>
 f (uinteger_t<27> a,
@@ -43859,7 +43850,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<28>
 f (sinteger_t<28> a,
@@ -43893,7 +43884,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<28>
 f (uinteger_t<28> a,
@@ -43920,7 +43911,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<29>
 f (sinteger_t<29> a,
@@ -43954,7 +43945,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<29>
 f (uinteger_t<29> a,
@@ -43981,7 +43972,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<30>
 f (sinteger_t<30> a,
@@ -44015,7 +44006,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<30>
 f (uinteger_t<30> a,
@@ -44042,7 +44033,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<31>
 f (sinteger_t<31> a,
@@ -44076,7 +44067,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<31>
 f (uinteger_t<31> a,
@@ -44103,7 +44094,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<32>
 f (sinteger_t<32> a,
@@ -44134,7 +44125,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<32>
 f (uinteger_t<32> a,
@@ -44160,7 +44151,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<33>
 f (sinteger_t<33> a,
@@ -44196,7 +44187,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<33>
 f (uinteger_t<33> a,
@@ -44223,7 +44214,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<34>
 f (sinteger_t<34> a,
@@ -44259,7 +44250,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<34>
 f (uinteger_t<34> a,
@@ -44286,7 +44277,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<35>
 f (sinteger_t<35> a,
@@ -44322,7 +44313,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<35>
 f (uinteger_t<35> a,
@@ -44349,7 +44340,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<36>
 f (sinteger_t<36> a,
@@ -44385,7 +44376,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<36>
 f (uinteger_t<36> a,
@@ -44412,7 +44403,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<37>
 f (sinteger_t<37> a,
@@ -44448,7 +44439,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<37>
 f (uinteger_t<37> a,
@@ -44475,7 +44466,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<38>
 f (sinteger_t<38> a,
@@ -44511,7 +44502,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<38>
 f (uinteger_t<38> a,
@@ -44538,7 +44529,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<39>
 f (sinteger_t<39> a,
@@ -44574,7 +44565,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<39>
 f (uinteger_t<39> a,
@@ -44601,7 +44592,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<40>
 f (sinteger_t<40> a,
@@ -44637,7 +44628,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<40>
 f (uinteger_t<40> a,
@@ -44664,7 +44655,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<41>
 f (sinteger_t<41> a,
@@ -44700,7 +44691,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<41>
 f (uinteger_t<41> a,
@@ -44727,7 +44718,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<42>
 f (sinteger_t<42> a,
@@ -44763,7 +44754,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<42>
 f (uinteger_t<42> a,
@@ -44790,7 +44781,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<43>
 f (sinteger_t<43> a,
@@ -44826,7 +44817,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<43>
 f (uinteger_t<43> a,
@@ -44853,7 +44844,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<44>
 f (sinteger_t<44> a,
@@ -44889,7 +44880,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<44>
 f (uinteger_t<44> a,
@@ -44916,7 +44907,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<45>
 f (sinteger_t<45> a,
@@ -44952,7 +44943,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<45>
 f (uinteger_t<45> a,
@@ -44979,7 +44970,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<46>
 f (sinteger_t<46> a,
@@ -45015,7 +45006,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<46>
 f (uinteger_t<46> a,
@@ -45042,7 +45033,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<47>
 f (sinteger_t<47> a,
@@ -45078,7 +45069,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<47>
 f (uinteger_t<47> a,
@@ -45105,7 +45096,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<48>
 f (sinteger_t<48> a,
@@ -45141,7 +45132,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<48>
 f (uinteger_t<48> a,
@@ -45168,7 +45159,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<49>
 f (sinteger_t<49> a,
@@ -45204,7 +45195,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<49>
 f (uinteger_t<49> a,
@@ -45231,7 +45222,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<50>
 f (sinteger_t<50> a,
@@ -45267,7 +45258,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<50>
 f (uinteger_t<50> a,
@@ -45294,7 +45285,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<51>
 f (sinteger_t<51> a,
@@ -45330,7 +45321,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<51>
 f (uinteger_t<51> a,
@@ -45357,7 +45348,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<52>
 f (sinteger_t<52> a,
@@ -45393,7 +45384,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<52>
 f (uinteger_t<52> a,
@@ -45420,7 +45411,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<53>
 f (sinteger_t<53> a,
@@ -45456,7 +45447,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<53>
 f (uinteger_t<53> a,
@@ -45483,7 +45474,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<54>
 f (sinteger_t<54> a,
@@ -45519,7 +45510,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<54>
 f (uinteger_t<54> a,
@@ -45546,7 +45537,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<55>
 f (sinteger_t<55> a,
@@ -45582,7 +45573,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<55>
 f (uinteger_t<55> a,
@@ -45609,7 +45600,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<56>
 f (sinteger_t<56> a,
@@ -45645,7 +45636,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<56>
 f (uinteger_t<56> a,
@@ -45672,7 +45663,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<57>
 f (sinteger_t<57> a,
@@ -45706,7 +45697,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<57>
 f (uinteger_t<57> a,
@@ -45733,7 +45724,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<58>
 f (sinteger_t<58> a,
@@ -45767,7 +45758,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<58>
 f (uinteger_t<58> a,
@@ -45794,7 +45785,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<59>
 f (sinteger_t<59> a,
@@ -45828,7 +45819,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<59>
 f (uinteger_t<59> a,
@@ -45855,7 +45846,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<60>
 f (sinteger_t<60> a,
@@ -45889,7 +45880,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<60>
 f (uinteger_t<60> a,
@@ -45916,7 +45907,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<61>
 f (sinteger_t<61> a,
@@ -45950,7 +45941,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<61>
 f (uinteger_t<61> a,
@@ -45977,7 +45968,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<62>
 f (sinteger_t<62> a,
@@ -46011,7 +46002,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<62>
 f (uinteger_t<62> a,
@@ -46038,7 +46029,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<63>
 f (sinteger_t<63> a,
@@ -46072,7 +46063,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<63>
 f (uinteger_t<63> a,
@@ -46099,7 +46090,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<64>
 f (sinteger_t<64> a,
@@ -46130,7 +46121,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<64>
 f (uinteger_t<64> a,
@@ -46156,7 +46147,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<4>
 f (sinteger_t<4> a,
@@ -46192,7 +46183,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<4>
 f (uinteger_t<4> a,
@@ -46221,7 +46212,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<5>
 f (sinteger_t<5> a,
@@ -46257,7 +46248,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<5>
 f (uinteger_t<5> a,
@@ -46286,7 +46277,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<6>
 f (sinteger_t<6> a,
@@ -46322,7 +46313,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<6>
 f (uinteger_t<6> a,
@@ -46351,7 +46342,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<7>
 f (sinteger_t<7> a,
@@ -46387,7 +46378,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<7>
 f (uinteger_t<7> a,
@@ -46416,7 +46407,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<8>
 f (sinteger_t<8> a,
@@ -46452,7 +46443,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<8>
 f (uinteger_t<8> a,
@@ -46481,7 +46472,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<9>
 f (sinteger_t<9> a,
@@ -46518,7 +46509,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<9>
 f (uinteger_t<9> a,
@@ -46547,7 +46538,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<10>
 f (sinteger_t<10> a,
@@ -46584,7 +46575,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<10>
 f (uinteger_t<10> a,
@@ -46613,7 +46604,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<11>
 f (sinteger_t<11> a,
@@ -46650,7 +46641,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<11>
 f (uinteger_t<11> a,
@@ -46679,7 +46670,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<12>
 f (sinteger_t<12> a,
@@ -46716,7 +46707,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<12>
 f (uinteger_t<12> a,
@@ -46745,7 +46736,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<13>
 f (sinteger_t<13> a,
@@ -46782,7 +46773,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<13>
 f (uinteger_t<13> a,
@@ -46811,7 +46802,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<14>
 f (sinteger_t<14> a,
@@ -46848,7 +46839,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<14>
 f (uinteger_t<14> a,
@@ -46877,7 +46868,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<15>
 f (sinteger_t<15> a,
@@ -46914,7 +46905,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<15>
 f (uinteger_t<15> a,
@@ -46943,7 +46934,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<16>
 f (sinteger_t<16> a,
@@ -46979,7 +46970,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<16>
 f (uinteger_t<16> a,
@@ -47009,7 +47000,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<17>
 f (sinteger_t<17> a,
@@ -47043,7 +47034,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<17>
 f (uinteger_t<17> a,
@@ -47072,7 +47063,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<18>
 f (sinteger_t<18> a,
@@ -47106,7 +47097,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<18>
 f (uinteger_t<18> a,
@@ -47135,7 +47126,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<19>
 f (sinteger_t<19> a,
@@ -47169,7 +47160,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<19>
 f (uinteger_t<19> a,
@@ -47198,7 +47189,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<20>
 f (sinteger_t<20> a,
@@ -47232,7 +47223,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<20>
 f (uinteger_t<20> a,
@@ -47261,7 +47252,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<21>
 f (sinteger_t<21> a,
@@ -47295,7 +47286,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<21>
 f (uinteger_t<21> a,
@@ -47324,7 +47315,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<22>
 f (sinteger_t<22> a,
@@ -47358,7 +47349,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<22>
 f (uinteger_t<22> a,
@@ -47387,7 +47378,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<23>
 f (sinteger_t<23> a,
@@ -47421,7 +47412,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<23>
 f (uinteger_t<23> a,
@@ -47450,7 +47441,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<24>
 f (sinteger_t<24> a,
@@ -47484,7 +47475,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<24>
 f (uinteger_t<24> a,
@@ -47513,7 +47504,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<25>
 f (sinteger_t<25> a,
@@ -47547,7 +47538,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<25>
 f (uinteger_t<25> a,
@@ -47576,7 +47567,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<26>
 f (sinteger_t<26> a,
@@ -47610,7 +47601,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<26>
 f (uinteger_t<26> a,
@@ -47639,7 +47630,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<27>
 f (sinteger_t<27> a,
@@ -47673,7 +47664,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<27>
 f (uinteger_t<27> a,
@@ -47702,7 +47693,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<28>
 f (sinteger_t<28> a,
@@ -47736,7 +47727,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<28>
 f (uinteger_t<28> a,
@@ -47765,7 +47756,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<29>
 f (sinteger_t<29> a,
@@ -47799,7 +47790,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<29>
 f (uinteger_t<29> a,
@@ -47828,7 +47819,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<30>
 f (sinteger_t<30> a,
@@ -47862,7 +47853,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<30>
 f (uinteger_t<30> a,
@@ -47891,7 +47882,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<31>
 f (sinteger_t<31> a,
@@ -47925,7 +47916,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<31>
 f (uinteger_t<31> a,
@@ -47954,7 +47945,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<32>
 f (sinteger_t<32> a,
@@ -47986,7 +47977,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<32>
 f (uinteger_t<32> a,
@@ -48015,7 +48006,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<33>
 f (sinteger_t<33> a,
@@ -48063,7 +48054,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<33>
 f (uinteger_t<33> a,
@@ -48106,7 +48097,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<34>
 f (sinteger_t<34> a,
@@ -48154,7 +48145,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<34>
 f (uinteger_t<34> a,
@@ -48197,7 +48188,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<35>
 f (sinteger_t<35> a,
@@ -48245,7 +48236,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<35>
 f (uinteger_t<35> a,
@@ -48288,7 +48279,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<36>
 f (sinteger_t<36> a,
@@ -48336,7 +48327,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<36>
 f (uinteger_t<36> a,
@@ -48379,7 +48370,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<37>
 f (sinteger_t<37> a,
@@ -48427,7 +48418,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<37>
 f (uinteger_t<37> a,
@@ -48470,7 +48461,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<38>
 f (sinteger_t<38> a,
@@ -48518,7 +48509,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<38>
 f (uinteger_t<38> a,
@@ -48561,7 +48552,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<39>
 f (sinteger_t<39> a,
@@ -48609,7 +48600,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<39>
 f (uinteger_t<39> a,
@@ -48652,7 +48643,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<40>
 f (sinteger_t<40> a,
@@ -48700,7 +48691,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<40>
 f (uinteger_t<40> a,
@@ -48743,7 +48734,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<41>
 f (sinteger_t<41> a,
@@ -48791,7 +48782,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<41>
 f (uinteger_t<41> a,
@@ -48834,7 +48825,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<42>
 f (sinteger_t<42> a,
@@ -48882,7 +48873,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<42>
 f (uinteger_t<42> a,
@@ -48925,7 +48916,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<43>
 f (sinteger_t<43> a,
@@ -48973,7 +48964,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<43>
 f (uinteger_t<43> a,
@@ -49016,7 +49007,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<44>
 f (sinteger_t<44> a,
@@ -49064,7 +49055,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<44>
 f (uinteger_t<44> a,
@@ -49107,7 +49098,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<45>
 f (sinteger_t<45> a,
@@ -49155,7 +49146,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<45>
 f (uinteger_t<45> a,
@@ -49198,7 +49189,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<46>
 f (sinteger_t<46> a,
@@ -49246,7 +49237,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<46>
 f (uinteger_t<46> a,
@@ -49289,7 +49280,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<47>
 f (sinteger_t<47> a,
@@ -49337,7 +49328,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<47>
 f (uinteger_t<47> a,
@@ -49380,7 +49371,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<48>
 f (sinteger_t<48> a,
@@ -49428,7 +49419,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<48>
 f (uinteger_t<48> a,
@@ -49471,7 +49462,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<49>
 f (sinteger_t<49> a,
@@ -49519,7 +49510,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<49>
 f (uinteger_t<49> a,
@@ -49562,7 +49553,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<50>
 f (sinteger_t<50> a,
@@ -49610,7 +49601,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<50>
 f (uinteger_t<50> a,
@@ -49653,7 +49644,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<51>
 f (sinteger_t<51> a,
@@ -49701,7 +49692,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<51>
 f (uinteger_t<51> a,
@@ -49744,7 +49735,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<52>
 f (sinteger_t<52> a,
@@ -49792,7 +49783,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<52>
 f (uinteger_t<52> a,
@@ -49835,7 +49826,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<53>
 f (sinteger_t<53> a,
@@ -49883,7 +49874,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<53>
 f (uinteger_t<53> a,
@@ -49926,7 +49917,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<54>
 f (sinteger_t<54> a,
@@ -49974,7 +49965,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<54>
 f (uinteger_t<54> a,
@@ -50017,7 +50008,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<55>
 f (sinteger_t<55> a,
@@ -50065,7 +50056,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<55>
 f (uinteger_t<55> a,
@@ -50108,7 +50099,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<56>
 f (sinteger_t<56> a,
@@ -50156,7 +50147,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<56>
 f (uinteger_t<56> a,
@@ -50199,7 +50190,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<57>
 f (sinteger_t<57> a,
@@ -50247,7 +50238,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<57>
 f (uinteger_t<57> a,
@@ -50290,7 +50281,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<58>
 f (sinteger_t<58> a,
@@ -50338,7 +50329,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<58>
 f (uinteger_t<58> a,
@@ -50381,7 +50372,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<59>
 f (sinteger_t<59> a,
@@ -50429,7 +50420,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<59>
 f (uinteger_t<59> a,
@@ -50472,7 +50463,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<60>
 f (sinteger_t<60> a,
@@ -50520,7 +50511,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<60>
 f (uinteger_t<60> a,
@@ -50563,7 +50554,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<61>
 f (sinteger_t<61> a,
@@ -50611,7 +50602,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<61>
 f (uinteger_t<61> a,
@@ -50654,7 +50645,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<62>
 f (sinteger_t<62> a,
@@ -50702,7 +50693,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<62>
 f (uinteger_t<62> a,
@@ -50745,7 +50736,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<63>
 f (sinteger_t<63> a,
@@ -50793,7 +50784,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<63>
 f (uinteger_t<63> a,
@@ -50836,7 +50827,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<64>
 f (sinteger_t<64> a,
@@ -50879,7 +50870,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<64>
 f (uinteger_t<64> a,
@@ -50917,7 +50908,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<4>
 f (sinteger_t<4> a,
@@ -50948,7 +50939,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<4>
 f (uinteger_t<4> a,
@@ -50973,7 +50964,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<5>
 f (sinteger_t<5> a,
@@ -51004,7 +50995,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<5>
 f (uinteger_t<5> a,
@@ -51029,7 +51020,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<6>
 f (sinteger_t<6> a,
@@ -51060,7 +51051,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<6>
 f (uinteger_t<6> a,
@@ -51085,7 +51076,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<7>
 f (sinteger_t<7> a,
@@ -51116,7 +51107,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<7>
 f (uinteger_t<7> a,
@@ -51141,7 +51132,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<8>
 f (sinteger_t<8> a,
@@ -51172,7 +51163,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<8>
 f (uinteger_t<8> a,
@@ -51197,7 +51188,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<9>
 f (sinteger_t<9> a,
@@ -51228,7 +51219,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<9>
 f (uinteger_t<9> a,
@@ -51253,7 +51244,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<10>
 f (sinteger_t<10> a,
@@ -51284,7 +51275,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<10>
 f (uinteger_t<10> a,
@@ -51309,7 +51300,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<11>
 f (sinteger_t<11> a,
@@ -51340,7 +51331,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<11>
 f (uinteger_t<11> a,
@@ -51365,7 +51356,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<12>
 f (sinteger_t<12> a,
@@ -51396,7 +51387,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<12>
 f (uinteger_t<12> a,
@@ -51421,7 +51412,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<13>
 f (sinteger_t<13> a,
@@ -51452,7 +51443,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<13>
 f (uinteger_t<13> a,
@@ -51477,7 +51468,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<14>
 f (sinteger_t<14> a,
@@ -51508,7 +51499,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<14>
 f (uinteger_t<14> a,
@@ -51533,7 +51524,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<15>
 f (sinteger_t<15> a,
@@ -51564,7 +51555,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<15>
 f (uinteger_t<15> a,
@@ -51589,7 +51580,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<16>
 f (sinteger_t<16> a,
@@ -51620,7 +51611,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<16>
 f (uinteger_t<16> a,
@@ -51645,7 +51636,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<17>
 f (sinteger_t<17> a,
@@ -51675,7 +51666,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<17>
 f (uinteger_t<17> a,
@@ -51700,7 +51691,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<18>
 f (sinteger_t<18> a,
@@ -51730,7 +51721,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<18>
 f (uinteger_t<18> a,
@@ -51755,7 +51746,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<19>
 f (sinteger_t<19> a,
@@ -51785,7 +51776,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<19>
 f (uinteger_t<19> a,
@@ -51810,7 +51801,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<20>
 f (sinteger_t<20> a,
@@ -51840,7 +51831,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<20>
 f (uinteger_t<20> a,
@@ -51865,7 +51856,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<21>
 f (sinteger_t<21> a,
@@ -51895,7 +51886,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<21>
 f (uinteger_t<21> a,
@@ -51920,7 +51911,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<22>
 f (sinteger_t<22> a,
@@ -51950,7 +51941,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<22>
 f (uinteger_t<22> a,
@@ -51975,7 +51966,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<23>
 f (sinteger_t<23> a,
@@ -52005,7 +51996,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<23>
 f (uinteger_t<23> a,
@@ -52030,7 +52021,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<24>
 f (sinteger_t<24> a,
@@ -52060,7 +52051,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<24>
 f (uinteger_t<24> a,
@@ -52085,7 +52076,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<25>
 f (sinteger_t<25> a,
@@ -52116,7 +52107,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<25>
 f (uinteger_t<25> a,
@@ -52141,7 +52132,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<26>
 f (sinteger_t<26> a,
@@ -52172,7 +52163,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<26>
 f (uinteger_t<26> a,
@@ -52197,7 +52188,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<27>
 f (sinteger_t<27> a,
@@ -52228,7 +52219,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<27>
 f (uinteger_t<27> a,
@@ -52253,7 +52244,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<28>
 f (sinteger_t<28> a,
@@ -52284,7 +52275,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<28>
 f (uinteger_t<28> a,
@@ -52309,7 +52300,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<29>
 f (sinteger_t<29> a,
@@ -52340,7 +52331,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<29>
 f (uinteger_t<29> a,
@@ -52365,7 +52356,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<30>
 f (sinteger_t<30> a,
@@ -52396,7 +52387,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<30>
 f (uinteger_t<30> a,
@@ -52421,7 +52412,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<31>
 f (sinteger_t<31> a,
@@ -52452,7 +52443,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<31>
 f (uinteger_t<31> a,
@@ -52477,7 +52468,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<32>
 f (sinteger_t<32> a,
@@ -52507,7 +52498,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<32>
 f (uinteger_t<32> a,
@@ -52532,7 +52523,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<33>
 f (sinteger_t<33> a,
@@ -52563,7 +52554,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<33>
 f (uinteger_t<33> a,
@@ -52588,7 +52579,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<34>
 f (sinteger_t<34> a,
@@ -52619,7 +52610,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<34>
 f (uinteger_t<34> a,
@@ -52644,7 +52635,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<35>
 f (sinteger_t<35> a,
@@ -52675,7 +52666,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<35>
 f (uinteger_t<35> a,
@@ -52700,7 +52691,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<36>
 f (sinteger_t<36> a,
@@ -52731,7 +52722,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<36>
 f (uinteger_t<36> a,
@@ -52756,7 +52747,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<37>
 f (sinteger_t<37> a,
@@ -52787,7 +52778,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<37>
 f (uinteger_t<37> a,
@@ -52812,7 +52803,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<38>
 f (sinteger_t<38> a,
@@ -52843,7 +52834,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<38>
 f (uinteger_t<38> a,
@@ -52868,7 +52859,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<39>
 f (sinteger_t<39> a,
@@ -52899,7 +52890,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<39>
 f (uinteger_t<39> a,
@@ -52924,7 +52915,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<40>
 f (sinteger_t<40> a,
@@ -52955,7 +52946,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<40>
 f (uinteger_t<40> a,
@@ -52980,7 +52971,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<41>
 f (sinteger_t<41> a,
@@ -53011,7 +53002,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<41>
 f (uinteger_t<41> a,
@@ -53036,7 +53027,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<42>
 f (sinteger_t<42> a,
@@ -53067,7 +53058,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<42>
 f (uinteger_t<42> a,
@@ -53092,7 +53083,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<43>
 f (sinteger_t<43> a,
@@ -53123,7 +53114,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<43>
 f (uinteger_t<43> a,
@@ -53148,7 +53139,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<44>
 f (sinteger_t<44> a,
@@ -53179,7 +53170,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<44>
 f (uinteger_t<44> a,
@@ -53204,7 +53195,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<45>
 f (sinteger_t<45> a,
@@ -53235,7 +53226,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<45>
 f (uinteger_t<45> a,
@@ -53260,7 +53251,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<46>
 f (sinteger_t<46> a,
@@ -53291,7 +53282,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<46>
 f (uinteger_t<46> a,
@@ -53316,7 +53307,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<47>
 f (sinteger_t<47> a,
@@ -53347,7 +53338,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<47>
 f (uinteger_t<47> a,
@@ -53372,7 +53363,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<48>
 f (sinteger_t<48> a,
@@ -53403,7 +53394,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<48>
 f (uinteger_t<48> a,
@@ -53428,7 +53419,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<49>
 f (sinteger_t<49> a,
@@ -53459,7 +53450,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<49>
 f (uinteger_t<49> a,
@@ -53484,7 +53475,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<50>
 f (sinteger_t<50> a,
@@ -53515,7 +53506,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<50>
 f (uinteger_t<50> a,
@@ -53540,7 +53531,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<51>
 f (sinteger_t<51> a,
@@ -53571,7 +53562,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<51>
 f (uinteger_t<51> a,
@@ -53596,7 +53587,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<52>
 f (sinteger_t<52> a,
@@ -53627,7 +53618,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<52>
 f (uinteger_t<52> a,
@@ -53652,7 +53643,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<53>
 f (sinteger_t<53> a,
@@ -53683,7 +53674,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<53>
 f (uinteger_t<53> a,
@@ -53708,7 +53699,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<54>
 f (sinteger_t<54> a,
@@ -53739,7 +53730,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<54>
 f (uinteger_t<54> a,
@@ -53764,7 +53755,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<55>
 f (sinteger_t<55> a,
@@ -53795,7 +53786,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<55>
 f (uinteger_t<55> a,
@@ -53820,7 +53811,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<56>
 f (sinteger_t<56> a,
@@ -53851,7 +53842,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<56>
 f (uinteger_t<56> a,
@@ -53876,7 +53867,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<57>
 f (sinteger_t<57> a,
@@ -53907,7 +53898,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<57>
 f (uinteger_t<57> a,
@@ -53932,7 +53923,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<58>
 f (sinteger_t<58> a,
@@ -53963,7 +53954,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<58>
 f (uinteger_t<58> a,
@@ -53988,7 +53979,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<59>
 f (sinteger_t<59> a,
@@ -54019,7 +54010,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<59>
 f (uinteger_t<59> a,
@@ -54044,7 +54035,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<60>
 f (sinteger_t<60> a,
@@ -54075,7 +54066,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<60>
 f (uinteger_t<60> a,
@@ -54100,7 +54091,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<61>
 f (sinteger_t<61> a,
@@ -54131,7 +54122,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<61>
 f (uinteger_t<61> a,
@@ -54156,7 +54147,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<62>
 f (sinteger_t<62> a,
@@ -54187,7 +54178,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<62>
 f (uinteger_t<62> a,
@@ -54212,7 +54203,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<63>
 f (sinteger_t<63> a,
@@ -54243,7 +54234,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<63>
 f (uinteger_t<63> a,
@@ -54268,7 +54259,7 @@ _f:                                     ; @f
 <td class='column-sign'>signed</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" sinteger_t<64>
 f (sinteger_t<64> a,
@@ -54298,7 +54289,7 @@ _f:                                     ; @f
 <td class='column-sign'>unsigned</td>
 <td class='column-cpp'>
 {% highlight cpp %}
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" uinteger_t<64>
 f (uinteger_t<64> a,

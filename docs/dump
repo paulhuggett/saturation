@@ -9,9 +9,8 @@ cat <<EOF1
 title: Saturation
 ---
 
-<link rel="stylesheet" href="./foo.css">
-<script src="./sorttable.js"></script>
-<script src="./table.js"></script>
+<script src="./sorttable.js" type="module"></script>
+<script src="./table.js" type="module"></script>
 
 <fieldset>
   <legend>Columns</legend>
@@ -112,7 +111,7 @@ for cpu in x86_64 arm arm64; do
         cpp=$(mktemp)
         asm=$(mktemp)
         sed -e "s/_X_/${bits}/g" -e "s/_S_/${sign}/g" -e "s/_FN_/${fn}/" > $cpp <<EOF
-#include "saturation.hpp"
+#include "saturation/saturation.hpp"
 using namespace saturation;
 extern "C" _S_integer_t<_X_>
 f (_S_integer_t<_X_> a,
@@ -120,7 +119,7 @@ f (_S_integer_t<_X_> a,
     return _FN__S_<_X_>(a, b);
 }
 EOF
-        clang++ -I.. -x c++ -std=c++17 -S -O3 -DNDEBUG -target $cpu-apple-darwin20.1.0 -o $asm $cpp
+        clang++ -I.. -x c++ -std=c++17 -S -O3 -DNDEBUG -target $cpu-apple-darwin20.1.0 -I ../include -o $asm $cpp
         if [[ $? -ne 0 ]]; then
             exit 1
         fi
