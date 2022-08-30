@@ -23,9 +23,9 @@ charts show the result of mixing the two input signals.
 
 -   The [first (titled “True Output”)](#graphSum) shows the mixer’s mathematically
     correct output. Where there is constructive interference between the two input
-    waveforms, values may lie outside the \[-1.0,1.0\] range — these are shown in red
-    — and a real-world implementation will distort this part of the output
-    waveform.
+    waveforms, values may lie outside the \[-1.0,1.0\] range &mdash; these are
+    shown in red &mdash; and a real-world implementation will distort this
+    part of the output waveform.
 -   The [second chart (“Saturating Addition”)](#graphSatSum) shows the result of
     using saturating addition. Where the output would exceed the maximum or
     minimum amplitude values, the result is clamped to that range.
