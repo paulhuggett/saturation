@@ -26,9 +26,11 @@ charts show the result of mixing the two input signals.
     waveforms, values may lie outside the \[-1.0,1.0\] range &mdash; these are
     shown in red &mdash; and a real-world implementation will distort this
     part of the output waveform.
+
 -   The [second chart (“Saturating Addition”)](#graphSatSum) shows the result of
     using saturating addition. Where the output would exceed the maximum or
     minimum amplitude values, the result is clamped to that range.
+
 -   The [third chart (“Modulo Addition”)](#graphModSum) shows the use of
     conventional modulo arithmetic. Here calculations that overflow result in
     dramatic discontinuities in the output waveform as the values “wrap around”
