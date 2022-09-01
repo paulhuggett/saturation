@@ -17,7 +17,7 @@
   width: 3em;
 }
 
-.axis path {
+.axis path, .tick line {
   stroke: #b8b8b8;
 }
 
@@ -41,13 +41,14 @@
   width: 9ch;
 }
 
-.fill {
+.limit-fill {
   stroke-width: 0;
   fill: red;
 }
 
 .limit-line {
   stroke: red;
+  stroke-width: 0.5;
   stroke-dasharray: 4;
 }
 

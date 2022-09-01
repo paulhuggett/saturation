@@ -36,10 +36,10 @@ function sine (id, index) {
   const minLine = g.append('line').classed('limit-line', true)
 
   g.append('g').classed('axis', true).attr('transform', `translate(0, ${height / 2})`).call(xAxis)
-  const yAxisEl = g.append('g').classed('yaxis', true)
+  const yAxisEl = g.append('g').classed('axis', true)
 
+  const fill = g.append('path').classed('limit-fill', true)
   const path = g.append('path').classed('line', true)
-  const fill = g.append('path').classed('fill', true)
 
   const line = d3.line()
     .x(d => xScale(d[0]))
