@@ -5,8 +5,16 @@ function getYDomain (data) {
   return [-yMax, yMax]
 }
 function radiansToUser (v) {
-  const format = d3.format('d')
-  return format(v * (180 / Math.PI)) + '°'
+  return d3.format('d')(v * (180 / Math.PI)) + '°'
+}
+
+// Create a copy of the line data and add data point at both x extremes to
+// enable the path to be safely filled.
+function areaData (data, xDomain) {
+  const r = data.slice()
+  r.unshift([xDomain[0], 0.0])
+  r.push([xDomain[1], 0.0])
+  return r
 }
 function sine (id, index) {
   const margin = { top: 12, left: 30, bottom: 12, right: 12 }
@@ -17,9 +25,7 @@ function sine (id, index) {
 
   const xDomain = [0, Math.PI * 2]
   const xScale = d3.scaleLinear().range([0, width]).domain(xDomain)
-  const xAxis = d3.axisBottom().scale(xScale)
-    .tickValues(Array(4).fill(0).map((_, i) => (i + 1) / 2 * Math.PI))
-    .tickFormat(radiansToUser)
+  const xAxis = d3.axisBottom().scale(xScale).tickValues([])
   const yAxis = d3.axisLeft().ticks(3)
 
   const clipPos = svg.select(`#clip-${index}-pos`).attr('x', xScale(0)).attr('width', xScale(xDomain[1]) - xScale(0))
@@ -29,11 +35,11 @@ function sine (id, index) {
   const maxLine = g.append('line').classed('limit-line', true)
   const minLine = g.append('line').classed('limit-line', true)
 
-  const path = g.append('path').classed('line', true)
-  const fill = g.append('path').classed('fill', true)
-
   g.append('g').classed('axis', true).attr('transform', `translate(0, ${height / 2})`).call(xAxis)
   const yAxisEl = g.append('g').classed('yaxis', true)
+
+  const path = g.append('path').classed('line', true)
+  const fill = g.append('path').classed('fill', true)
 
   const line = d3.line()
     .x(d => xScale(d[0]))
@@ -46,13 +52,8 @@ function sine (id, index) {
     yAxisEl.call(yAxis.scale(yScale))
     path.datum(data).attr('d', line.y(d => yScale(d[1])))
 
-    // Create a copy of the line data and add a single data point at which
-    // forces the y value to 0 and will enable the path to be safely filled.
-    const areaData = data.slice()
-    areaData.unshift([xDomain[0], 0.0])
-    areaData.push([xDomain[1], 0.0])
     // Set the fill path.
-    fill.datum(areaData).attr('d', line).attr('clip-path', `url(#clip-${index})`)
+    fill.datum(areaData(data, xDomain)).attr('d', line).attr('clip-path', `url(#clip-${index})`)
 
     const redLine = {
       yPlus1: yScale(1.0),
@@ -79,10 +80,9 @@ function setValues (input) {
 
 const width = 650 / 2
 const margin = { top: 12, left: 30, bottom: 12, right: 4 }
-const internalWidth = width - margin.left - margin.right
 
 export function mixerPage () {
-  const input = [{
+  const inputControls = [{
     frequency: { range: document.querySelector('#frequency1'), value: document.querySelector('#freqvalue1') },
     amplitude: { range: document.querySelector('#amplitude1'), value: document.querySelector('#ampvalue1') },
     phase: { range: document.querySelector('#phase1'), value: document.querySelector('#phasevalue1') }
@@ -92,13 +92,11 @@ export function mixerPage () {
     phase: { range: document.querySelector('#phase2'), value: document.querySelector('#phasevalue2') }
   }]
 
-  const points = internalWidth / 2
+  const points = (width - margin.left - margin.right) / 2
   const makeXArray = () => d3.range(0, points).map(k => k / (points - 1) * Math.PI * 2)
   const yValue = input => x => Math.sin((x + +input.phase.range.value) * +input.frequency.range.value) * +input.amplitude.range.value
-  const makePoints = f => x => [x, f(x)]
-
-  const c1 = yValue(input[0])
-  const c2 = yValue(input[1])
+  const input1 = yValue(inputControls[0])
+  const input2 = yValue(inputControls[1])
 
   const input1Graph = sine('#graph1', 1)
   const input2Graph = sine('#graph2', 2)
@@ -108,20 +106,15 @@ export function mixerPage () {
   const moduloMathGraph = sine('#graphModSum', 5)
 
   const update = () => {
-    setValues(input[0])
-    setValues(input[1])
+    inputControls.forEach(setValues)
+    input1Graph(makeXArray().map(x => [x, input1(x)]))
+    input2Graph(makeXArray().map(x => [x, input2(x)]))
 
-    input1Graph(makeXArray().map(makePoints(yValue(input[0]))))
-    input2Graph(makeXArray().map(makePoints(yValue(input[1]))))
-
-    trueGraph(makeXArray().map(x => [x, c1(x) + c2(x)]))
-    satMathGraph(makeXArray().map(x => [x, Math.max(Math.min(c1(x) + c2(x), 1.0), -1.0)]))
-    moduloMathGraph(makeXArray().map(x => [x, (c1(x) + c2(x)) % 1.0]))
+    trueGraph(makeXArray().map(x => [x, input1(x) + input2(x)]))
+    satMathGraph(makeXArray().map(x => [x, Math.max(Math.min(input1(x) + input2(x), 1.0), -1.0)]))
+    moduloMathGraph(makeXArray().map(x => [x, (input1(x) + input2(x)) % 1.0]))
   }
 
-  [
-    input[0].frequency.range, input[0].amplitude.range, input[0].phase.range,
-    input[1].frequency.range, input[1].amplitude.range, input[1].phase.range
-  ].forEach(el => el.addEventListener('input', update))
+  inputControls.forEach(v => [v.frequency, v.amplitude, v.phase].forEach(p => p.range.addEventListener('input', update)))
   update()
 }
