@@ -44,16 +44,16 @@ waveform that is much closer to the ideal.
 
 <div class="run">
   <div>
-{% include mixer_controls.liquid input=1 %}
+{% include_relative mixer_controls.liquid input=1 %}
     <div id="graph1">
-{% include mixer_skeleton.liquid maskid=1 height=page.smallGraphHeight %}
+{% include_relative mixer_skeleton.liquid maskid=1 height=page.smallGraphHeight %}
     </div>
   </div>
 
   <div>
-{% include mixer_controls.liquid input=2 %}
+{% include_relative mixer_controls.liquid input=2 %}
     <div id="graph2">
-{% include mixer_skeleton.liquid maskid=2 height=page.smallGraphHeight %}
+{% include_relative mixer_skeleton.liquid maskid=2 height=page.smallGraphHeight %}
     </div>
   </div>
 </div>
@@ -61,7 +61,7 @@ waveform that is much closer to the ideal.
 <figure>
    <figcaption>Desired Output</figcaption>
   <div id="graphSum">
-{% include mixer_skeleton.liquid maskid=3 height=page.graphHeight %}
+{% include_relative mixer_skeleton.liquid maskid=3 height=page.graphHeight %}
   </div>
 </figure>
 
@@ -69,13 +69,13 @@ waveform that is much closer to the ideal.
   <figure>
     <figcaption>Actual Output: Saturating Addition</figcaption>
     <div id="graphSatSum">
-{% include mixer_skeleton.liquid maskid=4 height=page.graphHeight %}
+{% include_relative mixer_skeleton.liquid maskid=4 height=page.graphHeight %}
     </div>
   </figure>
   <figure>
     <figcaption>Actual Output: Modulo Addition</figcaption>
     <div id="graphModSum">
-{% include mixer_skeleton.liquid maskid=5 height=page.graphHeight %}
+{% include_relative mixer_skeleton.liquid maskid=5 height=page.graphHeight %}
     </div>
   </figure>
 </div>
