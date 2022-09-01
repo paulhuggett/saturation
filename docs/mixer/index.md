@@ -82,8 +82,8 @@ waveform that is much closer to the ideal.
 
 Compare the results when using [saturating addition](#graphSatSum) or
 [modulo addition](#graphModSum) to the
-[desired (true) output](#graphSum). Saturating addition has produced
-output which is much closer to the ideal output.
+[desired output](#graphSum). Saturating addition has produced output which is
+much closer to the ideal output.
 
 <script type="module">
   import { mixerPage } from './mixer.js'
