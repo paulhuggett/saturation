@@ -76,8 +76,11 @@ struct multiplier {
           y;
       return std::make_pair (static_cast<arg_type> (narrow_res >> N),
                              static_cast<arg_type> (narrow_res));
+    } else {
+      // The above 'else' is necessary to avoid a warning from VS2022 about
+      // unreachable code (C4702).
+      return adjust (multiply (x, y));
     }
-    return adjust (multiply (x, y));
   }
 
 private:
