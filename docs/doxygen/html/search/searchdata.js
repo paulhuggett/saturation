@@ -1,33 +1,18 @@
 var indexSectionsWithContent =
 {
-  0: "adimnopstuv",
-  1: "mnsu",
-  2: "s",
-  3: "adimnops",
-  4: "mv",
-  5: "astu",
-  6: "s"
+  0: "s",
+  1: "s"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "classes",
-  2: "files",
-  3: "functions",
-  4: "variables",
-  5: "typedefs",
-  6: "pages"
+  1: "pages"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Classes",
-  2: "Files",
-  3: "Functions",
-  4: "Variables",
-  5: "Typedefs",
-  6: "Pages"
+  1: "Pages"
 };
 

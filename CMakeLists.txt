@@ -44,7 +44,14 @@ endfunction (setup_target)
 
 # The "library" itself.
 
-add_library (saturation INTERFACE include/saturation/saturation.hpp)
+add_library (saturation INTERFACE
+  include/saturation/add.hpp
+  include/saturation/div.hpp
+  include/saturation/mul.hpp
+  include/saturation/saturation.hpp
+  include/saturation/sub.hpp
+  include/saturation/types.hpp
+)
 target_include_directories (saturation INTERFACE ./include)
 
 # Tiny demo program.
