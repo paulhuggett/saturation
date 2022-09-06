@@ -6,7 +6,7 @@ Implementation of branchless saturating arithmetic.
 [![SonarCloud](https://github.com/paulhuggett/saturation/actions/workflows/sonarcloud.yaml/badge.svg)](https://sonarcloud.io/project/overview?id=paulhuggett_saturation)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/8cd4a7866bb74ec1aec37bd52fc788e4)](https://www.codacy.com/gh/paulhuggett/saturation/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=paulhuggett/saturation&amp;utm_campaign=Badge_Grade)
 
-[A Mixer Example](https://paulhuggett.github.io/saturation/mixer.html)
+[A Mixer Example](https://paulhuggett.github.io/saturation/mixer)
 
 [Compiler Output](https://paulhuggett.github.io/saturation/out.html)
 
