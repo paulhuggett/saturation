@@ -12,16 +12,7 @@ void do_test () {
   int exit_code = test_main<N, false> (
       [] (sint x, sint y) { return saturation::subs<N> (x, y); },
       [] (sint x, sint y) {
-        constexpr auto max = saturation::slimits<N>::max ();
-        constexpr auto min = saturation::slimits<N>::min ();
-        auto z = static_cast<saturation::sinteger_t<N + 1>> (x) - y;
-        if (z > max) {
-          z = max;
-        }
-        if (z < min) {
-          z = min;
-        }
-        return static_cast<sint> (z);
+        return clamps<N> (static_cast<saturation::sinteger_t<N + 1>> (x) - y);
       });
   if (exit_code != EXIT_SUCCESS) {
     std::exit (exit_code);

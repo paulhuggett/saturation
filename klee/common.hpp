@@ -45,6 +45,19 @@ inline int32_t clamp24 (int64_t const x) {
   return static_cast<int32_t> (std::clamp (x, min, max));
 }
 
+template <size_t N, typename T>
+saturation::sinteger_t<N> clamps (T z) {
+  constexpr auto max = saturation::slimits<N>::max ();
+  if (z > max) {
+    z = max;
+  }
+  constexpr auto min = saturation::slimits<N>::min ();
+  if (z < min) {
+    z = min;
+  }
+  return static_cast<saturation::sinteger_t<N>> (z);
+}
+
 template <size_t Bits, bool IsUnsigned>
 using test_type = std::conditional_t<IsUnsigned, saturation::uinteger_t<Bits>,
                                      saturation::sinteger_t<Bits>>;

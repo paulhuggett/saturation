@@ -26,18 +26,7 @@ void do_test () {
         limit_tests<N> (x);
         return saturation::divs<N> (x, y);
       },
-      [] (sinteger x, sinteger y) {
-        constexpr auto min = saturation::slimits<N>::min ();
-        constexpr auto max = saturation::slimits<N>::max ();
-        auto z = x / y;
-        if (z > max) {
-          z = max;
-        }
-        if (z < min) {
-          z = min;
-        }
-        return static_cast<sinteger> (z);
-      },
+      [] (sinteger x, sinteger y) { return clamps<N> (x / y); },
       false  // Ensure y != 0
   );
   if (exit_code != EXIT_SUCCESS) {

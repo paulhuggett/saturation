@@ -22,16 +22,7 @@ void do_test () {
         return saturation::muls<N> (x, y);
       },
       [] (sinteger x, sinteger y) {
-        constexpr auto min = saturation::slimits<N>::min ();
-        constexpr auto max = saturation::slimits<N>::max ();
-        auto z = static_cast<saturation::sinteger_t<N * 2>> (x) * y;
-        if (z > max) {
-          z = max;
-        }
-        if (z < min) {
-          z = min;
-        }
-        return static_cast<sinteger> (z);
+        return clamps<N> (static_cast<saturation::sinteger_t<N * 2>> (x) * y);
       });
   if (exit_code != EXIT_SUCCESS) {
     std::exit (exit_code);
