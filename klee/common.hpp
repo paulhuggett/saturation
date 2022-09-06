@@ -85,37 +85,45 @@ inline void assume_range (test_type<Bits, IsUnsigned> v) {
   ar<Bits, IsUnsigned>::assume (v);
 }
 
-inline void dump (char const* xn, int8_t const x, char const* yn,
-                  int8_t const y) {
-  std::printf ("%s=%" PRId8 " %s=%" PRId8, xn, x, yn, y);
+inline void dump (std::pair<char const *, int8_t> const x,
+                  std::pair<char const *, int8_t> const y) {
+  std::printf ("%s=%" PRId8 " %s=%" PRId8, x.first, x.second, y.first,
+               y.second);
 }
-inline void dump (char const* xn, uint8_t const x, char const* yn,
-                  uint8_t const y) {
-  std::printf ("%s=%" PRIu8 " %s=%" PRIu8, xn, x, yn, y);
+inline void dump (std::pair<char const *, uint8_t> const x,
+                  std::pair<char const *, uint8_t> const y) {
+  std::printf ("%s=%" PRIu8 " %s=%" PRIu8, x.first, x.second, y.first,
+               y.second);
 }
-inline void dump (char const* xn, int16_t const x, char const* yn,
-                  int16_t const y) {
-  std::printf ("%s=%" PRId16 " %s=%" PRId16, xn, x, yn, y);
+inline void dump (std::pair<char const *, int16_t> const x,
+                  std::pair<char const *, int16_t> const y) {
+  std::printf ("%s=%" PRId16 " %s=%" PRId16, x.first, x.second, y.first,
+               y.second);
 }
-inline void dump (char const* xn, uint16_t const x, char const* yn,
-                  uint16_t const y) {
-  std::printf ("%s=%" PRIu16 " %s=%" PRIu16, xn, x, yn, y);
+inline void dump (std::pair<char const *, uint16_t> const x,
+                  std::pair<char const *, uint16_t> const y) {
+  std::printf ("%s=%" PRIu16 " %s=%" PRIu16, x.first, x.second, y.first,
+               y.second);
 }
-inline void dump (char const* xn, int32_t const x, char const* yn,
-                  int32_t const y) {
-  std::printf ("%s=%" PRId32 " %s=%" PRId32, xn, x, yn, y);
+inline void dump (std::pair<char const *, int32_t> x,
+                  std::pair<char const *, int32_t> const y) {
+  std::printf ("%s=%" PRId32 " %s=%" PRId32, x.first, x.second, y.first,
+               y.second);
 }
-inline void dump (char const* xn, uint32_t const x, char const* yn,
-                  uint32_t const y) {
-  std::printf ("%s=%" PRIu32 " %s=%" PRIu32, xn, x, yn, y);
+inline void dump (std::pair<char const *, uint32_t> const x,
+                  std::pair<char const *, uint32_t> const y) {
+  std::printf ("%s=%" PRIu32 " %s=%" PRIu32, x.first, x.second, y.first,
+               y.second);
 }
-inline void dump (char const* xn, int64_t const x, char const* yn,
-                  int64_t const y) {
-  std::printf ("%s=%" PRId64 " %s=%" PRId64, xn, x, yn, y);
+inline void dump (std::pair<char const *, int64_t> const x,
+                  std::pair<char const *, int64_t> const y) {
+  std::printf ("%s=%" PRId64 " %s=%" PRId64, x.first, x.second, y.first,
+               y.second);
 }
-inline void dump (char const* xn, uint64_t const x, char const* yn,
-                  uint64_t const y) {
-  std::printf ("%s=%" PRIu64 " %s=%" PRIu64, xn, x, yn, y);
+inline void dump (std::pair<char const *, uint64_t> const x,
+                  std::pair<char const *, uint64_t> const y) {
+  std::printf ("%s=%" PRIu64 " %s=%" PRIu64, x.first, x.second, y.first,
+               y.second);
 }
 
 }  // end namespace details
@@ -159,13 +167,17 @@ int test_main (FunctionUnderTest fut, ExpectedFunction expected,
   }
 
 #if KLEE_RUN
-  details::dump (namex, x, namey, y);
+  details::dump (std::pair<char const *, type> (namex, x),
+                 std::pair<char const *, type> (namey, y));
   std::fflush (stdout);
 #endif
+
   type const actual = fut (x, y);
   type const e = expected (x, y);
+
 #if KLEE_RUN
-  details::dump (" expected", e, "actual", actual);
+  details::dump (std::make_pair (" expected", e),
+                 std::make_pair ("actual", actual));
   std::putchar ('\n');
   std::fflush (stdout);
 #endif
