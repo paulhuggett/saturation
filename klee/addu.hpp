@@ -12,12 +12,7 @@ void do_test () {
   int exit_code = test_main<N, true> (
       [] (uinteger x, uinteger y) { return saturation::addu<N> (x, y); },
       [] (uinteger x, uinteger y) {
-        constexpr auto max = saturation::ulimits<N>::max ();
-        auto z = static_cast<saturation::uinteger_t<N + 1>> (x) + y;
-        if (z > max) {
-          z = max;
-        }
-        return static_cast<uinteger> (z);
+        return clampu<N> (static_cast<saturation::uinteger_t<N + 1>> (x) + y);
       });
   if (exit_code != EXIT_SUCCESS) {
     std::exit (exit_code);

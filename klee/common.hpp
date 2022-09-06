@@ -16,35 +16,6 @@
 #define KLEE_RUN 0
 #endif
 
-inline int32_t clamp32 (int64_t const x) {
-  return static_cast<int32_t> (std::clamp (
-      x, static_cast<int64_t> (std::numeric_limits<int32_t>::min ()),
-      static_cast<int64_t> (std::numeric_limits<int32_t>::max ())));
-}
-
-inline uint32_t clampu32 (int64_t const x) {
-  return static_cast<uint32_t> (std::clamp (
-      x, static_cast<int64_t> (std::numeric_limits<uint32_t>::min ()),
-      static_cast<int64_t> (std::numeric_limits<uint32_t>::max ())));
-}
-
-inline uint32_t clampu32 (uint64_t const x) {
-  return static_cast<uint32_t> (std::clamp (
-      x, static_cast<uint64_t> (std::numeric_limits<uint32_t>::min ()),
-      static_cast<uint64_t> (std::numeric_limits<uint32_t>::max ())));
-}
-
-inline uint32_t clampu24 (int64_t const x) {
-  return static_cast<uint32_t> (
-      std::clamp (x, int64_t{0}, static_cast<int64_t> ((1U << 24) - 1U)));
-}
-
-inline int32_t clamp24 (int64_t const x) {
-  constexpr auto max = static_cast<int64_t> ((uint64_t{1} << 23) - 1);
-  constexpr auto min = -max - 1;
-  return static_cast<int32_t> (std::clamp (x, min, max));
-}
-
 template <size_t N, typename T>
 saturation::sinteger_t<N> clamps (T z) {
   constexpr auto max = saturation::slimits<N>::max ();
@@ -56,6 +27,15 @@ saturation::sinteger_t<N> clamps (T z) {
     z = min;
   }
   return static_cast<saturation::sinteger_t<N>> (z);
+}
+
+template <size_t N, typename T>
+saturation::uinteger_t<N> clampu (T z) {
+  constexpr auto max = saturation::ulimits<N>::max ();
+  if (z > max) {
+    z = max;
+  }
+  return static_cast<saturation::uinteger_t<N>> (z);
 }
 
 template <size_t Bits, bool IsUnsigned>
