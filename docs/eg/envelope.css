@@ -1,0 +1,56 @@
+sub {
+  font-size: smaller;
+  vertical-align: sub;
+}
+.axis path, .tick line {
+  stroke: #b8b8b8;
+}
+
+.maskr2 {
+  animation: mask 1s ease infinite;
+}
+
+@keyframes mask {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+.line {
+  stroke: black;
+  stroke-width: 1.5;
+  fill: none;
+}
+
+input:invalid + span::after {
+  content: "✖";
+  padding-left: 5px;
+}
+
+input:valid + span::after {
+  content: "✓";
+  padding-left: 5px;
+}
+
+
+.vertical-center {
+  vertical-align: middle;
+}
+.keep-together {
+  display: inline-flex;
+}
+
+.diagram-edge {
+  stroke: black;
+  stroke-width: 2;
+}
+.diagram-shape {
+  stroke: black;
+  stroke-width: 2;
+  fill: white;
+  fill-opacity: 0.5;
+}
+.diagram-text {
+  fill: black;
+  text-anchor: middle;
+  alignment-baseline: middle;
+}
