@@ -39,6 +39,7 @@ input:valid + span::after {
   display: inline-flex;
 }
 
+
 .diagram-edge {
   stroke: black;
   stroke-width: 2;

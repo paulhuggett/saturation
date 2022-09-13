@@ -1,7 +1,7 @@
 ---
 title: EG Curve
-height: 400
-width: 650
+height: 300
+width: 450
 min: 0.8000
 max: 0.9999
 step: 0.0001
@@ -10,13 +10,22 @@ step: 0.0001
 # {{ page.title }}
 
 <link href="envelope.css" rel="stylesheet">
-
+<style>
+.row {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 5%;
+}
+.col {
+}
+</style>
 
 <svg viewBox="0 0 418 259" width="418" height="259">
 
   <defs>
     <marker id="arrow" markerHeight="6" markerUnits="strokeWidth" markerWidth="7" orient="auto" overflow="visible" viewBox="-1 -3 7 6">
-      <path d="M 4.8 0 L 0 -1.8 L 0 1.8 Z" fill="currentColor" stroke-linejoin="miter" stroke-miterlimit="10" stroke-width="1"  stroke="currentColor"></path>
+      <path d="M 4.8 0 L 0 -1.8 L 0 1.8 Z" fill="currentColor"
+            stroke-linejoin="miter" stroke-miterlimit="10" stroke-width="1"  stroke="currentColor"></path>
     </marker>
   </defs>
 
@@ -29,15 +38,6 @@ step: 0.0001
         <tspan font-size="11" x="8" y="-6">-1</tspan>
       </text>
     </g>
-    <g class="diagram-edge" marker-end="url(#arrow)">
-      <path d="M 181 216 L 91 216 L 91 132"></path>    <!-- b -> Σ -->
-      <line x1="127" y1="82" x2="400" y2="82"></line>  <!-- Σ -> end -->
-      <line x1="346" y1="82" x2="346" y2="113"></line> <!-- top lie -> z^-1 -->
-      <path d="M 346 176 L 346 216 L 268 216"></path>  <!-- z^-1 -> b -->
-      <line x1="91" y1="13" x2="91" y2="33"></line>    <!-- -x0 -> Σ -->
-      <line x1="4" y1="82" x2="42" y2="82"></line>     <!-- start -> Σ -->
-    </g>
-    <circle cx="346" cy="82" r="5" fill="black"></circle>
     <g>
       <!-- triangle b -->
       <path class="diagram-shape" d="M 255 246 L 181 216 L 255 186 Z"></path>
@@ -45,8 +45,8 @@ step: 0.0001
     </g>
     <g>
       <!-- Circle Sigma -->
-      <circle class="diagram-shape" cx="91" cy="82" r="37"></circle>
-      <text class="diagram-text" x="91" y="82" font-size="29">&#x01A9;</text>
+      <circle class="diagram-shape" cx="91" cy="82" r="25"></circle>
+      <text   class="diagram-text"   x="91"  y="82" font-size="29">&#x01A9;</text>
     </g>
     <g>
       <!-- -x_0 -->
@@ -55,9 +55,19 @@ step: 0.0001
         <tspan font-size="11" x="9" y="4">0</tspan>
       </text>
     </g>
+    <g class="diagram-edge" marker-end="url(#arrow)">
+      <line x1="91"  y1="13" x2="91"  y2="44"></line>  <!-- -x0 -> Σ -->
+      <line x1="4"   y1="82" x2="52"  y2="82"></line>  <!-- left -> Σ -->
+      <line x1="116" y1="82" x2="400" y2="82"></line>  <!-- Σ -> right -->
+      <path d="M 181 216 L 91 216 L 91 120"></path>    <!-- b -> Σ -->
+      <line x1="346" y1="82" x2="346" y2="113"></line> <!-- top line -> z^-1 -->
+      <path d="M 346 176 L 346 216 L 268 216"></path>  <!-- z^-1 -> b -->
+    </g>
+    <circle cx="346" cy="82" r="5" fill="black"></circle>
   </g>
 </svg>
 
+<div></div>
 
 
 <div class="keep-together">
@@ -67,9 +77,10 @@ step: 0.0001
   <span class="validity"></span>
 </div>
 
+<div></div>
 
 <div class="keep-together">
-  <label for="b-range" class="vertical-center">Decay (&lt;1.0):</label>
+  <label for="b-range" class="vertical-center">b (&lt;1.0):</label>
   <input id="b-range" type="range"  min="{{ page.min }}" max="{{ page.max }}" step="{{ page.step }}" value="0.95" required class="vertical-center">
   <input id="b-value" type="number" min="{{ page.min }}" max="{{ page.max }}" step="{{ page.step }}" class="vertical-center">
   <span class="validity"></span>
@@ -82,19 +93,145 @@ step: 0.0001
   <span class="validity"></span>
 </div>
 
+<div>
+  <input type="radio" id="radio-charge" name="charge-discharge" value="1">
+  <label for="radio-charge">Charge</label>
+
+  <input type="radio" id="radio-discharge" name="charge-discharge" value="0" checked>
+  <label for="radio-discharge">Discharge</label>
+</div>
+
+<div></div>
+
 <svg id="envelope" width="{{ page.width }}" height="{{ page.height }}" viewBox="0 0 {{ page.width }} {{ page.height }}">
+
   <defs>
     <mask id="sparkle-mask">
       <rect fill="#777" width="100%" height="100%"></rect>
       <rect class="loading maskr2" fill="hsla(200,0%,10%,0.6)" width="100%" height="100%"></rect>
     </mask>
   </defs>
+
   <rect class="loading" mask="url(#sparkle-mask)" fill="#dadada" width="100%" height="100%"></rect>
 </svg>
+
+<script>
+MathJax = {
+  tex: {
+    tags: 'ams', // should be 'ams', 'none', or 'all'
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<!-- div class="row" -->
+<!-- div class="col" -->
+### Charge:
+
+$$
+V_c = V_0(1 - e^{-t/RC})
+$$
+
+Term | Description
+---- | -----------
+*V<sub>c</sub>* | The voltage across the capacitor after time *t* has elapsed.
+*V<sub>0</sub>* | The initial voltage across the capacitor before charging/discharging begins.
+*t*  | The time taken for the charge/discharge: determines how much the capacitor charges/discharges.
+*R*  | The resistance to which the capacitor is connected. The greater the resistance value, the slower the charge/discharge.
+*C*  | The capacitance: the greater the capacitance, the more charge can be held and the longer it takes to charge/discharge.
+
+A CEM3310 charges the capacitor to 77% therefore, if we normalize RC to 1.0:
+
+<div>
+\begin{align}
+1 - e^{t} &= 0.77       \\
+    e^{t} &= 0.23       \\
+       -t &= log_e 0.23 \\
+        t &= 1.4969
+\end{align}
+</div>
+
+<!-- /div --> <!-- col -->
+<!-- div class="col"-->
+### Discharge
+
+$$
+V_c = V_0 e^{-t/RC}
+$$
+
+We discharge the capacitor from 77%. Once again, RC is assumed to be 1. First we need to know that initial offset for x:
+
+<div>
+\begin{align*}
+       e^{-d} &= 0.77       \\
+\frac{1}{e^d} &= 0.77       \\
+           -d &= log_e 0.77 \\
+            d &= 0.2614     \\
+\end{align*}
+</div>
+
+
+We now want to how long it will take for the capacitor to discharge. However, the  to < > when the capacity 
+
+<div>
+\begin{align*}
+
+      y &= e^{(-x+d)/RC} \\
+\end{align*}
+
+Time to discharge from 100% to 0.993
+
+</div>
+
+If we we assume that our capacitor start at 77% of its full charge,  and is "fully" discharged with a residual charge of 0.7% (i.e. 99.3% discharged):
+
+<div>
+\begin{align*}
+e^{-x + log_e 0.77} &\le \frac{0.7}{100} \\
+    -x + log_e 0.77 &\le log_e 0.007     \\
+                  x &\ge log_e 0.77 - log_e 0.007 \\
+                    &\ge 4.700
+\end{align*}
+</div>
+<!-- /div --> <!-- col -->
+<!-- /div --> <!-- row -->
+
+## Stuff About Signal-to-Noise Ration
+
+The signal to quantization noise ratio (SQNR) can be [calculated from](https://en.wikipedia.org/wiki/Signal-to-noise_ratio#Fixed_point):
+
+$$
+SQNR=20 log_{10}(2^{Q})\approx 6.02\cdot Q\ dB
+$$
+
+where Q is the number of quantization bits and the result is measured in decibels (dB)
+
+<label for="bit-depth-select">Bit Depth:</label>
+<select name="bit depth" id="bit-depth">
+  <option value="8">8</option>
+  <option value="16">16</option>
+  <option value="24">24</option>
+  <option value="32">32</option>
+</select>
+SQNR = <span id="sqnr">0</span> dB
+
+
 
 <script type="module">
 import { controls } from './envelope.js'
 document.addEventListener('DOMContentLoaded', () => {
   controls()
+
+  const bitDepth = document.querySelector('#bit-depth')
+  const setSQNR = () => {
+    document.querySelector('#sqnr').innerHTML = (20.0 * Math.log10(Math.pow(2, +bitDepth.value))).toPrecision(4)
+  }
+  bitDepth.addEventListener('change', setSQNR)
+  setSQNR()
 })
 </script>
