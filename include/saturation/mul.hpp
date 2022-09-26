@@ -162,7 +162,7 @@ inline uinteger_t<8> mulu<8, std::enable_if_t<true>> (uinteger_t<8> x,
       "mul %[y]\n\t"              // %ax = %al * y (sets carry C on overflow)
       "sbb %[t], %[t]\n\t"        // t -= t - C (t will become 0 or ~0).
       "or %[t], %[x]\n\t"         // x |= t
-      : [x] "+a"(x), [t] "+r"(t)  // output
+      : [x] "+a"(x), [t] "=r"(t)  // output
       : [y] "r"(y)                // input
   );
   return x;
@@ -176,7 +176,7 @@ inline uinteger_t<16> mulu<16, std::enable_if_t<true>> (uinteger_t<16> x,
       "mul %[y]\n\t"        // %dx:%ax = %ax * y (sets carry C on overflow)
       "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
       "or %[t], %[x]\n\t"   // x |= t
-      : [x] "+a"(x), [t] "+r"(t)  // output
+      : [x] "+a"(x), [t] "=r"(t)  // output
       : [y] "r"(y)                // input
       : "dx"                      // clobbers
   );
@@ -191,7 +191,7 @@ inline uinteger_t<32> mulu<32, std::enable_if_t<true>> (uinteger_t<32> x,
       "mul %[y]\n\t"        // %edx:%eax = %eax * y (sets carry C on overflow)
       "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
       "or %[t], %[x]\n\t"   // x |= t
-      : [x] "+a"(x), [t] "+r"(t)  // output
+      : [x] "+a"(x), [t] "=r"(t)  // output
       : [y] "r"(y)                // input
       : "edx"                     // clobbers
   );
