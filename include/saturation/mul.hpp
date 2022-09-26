@@ -150,6 +150,64 @@ constexpr uinteger_t<N> mulu (uinteger_t<N> const x, uinteger_t<N> const y) {
   auto const [hi, lo] = details::multiplier<N, true>{}(x, y);
   return (lo | -!!hi) & mask_v<N>;
 }
+
+#ifndef NO_INLINE_ASM
+#if defined(__GNUC__) && defined(__x86_64__)
+template <>
+inline uinteger_t<8> mulu<8, std::enable_if_t<true>> (uinteger_t<8> x,
+                                                      uinteger_t<8> y) {
+  uinteger_t<8> t;
+  __asm__(
+      // %al = x
+      "mul %[y]\n\t"              // %ax = %al * y (sets carry C on overflow)
+      "sbb %[t], %[t]\n\t"        // t -= t - C (t will become 0 or ~0).
+      "or %[t], %[x]\n\t"         // x |= t
+      : [x] "+a"(x), [t] "+r"(t)  // output
+      : [y] "r"(y)                // input
+  );
+  return x;
+}
+template <>
+inline uinteger_t<16> mulu<16, std::enable_if_t<true>> (uinteger_t<16> x,
+                                                        uinteger_t<16> y) {
+  uinteger_t<16> t;
+  __asm__(
+      // %ax = x
+      "mul %[y]\n\t"        // %dx:%ax = %ax * y (sets carry C on overflow)
+      "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
+      "or %[t], %[x]\n\t"   // x |= t
+      : [x] "+a"(x), [t] "+r"(t)  // output
+      : [y] "r"(y)                // input
+      : "dx"                      // clobbers
+  );
+  return x;
+}
+template <>
+inline uinteger_t<32> mulu<32, std::enable_if_t<true>> (uinteger_t<32> x,
+                                                        uinteger_t<32> y) {
+  uinteger_t<32> t;
+  __asm__(
+      // %eax = x
+      "mul %[y]\n\t"        // %edx:%eax = %eax * y (sets carry C on overflow)
+      "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
+      "or %[t], %[x]\n\t"   // x |= t
+      : [x] "+a"(x), [t] "+r"(t)  // output
+      : [y] "r"(y)                // input
+      : "edx"                     // clobbers
+  );
+  return x;
+}
+// TODO: an inline asm version of 64-bit unsigned multiply.
+#if 0
+template <>
+inline uinteger_t<64> mulu<64, std::enable_if_t<true>> (
+    uinteger_t<64> const x, uinteger_t<64> const y) {
+  return details::mulu_asm<64> (x, y);
+}
+#endif
+#endif  // __GNUC__ && __x86_64__
+#endif  // NO_INLINE_ASM
+
 /// \brief Computes the unsigned 32 bit value of \p x &times; \p y.
 ///
 /// If the result overflows --- that is, the correct answer is too large to be
@@ -160,7 +218,7 @@ constexpr uinteger_t<N> mulu (uinteger_t<N> const x, uinteger_t<N> const y) {
 /// \param y  The second unsigned 32 bit value to be multiplied.
 /// \returns  \p x &times; \p y. If the result would be too large,
 ///   \f$ 2^{32}-1 \f$ (`std::numeric_limits<uint32_t>::max()`).
-constexpr uint32_t mulu32 (uint32_t const x, uint32_t const y) {
+inline uint32_t mulu32 (uint32_t const x, uint32_t const y) {
   return mulu<32> (x, y);
 }
 /// \brief Computes the unsigned 16 bit value of \p x &times; \p y.
@@ -173,7 +231,7 @@ constexpr uint32_t mulu32 (uint32_t const x, uint32_t const y) {
 /// \param y  The second unsigned 16 bit value to be multiplied.
 /// \returns  \p x &times; \p y. If the result would be too large,
 ///   \f$ 2^{16}-1 \f$ (`std::numeric_limits<uint16_t>::max()`).
-constexpr uint16_t mulu16 (uint16_t const x, uint16_t const y) {
+inline uint16_t mulu16 (uint16_t const x, uint16_t const y) {
   return mulu<16> (x, y);
 }
 /// \brief Computes the unsigned 8 bit value of \p x &times; \p y.
@@ -186,7 +244,7 @@ constexpr uint16_t mulu16 (uint16_t const x, uint16_t const y) {
 /// \param y  The second unsigned 8 bit value to be multiplied.
 /// \returns  \p x &times; \p y. If the result would be too large,
 ///   \f$ 2^{8}-1 \f$ (`std::numeric_limits<uint8_t>::max()`).
-constexpr uint8_t mulu8 (uint8_t const x, uint8_t const y) {
+inline uint8_t mulu8 (uint8_t const x, uint8_t const y) {
   return mulu<8> (x, y);
 }
 /// @}
