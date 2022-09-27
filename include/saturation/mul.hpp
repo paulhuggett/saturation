@@ -197,14 +197,21 @@ inline uinteger_t<32> mulu<32, std::enable_if_t<true>> (uinteger_t<32> x,
   );
   return x;
 }
-// TODO: an inline asm version of 64-bit unsigned multiply.
-#if 0
 template <>
-inline uinteger_t<64> mulu<64, std::enable_if_t<true>> (
-    uinteger_t<64> const x, uinteger_t<64> const y) {
-  return details::mulu_asm<64> (x, y);
+inline uinteger_t<64> mulu<64, std::enable_if_t<true>> (uinteger_t<64> x,
+                                                        uinteger_t<64> y) {
+  uinteger_t<64> t;
+  __asm__(
+      // %rax = x
+      "mul %[y]\n\t"        // %rdx:%rax = %rax * y (sets carry C on overflow)
+      "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
+      "or %[t], %[x]\n\t"   // x |= t
+      : [x] "+a"(x), [t] "=r"(t)  // output
+      : [y] "r"(y)                // input
+      : "rdx"                     // clobbers
+  );
+  return x;
 }
-#endif
 #endif  // __GNUC__ && __x86_64__
 #endif  // NO_INLINE_ASM
 
