@@ -15082,29 +15082,11 @@ f (uinteger_t<64> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %ecx
-	shrq	$32, %rdi
-	movl	%esi, %eax
-	shrq	$32, %rsi
-	movq	%rax, %rdx
-	imulq	%rcx, %rdx
-	movl	%edx, %r8d
-	shrq	$32, %rdx
-	imulq	%rdi, %rax
-	addq	%rdx, %rax
-	movl	%eax, %edx
-	shrq	$32, %rax
-	imulq	%rsi, %rcx
-	addq	%rdx, %rcx
-	movq	%rcx, %rdx
-	shrq	$32, %rdx
-	imulq	%rdi, %rsi
-	addq	%rax, %rsi
-	shlq	$32, %rcx
-	orq	%r8, %rcx
-	addq	%rdx, %rsi
-	movq	$-1, %rax
-	cmoveq	%rcx, %rax
+	movq	%rdi, %rax
+	mulq	%rsi
+	sbbq	%rcx, %rcx
+	orq	%rcx, %rax
+
 	popq	%rbp
 	retq
 {% endhighlight %}
