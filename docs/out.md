@@ -9564,12 +9564,12 @@ f (uinteger_t<8> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%esi, %eax
-	mulb	%dil
+	movl	%edi, %eax
+	mulb	%sil
+	sbbb	%cl, %cl
+	orb	%cl, %al
+
 	movzbl	%al, %eax
-	movl	$255, %ecx
-	cmovnol	%eax, %ecx
-	movzbl	%cl, %eax
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -10170,16 +10170,12 @@ f (uinteger_t<16> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	imull	%esi, %edi
-	roll	$16, %edi
 	movl	%edi, %eax
-	shrl	$16, %eax
-	xorl	%ecx, %ecx
-	cmpw	$1, %di
-	sbbl	%ecx, %ecx
-	notl	%ecx
-	orl	%eax, %ecx
-	movzwl	%cx, %eax
+	mulw	%si
+	sbbw	%cx, %cx
+	orw	%cx, %ax
+
+	movzwl	%ax, %eax
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -11434,16 +11430,10 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%edi, %eax
-	movl	%esi, %ecx
-	imulq	%rax, %rcx
-	rolq	$32, %rcx
-	movq	%rcx, %rdx
-	shrq	$32, %rdx
-	xorl	%eax, %eax
-	cmpl	$1, %ecx
-	sbbl	%eax, %eax
-	notl	%eax
-	orl	%edx, %eax
+	mull	%esi
+	sbbl	%ecx, %ecx
+	orl	%ecx, %eax
+
 	popq	%rbp
 	retq
 {% endhighlight %}
