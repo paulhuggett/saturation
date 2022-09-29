@@ -5741,18 +5741,18 @@ f (sinteger_t<17> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %ecx
-	subl	%esi, %ecx
+	movl	%edi, %eax
+	subl	%esi, %eax
 	xorl	%edi, %esi
-	movl	%ecx, %edx
-	xorl	%edi, %edx
-	andl	%esi, %edx
+	movl	%eax, %ecx
+	xorl	%edi, %ecx
+	andl	%esi, %ecx
 	shrl	%edi
 	andl	$32768, %edi                    ## imm = 0x8000
-	leal	2147450880(%rdi), %eax
-	shll	$15, %ecx
-	testl	$65536, %edx                    ## imm = 0x10000
-	cmovel	%ecx, %eax
+	leal	2147450880(%rdi), %edx
+	shll	$15, %eax
+	testl	$65536, %ecx                    ## imm = 0x10000
+	cmovnel	%edx, %eax
 	sarl	$15, %eax
 	popq	%rbp
 	retq
@@ -5812,18 +5812,18 @@ f (sinteger_t<18> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %ecx
-	subl	%esi, %ecx
+	movl	%edi, %eax
+	subl	%esi, %eax
 	xorl	%edi, %esi
-	movl	%ecx, %edx
-	xorl	%edi, %edx
-	andl	%esi, %edx
+	movl	%eax, %ecx
+	xorl	%edi, %ecx
+	andl	%esi, %ecx
 	shrl	$3, %edi
 	andl	$16384, %edi                    ## imm = 0x4000
-	leal	2147467264(%rdi), %eax
-	shll	$14, %ecx
-	testl	$131072, %edx                   ## imm = 0x20000
-	cmovel	%ecx, %eax
+	leal	2147467264(%rdi), %edx
+	shll	$14, %eax
+	testl	$131072, %ecx                   ## imm = 0x20000
+	cmovnel	%edx, %eax
 	sarl	$14, %eax
 	popq	%rbp
 	retq
@@ -5883,18 +5883,18 @@ f (sinteger_t<19> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %ecx
-	subl	%esi, %ecx
+	movl	%edi, %eax
+	subl	%esi, %eax
 	xorl	%edi, %esi
-	movl	%ecx, %edx
-	xorl	%edi, %edx
-	andl	%esi, %edx
+	movl	%eax, %ecx
+	xorl	%edi, %ecx
+	andl	%esi, %ecx
 	shrl	$5, %edi
 	andl	$8192, %edi                     ## imm = 0x2000
-	leal	2147475456(%rdi), %eax
-	shll	$13, %ecx
-	testl	$262144, %edx                   ## imm = 0x40000
-	cmovel	%ecx, %eax
+	leal	2147475456(%rdi), %edx
+	shll	$13, %eax
+	testl	$262144, %ecx                   ## imm = 0x40000
+	cmovnel	%edx, %eax
 	sarl	$13, %eax
 	popq	%rbp
 	retq
@@ -5954,18 +5954,18 @@ f (sinteger_t<20> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %ecx
-	subl	%esi, %ecx
+	movl	%edi, %eax
+	subl	%esi, %eax
 	xorl	%edi, %esi
-	movl	%ecx, %edx
-	xorl	%edi, %edx
-	andl	%esi, %edx
+	movl	%eax, %ecx
+	xorl	%edi, %ecx
+	andl	%esi, %ecx
 	shrl	$7, %edi
 	andl	$4096, %edi                     ## imm = 0x1000
-	leal	2147479552(%rdi), %eax
-	shll	$12, %ecx
-	testl	$524288, %edx                   ## imm = 0x80000
-	cmovel	%ecx, %eax
+	leal	2147479552(%rdi), %edx
+	shll	$12, %eax
+	testl	$524288, %ecx                   ## imm = 0x80000
+	cmovnel	%edx, %eax
 	sarl	$12, %eax
 	popq	%rbp
 	retq
@@ -6025,18 +6025,18 @@ f (sinteger_t<21> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %ecx
-	subl	%esi, %ecx
+	movl	%edi, %eax
+	subl	%esi, %eax
 	xorl	%edi, %esi
-	movl	%ecx, %edx
-	xorl	%edi, %edx
-	andl	%esi, %edx
+	movl	%eax, %ecx
+	xorl	%edi, %ecx
+	andl	%esi, %ecx
 	shrl	$9, %edi
 	andl	$2048, %edi                     ## imm = 0x800
-	leal	2147481600(%rdi), %eax
-	shll	$11, %ecx
-	testl	$1048576, %edx                  ## imm = 0x100000
-	cmovel	%ecx, %eax
+	leal	2147481600(%rdi), %edx
+	shll	$11, %eax
+	testl	$1048576, %ecx                  ## imm = 0x100000
+	cmovnel	%edx, %eax
 	sarl	$11, %eax
 	popq	%rbp
 	retq
@@ -6096,18 +6096,18 @@ f (sinteger_t<22> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %ecx
-	subl	%esi, %ecx
+	movl	%edi, %eax
+	subl	%esi, %eax
 	xorl	%edi, %esi
-	movl	%ecx, %edx
-	xorl	%edi, %edx
-	andl	%esi, %edx
+	movl	%eax, %ecx
+	xorl	%edi, %ecx
+	andl	%esi, %ecx
 	shrl	$11, %edi
 	andl	$1024, %edi                     ## imm = 0x400
-	leal	2147482624(%rdi), %eax
-	shll	$10, %ecx
-	testl	$2097152, %edx                  ## imm = 0x200000
-	cmovel	%ecx, %eax
+	leal	2147482624(%rdi), %edx
+	shll	$10, %eax
+	testl	$2097152, %ecx                  ## imm = 0x200000
+	cmovnel	%edx, %eax
 	sarl	$10, %eax
 	popq	%rbp
 	retq
@@ -6167,18 +6167,18 @@ f (sinteger_t<23> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %ecx
-	subl	%esi, %ecx
+	movl	%edi, %eax
+	subl	%esi, %eax
 	xorl	%edi, %esi
-	movl	%ecx, %edx
-	xorl	%edi, %edx
-	andl	%esi, %edx
+	movl	%eax, %ecx
+	xorl	%edi, %ecx
+	andl	%esi, %ecx
 	shrl	$13, %edi
 	andl	$512, %edi                      ## imm = 0x200
-	leal	2147483136(%rdi), %eax
-	shll	$9, %ecx
-	testl	$4194304, %edx                  ## imm = 0x400000
-	cmovel	%ecx, %eax
+	leal	2147483136(%rdi), %edx
+	shll	$9, %eax
+	testl	$4194304, %ecx                  ## imm = 0x400000
+	cmovnel	%edx, %eax
 	sarl	$9, %eax
 	popq	%rbp
 	retq
@@ -6238,18 +6238,18 @@ f (sinteger_t<24> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %ecx
-	subl	%esi, %ecx
+	movl	%edi, %eax
+	subl	%esi, %eax
 	xorl	%edi, %esi
-	movl	%ecx, %edx
-	xorl	%edi, %edx
-	andl	%esi, %edx
+	movl	%eax, %ecx
+	xorl	%edi, %ecx
+	andl	%esi, %ecx
 	shrl	$15, %edi
 	andl	$256, %edi                      ## imm = 0x100
-	leal	2147483392(%rdi), %eax
-	shll	$8, %ecx
-	testl	$8388608, %edx                  ## imm = 0x800000
-	cmovel	%ecx, %eax
+	leal	2147483392(%rdi), %edx
+	shll	$8, %eax
+	testl	$8388608, %ecx                  ## imm = 0x800000
+	cmovnel	%edx, %eax
 	sarl	$8, %eax
 	popq	%rbp
 	retq
@@ -6806,14 +6806,13 @@ f (sinteger_t<32> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %eax
 	movl	%edi, %ecx
 	subl	%esi, %ecx
 	xorl	%edi, %esi
 	movl	%ecx, %edx
 	xorl	%edi, %edx
-	shrl	$31, %eax
-	addl	$2147483647, %eax               ## imm = 0x7FFFFFFF
+	shrl	$31, %edi
+	leal	2147483647(%rdi), %eax
 	testl	%esi, %edx
 	cmovnsl	%ecx, %eax
 	popq	%rbp
@@ -6873,19 +6872,19 @@ f (sinteger_t<33> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	%rdi
 	andl	$-2147483648, %edi              ## imm = 0x80000000
-	movabsq	$9223372034707292160, %rax      ## imm = 0x7FFFFFFF80000000
-	addq	%rdi, %rax
-	shlq	$31, %rcx
-	btq	$32, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372034707292160, %rdx      ## imm = 0x7FFFFFFF80000000
+	addq	%rdi, %rdx
+	shlq	$31, %rax
+	btq	$32, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$31, %rax
 	popq	%rbp
 	retq
@@ -6946,19 +6945,19 @@ f (sinteger_t<34> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$3, %rdi
 	andl	$1073741824, %edi               ## imm = 0x40000000
-	movabsq	$9223372035781033984, %rax      ## imm = 0x7FFFFFFFC0000000
-	addq	%rdi, %rax
-	shlq	$30, %rcx
-	btq	$33, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372035781033984, %rdx      ## imm = 0x7FFFFFFFC0000000
+	addq	%rdi, %rdx
+	shlq	$30, %rax
+	btq	$33, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$30, %rax
 	popq	%rbp
 	retq
@@ -7019,19 +7018,19 @@ f (sinteger_t<35> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$5, %rdi
 	andl	$536870912, %edi                ## imm = 0x20000000
-	movabsq	$9223372036317904896, %rax      ## imm = 0x7FFFFFFFE0000000
-	addq	%rdi, %rax
-	shlq	$29, %rcx
-	btq	$34, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036317904896, %rdx      ## imm = 0x7FFFFFFFE0000000
+	addq	%rdi, %rdx
+	shlq	$29, %rax
+	btq	$34, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$29, %rax
 	popq	%rbp
 	retq
@@ -7092,19 +7091,19 @@ f (sinteger_t<36> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$7, %rdi
 	andl	$268435456, %edi                ## imm = 0x10000000
-	movabsq	$9223372036586340352, %rax      ## imm = 0x7FFFFFFFF0000000
-	addq	%rdi, %rax
-	shlq	$28, %rcx
-	btq	$35, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036586340352, %rdx      ## imm = 0x7FFFFFFFF0000000
+	addq	%rdi, %rdx
+	shlq	$28, %rax
+	btq	$35, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$28, %rax
 	popq	%rbp
 	retq
@@ -7165,19 +7164,19 @@ f (sinteger_t<37> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$9, %rdi
 	andl	$134217728, %edi                ## imm = 0x8000000
-	movabsq	$9223372036720558080, %rax      ## imm = 0x7FFFFFFFF8000000
-	addq	%rdi, %rax
-	shlq	$27, %rcx
-	btq	$36, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036720558080, %rdx      ## imm = 0x7FFFFFFFF8000000
+	addq	%rdi, %rdx
+	shlq	$27, %rax
+	btq	$36, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$27, %rax
 	popq	%rbp
 	retq
@@ -7238,19 +7237,19 @@ f (sinteger_t<38> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$11, %rdi
 	andl	$67108864, %edi                 ## imm = 0x4000000
-	movabsq	$9223372036787666944, %rax      ## imm = 0x7FFFFFFFFC000000
-	addq	%rdi, %rax
-	shlq	$26, %rcx
-	btq	$37, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036787666944, %rdx      ## imm = 0x7FFFFFFFFC000000
+	addq	%rdi, %rdx
+	shlq	$26, %rax
+	btq	$37, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$26, %rax
 	popq	%rbp
 	retq
@@ -7311,19 +7310,19 @@ f (sinteger_t<39> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$13, %rdi
 	andl	$33554432, %edi                 ## imm = 0x2000000
-	movabsq	$9223372036821221376, %rax      ## imm = 0x7FFFFFFFFE000000
-	addq	%rdi, %rax
-	shlq	$25, %rcx
-	btq	$38, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036821221376, %rdx      ## imm = 0x7FFFFFFFFE000000
+	addq	%rdi, %rdx
+	shlq	$25, %rax
+	btq	$38, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$25, %rax
 	popq	%rbp
 	retq
@@ -7384,19 +7383,19 @@ f (sinteger_t<40> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$15, %rdi
 	andl	$16777216, %edi                 ## imm = 0x1000000
-	movabsq	$9223372036837998592, %rax      ## imm = 0x7FFFFFFFFF000000
-	addq	%rdi, %rax
-	shlq	$24, %rcx
-	btq	$39, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036837998592, %rdx      ## imm = 0x7FFFFFFFFF000000
+	addq	%rdi, %rdx
+	shlq	$24, %rax
+	btq	$39, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$24, %rax
 	popq	%rbp
 	retq
@@ -7457,19 +7456,19 @@ f (sinteger_t<41> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$17, %rdi
 	andl	$8388608, %edi                  ## imm = 0x800000
-	movabsq	$9223372036846387200, %rax      ## imm = 0x7FFFFFFFFF800000
-	addq	%rdi, %rax
-	shlq	$23, %rcx
-	btq	$40, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036846387200, %rdx      ## imm = 0x7FFFFFFFFF800000
+	addq	%rdi, %rdx
+	shlq	$23, %rax
+	btq	$40, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$23, %rax
 	popq	%rbp
 	retq
@@ -7530,19 +7529,19 @@ f (sinteger_t<42> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$19, %rdi
 	andl	$4194304, %edi                  ## imm = 0x400000
-	movabsq	$9223372036850581504, %rax      ## imm = 0x7FFFFFFFFFC00000
-	addq	%rdi, %rax
-	shlq	$22, %rcx
-	btq	$41, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036850581504, %rdx      ## imm = 0x7FFFFFFFFFC00000
+	addq	%rdi, %rdx
+	shlq	$22, %rax
+	btq	$41, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$22, %rax
 	popq	%rbp
 	retq
@@ -7603,19 +7602,19 @@ f (sinteger_t<43> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$21, %rdi
 	andl	$2097152, %edi                  ## imm = 0x200000
-	movabsq	$9223372036852678656, %rax      ## imm = 0x7FFFFFFFFFE00000
-	addq	%rdi, %rax
-	shlq	$21, %rcx
-	btq	$42, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036852678656, %rdx      ## imm = 0x7FFFFFFFFFE00000
+	addq	%rdi, %rdx
+	shlq	$21, %rax
+	btq	$42, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$21, %rax
 	popq	%rbp
 	retq
@@ -7676,19 +7675,19 @@ f (sinteger_t<44> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$23, %rdi
 	andl	$1048576, %edi                  ## imm = 0x100000
-	movabsq	$9223372036853727232, %rax      ## imm = 0x7FFFFFFFFFF00000
-	addq	%rdi, %rax
-	shlq	$20, %rcx
-	btq	$43, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036853727232, %rdx      ## imm = 0x7FFFFFFFFFF00000
+	addq	%rdi, %rdx
+	shlq	$20, %rax
+	btq	$43, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$20, %rax
 	popq	%rbp
 	retq
@@ -7749,19 +7748,19 @@ f (sinteger_t<45> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$25, %rdi
 	andl	$524288, %edi                   ## imm = 0x80000
-	movabsq	$9223372036854251520, %rax      ## imm = 0x7FFFFFFFFFF80000
-	addq	%rdi, %rax
-	shlq	$19, %rcx
-	btq	$44, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036854251520, %rdx      ## imm = 0x7FFFFFFFFFF80000
+	addq	%rdi, %rdx
+	shlq	$19, %rax
+	btq	$44, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$19, %rax
 	popq	%rbp
 	retq
@@ -7822,19 +7821,19 @@ f (sinteger_t<46> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$27, %rdi
 	andl	$262144, %edi                   ## imm = 0x40000
-	movabsq	$9223372036854513664, %rax      ## imm = 0x7FFFFFFFFFFC0000
-	addq	%rdi, %rax
-	shlq	$18, %rcx
-	btq	$45, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036854513664, %rdx      ## imm = 0x7FFFFFFFFFFC0000
+	addq	%rdi, %rdx
+	shlq	$18, %rax
+	btq	$45, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$18, %rax
 	popq	%rbp
 	retq
@@ -7895,19 +7894,19 @@ f (sinteger_t<47> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$29, %rdi
 	andl	$131072, %edi                   ## imm = 0x20000
-	movabsq	$9223372036854644736, %rax      ## imm = 0x7FFFFFFFFFFE0000
-	addq	%rdi, %rax
-	shlq	$17, %rcx
-	btq	$46, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036854644736, %rdx      ## imm = 0x7FFFFFFFFFFE0000
+	addq	%rdi, %rdx
+	shlq	$17, %rax
+	btq	$46, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$17, %rax
 	popq	%rbp
 	retq
@@ -7968,19 +7967,19 @@ f (sinteger_t<48> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$31, %rdi
 	andl	$65536, %edi                    ## imm = 0x10000
-	movabsq	$9223372036854710272, %rax      ## imm = 0x7FFFFFFFFFFF0000
-	addq	%rdi, %rax
-	shlq	$16, %rcx
-	btq	$47, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036854710272, %rdx      ## imm = 0x7FFFFFFFFFFF0000
+	addq	%rdi, %rdx
+	shlq	$16, %rax
+	btq	$47, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$16, %rax
 	popq	%rbp
 	retq
@@ -8041,19 +8040,19 @@ f (sinteger_t<49> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$33, %rdi
 	andl	$32768, %edi                    ## imm = 0x8000
-	movabsq	$9223372036854743040, %rax      ## imm = 0x7FFFFFFFFFFF8000
-	addq	%rdi, %rax
-	shlq	$15, %rcx
-	btq	$48, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036854743040, %rdx      ## imm = 0x7FFFFFFFFFFF8000
+	addq	%rdi, %rdx
+	shlq	$15, %rax
+	btq	$48, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$15, %rax
 	popq	%rbp
 	retq
@@ -8114,19 +8113,19 @@ f (sinteger_t<50> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$35, %rdi
 	andl	$16384, %edi                    ## imm = 0x4000
-	movabsq	$9223372036854759424, %rax      ## imm = 0x7FFFFFFFFFFFC000
-	addq	%rdi, %rax
-	shlq	$14, %rcx
-	btq	$49, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036854759424, %rdx      ## imm = 0x7FFFFFFFFFFFC000
+	addq	%rdi, %rdx
+	shlq	$14, %rax
+	btq	$49, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$14, %rax
 	popq	%rbp
 	retq
@@ -8187,19 +8186,19 @@ f (sinteger_t<51> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$37, %rdi
 	andl	$8192, %edi                     ## imm = 0x2000
-	movabsq	$9223372036854767616, %rax      ## imm = 0x7FFFFFFFFFFFE000
-	addq	%rdi, %rax
-	shlq	$13, %rcx
-	btq	$50, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036854767616, %rdx      ## imm = 0x7FFFFFFFFFFFE000
+	addq	%rdi, %rdx
+	shlq	$13, %rax
+	btq	$50, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$13, %rax
 	popq	%rbp
 	retq
@@ -8260,19 +8259,19 @@ f (sinteger_t<52> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$39, %rdi
 	andl	$4096, %edi                     ## imm = 0x1000
-	movabsq	$9223372036854771712, %rax      ## imm = 0x7FFFFFFFFFFFF000
-	addq	%rdi, %rax
-	shlq	$12, %rcx
-	btq	$51, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036854771712, %rdx      ## imm = 0x7FFFFFFFFFFFF000
+	addq	%rdi, %rdx
+	shlq	$12, %rax
+	btq	$51, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$12, %rax
 	popq	%rbp
 	retq
@@ -8333,19 +8332,19 @@ f (sinteger_t<53> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$41, %rdi
 	andl	$2048, %edi                     ## imm = 0x800
-	movabsq	$9223372036854773760, %rax      ## imm = 0x7FFFFFFFFFFFF800
-	addq	%rdi, %rax
-	shlq	$11, %rcx
-	btq	$52, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036854773760, %rdx      ## imm = 0x7FFFFFFFFFFFF800
+	addq	%rdi, %rdx
+	shlq	$11, %rax
+	btq	$52, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$11, %rax
 	popq	%rbp
 	retq
@@ -8406,19 +8405,19 @@ f (sinteger_t<54> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$43, %rdi
 	andl	$1024, %edi                     ## imm = 0x400
-	movabsq	$9223372036854774784, %rax      ## imm = 0x7FFFFFFFFFFFFC00
-	addq	%rdi, %rax
-	shlq	$10, %rcx
-	btq	$53, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036854774784, %rdx      ## imm = 0x7FFFFFFFFFFFFC00
+	addq	%rdi, %rdx
+	shlq	$10, %rax
+	btq	$53, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$10, %rax
 	popq	%rbp
 	retq
@@ -8479,19 +8478,19 @@ f (sinteger_t<55> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$45, %rdi
 	andl	$512, %edi                      ## imm = 0x200
-	movabsq	$9223372036854775296, %rax      ## imm = 0x7FFFFFFFFFFFFE00
-	addq	%rdi, %rax
-	shlq	$9, %rcx
-	btq	$54, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036854775296, %rdx      ## imm = 0x7FFFFFFFFFFFFE00
+	addq	%rdi, %rdx
+	shlq	$9, %rax
+	btq	$54, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$9, %rax
 	popq	%rbp
 	retq
@@ -8552,19 +8551,19 @@ f (sinteger_t<56> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rcx
-	subq	%rsi, %rcx
+	movq	%rdi, %rax
+	subq	%rsi, %rax
 	xorq	%rdi, %rsi
-	movq	%rcx, %rdx
-	xorq	%rdi, %rdx
-	andq	%rsi, %rdx
+	movq	%rax, %rcx
+	xorq	%rdi, %rcx
+	andq	%rsi, %rcx
 	shrq	$47, %rdi
 	andl	$256, %edi                      ## imm = 0x100
-	movabsq	$9223372036854775552, %rax      ## imm = 0x7FFFFFFFFFFFFF00
-	addq	%rdi, %rax
-	shlq	$8, %rcx
-	btq	$55, %rdx
-	cmovaeq	%rcx, %rax
+	movabsq	$9223372036854775552, %rdx      ## imm = 0x7FFFFFFFFFFFFF00
+	addq	%rdi, %rdx
+	shlq	$8, %rax
+	btq	$55, %rcx
+	cmovbq	%rdx, %rax
 	sarq	$8, %rax
 	popq	%rbp
 	retq
@@ -9565,7 +9564,8 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%edi, %eax
-	mulb	%sil
+	movb	%sil, -1(%rbp)
+	mulb	-1(%rbp)
 	sbbb	%cl, %cl
 	orb	%cl, %al
 
@@ -10129,20 +10129,16 @@ f (sinteger_t<16> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
+	movw	%di, -2(%rbp)
 	movl	%esi, %eax
-	imull	%edi, %eax
-	roll	$16, %eax
-	movl	%eax, %ecx
-	shrl	$16, %ecx
-	movl	%eax, %edx
-	sarl	$31, %edx
-	xorl	%edi, %esi
-	movzwl	%si, %esi
-	shrl	$15, %esi
-	addl	$32767, %esi                    ## imm = 0x7FFF
-	cmpw	%ax, %dx
-	cmovel	%ecx, %esi
-	movswl	%si, %eax
+	xorl	%edi, %eax
+	movzwl	%ax, %eax
+	shrl	$15, %eax
+	addl	$32767, %eax                    ## imm = 0x7FFF
+	imulw	%si, %di
+	cmovbw	%ax, %di
+
+	movswl	%di, %eax
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -10171,7 +10167,8 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%edi, %eax
-	mulw	%si
+	movw	%si, -2(%rbp)
+	mulw	-2(%rbp)
 	sbbw	%cx, %cx
 	orw	%cx, %ax
 
@@ -11388,20 +11385,15 @@ f (sinteger_t<32> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movslq	%edi, %rcx
-	movslq	%esi, %rax
-	movq	%rax, %rdx
-	imulq	%rcx, %rdx
-	rolq	$32, %rdx
-	movq	%rdx, %rsi
-	shrq	$32, %rsi
-	movq	%rdx, %rdi
-	sarq	$63, %rdi
-	xorl	%ecx, %eax
-	shrl	$31, %eax
-	addl	$2147483647, %eax               ## imm = 0x7FFFFFFF
-	cmpl	%edx, %edi
-	cmovel	%esi, %eax
+	movl	%edi, %eax
+	movl	%edi, -4(%rbp)
+	movl	%esi, %ecx
+	xorl	%edi, %ecx
+	shrl	$31, %ecx
+	addl	$2147483647, %ecx               ## imm = 0x7FFFFFFF
+	imull	%esi, %eax
+	cmovbl	%ecx, %eax
+
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -11430,7 +11422,8 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%edi, %eax
-	mull	%esi
+	movl	%esi, -4(%rbp)
+	mull	-4(%rbp)
 	sbbl	%ecx, %ecx
 	orl	%ecx, %eax
 
@@ -15026,35 +15019,16 @@ f (sinteger_t<64> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %ecx
-	movq	%rsi, %r8
-	movl	%esi, %edx
-	xorq	%rdi, %rsi
-	sarq	$32, %rdi
-	sarq	$32, %r8
-	movq	%rdx, %rax
-	imulq	%rcx, %rax
-	movl	%eax, %r9d
-	shrq	$32, %rax
-	imulq	%rdi, %rdx
-	addq	%rax, %rdx
-	movl	%edx, %eax
-	sarq	$32, %rdx
-	imulq	%r8, %rcx
-	addq	%rax, %rcx
-	movq	%rcx, %rax
-	sarq	$32, %rax
-	imulq	%rdi, %r8
-	addq	%rdx, %r8
-	addq	%rax, %r8
-	shlq	$32, %rcx
-	orq	%rcx, %r9
-	sarq	$63, %rcx
-	shrq	$63, %rsi
-	movabsq	$9223372036854775807, %rax      ## imm = 0x7FFFFFFFFFFFFFFF
-	addq	%rsi, %rax
-	cmpq	%rcx, %r8
-	cmoveq	%r9, %rax
+	movq	%rdi, %rax
+	movq	%rdi, -8(%rbp)
+	movq	%rsi, %rcx
+	xorq	%rdi, %rcx
+	shrq	$63, %rcx
+	movabsq	$9223372036854775807, %rdx      ## imm = 0x7FFFFFFFFFFFFFFF
+	addq	%rcx, %rdx
+	imulq	%rsi, %rax
+	cmovbq	%rdx, %rax
+
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -15083,7 +15057,8 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movq	%rdi, %rax
-	mulq	%rsi
+	movq	%rsi, -8(%rbp)
+	mulq	-8(%rbp)
 	sbbq	%rcx, %rcx
 	orq	%rcx, %rax
 
@@ -26239,20 +26214,24 @@ f (sinteger_t<33> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #1
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	and	r2, r0, #1
 	and	r0, r1, #1
 	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r1, #0
-LBB0_2:
-	and	r1, r2, #1
+	adc	r1, r1, #0
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	and	r1, r1, #1
 	rsb	r1, r1, #0
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -26309,21 +26288,25 @@ f (sinteger_t<34> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #2
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	and	r2, r0, #2
 	mov	r0, #1
 	and	r0, r0, r1, lsr #1
 	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r1, #1
-LBB0_2:
-	lsl	r1, r2, #30
+	adc	r1, r1, #1
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #30
 	asr	r1, r1, #30
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -26380,21 +26363,25 @@ f (sinteger_t<35> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #4
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	and	r2, r0, #4
 	mov	r0, #1
 	and	r0, r0, r1, lsr #2
 	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r1, #3
-LBB0_2:
-	lsl	r1, r2, #29
+	adc	r1, r1, #3
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #29
 	asr	r1, r1, #29
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -26451,21 +26438,25 @@ f (sinteger_t<36> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #8
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	and	r2, r0, #8
 	mov	r0, #1
 	and	r0, r0, r1, lsr #3
 	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r1, #7
-LBB0_2:
-	lsl	r1, r2, #28
+	adc	r1, r1, #7
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #28
 	asr	r1, r1, #28
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -26522,21 +26513,25 @@ f (sinteger_t<37> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #16
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	and	r2, r0, #16
 	mov	r0, #1
 	and	r0, r0, r1, lsr #4
 	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r1, #15
-LBB0_2:
-	lsl	r1, r2, #27
+	adc	r1, r1, #15
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #27
 	asr	r1, r1, #27
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -26593,21 +26588,25 @@ f (sinteger_t<38> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #32
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	and	r2, r0, #32
 	mov	r0, #1
 	and	r0, r0, r1, lsr #5
 	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r1, #31
-LBB0_2:
-	lsl	r1, r2, #26
+	adc	r1, r1, #31
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #26
 	asr	r1, r1, #26
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -26664,21 +26663,25 @@ f (sinteger_t<39> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #64
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	and	r2, r0, #64
 	mov	r0, #1
 	and	r0, r0, r1, lsr #6
 	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r1, #63
-LBB0_2:
-	lsl	r1, r2, #25
+	adc	r1, r1, #63
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #25
 	asr	r1, r1, #25
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -26735,26 +26738,26 @@ f (sinteger_t<40> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r3, r12
-	lsl	r3, r3, #24
-	asr	r3, r3, #24
-	cmn	r3, #1
-	ble	LBB0_2
-	lsl	r1, r2, #24
-	asr	r1, r1, #24
-	bx	lr
-LBB0_2:
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r0, r12
+	mov	r12, #0
+	lsl	r0, r0, #24
+	asr	r2, r0, #24
 	and	r0, r1, #255
-	mvn	r2, #0
-	mov	r1, #0
-	adds	r0, r2, r0, lsr #7
-	adc	r2, r1, #127
-	lsl	r1, r2, #24
+	mvn	r1, #0
+	adds	r0, r1, r0, lsr #7
+	adc	r1, r12, #127
+	cmp	r2, #0
+	movpl	r1, r3
+	movpl	r0, lr
+	lsl	r1, r1, #24
 	asr	r1, r1, #24
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -26811,21 +26814,25 @@ f (sinteger_t<41> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #256
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	and	r2, r0, #256
 	mov	r0, #1
 	and	r0, r0, r1, lsr #8
 	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r1, #255
-LBB0_2:
-	lsl	r1, r2, #23
+	adc	r1, r1, #255
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #23
 	asr	r1, r1, #23
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -26884,23 +26891,27 @@ f (sinteger_t<42> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #512
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	mov	r12, #255
+	and	r2, r0, #512
 	mov	r0, #1
-	mov	r2, #0
+	orr	r12, r12, #256
 	and	r0, r0, r1, lsr #9
-	mov	r1, #255
-	orr	r1, r1, #256
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #22
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #22
 	asr	r1, r1, #22
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -26959,23 +26970,27 @@ f (sinteger_t<43> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #1024
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	mov	r12, #255
+	and	r2, r0, #1024
 	mov	r0, #1
-	mov	r2, #0
+	orr	r12, r12, #768
 	and	r0, r0, r1, lsr #10
-	mov	r1, #255
-	orr	r1, r1, #768
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #21
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #21
 	asr	r1, r1, #21
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -27034,23 +27049,27 @@ f (sinteger_t<44> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #2048
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	mov	r12, #255
+	and	r2, r0, #2048
 	mov	r0, #1
-	mov	r2, #0
+	orr	r12, r12, #1792
 	and	r0, r0, r1, lsr #11
-	mov	r1, #255
-	orr	r1, r1, #1792
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #20
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #20
 	asr	r1, r1, #20
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -27109,23 +27128,27 @@ f (sinteger_t<45> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #4096
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	mov	r12, #255
+	and	r2, r0, #4096
 	mov	r0, #1
-	mov	r2, #0
+	orr	r12, r12, #3840
 	and	r0, r0, r1, lsr #12
-	mov	r1, #255
-	orr	r1, r1, #3840
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #19
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #19
 	asr	r1, r1, #19
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -27184,23 +27207,27 @@ f (sinteger_t<46> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #8192
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	mov	r12, #255
+	and	r2, r0, #8192
 	mov	r0, #1
-	mov	r2, #0
+	orr	r12, r12, #7936
 	and	r0, r0, r1, lsr #13
-	mov	r1, #255
-	orr	r1, r1, #7936
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #18
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #18
 	asr	r1, r1, #18
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -27259,23 +27286,27 @@ f (sinteger_t<47> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #16384
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	mov	r12, #255
+	and	r2, r0, #16384
 	mov	r0, #1
-	mov	r2, #0
+	orr	r12, r12, #16128
 	and	r0, r0, r1, lsr #14
-	mov	r1, #255
-	orr	r1, r1, #16128
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #17
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #17
 	asr	r1, r1, #17
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -27334,30 +27365,30 @@ f (sinteger_t<48> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r4, r7, lr}
+	add	r7, sp, #4
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r3, r12
-	lsl	r3, r3, #16
-	asr	r3, r3, #16
-	cmn	r3, #1
-	ble	LBB0_2
-	lsl	r1, r2, #16
-	asr	r1, r1, #16
-	bx	lr
-LBB0_2:
+	mvn	r4, #0
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r0, r12
+	mov	r12, #255
+	lsl	r0, r0, #16
+	orr	r12, r12, #32512
+	asr	r2, r0, #16
 	mov	r0, #255
-	mvn	r3, #0
-	mov	r2, #0
 	orr	r0, r0, #65280
 	and	r0, r1, r0
-	mov	r1, #255
-	orr	r1, r1, #32512
-	adds	r0, r3, r0, lsr #15
-	adc	r2, r2, r1
-	lsl	r1, r2, #16
+	mov	r1, #0
+	adds	r0, r4, r0, lsr #15
+	adc	r1, r1, r12
+	cmp	r2, #0
+	movpl	r1, r3
+	movpl	r0, lr
+	lsl	r1, r1, #16
 	asr	r1, r1, #16
+	pop	{r4, r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -27416,23 +27447,27 @@ f (sinteger_t<49> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #65536
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	mov	r12, #255
+	and	r2, r0, #65536
 	mov	r0, #1
-	mov	r2, #0
+	orr	r12, r12, #65280
 	and	r0, r0, r1, lsr #16
-	mov	r1, #255
-	orr	r1, r1, #65280
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #15
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #15
 	asr	r1, r1, #15
+	pop	{r7, lr}
 	bx	lr
 {% endhighlight %}
 </td>
@@ -27491,22 +27526,26 @@ f (sinteger_t<50> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #131072
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	ldr	r12, LCPI0_0
+	and	r2, r0, #131072
 	mov	r0, #1
-	mov	r2, #0
 	and	r0, r0, r1, lsr #17
-	ldr	r1, LCPI0_0
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #14
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #14
 	asr	r1, r1, #14
+	pop	{r7, lr}
 	bx	lr
 LCPI0_0:
 {% endhighlight %}
@@ -27566,22 +27605,26 @@ f (sinteger_t<51> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #262144
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	ldr	r12, LCPI0_0
+	and	r2, r0, #262144
 	mov	r0, #1
-	mov	r2, #0
 	and	r0, r0, r1, lsr #18
-	ldr	r1, LCPI0_0
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #13
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #13
 	asr	r1, r1, #13
+	pop	{r7, lr}
 	bx	lr
 LCPI0_0:
 {% endhighlight %}
@@ -27641,22 +27684,26 @@ f (sinteger_t<52> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #524288
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	ldr	r12, LCPI0_0
+	and	r2, r0, #524288
 	mov	r0, #1
-	mov	r2, #0
 	and	r0, r0, r1, lsr #19
-	ldr	r1, LCPI0_0
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #12
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #12
 	asr	r1, r1, #12
+	pop	{r7, lr}
 	bx	lr
 LCPI0_0:
 {% endhighlight %}
@@ -27716,22 +27763,26 @@ f (sinteger_t<53> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #1048576
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	ldr	r12, LCPI0_0
+	and	r2, r0, #1048576
 	mov	r0, #1
-	mov	r2, #0
 	and	r0, r0, r1, lsr #20
-	ldr	r1, LCPI0_0
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #11
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #11
 	asr	r1, r1, #11
+	pop	{r7, lr}
 	bx	lr
 LCPI0_0:
 {% endhighlight %}
@@ -27791,22 +27842,26 @@ f (sinteger_t<54> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #2097152
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	ldr	r12, LCPI0_0
+	and	r2, r0, #2097152
 	mov	r0, #1
-	mov	r2, #0
 	and	r0, r0, r1, lsr #21
-	ldr	r1, LCPI0_0
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #10
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #10
 	asr	r1, r1, #10
+	pop	{r7, lr}
 	bx	lr
 LCPI0_0:
 {% endhighlight %}
@@ -27866,22 +27921,26 @@ f (sinteger_t<55> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r7, lr}
+	mov	r7, sp
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r12, r3
-	tst	r3, #4194304
-	beq	LBB0_2
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r12, r0
+	ldr	r12, LCPI0_0
+	and	r2, r0, #4194304
 	mov	r0, #1
-	mov	r2, #0
 	and	r0, r0, r1, lsr #22
-	ldr	r1, LCPI0_0
+	mov	r1, #0
 	subs	r0, r0, #1
-	adc	r2, r2, r1
-LBB0_2:
-	lsl	r1, r2, #9
+	adc	r1, r1, r12
+	cmp	r2, #0
+	moveq	r1, r3
+	moveq	r0, lr
+	lsl	r1, r1, #9
 	asr	r1, r1, #9
+	pop	{r7, lr}
 	bx	lr
 LCPI0_0:
 {% endhighlight %}
@@ -27941,27 +28000,27 @@ f (sinteger_t<56> a,
 
 {% highlight armasm %}
 _f:
-	subs	r0, r0, r2
+	push	{r4, r7, lr}
+	add	r7, sp, #4
+	subs	lr, r0, r2
 	eor	r12, r3, r1
-	sbc	r2, r1, r3
-	eor	r3, r2, r1
-	and	r3, r3, r12
-	lsl	r3, r3, #8
-	asr	r3, r3, #8
-	cmn	r3, #1
-	ble	LBB0_2
-	lsl	r1, r2, #8
-	asr	r1, r1, #8
-	bx	lr
-LBB0_2:
+	mvn	r4, #0
+	sbc	r3, r1, r3
+	eor	r0, r3, r1
+	and	r0, r0, r12
+	ldr	r12, LCPI0_0
+	lsl	r0, r0, #8
+	asr	r2, r0, #8
 	and	r0, r1, #8388608
-	ldr	r1, LCPI0_0
-	mvn	r3, #0
-	mov	r2, #0
-	adds	r0, r3, r0, lsr #23
-	adc	r2, r2, r1
-	lsl	r1, r2, #8
+	mov	r1, #0
+	adds	r0, r4, r0, lsr #23
+	adc	r1, r1, r12
+	cmp	r2, #0
+	movpl	r1, r3
+	movpl	r0, lr
+	lsl	r1, r1, #8
 	asr	r1, r1, #8
+	pop	{r4, r7, lr}
 	bx	lr
 LCPI0_0:
 {% endhighlight %}
@@ -34175,18 +34234,18 @@ _f:
 	push	{r4, r5, r6, r7, lr}
 	add	r7, sp, #12
 	asr	r4, r1, #31
-	umull	r12, lr, r2, r0
+	umull	lr, r12, r2, r0
 	mul	r5, r2, r4
 	asr	r4, r3, #31
-	umlal	lr, r5, r2, r1
+	umlal	r12, r5, r2, r1
 	mul	r6, r4, r0
 	asr	r2, r5, #31
-	umlal	lr, r6, r3, r0
+	umlal	r12, r6, r3, r0
 	smlal	r5, r2, r3, r1
 	adds	r0, r5, r6
 	adc	r2, r2, r6, asr #31
-	eor	r0, r0, lr, asr #31
-	eor	r2, r2, lr, asr #31
+	eor	r0, r0, r12, asr #31
+	eor	r2, r2, r12, asr #31
 	orr	r2, r0, r2
 	eor	r0, r3, r1
 	mvn	r3, #0
@@ -34194,8 +34253,8 @@ _f:
 	adds	r0, r3, r0, lsr #31
 	sbc	r1, r1, #-2147483648
 	cmp	r2, #0
-	moveq	r0, r12
-	moveq	r1, lr
+	moveq	r0, lr
+	moveq	r1, r12
 	pop	{r4, r5, r6, r7, lr}
 	bx	lr
 {% endhighlight %}
@@ -46429,9 +46488,11 @@ f (uinteger_t<8> a,
 {% highlight armasm %}
 _f:                                     ; @f
 	mul	w8, w1, w0
-	lsr	w9, w8, #8
-	cmp	w9, #0
-	csinv	w8, w8, wzr, eq
+	rev	w8, w8
+	lsr	w9, w8, #24
+	mov	w10, #255
+	tst	w10, w8, ror #16
+	csinv	w8, w9, wzr, eq
 	and	w0, w8, #0xff
 	ret
 {% endhighlight %}
