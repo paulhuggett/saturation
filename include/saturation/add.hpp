@@ -53,11 +53,11 @@ inline uinteger_t<N> addu_asm (uinteger_t<N> x, uinteger_t<N> y) {
   __asm__(
       "add %[y], %[x]\n\t"        // x += y (sets carry C on overflow)
       "sbb %[t], %[t]\n\t"        // t -= t - C (t will become 0 or ~0).
-      "or %[t], %[x]\n\t"         // x |= t
       : [x] "+r"(x), [t] "=r"(t)  // output
-      : [y] "r"(y)                // input
+      : [y] "rm"(y)               // input
+      : "cc"                      // clobber
   );
-  return x;
+  return x | t;
 }
 
 }  // end namespace details
@@ -128,6 +128,21 @@ inline uint8_t addu8 (uint8_t const x, uint8_t const y) {
 /// quantities from 4 to 64 bits.
 /// @{
 
+namespace details {
+
+/// Calculate the overflowed result as max or min depending on the sign of x.
+template <size_t N, typename = typename std::enable_if_t<(N >= 4 && N <= 64)>>
+constexpr sinteger_t<N> adds_overflow_value (sinteger_t<N> const x) {
+  using uint = uinteger_t<N>;
+  using sint = sinteger_t<N>;
+  using ubits = details::nbit_scalar<N, true>;
+  using sbits = details::nbit_scalar<N, false>;
+  return sbits{static_cast<sint> (
+      ubits{static_cast<uint> ((ubits{static_cast<uint> (x)} >> (N - 1U)) + static_cast<uint>(slimits<N>::max ()))})};
+}
+
+} // end namespace details
+
 // adds
 // ~~~~
 /// \brief Adds two signed values each \p N bits wide.
@@ -159,8 +174,7 @@ constexpr sinteger_t<N> adds (sinteger_t<N> const x, sinteger_t<N> const y) {
   auto const res = ubits{static_cast<uint> (ux + uy)};
 
   // Calculate the overflowed result as max or min depending on the sign of ux.
-  auto const v = sbits{static_cast<sint> (
-      ubits{static_cast<uint> ((ux >> (N - 1U)) + slimits<N>::max ())})};
+  auto const v = details::adds_overflow_value<N> (x);
   assert (v == (x < sint{0} ? slimits<N>::min () : slimits<N>::max ()));
 
   // Check for overflow.
@@ -188,15 +202,13 @@ namespace details {
 ///   negative but cannot be represented in \p N bits.
 template <size_t N, typename = typename std::enable_if_t<is_register_width (N)>>
 inline sinteger_t<N> adds_asm (sinteger_t<N> x, sinteger_t<N> y) {
-  static constexpr auto max = slimits<N>::max ();
-  auto t = x;
+  sinteger_t<N> const v = details::adds_overflow_value<N> (x);
   __asm__(
-      "shr %[shift], %[t]\n\t"
-      "add %[max], %[t]\n\t"
-      "add %[y], %[x]\n\t"
-      "cmovo %[t], %[x]\n\t"
-      : [x] "+r"(x), [t] "+r"(t)                         // output
-      : [y] "r"(y), [max] "r"(max), [shift] "i"(N - 1U)  // input
+      "add %[y], %[x]\n\t"  // x += y (sets C on overflow)
+      "cmovo %[v], %[x]\n\t" // if C, x = v
+      : [x] "+&r"(x)  // output
+      : [y] "rm"(y), [v]"rm"(v) // input
+      : "cc"   // clobber
   );
   return x;
 }
