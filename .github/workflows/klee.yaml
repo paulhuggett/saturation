@@ -36,6 +36,7 @@ jobs:
           cmake -G Ninja                           \
                 -B "${{ runner.workspace }}/build" \
                 -S "$GITHUB_WORKSPACE"             \
+                -D CMAKE_BUILD_TYPE=Release        \
                 -D CMAKE_CXX_COMPILER=clang++-11   \
                 -D CMAKE_C_COMPILER=clang-11       \
                 -D WERROR=Yes
