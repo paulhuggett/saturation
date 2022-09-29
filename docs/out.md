@@ -458,7 +458,6 @@ _f:                                     ## @f
 	addb	%sil, %dil
 	sbbb	%al, %al
 	orb	%al, %dil
-
 	movzbl	%dil, %eax
 	popq	%rbp
 	retq
@@ -1042,14 +1041,13 @@ f (sinteger_t<16> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movw	$32767, %ax                     ## imm = 0x7FFF
-	movl	%edi, %ecx
-	shrw	$15, %cx
-	addw	%ax, %cx
-	addw	%si, %di
-	cmovow	%cx, %di
-
-	movswl	%di, %eax
+	movzwl	%di, %eax
+	movl	%eax, %ecx
+	shrl	$15, %ecx
+	addl	$32767, %ecx                    ## imm = 0x7FFF
+	addw	%si, %ax
+	cmovow	%cx, %ax
+	cwtl
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -1079,8 +1077,7 @@ _f:                                     ## @f
 	movq	%rsp, %rbp
 	addw	%si, %di
 	sbbw	%ax, %ax
-	orw	%ax, %di
-
+	orl	%eax, %edi
 	movzwl	%di, %eax
 	popq	%rbp
 	retq
@@ -2251,13 +2248,11 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%edi, %eax
-	movl	$2147483647, %ecx               ## imm = 0x7FFFFFFF
-	movl	%edi, %edx
-	shrl	$31, %edx
-	addl	%ecx, %edx
+	movl	%edi, %ecx
+	shrl	$31, %ecx
+	addl	$2147483647, %ecx               ## imm = 0x7FFFFFFF
 	addl	%esi, %eax
-	cmovol	%edx, %eax
-
+	cmovol	%ecx, %eax
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -2285,11 +2280,9 @@ f (uinteger_t<32> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %eax
-	addl	%esi, %eax
-	sbbl	%ecx, %ecx
-	orl	%ecx, %eax
-
+	addl	%esi, %edi
+	sbbl	%eax, %eax
+	orl	%edi, %eax
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -4737,13 +4730,12 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movq	%rdi, %rax
-	movabsq	$9223372036854775807, %rcx      ## imm = 0x7FFFFFFFFFFFFFFF
-	movq	%rdi, %rdx
-	shrq	$63, %rdx
+	movq	%rdi, %rcx
+	shrq	$63, %rcx
+	movabsq	$9223372036854775807, %rdx      ## imm = 0x7FFFFFFFFFFFFFFF
 	addq	%rcx, %rdx
 	addq	%rsi, %rax
 	cmovoq	%rdx, %rax
-
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -4771,11 +4763,9 @@ f (uinteger_t<64> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rax
-	addq	%rsi, %rax
-	sbbq	%rcx, %rcx
-	orq	%rcx, %rax
-
+	addq	%rsi, %rdi
+	sbbq	%rax, %rax
+	orq	%rdi, %rax
 	popq	%rbp
 	retq
 {% endhighlight %}
