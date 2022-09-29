@@ -158,12 +158,13 @@ inline uinteger_t<8> mulu<8, std::enable_if_t<true>> (uinteger_t<8> x,
                                                       uinteger_t<8> y) {
   uinteger_t<8> t;
   __asm__(
-      // %al = x
-      "mul %[y]\n\t"              // %ax = %al * y (sets carry C on overflow)
+      // %al = x
+      "mulb %[y]\n\t"             // %ax = %al * y (sets carry C on overflow)
       "sbb %[t], %[t]\n\t"        // t -= t - C (t will become 0 or ~0).
       "or %[t], %[x]\n\t"         // x |= t
       : [x] "+a"(x), [t] "=r"(t)  // output
-      : [y] "r"(y)                // input
+      : [y] "rm"(y)               // input
+      : "cc"                      // clobbers
   );
   return x;
 }
@@ -173,12 +174,12 @@ inline uinteger_t<16> mulu<16, std::enable_if_t<true>> (uinteger_t<16> x,
   uinteger_t<16> t;
   __asm__(
       // %ax = x
-      "mul %[y]\n\t"        // %dx:%ax = %ax * y (sets carry C on overflow)
+      "mulw %[y]\n\t"       // %dx:%ax = %ax * y (sets carry C on overflow)
       "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
       "or %[t], %[x]\n\t"   // x |= t
-      : [x] "+a"(x), [t] "=r"(t)  // output
-      : [y] "r"(y)                // input
-      : "dx"                      // clobbers
+      : [x] "+&a"(x), [t] "=r"(t)  // output
+      : [y] "rm"(y)                // input
+      : "cc", "dx"                 // clobbers
   );
   return x;
 }
@@ -188,12 +189,12 @@ inline uinteger_t<32> mulu<32, std::enable_if_t<true>> (uinteger_t<32> x,
   uinteger_t<32> t;
   __asm__(
       // %eax = x
-      "mul %[y]\n\t"        // %edx:%eax = %eax * y (sets carry C on overflow)
+      "mull %[y]\n\t"       // %edx:%eax = %eax * y (sets carry C on overflow)
       "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
       "or %[t], %[x]\n\t"   // x |= t
-      : [x] "+a"(x), [t] "=r"(t)  // output
-      : [y] "r"(y)                // input
-      : "edx"                     // clobbers
+      : [x] "+&a"(x), [t] "=r"(t)  // output
+      : [y] "rm"(y)                // input
+      : "cc", "edx"                // clobbers
   );
   return x;
 }
@@ -203,12 +204,12 @@ inline uinteger_t<64> mulu<64, std::enable_if_t<true>> (uinteger_t<64> x,
   uinteger_t<64> t;
   __asm__(
       // %rax = x
-      "mul %[y]\n\t"        // %rdx:%rax = %rax * y (sets carry C on overflow)
+      "mulq %[y]\n\t"       // %rdx:%rax = %rax * y (sets carry C on overflow)
       "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
       "or %[t], %[x]\n\t"   // x |= t
-      : [x] "+a"(x), [t] "=r"(t)  // output
-      : [y] "r"(y)                // input
-      : "rdx"                     // clobbers
+      : [x] "+&a"(x), [t] "=r"(t)  // output
+      : [y] "rm"(y)                // input
+      : "cc", "rdx"                // clobbers
   );
   return x;
 }
@@ -263,6 +264,25 @@ inline uint8_t mulu8 (uint8_t const x, uint8_t const y) {
 /// quantities from 4 to 64 bits.
 /// @{
 
+namespace details {
+
+template <size_t N>
+constexpr sinteger_t<N> overflow_value (sinteger_t<N> const x,
+                                        sinteger_t<N> const y) {
+  using sbits = details::nbit_scalar<N, false>;
+  using sint = typename sbits::type;
+  using ubits = details::nbit_scalar<N, true>;
+  using uint = typename ubits::type;
+
+  return sbits{static_cast<sint> (ubits{static_cast<uint> (
+      static_cast<uint> (ubits{static_cast<uint> (static_cast<uint> (x) ^
+                                                  static_cast<uint> (y))} >>
+                         (N - 1U)) +
+      static_cast<uint> (slimits<N>::max ()))})};
+}
+
+}  // end namespace details
+
 /// \brief Computes the signed result of multiplying \p x by \p y.
 ///
 /// \tparam N The number of bits for the twos complement arguments and
@@ -285,19 +305,50 @@ constexpr sinteger_t<N> muls (sinteger_t<N> const x, sinteger_t<N> const y) {
 
   auto const [hi, lo] = details::multiplier<N, false>{}(x, y);
   if (hi != lo >> (N - 1)) {
-    using ubits = details::nbit_scalar<N, true>;
-    using uint = typename ubits::type;
-
-    auto const v = sbits{static_cast<sint> (ubits{static_cast<uint> (
-        static_cast<uint> (ubits{static_cast<uint> (static_cast<uint> (x) ^
-                                                    static_cast<uint> (y))} >>
-                           (N - 1U)) +
-        static_cast<uint> (slimits<N>::max ()))})};
+    auto const v = details::overflow_value<N> (x, y);
     assert (v == (hi < 0 ? slimits<N>::min () : slimits<N>::max ()));
     return v;
   }
   return static_cast<sint> (lo);
 }
+
+#ifndef NO_INLINE_ASM
+#if defined(__GNUC__) && defined(__x86_64__)
+namespace details {
+
+template <size_t N>
+inline sinteger_t<N> muls_asm (sinteger_t<N> x, sinteger_t<N> y) {
+  sinteger_t<N> const v = overflow_value<N> (x, y);
+  __asm__(
+      "imul   %[y], %[x] \n\t"  // x *= y
+      "cmovc  %[v], %[x] \n\t"
+      : [x] "+&rm"(x)           // output
+      : [y] "r"(y), [v] "r"(v)  // input
+      : "cc"                    // clobbers
+  );
+  return x;
+}
+
+}  // end namespace details
+
+template <>
+inline sinteger_t<16> muls<16, std::enable_if_t<true>> (
+    sinteger_t<16> const x, sinteger_t<16> const y) {
+  return details::muls_asm<16> (x, y);
+}
+template <>
+inline sinteger_t<32> muls<32, std::enable_if_t<true>> (
+    sinteger_t<32> const x, sinteger_t<32> const y) {
+  return details::muls_asm<32> (x, y);
+}
+template <>
+inline sinteger_t<64> muls<64, std::enable_if_t<true>> (
+    sinteger_t<64> const x, sinteger_t<64> const y) {
+  return details::muls_asm<64> (x, y);
+}
+#endif  // __GNUC__ && __x86_64__
+#endif  // NO_INLINE_ASM
+
 /// \brief Computes the signed 32 bit result of multiplying \p x by \p y.
 ///
 /// \param x  The first 32 bit signed value to be multiplied.
@@ -306,7 +357,7 @@ constexpr sinteger_t<N> muls (sinteger_t<N> const x, sinteger_t<N> const y) {
 ///   \f$ 2^{31}-1 \f$ (`std::numeric_limits<int32_t>::max()`); if the result
 ///   would be too large and negative, \f$ -2^{31} \f$
 ///   (`std::numeric_limits<int32_t>::min()`).
-constexpr int32_t muls32 (int32_t const x, int32_t const y) {
+inline int32_t muls32 (int32_t const x, int32_t const y) {
   return muls<32> (x, y);
 }
 /// \brief Computes the signed 16 bit result of multiplying \p x by \p y.
@@ -317,7 +368,7 @@ constexpr int32_t muls32 (int32_t const x, int32_t const y) {
 ///   \f$ 2^{15}-1 \f$ (`std::numeric_limits<int16_t>::max()`); if the result
 ///   would be too large and negative, \f$ -2^{15} \f$
 ///   (`std::numeric_limits<int16_t>::min()`).
-constexpr int16_t muls16 (int16_t const x, int16_t const y) {
+inline int16_t muls16 (int16_t const x, int16_t const y) {
   return muls<16> (x, y);
 }
 /// \brief Computes the signed 8 bit result of multiplying \p x by \p y.

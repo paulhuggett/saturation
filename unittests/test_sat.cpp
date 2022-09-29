@@ -435,6 +435,7 @@ TEST_F (Saturation16, SignedMultiply) {
   EXPECT_EQ (muls16 (max, int16_t{1}), max);
   EXPECT_EQ (muls16 (max, 2), max);
   EXPECT_EQ (muls16 (min, 1), min);
+  EXPECT_EQ (muls16 (min, 2), min);
   EXPECT_EQ (muls16 (min, int16_t{-1}), max);
   EXPECT_EQ (muls16 (min, int16_t{-2}), max);
 }
@@ -601,6 +602,8 @@ TYPED_TEST_P (Saturation, SignedMultiply) {
   EXPECT_EQ (muls<bits> (sint_type{3}, sint_type{-2}), sint_type{-6});
   EXPECT_EQ (muls<bits> (max, sint_type{1}), max);
   EXPECT_EQ (muls<bits> (max, sint_type{2}), max);
+  EXPECT_EQ (muls<bits> (max, sint_type{-1}), static_cast<sint_type> (min + 1));
+  EXPECT_EQ (muls<bits> (max, sint_type{-2}), min);
   EXPECT_EQ (muls<bits> (min, sint_type{1}), min);
   EXPECT_EQ (muls<bits> (min, sint_type{-1}), max);
   EXPECT_EQ (muls<bits> (min, sint_type{-2}), max);
