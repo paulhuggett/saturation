@@ -9558,7 +9558,6 @@ _f:                                     ## @f
 	mulb	-1(%rbp)
 	sbbb	%cl, %cl
 	orb	%cl, %al
-
 	movzbl	%al, %eax
 	popq	%rbp
 	retq
@@ -10127,7 +10126,6 @@ _f:                                     ## @f
 	addl	$32767, %eax                    ## imm = 0x7FFF
 	imulw	%si, %di
 	cmovbw	%ax, %di
-
 	movswl	%di, %eax
 	popq	%rbp
 	retq
@@ -10161,7 +10159,6 @@ _f:                                     ## @f
 	mulw	-2(%rbp)
 	sbbw	%cx, %cx
 	orw	%cx, %ax
-
 	movzwl	%ax, %eax
 	popq	%rbp
 	retq
@@ -11383,7 +11380,6 @@ _f:                                     ## @f
 	addl	$2147483647, %ecx               ## imm = 0x7FFFFFFF
 	imull	%esi, %eax
 	cmovbl	%ecx, %eax
-
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -11416,7 +11412,6 @@ _f:                                     ## @f
 	mull	-4(%rbp)
 	sbbl	%ecx, %ecx
 	orl	%ecx, %eax
-
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -15018,7 +15013,6 @@ _f:                                     ## @f
 	addq	%rcx, %rdx
 	imulq	%rsi, %rax
 	cmovbq	%rdx, %rax
-
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -15051,7 +15045,6 @@ _f:                                     ## @f
 	mulq	-8(%rbp)
 	sbbq	%rcx, %rcx
 	orq	%rcx, %rax
-
 	popq	%rbp
 	retq
 {% endhighlight %}

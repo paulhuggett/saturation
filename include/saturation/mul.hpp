@@ -161,7 +161,7 @@ inline uinteger_t<8> mulu<8, std::enable_if_t<true>> (uinteger_t<8> x,
       // %al = x
       "mulb %[y]\n\t"             // %ax = %al * y (sets carry C on overflow)
       "sbb %[t], %[t]\n\t"        // t -= t - C (t will become 0 or ~0).
-      "or %[t], %[x]\n\t"         // x |= t
+      "or %[t], %[x]"             // x |= t
       : [x] "+a"(x), [t] "=r"(t)  // output
       : [y] "rm"(y)               // input
       : "cc"                      // clobbers
@@ -176,7 +176,7 @@ inline uinteger_t<16> mulu<16, std::enable_if_t<true>> (uinteger_t<16> x,
       // %ax = x
       "mulw %[y]\n\t"       // %dx:%ax = %ax * y (sets carry C on overflow)
       "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
-      "or %[t], %[x]\n\t"   // x |= t
+      "or %[t], %[x]"       // x |= t
       : [x] "+&a"(x), [t] "=r"(t)  // output
       : [y] "rm"(y)                // input
       : "cc", "dx"                 // clobbers
@@ -191,7 +191,7 @@ inline uinteger_t<32> mulu<32, std::enable_if_t<true>> (uinteger_t<32> x,
       // %eax = x
       "mull %[y]\n\t"       // %edx:%eax = %eax * y (sets carry C on overflow)
       "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
-      "or %[t], %[x]\n\t"   // x |= t
+      "or %[t], %[x]"       // x |= t
       : [x] "+&a"(x), [t] "=r"(t)  // output
       : [y] "rm"(y)                // input
       : "cc", "edx"                // clobbers
@@ -206,7 +206,7 @@ inline uinteger_t<64> mulu<64, std::enable_if_t<true>> (uinteger_t<64> x,
       // %rax = x
       "mulq %[y]\n\t"       // %rdx:%rax = %rax * y (sets carry C on overflow)
       "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
-      "or %[t], %[x]\n\t"   // x |= t
+      "or %[t], %[x]"       // x |= t
       : [x] "+&a"(x), [t] "=r"(t)  // output
       : [y] "rm"(y)                // input
       : "cc", "rdx"                // clobbers
@@ -320,8 +320,8 @@ template <size_t N>
 inline sinteger_t<N> muls_asm (sinteger_t<N> x, sinteger_t<N> y) {
   sinteger_t<N> const v = overflow_value<N> (x, y);
   __asm__(
-      "imul   %[y], %[x] \n\t"  // x *= y
-      "cmovc  %[v], %[x] \n\t"
+      "imul   %[y], %[x]\n\t"  // x *= y
+      "cmovc  %[v], %[x]"
       : [x] "+&rm"(x)           // output
       : [y] "r"(y), [v] "r"(v)  // input
       : "cc"                    // clobbers
