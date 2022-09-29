@@ -120,11 +120,12 @@ MathJax = {
   tex: {
     tags: 'ams', // should be 'ams', 'none', or 'all'
     inlineMath: [['$', '$'], ['\\(', '\\)']]
-  },
-  svg: {
-    fontCache: 'global'
   }
-};
+//  ,
+//  svg: {
+//    fontCache: 'global'
+//  }
+}
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -152,7 +153,7 @@ A CEM3310 charges the capacitor to 77% therefore, if we normalize RC to 1.0:
 1 - e^{t} &= 0.77       \\
     e^{t} &= 0.23       \\
        -t &= log_e 0.23 \\
-        t &= 1.4969
+        t &\approx 1.4969
 \end{align}
 </div>
 
@@ -164,44 +165,41 @@ $$
 V_c = V_0 e^{-t/RC}
 $$
 
-We discharge the capacitor from 77%. Once again, RC is assumed to be 1. First we need to know that initial offset for x:
+We discharge the capacitor from 77%. We assume that both *V<sub>0</sub>* and *RC* are 1. First we need to know that initial offset for x:
 
 <div>
 \begin{align*}
-       e^{-d} &= 0.77       \\
-\frac{1}{e^d} &= 0.77       \\
-           -d &= log_e 0.77 \\
-            d &= 0.2614     \\
+       e^{-d} &= 0.77         \\
+\frac{1}{e^d} &= 0.77         \\
+           -d &= log_e 0.77   \\
+            d &\approx 0.2614 \\
 \end{align*}
-</div>
-
-
-We now want to how long it will take for the capacitor to discharge. However, the  to < > when the capacity 
-
-<div>
-\begin{align*}
-
-      y &= e^{(-x+d)/RC} \\
-\end{align*}
-
-Time to discharge from 100% to 0.993
-
 </div>
 
 If we we assume that our capacitor start at 77% of its full charge,  and is "fully" discharged with a residual charge of 0.7% (i.e. 99.3% discharged):
 
 <div>
 \begin{align*}
-e^{-x + log_e 0.77} &\le \frac{0.7}{100} \\
-    -x + log_e 0.77 &\le log_e 0.007     \\
-                  x &\ge log_e 0.77 - log_e 0.007 \\
-                    &\ge 4.700
+e^{-x + log_e 0.77} &= \frac{0.7}{100}          \\
+    -x + log_e 0.77 &= log_e 0.007              \\
+                  x &= log_e 0.77 - log_e 0.007 \\
+                    &\approx 4.7004
 \end{align*}
 </div>
 <!-- /div --> <!-- col -->
 <!-- /div --> <!-- row -->
 
-## Stuff About Signal-to-Noise Ration
+#### Computing the Time Constant Overshoot.
+
+<div>
+\begin{align*}
+y(x) &= e^{-4.7004x} \\
+y(1) &= e^{-4.7004}  \\
+     &\approx 9.09 \times 10^{-3}
+\end{align*}
+</div>
+
+## Stuff About Signal-to-Noise Ratio
 
 The signal to quantization noise ratio (SQNR) can be [calculated from](https://en.wikipedia.org/wiki/Signal-to-noise_ratio#Fixed_point):
 
@@ -220,6 +218,28 @@ where Q is the number of quantization bits and the result is measured in decibel
 </select>
 SQNR = <span id="sqnr">0</span> dB
 
+
+##  Fixed Point Arithmetic Rules
+
+### Addition
+
+<div>
+\begin{align*}
+U(a, b) + U(a, b) &= U(a + 1, b) \\
+S(a, b) + S(a, b) &= S(a + 1, b)
+\end{align*}
+</div>
+
+The sum of two M-bit numbers requires M+1 bits.
+
+### Multiplication
+
+<div>
+\begin{align*}
+U(a_1, b_1) \times U(a_2, b_2) &= U(a_1 + a_2, b_1 + b_2) \\
+S(a_1, b_1) \times S(a_2, b_2) &= S(a_1 + a_2 + 1, b_1 + b_2)
+\end{align*}
+</div>
 
 
 <script type="module">
