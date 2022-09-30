@@ -58,7 +58,6 @@ inline uinteger_t<N> addu_asm (uinteger_t<N> x, uinteger_t<N> y) {
       : "cc"                             // clobber
   );
   return x | t;
-#undef YCONSTRAINT
 }
 
 }  // end namespace details
