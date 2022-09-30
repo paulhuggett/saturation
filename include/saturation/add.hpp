@@ -51,13 +51,14 @@ template <size_t N, typename = typename std::enable_if_t<is_register_width (N)>>
 inline uinteger_t<N> addu_asm (uinteger_t<N> x, uinteger_t<N> y) {
   uinteger_t<N> t;
   __asm__(
-      "add %[y], %[x]\n\t"        // x += y (sets carry C on overflow)
-      "sbb %[t], %[t]"            // t -= t - C (t will become 0 or ~0).
-      : [x] "+r"(x), [t] "=r"(t)  // output
-      : [y] "r"(y)                // input
-      : "cc"                      // clobber
+      "add {%[y],%[x] | %[x],%[y]}\n\t"  // x += y (sets carry C on overflow)
+      "sbb %[t],%[t]"                    // t -= t - C (t will become 0 or ~0).
+      : [x] "+&r"(x), [t] "=&r"(t)       // output
+      : [y] "irm"(y)                     // input
+      : "cc"                             // clobber
   );
   return x | t;
+#undef YCONSTRAINT
 }
 
 }  // end namespace details
@@ -204,11 +205,11 @@ template <size_t N, typename = typename std::enable_if_t<is_register_width (N)>>
 inline sinteger_t<N> adds_asm (sinteger_t<N> x, sinteger_t<N> y) {
   sinteger_t<N> const v = details::adds_overflow_value<N> (x);
   __asm__(
-      "add   %[y], %[x]\n\t"    // x += y (sets C on overflow)
-      "cmovo %[v], %[x]"        // if C, x = v
-      : [x] "+&r"(x)            // output
-      : [y] "r"(y), [v] "r"(v)  // input
-      : "cc"                    // clobber
+      "add   {%[y],%[x] | %[x],%[y]}\n\t"  // x += y (sets C on overflow)
+      "cmovo {%[v],%[x] | %[x],%[v]}"      // if C, x = v
+      : [x] "+&r"(x)                       // output
+      : [y] "r"(y), [v] "r"(v)             // input
+      : "cc"                               // clobber
   );
   return x;
 }

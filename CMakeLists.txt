@@ -3,6 +3,7 @@ cmake_minimum_required (VERSION 3.16)
 
 set (CMAKE_CXX_STANDARD 17 CACHE STRING "C++ Standard Version")
 option (WERROR "Compiler warnings are errors")
+option (INTEL_DIALECT "Use Intel rather than AT&T assembler syntax (for GCC/Clang)")
 
 function (setup_target target)
   set (clang_options
@@ -30,9 +31,13 @@ function (setup_target target)
   )
 
   if (WERROR)
-      list (APPEND clang_options -Werror)
-      list (APPEND gcc_options -Werror)
-      list (APPEND msvc_options /WX)
+    list (APPEND clang_options -Werror)
+    list (APPEND gcc_options -Werror)
+    list (APPEND msvc_options /WX)
+  endif ()
+  if (INTEL_DIALECT)
+    list (APPEND clang_options -masm=intel)
+    list (APPEND gcc_options -masm=intel)
   endif ()
 
   target_compile_options (${target} PRIVATE

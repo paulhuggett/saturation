@@ -54,6 +54,7 @@ TYPED_TEST_P (Saturation, UnsignedAdd) {
   EXPECT_EQ (addu<n> (uint_type{0}, uint_type{0}), uint_type{0});
   EXPECT_EQ (addu<n> (uint_type{2}, uint_type{3}), uint_type{5});
   EXPECT_EQ (addu<n> (maxu, uint_type{1}), maxu);
+  EXPECT_EQ (addu<n> (uint_type{0}, maxu), maxu);
 }
 TYPED_TEST_P (Saturation, SignedAdd) {
   constexpr auto bits = TypeParam::value;

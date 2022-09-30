@@ -159,12 +159,12 @@ inline uinteger_t<8> mulu<8, std::enable_if_t<true>> (uinteger_t<8> x,
   uinteger_t<8> t;
   __asm__(
       // %al = x
-      "mulb %[y]\n\t"             // %ax = %al * y (sets carry C on overflow)
-      "sbb %[t], %[t]\n\t"        // t -= t - C (t will become 0 or ~0).
-      "or %[t], %[x]"             // x |= t
-      : [x] "+a"(x), [t] "=r"(t)  // output
-      : [y] "rm"(y)               // input
-      : "cc"                      // clobbers
+      "mul %[y]\n\t"        // %ax = %al * y (sets carry C on overflow)
+      "sbb  %[t],%[t]\n\t"  // t -= t - C (t will become 0 or ~0).
+      "or   {%[t],%[x] | %[x],%[t]}"  // x |= t
+      : [x] "+a"(x), [t] "=r"(t)      // output
+      : [y] "r"(y)                    // input
+      : "cc"                          // clobbers
   );
   return x;
 }
@@ -174,12 +174,12 @@ inline uinteger_t<16> mulu<16, std::enable_if_t<true>> (uinteger_t<16> x,
   uinteger_t<16> t;
   __asm__(
       // %ax = x
-      "mulw %[y]\n\t"       // %dx:%ax = %ax * y (sets carry C on overflow)
-      "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
-      "or %[t], %[x]"       // x |= t
-      : [x] "+&a"(x), [t] "=r"(t)  // output
-      : [y] "rm"(y)                // input
-      : "cc", "dx"                 // clobbers
+      "mul %[y]\n\t"        // %dx:%ax = %ax * y (sets carry C on overflow)
+      "sbb  %[t],%[t]\n\t"  // t -= t - C (t will become 0 or ~0).
+      "or   {%[t],%[x] | %[x],%[t]}"  // x |= t
+      : [x] "+&a"(x), [t] "=r"(t)     // output
+      : [y] "r"(y)                    // input
+      : "cc", "dx"                    // clobbers
   );
   return x;
 }
@@ -189,12 +189,12 @@ inline uinteger_t<32> mulu<32, std::enable_if_t<true>> (uinteger_t<32> x,
   uinteger_t<32> t;
   __asm__(
       // %eax = x
-      "mull %[y]\n\t"       // %edx:%eax = %eax * y (sets carry C on overflow)
-      "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
-      "or %[t], %[x]"       // x |= t
-      : [x] "+&a"(x), [t] "=r"(t)  // output
-      : [y] "rm"(y)                // input
-      : "cc", "edx"                // clobbers
+      "mul %[y]\n\t"        // %edx:%eax = %eax * y (sets carry C on overflow)
+      "sbb  %[t],%[t]\n\t"  // t -= t - C (t will become 0 or ~0).
+      "or   {%[t],%[x] | %[x],%[t]}"  // x |= t
+      : [x] "+&a"(x), [t] "=r"(t)     // output
+      : [y] "r"(y)                    // input
+      : "cc", "edx"                   // clobbers
   );
   return x;
 }
@@ -204,12 +204,12 @@ inline uinteger_t<64> mulu<64, std::enable_if_t<true>> (uinteger_t<64> x,
   uinteger_t<64> t;
   __asm__(
       // %rax = x
-      "mulq %[y]\n\t"       // %rdx:%rax = %rax * y (sets carry C on overflow)
-      "sbb %[t], %[t]\n\t"  // t -= t - C (t will become 0 or ~0).
-      "or %[t], %[x]"       // x |= t
-      : [x] "+&a"(x), [t] "=r"(t)  // output
-      : [y] "rm"(y)                // input
-      : "cc", "rdx"                // clobbers
+      "mul %[y]\n\t"        // %rdx:%rax = %rax * y (sets carry C on overflow)
+      "sbb  %[t],%[t]\n\t"  // t -= t - C (t will become 0 or ~0).
+      "or   {%[t],%[x] | %[x],%[t]}"  // x |= t
+      : [x] "+&a"(x), [t] "=r"(t)     // output
+      : [y] "r"(y)                    // input
+      : "cc", "rdx"                   // clobbers
   );
   return x;
 }
@@ -320,8 +320,8 @@ template <size_t N>
 inline sinteger_t<N> muls_asm (sinteger_t<N> x, sinteger_t<N> y) {
   sinteger_t<N> const v = overflow_value<N> (x, y);
   __asm__(
-      "imul   %[y], %[x]\n\t"  // x *= y
-      "cmovc  %[v], %[x]"
+      "imul   {%[y],%[x] | %[x],%[y]}\n\t"  // x *= y
+      "cmovc  {%[v],%[x] | %[x],%[v]}"
       : [x] "+&rm"(x)           // output
       : [y] "r"(y), [v] "r"(v)  // input
       : "cc"                    // clobbers
