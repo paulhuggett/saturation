@@ -54,7 +54,7 @@ inline uinteger_t<N> addu_asm (uinteger_t<N> x, uinteger_t<N> y) {
       "add {%[y],%[x] | %[x],%[y]}\n\t"  // x += y (sets carry C on overflow)
       "sbb %[t],%[t]"                    // t -= t - C (t will become 0 or ~0).
       : [x] "+&r"(x), [t] "=&r"(t)       // output
-      : [y] "irm"(y)                     // input
+      : [y] "ir"(y)                      // input
       : "cc"                             // clobber
   );
   return x | t;

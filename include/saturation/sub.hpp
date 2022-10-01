@@ -54,7 +54,7 @@ inline uinteger_t<N> subu_asm (uinteger_t<N> x, uinteger_t<N> y) {
       "sub {%[y],%[x] | %[x],%[y]}\n\t"  // x -= y (sets carry C on overflow)
       "cmovc {%[t],%[x] | %[x],%[t]}"    // if C, x = 0.
       : [x] "+&r"(x)                     // output
-      : [y] "irm"(y), [t] "r"(t)         // input
+      : [y] "ir"(y), [t] "r"(t)          // input
       : "cc"                             // clobber
   );
   return x;
