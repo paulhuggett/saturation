@@ -1,9 +1,17 @@
-project (saturation)
 cmake_minimum_required (VERSION 3.16)
+project (saturation VERSION 1.0)
 
 set (CMAKE_CXX_STANDARD 17 CACHE STRING "C++ Standard Version")
 option (WERROR "Compiler warnings are errors")
 option (INTEL_DIALECT "Use Intel rather than AT&T assembler syntax (for GCC/Clang)")
+
+# Using the INTEL_DIALECT option with clang requires version 14 or later.
+string (REGEX MATCH "^[0-9]+" CXX_COMPILER_MAJOR_VERSION ${CMAKE_CXX_COMPILER_VERSION})
+if (INTEL_DIALECT AND
+    ("${CMAKE_CXX_COMPILER_ID}" MATCHES Clang) AND
+    (${CXX_COMPILER_MAJOR_VERSION} LESS 14))
+  message (SEND_ERROR "INTEL_DIALECT option requires clang version 14 or later")
+endif()
 
 function (setup_target target)
   set (clang_options
