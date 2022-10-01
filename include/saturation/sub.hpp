@@ -62,6 +62,7 @@ inline uinteger_t<N> subu_asm (uinteger_t<N> x, uinteger_t<N> y) {
 
 }  // end namespace details
 
+#if 0
 template <>
 inline uinteger_t<16> subu<16, std::enable_if_t<true>> (
     uinteger_t<16> const x, uinteger_t<16> const y) {
@@ -77,6 +78,7 @@ inline uinteger_t<64> subu<64, std::enable_if_t<true>> (
     uinteger_t<64> const x, uinteger_t<64> const y) {
   return details::subu_asm<64> (x, y);
 }
+#endif
 #endif  // __GNUC__ && __x86_64__
 #endif  // NO_INLINE_ASM
 
