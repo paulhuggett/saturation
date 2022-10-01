@@ -5702,7 +5702,7 @@ _f:                                     ## @f
 	movq	%rsp, %rbp
 	xorl	%eax, %eax
 	subw	%si, %di
-	cmovbw	%ax, %di
+	cmovbl	%eax, %edi
 	movzwl	%di, %eax
 	popq	%rbp
 	retq
@@ -6832,10 +6832,9 @@ f (uinteger_t<32> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movl	%edi, %eax
-	xorl	%ecx, %ecx
-	subl	%esi, %eax
-	cmovbl	%ecx, %eax
+	xorl	%eax, %eax
+	subl	%esi, %edi
+	cmovael	%edi, %eax
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -9170,10 +9169,9 @@ f (uinteger_t<64> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movq	%rdi, %rax
-	xorl	%ecx, %ecx
-	subq	%rsi, %rax
-	cmovbq	%rcx, %rax
+	xorl	%eax, %eax
+	subq	%rsi, %rdi
+	cmovaeq	%rdi, %rax
 	popq	%rbp
 	retq
 {% endhighlight %}
