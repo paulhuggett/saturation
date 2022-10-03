@@ -49,20 +49,26 @@ namespace details {
 ///   in \p N bits.
 template <size_t N, typename = typename std::enable_if_t<is_register_width (N)>>
 inline uinteger_t<N> subu_asm (uinteger_t<N> x, uinteger_t<N> y) {
+// Clang doesn't handle multiple constraints properly. See
+// https://github.com/llvm/llvm-project/issues/20571
+#ifdef __clang__
+#define YCONSTRAINT "ir"
+#else
+#define YCONSTRAINT "irm"
+#endif
   uinteger_t<N> t = 0;
   __asm__(
-      "sub {%[y],%[x] | %[x],%[y]}\n\t"  // x -= y (sets carry C on overflow)
-      "cmovc {%[t],%[x] | %[x],%[t]}"    // if C, x = 0.
-      : [x] "+&r"(x)                     // output
-      : [y] "ir"(y), [t] "r"(t)          // input
-      : "cc"                             // clobber
+      "sub   {%[y],%[x] | %[x],%[y]}\n\t"  // x -= y (sets carry C on overflow)
+      "cmovc {%[t],%[x] | %[x],%[t]}"      // if C, x = 0.
+      : [x] "+&r"(x)                       // output
+      : [y] YCONSTRAINT (y), [t] "r"(t)    // input
+      : "cc"                               // clobber
   );
   return x;
 }
 
 }  // end namespace details
 
-#if 0
 template <>
 inline uinteger_t<16> subu<16, std::enable_if_t<true>> (
     uinteger_t<16> const x, uinteger_t<16> const y) {
@@ -78,7 +84,6 @@ inline uinteger_t<64> subu<64, std::enable_if_t<true>> (
     uinteger_t<64> const x, uinteger_t<64> const y) {
   return details::subu_asm<64> (x, y);
 }
-#endif
 #endif  // __GNUC__ && __x86_64__
 #endif  // NO_INLINE_ASM
 

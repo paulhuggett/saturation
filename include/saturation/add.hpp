@@ -49,15 +49,23 @@ namespace details {
 ///   in \p N bits.
 template <size_t N, typename = typename std::enable_if_t<is_register_width (N)>>
 inline uinteger_t<N> addu_asm (uinteger_t<N> x, uinteger_t<N> y) {
+// Clang doesn't handle multiple constraints properly. See
+// https://github.com/llvm/llvm-project/issues/20571
+#ifdef __clang__
+#define YCONSTRAINT "ir"
+#else
+#define YCONSTRAINT "irm"
+#endif
   uinteger_t<N> t;
   __asm__(
       "add {%[y],%[x] | %[x],%[y]}\n\t"  // x += y (sets carry C on overflow)
       "sbb %[t],%[t]"                    // t -= t - C (t will become 0 or ~0).
       : [x] "+&r"(x), [t] "=&r"(t)       // output
-      : [y] "ir"(y)                      // input
+      : [y] YCONSTRAINT (y)              // input
       : "cc"                             // clobber
   );
   return x | t;
+#undef YCONSTRAINT
 }
 
 }  // end namespace details
