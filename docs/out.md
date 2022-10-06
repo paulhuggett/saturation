@@ -5702,7 +5702,7 @@ _f:                                     ## @f
 	movq	%rsp, %rbp
 	xorl	%eax, %eax
 	subw	%si, %di
-	cmovbl	%eax, %edi
+	cmovbw	%ax, %di
 	movzwl	%di, %eax
 	popq	%rbp
 	retq
@@ -6832,9 +6832,10 @@ f (uinteger_t<32> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	xorl	%eax, %eax
-	subl	%esi, %edi
-	cmovael	%edi, %eax
+	movl	%edi, %eax
+	xorl	%ecx, %ecx
+	subl	%esi, %eax
+	cmovbl	%ecx, %eax
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -9169,9 +9170,10 @@ f (uinteger_t<64> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	xorl	%eax, %eax
-	subq	%rsi, %rdi
-	cmovaeq	%rdi, %rax
+	movq	%rdi, %rax
+	xorl	%ecx, %ecx
+	subq	%rsi, %rax
+	cmovbq	%rcx, %rax
 	popq	%rbp
 	retq
 {% endhighlight %}
@@ -9554,8 +9556,7 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%edi, %eax
-	movb	%sil, -1(%rbp)
-	mulb	-1(%rbp)
+	mulb	%sil
 	sbbb	%cl, %cl
 	orb	%cl, %al
 	movzbl	%al, %eax
@@ -10118,7 +10119,6 @@ f (sinteger_t<16> a,
 _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
-	movw	%di, -2(%rbp)
 	movl	%esi, %eax
 	xorl	%edi, %eax
 	movzwl	%ax, %eax
@@ -10155,8 +10155,7 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%edi, %eax
-	movw	%si, -2(%rbp)
-	mulw	-2(%rbp)
+	mulw	%si
 	sbbw	%cx, %cx
 	orw	%cx, %ax
 	movzwl	%ax, %eax
@@ -11373,7 +11372,6 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%edi, %eax
-	movl	%edi, -4(%rbp)
 	movl	%esi, %ecx
 	xorl	%edi, %ecx
 	shrl	$31, %ecx
@@ -11408,8 +11406,7 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	%edi, %eax
-	movl	%esi, -4(%rbp)
-	mull	-4(%rbp)
+	mull	%esi
 	sbbl	%ecx, %ecx
 	orl	%ecx, %eax
 	popq	%rbp
@@ -15005,7 +15002,6 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movq	%rdi, %rax
-	movq	%rdi, -8(%rbp)
 	movq	%rsi, %rcx
 	xorq	%rdi, %rcx
 	shrq	$63, %rcx
@@ -15041,8 +15037,7 @@ _f:                                     ## @f
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movq	%rdi, %rax
-	movq	%rsi, -8(%rbp)
-	mulq	-8(%rbp)
+	mulq	%rsi
 	sbbq	%rcx, %rcx
 	orq	%rcx, %rax
 	popq	%rbp

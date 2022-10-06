@@ -34,6 +34,59 @@ constexpr uinteger_t<N> subu (uinteger_t<N> const x, uinteger_t<N> const y) {
   res &= maxu;
   return res;
 }
+#ifndef NO_INLINE_ASM
+#if defined(__GNUC__) && defined(__x86_64__)
+namespace details {
+
+/// An x86-only implementation of saturating unsigned subtract which is suitable
+/// for register-sized values of \p N.
+///
+/// \tparam N  The number of bits for the unsigned arguments and result. Must be
+///   plausibly the size of a target processor register.
+/// \param x  The first of the two unsigned values to be subtracted.
+/// \param y  The second of the two unsigned values to be subtracted.
+/// \result  \p x - \p y or \f$ 2^N-1 \f$ if the result cannot be represented
+///   in \p N bits.
+template <size_t N, typename = typename std::enable_if_t<is_register_width (N)>>
+inline uinteger_t<N> subu_asm (uinteger_t<N> x, uinteger_t<N> y) {
+// Clang doesn't handle multiple constraints properly. See
+// https://github.com/llvm/llvm-project/issues/20571
+#ifdef __clang__
+#define YCONSTRAINT "ir"
+#else
+#define YCONSTRAINT "irm"
+#endif
+  uinteger_t<N> t = 0;
+  __asm__(
+      "sub   {%[y],%[x] | %[x],%[y]}\n\t"  // x -= y (sets carry C on overflow)
+      "cmovc {%[t],%[x] | %[x],%[t]}"      // if C, x = 0.
+      : [x] "+&r"(x)                       // output
+      : [y] YCONSTRAINT (y), [t] "r"(t)    // input
+      : "cc"                               // clobber
+  );
+  return x;
+}
+
+}  // end namespace details
+
+template <>
+inline uinteger_t<16> subu<16, std::enable_if_t<true>> (
+    uinteger_t<16> const x, uinteger_t<16> const y) {
+  return details::subu_asm<16> (x, y);
+}
+template <>
+inline uinteger_t<32> subu<32, std::enable_if_t<true>> (
+    uinteger_t<32> const x, uinteger_t<32> const y) {
+  return details::subu_asm<32> (x, y);
+}
+template <>
+inline uinteger_t<64> subu<64, std::enable_if_t<true>> (
+    uinteger_t<64> const x, uinteger_t<64> const y) {
+  return details::subu_asm<64> (x, y);
+}
+#endif  // __GNUC__ && __x86_64__
+#endif  // NO_INLINE_ASM
+
 /// \brief Computes the 32 bit unsigned result of \p x - \p y.
 ///
 /// If the result overflows (that is, the correct result would be &ge;
@@ -43,7 +96,7 @@ constexpr uinteger_t<N> subu (uinteger_t<N> const x, uinteger_t<N> const y) {
 /// \param y  The 32 bit unsigned value deducted from \p x.
 /// \returns  \p x - \p y. If the result would be too large,
 ///   \f$ 2^{32}-1 \f$ (`std::numeric_limits<uint32_t>::max()`).
-constexpr uint32_t subu32 (uint32_t const x, uint32_t const y) {
+inline uint32_t subu32 (uint32_t const x, uint32_t const y) {
   return subu<32> (x, y);
 }
 /// \brief Computes the 16 bit unsigned result of \p x - \p y.
@@ -55,7 +108,7 @@ constexpr uint32_t subu32 (uint32_t const x, uint32_t const y) {
 /// \param y  The 16 bit unsigned value deducted from \p x.
 /// \returns  \p x - \p y. If the result would be too large,
 ///   \f$ 2^{16}-1 \f$ (`std::numeric_limits<uint16_t>::max()`).
-constexpr uint16_t subu16 (uint16_t const x, uint16_t const y) {
+inline uint16_t subu16 (uint16_t const x, uint16_t const y) {
   return subu<16> (x, y);
 }
 /// \brief Computes the 8 bit unsigned result of \p x - \p y.
@@ -67,7 +120,7 @@ constexpr uint16_t subu16 (uint16_t const x, uint16_t const y) {
 /// \param y  The 8 bit unsigned value deducted from \p x.
 /// \returns  \p x - \p y. If the result would be too large,
 ///   \f$ 2^{8}-1 \f$ (`std::numeric_limits<uint8_t>::max()`).
-constexpr uint8_t subu8 (uint8_t const x, uint8_t const y) {
+inline uint8_t subu8 (uint8_t const x, uint8_t const y) {
   return subu<8> (x, y);
 }
 /// @}

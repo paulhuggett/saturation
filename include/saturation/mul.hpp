@@ -322,7 +322,7 @@ inline sinteger_t<N> muls_asm (sinteger_t<N> x, sinteger_t<N> y) {
   __asm__(
       "imul   {%[y],%[x] | %[x],%[y]}\n\t"  // x *= y
       "cmovc  {%[v],%[x] | %[x],%[v]}"
-      : [x] "+&rm"(x)           // output
+      : [x] "+&r"(x)            // output
       : [y] "r"(y), [v] "r"(v)  // input
       : "cc"                    // clobbers
   );
