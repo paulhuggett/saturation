@@ -9,38 +9,57 @@ on:
 jobs:
   klee:
     runs-on: ubuntu-latest
+
     container:
-      image: klee/klee:2.3
+      image: klee/klee:3.0
       options: -u 0 --ulimit="stack=-1:-1"
+
     steps:
+      - name: Get the Kitware APT repository signing key
+        run: |
+          wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
+
+      - name: Add Kitware repository
+        run: |
+          CODENAME=$(lsb_release -c | sed -n -e 's/Codename:[[:space:]]*//gp')
+          echo "deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ $CODENAME main" | sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null
+
+      - name: apt update
+        run: |
+          sudo apt-get update
+
+      - name: Install the kitware-archive-keyring package
+        run: |
+          sudo rm /usr/share/keyrings/kitware-archive-keyring.gpg
+          sudo apt-get install -y kitware-archive-keyring
+
       - name: Upgrade git
         run: |
           sudo add-apt-repository -y ppa:git-core/ppa
           sudo apt-get install -y git
 
-      - name: Install Ninja
+      - name: Install cmake, ninja
         run: |
-          sudo apt-get update
-          sudo apt-get install ninja-build
+          sudo apt-get install -y cmake ninja-build
 
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: 'True'
 
       - name: Create Build Environment
-        run: cmake -E make_directory "${{ runner.workspace }}/build"
+        run: cmake -E make_directory "${{ github.workspace }}/build"
 
       - name: Configure
         run: |
           cmake -G Ninja                           \
-                -B "${{ runner.workspace }}/build" \
+                -B "${{ github.workspace }}/build" \
                 -S "$GITHUB_WORKSPACE"             \
                 -D CMAKE_BUILD_TYPE=Release        \
-                -D CMAKE_CXX_COMPILER=clang++-11   \
-                -D CMAKE_C_COMPILER=clang-11       \
+                -D CMAKE_CXX_COMPILER=clang++      \
+                -D CMAKE_C_COMPILER=clang          \
                 -D WERROR=Yes
 
       - name: Build and Test
         run: |
-          cmake --build "${{ runner.workspace }}/build" --target klee-all
+          cmake --build "${{ github.workspace }}/build" --target klee-all
