@@ -19,9 +19,9 @@ jobs:
       CCT_OUT: /tmp/cct-out
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-          submodules: 'True'
+          submodules: True
 
       - name: Download the codacy-clang-tidy tool
         env:
@@ -31,17 +31,22 @@ jobs:
           curl -L "${{ env.CCT_DOWNLOAD_URL }}" -o "$HOME/cct/${{ env.CCT }}"
           chmod +x "$HOME/cct/${{ env.CCT }}"
 
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake
+
       - name: Configure
         run: |
           cmake -S .                                 \
                 -B build                             \
                 -D CMAKE_EXPORT_COMPILE_COMMANDS=Yes \
-                -D CMAKE_C_COMPILER=clang-12         \
-                -D CMAKE_CXX_COMPILER=clang++-12
+                -D CMAKE_C_COMPILER=clang-15         \
+                -D CMAKE_CXX_COMPILER=clang++-15
 
       - name: Run clang-tidy
         run: |
-          clang-tidy-12 -extra-arg=-std=c++17          \
+          clang-tidy-15 -extra-arg=-std=c++17          \
                         -extra-arg=-DNDEBUG            \
                         -p=build/compile_commands.json \
                         ./*.?pp                        \
