@@ -20,36 +20,36 @@ jobs:
 
           # Ubuntu builds
           # ~~~~~~~~~~~~~
-          - name: Ubuntu-latest/gcc-10/Debug
+          - name: Ubuntu-latest/gcc-13/Debug
             build_type: Debug
-            cxx_compiler: -DCMAKE_CXX_COMPILER=g++-10 -DCMAKE_C_COMPILER=gcc-10
+            cxx_compiler: -DCMAKE_CXX_COMPILER=g++-13 -DCMAKE_C_COMPILER=gcc-13
             generator: Unix Makefiles
             os: ubuntu-latest
 
-          - name: Ubuntu-latest/gcc-10/Release
+          - name: Ubuntu-latest/gcc-13/Release
             build_type: Release
-            cxx_compiler: -DCMAKE_CXX_COMPILER=g++-10 -DCMAKE_C_COMPILER=gcc-10
+            cxx_compiler: -DCMAKE_CXX_COMPILER=g++-13 -DCMAKE_C_COMPILER=gcc-13
             generator: Unix Makefiles
             os: ubuntu-latest
 
-          - name: Ubuntu-latest/gcc-10/Release/masm=Intel
+          - name: Ubuntu-latest/gcc-13/Release/masm=Intel
             build_type: Release
-            cxx_compiler: -DCMAKE_CXX_COMPILER=g++-10 -DCMAKE_C_COMPILER=gcc-10
+            cxx_compiler: -DCMAKE_CXX_COMPILER=g++-13 -DCMAKE_C_COMPILER=gcc-13
             generator: Unix Makefiles
             options: '-DINTEL_DIALECT=Yes'
             os: ubuntu-latest
 
 
-          - name: Ubuntu-latest/clang-12/Debug
+          - name: Ubuntu-latest/clang-15/Debug
             build_type: Debug
-            cxx_compiler: -DCMAKE_CXX_COMPILER=clang++-12 -DCMAKE_C_COMPILER=clang-12
+            cxx_compiler: -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15
             generator: Unix Makefiles
             options: '-DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold'
             os: ubuntu-latest
 
-          - name: Ubuntu-latest/clang-12/Release
+          - name: Ubuntu-latest/clang-15/Release
             build_type: Release
-            cxx_compiler: -DCMAKE_CXX_COMPILER=clang++-12 -DCMAKE_C_COMPILER=clang-12
+            cxx_compiler: -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15
             generator: Unix Makefiles
             options: '-DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold'
             os: ubuntu-latest
@@ -80,7 +80,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: 'True'
 
