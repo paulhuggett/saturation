@@ -18,6 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          submodules: True
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Install sonar-scanner and build-wrapper
